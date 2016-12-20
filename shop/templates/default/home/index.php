@@ -108,7 +108,8 @@ else {document.cookie='uid='+uid[1];}
   <div class="mt10"><?php echo loadadv(9,'html');?></div>
 </div>
 <!--link Begin-->
-<!--<div class="full_module wrapper">
+<!-- 友情链接
+<div class="full_module wrapper">
   <h2><b><?php echo $lang['index_index_link'];?></b></h2>
   <div class="piclink">
     <?php if(is_array($output['$link_list']) && !empty($output['$link_list'])) {
@@ -142,7 +143,9 @@ else {document.cookie='uid='+uid[1];}
 
 <div class="footer-line"></div>
 <!--首页底部保障开始-->
+<!--
 <?php require_once template('layout/index_ensure');?>
+-->
 <!--首页底部保障结束-->
 <!--StandardLayout Begin-->
 <!-- 底部竖状定位条
