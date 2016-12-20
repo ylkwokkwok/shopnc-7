@@ -139,11 +139,13 @@ else {document.cookie='uid='+uid[1];}
   </div>
 </div>-->
 <!--link end-->
+
 <div class="footer-line"></div>
 <!--首页底部保障开始-->
 <?php require_once template('layout/index_ensure');?>
 <!--首页底部保障结束-->
 <!--StandardLayout Begin-->
+<!-- 底部竖状定位条
 <div class="nav_Sidebar">
 <a class="nav_Sidebar_1" href="javascript:;" ></a>
 <a class="nav_Sidebar_2" href="javascript:;" ></a>
@@ -153,5 +155,5 @@ else {document.cookie='uid='+uid[1];}
 <a class="nav_Sidebar_6" href="javascript:;" ></a> 
 <a class="nav_Sidebar_7" href="javascript:;" ></a>
 <a class="nav_Sidebar_8" href="javascript:;" ></a>
-</div>
+</div>-->
 <!--StandardLayout End-->
