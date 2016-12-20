@@ -1,0 +1,82 @@
+<?php
+$path ="C:\\blabla\\filesys\\one.txt";
+$content = " all for one";
+file_put_contents($path,$content,FILE_APPEND);
+if (file_exists($path))
+  {echo "ok";}
+else
+  {echo "ng";}
+?>
+
+<?php
+$path ="C:\\blabla\\filesys\\one.txt";
+$content = "one for all";
+file_put_contents($path,$content);
+if (file_exists($path))
+  {echo "ok";}
+else
+  {echo "ng";}
+?>
+
+
+<?php 
+ 
+$str = 'hello world';
+if(file_put_contents('01.txt',$str)){
+    echo '数据存入成功','<br />';
+}else{
+    echo '数据存入失败','<br />';
+}
+//返回的是：数据存入成功
+//原来相应的目录下是没有这个文件的
+//现在有这个文件了
+//从这里可以看出，如果没有这个文件的话
+//调用file_put_contents方法会自动创建这样的一个文件
+//然后把数据存入
+echo file_get_contents('01.txt'),'<br />';
+//返回hello world
+//把这个文件里的数值读出来
+//如果file_get_contents是要读一个不存在的文件
+//那么会报错，要读的文件一定要存在的
+if(file_put_contents('01.txt','new data to be insert')){
+    echo '数据存入成功2','<br />';
+}else{
+    echo '数据存入失败2','<br />';
+}
+ 
+echo file_get_contents('01.txt'),'<br />';
+
+
+
+
+$array=explode(separator,$string);
+$string=implode(glue,$array);
+
+<?php
+// 示例 1
+$pizza = "piece1 piece2 piece3 piece4 piece5 piece6";
+$pieces = explode(" ", $pizza);
+echo $pieces[0]; // piece1
+echo $pieces[1]; // piece2
+// 示例 2
+$data = "foo:*:1023:1000::/home/foo:/bin/sh";
+list($user, $pass, $uid, $gid, $gecos, $home, $shell) = explode(":", $data);
+echo $user; // foo
+echo $pass; // *
+?> 
+
+
+
+$s = print_r($var, true);
+file_put_contents('arr.txt', $s);
+
+
+
+
+
+
+
+
+
+$msg=print_r($condition,true);
+file_put_contents('zmrlog.txt',$msg,FILE_APPEND);
