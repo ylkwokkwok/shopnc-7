@@ -44,6 +44,8 @@ $lang['nc_gift'] = '送礼品';
  * footer中的文字
  */
 $lang['nc_index']			= "首页";
+$lang['nc_friendship_title']		= "友情链接：";
+$lang['nc_friendship_name']		= "大连牛奶";
 $lang['nc_page_execute']	= "页面执行";
 $lang['nc_second']			= "秒";
 $lang['nc_query']			= "查询";

@@ -4,6 +4,7 @@
 $config = array();
 $config['base_site_url']        = 'http://shopnc.siburuxue.com';
 $config['shop_site_url'] 		= 'http://shopnc.siburuxue.com/shop';
+$config['shop_friendship_url'] 		= 'http://www.cenler.com';
 $config['cms_site_url'] 		= 'http://shopnc.siburuxue.com/cms';
 $config['microshop_site_url'] 	= 'http://shopnc.siburuxue.com/microshop';
 $config['circle_site_url'] 		= 'http://shopnc.siburuxue.com/circle';

@@ -44,8 +44,9 @@
     <?php }?>
   </div>
 </div>
+
 <div id="footer" class="wrapper">
-  <p><a href="<?php echo SHOP_SITE_URL;?>"><?php echo $lang['nc_index'];?></a>
+  <p><?php echo $lang['nc_friendship_title'];?><a href="<?php echo SHOP_FRIENDSHIP_URL;?>"><?php echo $lang['nc_friendship_name'];?></a>
     <?php if(!empty($output['nav_list']) && is_array($output['nav_list'])){?>
     <?php foreach($output['nav_list'] as $nav){?>
     <?php if($nav['nav_location'] == '2'){?>

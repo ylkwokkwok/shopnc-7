@@ -64,7 +64,11 @@ final class Base{
 		$nc_config['db']['master'] = $nc_config['db'][1];
 		$setting_config = $nc_config;
 		$setting = ($setting = rkcache('setting')) ? $setting : rkcache('setting',true);
-		$setting['shopnc_version'] = 'Copyright 2015</a>';
+		$setting['shopnc_version'] = '<div class="text" style="color:#925432">
+											© 2005-2016 心乐生活 版权所有，并保留所有权利。<br>
+											大连市沙河口区会展路115号百年汇A座22楼        Tel: 4008608333  
+											<a href="http://www.miibeian.gov.cn/" target="_blank" style="color:#925432">辽ICP备14001669号</a> 
+										</div></a>';
 		$setting_config = array_merge_recursive($setting,$nc_config);
 	}
 

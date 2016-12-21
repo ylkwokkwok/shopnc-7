@@ -22,6 +22,8 @@ $auto_site_url = strtolower('http://'.$_SERVER['HTTP_HOST'].implode('/',$tmp_arr
 define(SUBDOMAIN_SUFFIX, $config['subdomain_suffix']);
 define('BASE_SITE_URL', $config['base_site_url']);
 define('SHOP_SITE_URL', $config['shop_site_url']);
+//友情链接
+define('SHOP_FRIENDSHIP_URL', $config['shop_friendship_url']);
 define('CMS_SITE_URL', $config['cms_site_url']);
 define('CIRCLE_SITE_URL', $config['circle_site_url']);
 define('MICROSHOP_SITE_URL', $config['microshop_site_url']);
