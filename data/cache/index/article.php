@@ -67,6 +67,233 @@ $article_list=array (
   array (
     'ac_id' => '2',
     'ac_code' => 'member',
+    'ac_name' => '关于我们',
+    'ac_parent_id' => '0',
+    'ac_sort' => '255',
+    'list' => 
+    array (
+      0 => 
+      array (
+        'article_id' => '9',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '公司介绍',
+        'article_time' => '1389864697',
+        'ac_name' => '关于我们',
+        'ac_parent_id' => '0',
+      ),
+      1 => 
+      array (
+        'article_id' => '6',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '品牌理念',
+        'article_time' => '1389864697',
+        'ac_name' => '关于我们',
+        'ac_parent_id' => '0',
+      ),
+      2 => 
+      array (
+        'article_id' => '39',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '联系我们',
+        'article_time' => '1389864697',
+        'ac_name' => '关于我们',
+        'ac_parent_id' => '0',
+      ),
+    ),
+    'class' => 
+    array (
+      'ac_name' => '关于我们',
+    ),
+  ),
+  1 => 
+  array (
+    'ac_id' => '2',
+    'ac_code' => 'member',
+    'ac_name' => '购物指南',
+    'ac_parent_id' => '0',
+    'ac_sort' => '255',
+    'list' => 
+    array (
+      0 => 
+      array (
+        'article_id' => '9',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '购物流程',
+        'article_time' => '1389864697',
+        'ac_name' => '购物指南',
+        'ac_parent_id' => '0',
+      ),
+      1 => 
+      array (
+        'article_id' => '6',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '注册会员',
+        'article_time' => '1389864697',
+        'ac_name' => '购物指南',
+        'ac_parent_id' => '0',
+      ),
+      2 => 
+      array (
+        'article_id' => '39',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '会员积分',
+        'article_time' => '1389864697',
+        'ac_name' => '购物指南',
+        'ac_parent_id' => '0',
+      ),
+    ),
+    'class' => 
+    array (
+      'ac_name' => '购物指南',
+    ),
+  ),
+   2 => 
+  array (
+    'ac_id' => '2',
+    'ac_code' => 'member',
+    'ac_name' => '支付方式',
+    'ac_parent_id' => '0',
+    'ac_sort' => '255',
+    'list' => 
+    array (
+      0 => 
+      array (
+        'article_id' => '9',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '支付宝支付',
+        'article_time' => '1389864697',
+        'ac_name' => '支付方式',
+        'ac_parent_id' => '0',
+      ),
+      1 => 
+      array (
+        'article_id' => '6',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '余额支付',
+        'article_time' => '1389864697',
+        'ac_name' => '支付方式',
+        'ac_parent_id' => '0',
+      ),
+      2 => 
+      array (
+        'article_id' => '39',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '货到付款',
+        'article_time' => '1389864697',
+        'ac_name' => '支付方式',
+        'ac_parent_id' => '0',
+      ),
+    ),
+    'class' => 
+    array (
+      'ac_name' => '支付方式',
+    ),
+  ),
+  3 => 
+  array (
+    'ac_id' => '2',
+    'ac_code' => 'member',
+    'ac_name' => '配送方式',
+    'ac_parent_id' => '0',
+    'ac_sort' => '255',
+    'list' => 
+    array (
+      0 => 
+      array (
+        'article_id' => '9',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '到店取货',
+        'article_time' => '1389864697',
+        'ac_name' => '配送方式',
+        'ac_parent_id' => '0',
+      ),
+      1 => 
+      array (
+        'article_id' => '6',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '送货上门',
+        'article_time' => '1389864697',
+        'ac_name' => '配送方式',
+        'ac_parent_id' => '0',
+      ),
+      2 => 
+      array (
+        'article_id' => '39',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '配送范围',
+        'article_time' => '1389864697',
+        'ac_name' => '配送方式',
+        'ac_parent_id' => '0',
+      ),
+    ),
+    'class' => 
+    array (
+      'ac_name' => '配送方式',
+    ),
+  ),
+   4 => 
+  array (
+    'ac_id' => '2',
+    'ac_code' => 'member',
+    'ac_name' => '售后服务',
+    'ac_parent_id' => '0',
+    'ac_sort' => '255',
+    'list' => 
+    array (
+      0 => 
+      array (
+        'article_id' => '9',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '产品质量',
+        'article_time' => '1389864697',
+        'ac_name' => '售后服务',
+        'ac_parent_id' => '0',
+      ),
+      1 => 
+      array (
+        'article_id' => '6',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '客户服务',
+        'article_time' => '1389864697',
+        'ac_name' => '售后服务',
+        'ac_parent_id' => '0',
+      ),
+      2 => 
+      array (
+        'article_id' => '39',
+        'ac_id' => '2',
+        'article_url' => '',
+        'article_title' => '取消订单',
+        'article_time' => '1389864697',
+        'ac_name' => '售后服务',
+        'ac_parent_id' => '0',
+      ),
+    ),
+    'class' => 
+    array (
+      'ac_name' => '售后服务',
+    ),
+  ),
+);
+/* $article_list=array (
+  0 => 
+  array (
+    'ac_id' => '2',
+    'ac_code' => 'member',
     'ac_name' => '帮助中心',
     'ac_parent_id' => '0',
     'ac_sort' => '255',
@@ -433,5 +660,5 @@ $article_list=array (
       'ac_name' => '关于我们',
     ),
   ),
-);
+); */
 ?>

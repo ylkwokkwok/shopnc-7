@@ -309,7 +309,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .faq-wrapper { width: 1200px; margin: auto; }
 #faq { background-color: #f5f5f5; width: 100%; padding-top:10px; border-top: solid 1px #e7e7e7; overflow: hidden;}
 #faq ul { font-size: 0; *word-spacing:-1px/*IE6、7*/; white-space: nowrap; padding: 0 0 10px 0; margin-left: 0 }
-#faq li { font-size: 12px; display: inline; float: left; padding-left: 40px; width: 100px;}
+#faq li { font-size: 12px; display: inline; float: left; padding-left: 60px; width: 120px;}
 #faq dl { display: block; width: 100%; margin: 10px 0px 0px 0px;}
 #faq dl dt { font: 14px/1.5 "Lucida Grande",tahoma,arial,\5b8b\4f53; margin-bottom: 4px; font-weight: bold;}
 #faq dl dd { font: 12px/1.5 "Lucida Grande",tahoma,arial,\5b8b\4f53; line-height: 24px; white-space: nowrap;}
