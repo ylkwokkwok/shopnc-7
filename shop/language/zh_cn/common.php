@@ -2,7 +2,6 @@
 defined('InShopNC') or exit('Access Invalid!');
 $lang['error']				= '在处理您的请求时出现了问题:<br />';
 $lang['homepage']			= '首页';
-$lang['nc_groupbuy']		= "抢购";
 $lang['cur_location']		= '当前位置';
 $lang['miss_argument']		= '缺少参数';
 $lang['invalid_request']	= '非法访问';
@@ -28,8 +27,12 @@ $lang['site_search_groupbuy']	= "抢购";
 $lang['hot_search']			= '热门搜索';
 $lang['nc_colon']			= '：';
 $lang['nc_comma']           = '，';
+
+$lang['nc_groupbuy']		= "抢购";
 $lang['nc_brand']			= "品牌";
 $lang['nc_pointprod']		= "积分中心";
+
+
 
 /**
  * nav中的文字

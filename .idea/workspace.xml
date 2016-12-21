@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="623c1b24-8072-4753-bea9-576a65d67786" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-1.jpg.bak" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-2.jpg.bak" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-3.jpg.bak" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-4.jpg.bak" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-5.jpg.bak" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_1ae4slanj4sd70hk6s50q8v3t6" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_8qd41oouamjqrga74l04tbe1r1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_gnki99m7lccnvfk53udo6sevu4" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_lnkdcc9mlqhdb951jddm2v6gf2" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-1.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-2.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-3.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-3.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-4.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-4.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-5.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-101-101-5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/upload/shop/common/logo.png.bak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/common/logo.png" afterPath="$PROJECT_DIR$/data/upload/shop/common/logo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/resource/js/home_index.js" afterPath="$PROJECT_DIR$/shop/resource/js/home_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/default/css/index.css" afterPath="$PROJECT_DIR$/shop/templates/default/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/language/zh_cn/common.php" afterPath="$PROJECT_DIR$/shop/language/zh_cn/common.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/default/css/home_header.css" afterPath="$PROJECT_DIR$/shop/templates/default/css/home_header.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/default/layout/common_layout.php" afterPath="$PROJECT_DIR$/shop/templates/default/layout/common_layout.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +25,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shop/templates/default/home/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="-943">
+              <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -49,16 +38,6 @@
                 <element signature="n#style#0;n#li#0;n#ul#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <marker date="1482301347477" expanded="false" signature="1325:1402" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web_config.model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/model/web_config.model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="131" column="30" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="30" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -76,10 +55,10 @@
       <find>buy_form</find>
       <find>buynow_form</find>
       <find>all-category</find>
-      <find>getWebHtml</find>
       <find>tabs-nav</find>
       <find>jfocus-trigeminy</find>
       <find>full-screen-slides-pagination</find>
+      <find>getWebHtml</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -209,7 +188,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="editor" />
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -245,6 +224,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\php\shopnc\data\upload\shop\common" />
       <recent name="D:\project\php\shopnc\data\upload\shop\editor" />
     </key>
   </component>
@@ -324,21 +304,22 @@
       <updated>1482118550697</updated>
       <workItem from="1482118552439" duration="22315000" />
       <workItem from="1482219062599" duration="1003000" />
-      <workItem from="1482281241399" duration="12086000" />
+      <workItem from="1482281241399" duration="13395000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35404000" />
+    <option name="totallyTimeSpent" value="36713000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="1" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38146552" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38146552" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -349,7 +330,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -365,16 +345,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wap/images/bcd.9.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wap/images/default.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wap/images/home_logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -714,18 +684,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/upload/shop/common/logo.png.bak">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/upload/shop/common/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data/model/web_config.model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="131" column="30" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="30" />
+        <state relative-caret-position="527">
+          <caret line="148" column="11" lean-forward="true" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/shop/templates/default/home/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="-943">
+          <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
