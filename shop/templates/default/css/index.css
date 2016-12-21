@@ -44,9 +44,9 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 -------------------------------------- */
 .home-focus-layout { width: 100%; height: 481px; position: relative; z-index: 1; }
 /* 满屏背静切换焦点图 */
-.full-screen-slides { width: 100%; height: 481px; position: relative; z-index: 1; }
+.full-screen-slides { width: 100%; height: 485px; position: relative; z-index: 1; }
 .full-screen-slides li { width: 100%; height: 100%; position: absolute; z-index: 1; top: 0; left: 0; }
-.full-screen-slides li a { display: block; width:776px; height:270px; text-indent:-9999px; margin-left: -388px; position: absolute; z-index: 2; left: 50%; }
+.full-screen-slides li a { display: block; width:776px; height:485px; text-indent:-9999px; margin-left: -388px; position: absolute; z-index: 2; left: 50%; }
 .full-screen-slides-pagination { font-size: 0; *word-spacing:-1px/*IE6、7*/;
 filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#33FFFFFF', endColorstr='#33FFFFFF');
 background: rgba(255,255,255,0.2); text-align: right; display:block; list-style:none; width: 760px; height: 6px; padding:7px 8px; margin-left: -388px; position:absolute; left:50%; top: 280px; z-index: 9; }

@@ -12,7 +12,7 @@
 		    var enter = 0;
 		    var speed = settings.time;
 		    $this.find("li:gt(0)").hide();
-			var btn = '<ul class="' + settings.css + '">';
+			var btn = '<ul class="' + settings.css + '" style="display:none" >';
 			for (var i = 0; i < size; i++) {
 				btn += '<li>' + '<a href="javascript:void(0)">' + (i + 1) + '</a>' + '</li>';
 			}
