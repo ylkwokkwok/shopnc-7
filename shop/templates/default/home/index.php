@@ -21,13 +21,14 @@ else {document.cookie='uid='+uid[1];}
 <!-- HomeFocusLayout Begin-->
 <div class="home-focus-layout"> <?php echo $output['web_html']['index_pic'];?>
   <div class="right-sidebar">
-    <div class="policy">
-      <ul>
-        <li class="b1">七天包退</li>
-        <li class="b2">正品保障</li>
-        <li class="b3">闪电发货</li>
-      </ul>
-    </div>
+      <div class="policy">
+          <ul>
+              <li class="b1">七天包退</li>
+              <li class="b2">正品保障</li>
+              <li class="b3">闪电发货</li>
+          </ul>
+      </div>
+      <!--
     <?php if(!empty($output['group_list']) && is_array($output['group_list'])) { ?>
     <div class="groupbuy">
       <div class="title"><i>抢</i>近期抢购</div>
@@ -44,17 +45,39 @@ else {document.cookie='uid='+uid[1];}
       </ul>
     </div>
     <?php } ?>
+     -->
+      <div class="proclamation" style="height:238px;">
+          <ul class="tabs-nav">
+              <li style="width:100%">
+                  <h3>销售排行榜</h3>
+              </li>
+          </ul>
+          <div class="tabs-panel">
+              <ul class="mall-news">
+					<?php $output['xianshi_item'] = array_slice($output['xianshi_item'],0,3);
+						foreach($output['xianshi_item'] as $key => $val){ ?>
+						<li style="height:60px;overflow:visible">
+							<ul>
+								<li style="margin-left:3px;float:left;height:55px;padding-top:5px;">
+									<a href="<?php echo urlShop('goods','index',array('goods_id'=> $val['goods_id']));?>"> 
+										<img src="<?php echo thumb($val, 240);?>" style="width:60px;">
+									</a>
+								</li>
+								<li style="height:58px;line-height:58px;margin-left:3px;float:left;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;width:85px;"><?php echo $val['goods_name']; ?></li>
+								<li style="height:58px;line-height:58px;margin-left:3px;float:left"><?php echo ncPriceFormatForList($val['goods_price']);?></li>
+							</ul>
+						</li>
+					<?php } ?>
+              </ul>
+          </div>
+      </div>
     <div class="proclamation">
       <ul class="tabs-nav">
-        <li class="tabs-selected">
-          <h3>招商入驻</h3>
-        </li>
-        <li>
+        <li style="width:100%">
           <h3><?php echo $output['show_article']['notice']['ac_name'];?></h3>
         </li>
       </ul>
-      <div class="tabs-panel"> <a href="<?php echo urlShop('show_joinin', 'index');?>" title="申请商家入驻；已提交申请，可查看当前审核状态。" class="store-join-btn" target="_blank">&nbsp;</a> <a href="<?php echo urlShop('seller_login','show_login');?>" target="_blank" class="store-join-help"><i class="icon-cog"></i>登录商家管理中心</a> </div>
-      <div class="tabs-panel tabs-hide">
+      <div class="tabs-panel">
         <ul class="mall-news">
           <?php if(!empty($output['show_article']['notice']['list']) && is_array($output['show_article']['notice']['list'])) { ?>
           <?php foreach($output['show_article']['notice']['list'] as $val) { ?>
