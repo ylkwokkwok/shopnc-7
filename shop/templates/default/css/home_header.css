@@ -13,7 +13,7 @@
 .public-head-layout .site-logo img { max-width: 240px; max-height: 60px;}
 /* 头部搜索 */
 .head-search-bar {position: relative;}
-.head-search-bar { width: 440px; float: left; padding-top:28px; overflow: hidden;}
+.head-search-bar { width: 680px; float: left; padding-top:28px; overflow: hidden;}
 #search ul.tab { width: 200px; height: 23px; display:block; position: absolute; z-index: 99; top: 8px; left: 0px; overflow: hidden;}
 #search ul.tab li { font-weight: bold; line-height: 20px; color: #555; white-space: nowrap; float: left; height: 20px; float: left; padding: 0 14px 3px 14px; margin-right: 8px; cursor: pointer;}
 #search ul.tab li.current:hover {background: #680B37;}

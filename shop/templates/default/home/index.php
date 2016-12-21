@@ -21,6 +21,7 @@ else {document.cookie='uid='+uid[1];}
 <!-- HomeFocusLayout Begin-->
 <div class="home-focus-layout"> <?php echo $output['web_html']['index_pic'];?>
   <div class="right-sidebar">
+	<!--
       <div class="policy">
           <ul>
               <li class="b1">七天包退</li>
@@ -28,7 +29,6 @@ else {document.cookie='uid='+uid[1];}
               <li class="b3">闪电发货</li>
           </ul>
       </div>
-      <!--
     <?php if(!empty($output['group_list']) && is_array($output['group_list'])) { ?>
     <div class="groupbuy">
       <div class="title"><i>抢</i>近期抢购</div>
@@ -46,7 +46,7 @@ else {document.cookie='uid='+uid[1];}
     </div>
     <?php } ?>
      -->
-      <div class="proclamation" style="height:238px;">
+      <div class="proclamation" style="height:328px;">
           <ul class="tabs-nav">
               <li style="width:100%">
                   <h3>销售排行榜</h3>
@@ -54,17 +54,17 @@ else {document.cookie='uid='+uid[1];}
           </ul>
           <div class="tabs-panel">
               <ul class="mall-news">
-					<?php $output['xianshi_item'] = array_slice($output['xianshi_item'],0,3);
+					<?php $output['xianshi_item'] = array_slice($output['xianshi_item'],0,5);
 						foreach($output['xianshi_item'] as $key => $val){ ?>
-						<li style="height:60px;overflow:visible">
+						<li style="height:55px;overflow:visible">
 							<ul>
-								<li style="margin-left:3px;float:left;height:55px;padding-top:5px;">
+								<li style="margin-left:3px;float:left;height:50px;padding-top:5px;">
 									<a href="<?php echo urlShop('goods','index',array('goods_id'=> $val['goods_id']));?>"> 
-										<img src="<?php echo thumb($val, 240);?>" style="width:60px;">
+										<img src="<?php echo thumb($val, 240);?>" style="width:50px;">
 									</a>
 								</li>
-								<li style="height:58px;line-height:58px;margin-left:3px;float:left;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;width:85px;"><?php echo $val['goods_name']; ?></li>
-								<li style="height:58px;line-height:58px;margin-left:3px;float:left"><?php echo ncPriceFormatForList($val['goods_price']);?></li>
+								<li style="height:50px;line-height:50px;margin-left:3px;float:left;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;width:85px;"><?php echo $val['goods_name']; ?></li>
+								<li style="height:50px;line-height:50px;margin-left:3px;float:left"><?php echo ncPriceFormatForList($val['goods_price']);?></li>
 							</ul>
 						</li>
 					<?php } ?>

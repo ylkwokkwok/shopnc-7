@@ -192,7 +192,8 @@ $(function(){
 <div class="header-wrap">
   <header class="public-head-layout wrapper">
     <h1 class="site-logo"><a href="<?php echo BASE_SITE_URL;?>"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$output['setting_config']['site_logo']; ?>" class="pngFix" style="width:180px;height:150px;"></a></h1>
-    <?php if (C('mobile_isuse') && C('mobile_app')){?>
+    <!--
+	<?php if (C('mobile_isuse') && C('mobile_app')){?>
     <div class="head-app"><span class="pic"></span>
       <div class="download-app">
        <div class="qrcode"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.C('mobile_app');?>" ></div>
@@ -210,7 +211,7 @@ $(function(){
       </div>
     </div>
     <?php } ?>
-    
+    -->
     <div id="search" class="head-search-bar">
 	<!--商品和店铺-->
       <ul class="tab">

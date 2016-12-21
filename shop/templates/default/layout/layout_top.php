@@ -134,7 +134,10 @@ backTop('gotop');
       </span> <?php echo $lang['nc_comma'],$lang['welcome_to_site'];?> <a href="<?php echo BASE_SITE_URL;?>"  title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><span><?php echo $output['setting_config']['site_name']; ?></span></a> <span>[<a href="<?php echo urlShop('login','logout');?>"><?php echo $lang['nc_logout'];?></a>] </span>
       <?php }else{?>
       <?php echo $lang['nc_hello'].$lang['nc_comma'].$lang['welcome_to_site'];?> <a href="<?php echo BASE_SITE_URL;?>" title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><?php echo $output['setting_config']['site_name']; ?></a> <span>[<a href="<?php echo urlShop('login');?>"><?php echo $lang['nc_login'];?></a>]</span> <span>[<a href="<?php echo urlShop('login','register');?>"><?php echo $lang['nc_register'];?></a>]</span>
-      <?php }?><span style="margin-left:10px;"><a href="index.php?act=invite" style="color:red;">邀请返利</a></span>
+      <?php }?>
+	  <!--
+	  <span style="margin-left:10px;"><a href="index.php?act=invite" style="color:red;">邀请返利</a></span>
+	  -->
     </div>
     <div class="quick-menu">
       <dl>
@@ -212,6 +215,7 @@ backTop('gotop');
         </dd>
       </dl>
       <?php }?>
+	  <!--
 	  <dl class="weixin">
         <dt>关注我们<i></i></dt>
         <dd>
@@ -219,6 +223,7 @@ backTop('gotop');
             关注商城微信号</h4>
           <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['site_logowx']; ?>" > </dd>
         </dl>
+		-->
     </div>
   </div>
 </div>
