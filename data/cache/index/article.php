@@ -65,8 +65,8 @@ $show_article=array (
 $article_list=array (
   0 => 
   array (
-    'ac_id' => '2',
-    'ac_code' => 'member',
+    'ac_id' => '8',
+    'ac_code' => 'about',
     'ac_name' => '关于我们',
     'ac_parent_id' => '0',
     'ac_sort' => '255',
@@ -74,8 +74,8 @@ $article_list=array (
     array (
       0 => 
       array (
-        'article_id' => '9',
-        'ac_id' => '2',
+        'article_id' => '42',
+        'ac_id' => '8',
         'article_url' => '',
         'article_title' => '公司介绍',
         'article_time' => '1389864697',
@@ -84,8 +84,8 @@ $article_list=array (
       ),
       1 => 
       array (
-        'article_id' => '6',
-        'ac_id' => '2',
+        'article_id' => '43',
+        'ac_id' => '8',
         'article_url' => '',
         'article_title' => '品牌理念',
         'article_time' => '1389864697',
@@ -94,8 +94,8 @@ $article_list=array (
       ),
       2 => 
       array (
-        'article_id' => '39',
-        'ac_id' => '2',
+        'article_id' => '44',
+        'ac_id' => '8',
         'article_url' => '',
         'article_title' => '联系我们',
         'article_time' => '1389864697',
@@ -110,8 +110,8 @@ $article_list=array (
   ),
   1 => 
   array (
-    'ac_id' => '2',
-    'ac_code' => 'member',
+    'ac_id' => '9',
+    'ac_code' => 'directory',
     'ac_name' => '购物指南',
     'ac_parent_id' => '0',
     'ac_sort' => '255',
@@ -119,8 +119,8 @@ $article_list=array (
     array (
       0 => 
       array (
-        'article_id' => '9',
-        'ac_id' => '2',
+        'article_id' => '45',
+        'ac_id' => '9',
         'article_url' => '',
         'article_title' => '购物流程',
         'article_time' => '1389864697',
@@ -129,8 +129,8 @@ $article_list=array (
       ),
       1 => 
       array (
-        'article_id' => '6',
-        'ac_id' => '2',
+        'article_id' => '46',
+        'ac_id' => '9',
         'article_url' => '',
         'article_title' => '注册会员',
         'article_time' => '1389864697',
@@ -139,8 +139,8 @@ $article_list=array (
       ),
       2 => 
       array (
-        'article_id' => '39',
-        'ac_id' => '2',
+        'article_id' => '47',
+        'ac_id' => '9',
         'article_url' => '',
         'article_title' => '会员积分',
         'article_time' => '1389864697',
@@ -155,8 +155,8 @@ $article_list=array (
   ),
    2 => 
   array (
-    'ac_id' => '2',
-    'ac_code' => 'member',
+    'ac_id' => '10',
+    'ac_code' => 'payment',
     'ac_name' => '支付方式',
     'ac_parent_id' => '0',
     'ac_sort' => '255',
@@ -164,8 +164,8 @@ $article_list=array (
     array (
       0 => 
       array (
-        'article_id' => '9',
-        'ac_id' => '2',
+        'article_id' => '48',
+        'ac_id' => '10',
         'article_url' => '',
         'article_title' => '支付宝支付',
         'article_time' => '1389864697',
@@ -174,8 +174,8 @@ $article_list=array (
       ),
       1 => 
       array (
-        'article_id' => '6',
-        'ac_id' => '2',
+        'article_id' => '49',
+        'ac_id' => '10',
         'article_url' => '',
         'article_title' => '余额支付',
         'article_time' => '1389864697',
@@ -184,8 +184,8 @@ $article_list=array (
       ),
       2 => 
       array (
-        'article_id' => '39',
-        'ac_id' => '2',
+        'article_id' => '50',
+        'ac_id' => '10',
         'article_url' => '',
         'article_title' => '货到付款',
         'article_time' => '1389864697',
@@ -200,8 +200,8 @@ $article_list=array (
   ),
   3 => 
   array (
-    'ac_id' => '2',
-    'ac_code' => 'member',
+    'ac_id' => '11',
+    'ac_code' => 'send',
     'ac_name' => '配送方式',
     'ac_parent_id' => '0',
     'ac_sort' => '255',
@@ -209,8 +209,8 @@ $article_list=array (
     array (
       0 => 
       array (
-        'article_id' => '9',
-        'ac_id' => '2',
+        'article_id' => '51',
+        'ac_id' => '11',
         'article_url' => '',
         'article_title' => '到店取货',
         'article_time' => '1389864697',
@@ -219,8 +219,8 @@ $article_list=array (
       ),
       1 => 
       array (
-        'article_id' => '6',
-        'ac_id' => '2',
+        'article_id' => '52',
+        'ac_id' => '11',
         'article_url' => '',
         'article_title' => '送货上门',
         'article_time' => '1389864697',
@@ -229,8 +229,8 @@ $article_list=array (
       ),
       2 => 
       array (
-        'article_id' => '39',
-        'ac_id' => '2',
+        'article_id' => '53',
+        'ac_id' => '11',
         'article_url' => '',
         'article_title' => '配送范围',
         'article_time' => '1389864697',
@@ -245,8 +245,8 @@ $article_list=array (
   ),
    4 => 
   array (
-    'ac_id' => '2',
-    'ac_code' => 'member',
+    'ac_id' => '12',
+    'ac_code' => 'sold',
     'ac_name' => '售后服务',
     'ac_parent_id' => '0',
     'ac_sort' => '255',
@@ -254,8 +254,8 @@ $article_list=array (
     array (
       0 => 
       array (
-        'article_id' => '9',
-        'ac_id' => '2',
+        'article_id' => '54',
+        'ac_id' => '12',
         'article_url' => '',
         'article_title' => '产品质量',
         'article_time' => '1389864697',
@@ -264,8 +264,8 @@ $article_list=array (
       ),
       1 => 
       array (
-        'article_id' => '6',
-        'ac_id' => '2',
+        'article_id' => '55',
+        'ac_id' => '12',
         'article_url' => '',
         'article_title' => '客户服务',
         'article_time' => '1389864697',
@@ -274,8 +274,8 @@ $article_list=array (
       ),
       2 => 
       array (
-        'article_id' => '39',
-        'ac_id' => '2',
+        'article_id' => '56',
+        'ac_id' => '12',
         'article_url' => '',
         'article_title' => '取消订单',
         'article_time' => '1389864697',
