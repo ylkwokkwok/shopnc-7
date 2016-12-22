@@ -1,10 +1,19 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 
-      <div class="title">
+      <div class="title" id="index-title-div">
 	  <i></i>
         <h3><a href="<?php echo urlShop('category', 'index');?>"><?php echo $lang['nc_all_goods_class'];?></a></h3>
         </div>
-      <div class="category">
+        <script>
+            $(function(){
+                $('#index-title-div').toggle(function(){
+                    $('#index-category-list').css('display','block');
+                },function () {
+                    $('#index-category-list').css('display','none');
+                });
+            });
+        </script>
+      <div class="category" id="index-category-list" style="display:none" >
         <ul class="menu">
           <?php if (!empty($output['show_goods_class']) && is_array($output['show_goods_class'])) { $i = 0; ?>
           <?php foreach ($output['show_goods_class'] as $key => $val) { $i++; ?>

@@ -13,13 +13,16 @@ else {document.cookie='uid='+uid[1];}
 	}
 
 </script>
+<!--
 <style type="text/css">
 .category { display: block !important; }
 </style>
+-->
 <div class="clear"></div>
 
 <!-- HomeFocusLayout Begin-->
 <div class="home-focus-layout"> <?php echo $output['web_html']['index_pic'];?>
+    <!--
   <div class="right-sidebar">
 	<!--
       <div class="policy">
@@ -45,7 +48,6 @@ else {document.cookie='uid='+uid[1];}
       </ul>
     </div>
     <?php } ?>
-     -->
       <div class="proclamation" style="height:328px;">
           <ul class="tabs-nav">
               <li style="width:100%">
@@ -89,7 +91,9 @@ else {document.cookie='uid='+uid[1];}
         </ul>
       </div>
     </div>
+      -->
   </div>
+    -->
 </div>
 <!--HomeFocusLayout End-->
 
