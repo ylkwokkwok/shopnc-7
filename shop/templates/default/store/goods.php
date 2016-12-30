@@ -29,18 +29,35 @@
         <!-- S 商品发布价格 -->
         <dl>
           <dt><?php echo $lang['goods_index_goods_price'];?><?php echo $lang['nc_colon'];?></dt>
-          <dd class="price">
+          <dd class="price <?php if(count($output['classifyInfo']) > 0 && (int)$output['classifyInfo'][0]['discount'] > 0){echo " cost-price"; } ?>">
             <?php if (isset($output['goods']['title']) && $output['goods']['title'] != '') {?>
             <span class="tag"><?php echo $output['goods']['title'];?></span>
             <?php }?>
             <?php if (isset($output['goods']['promotion_price']) && !empty($output['goods']['promotion_price'])) {?>
-            <strong><?php echo $lang['currency'].$output['goods']['promotion_price'];?></strong><em>(原售价<?php echo $lang['nc_colon'];?><?php echo $lang['currency'].$output['goods']['goods_price'];?>)</em>
+                <strong><?php echo $lang['currency'].$output['goods']['promotion_price'];?></strong><em>(原售价<?php echo $lang['nc_colon'];?><?php echo $lang['currency'].$output['goods']['goods_price'];?>)</em>
             <?php } else {?>
-            <strong><?php echo $lang['currency'].$output['goods']['goods_price'];?></strong>
+                <strong><?php echo $lang['currency'].$output['goods']['goods_price'];?></strong>
             <?php }?>
           </dd>
         </dl>
         <!-- E 商品发布价格 -->
+        <!-- 特殊用户折扣价-->
+          <?php
+              $classifyInfo = $output['classifyInfo'];
+              if(count($classifyInfo) > 0 && (int)$classifyInfo[0]['discount'] > 0){
+          ?>
+          <dl>
+              <dt><?php echo $classifyInfo[0]['name']; ?><?php echo $lang['nc_colon'];?></dt>
+              <dd class="price">
+                  <?php if (isset($output['goods']['promotion_price']) && !empty($output['goods']['promotion_price'])) {?>
+                      <strong><?php echo $lang['currency'].floor(((float)$output['goods']['promotion_price']*(float)$classifyInfo[0]['discount'] )/ 100); ?></strong>
+                  <?php } else {?>
+                      <strong><?php echo $lang['currency'].floor(((float)$output['goods']['goods_price']*(float)$classifyInfo[0]['discount'] )/ 100);?></strong>
+                  <?php }?>
+              </dd>
+          </dl>
+          <?php } ?>
+        <!-- 特殊用户折扣价-->
         <!-- S 促销 -->
         <?php if (isset($output['goods']['promotion_type']) || $output['goods']['have_gift'] == 'gift') {?>
         <dl>
@@ -449,7 +466,7 @@
     </div>
   </div>
 </div>
-<form id="buynow_form" method="post" action="<?php echo SHOP_SITE_URL;?>/index.php">
+<form id="buynow_form" method="post" action="<?php echo SHOP_SITE_URL;?>/index.php" target="_blank">
   <input id="act" name="act" type="hidden" value="buy" />
   <input id="op" name="op" type="hidden" value="buy_step1" />
   <input id="cart_id" name="cart_id[]" type="hidden"/>

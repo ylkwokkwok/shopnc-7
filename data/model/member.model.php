@@ -550,4 +550,12 @@ class memberModel extends Model {
         $this->table('member_classify')->insertAll($json);
         $this->commit();
     }
+    //获取用户分类信息
+    public function getUserClassify($uid){
+        $sql = "select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = $uid";
+        return $this->query($sql);
+    }
 }

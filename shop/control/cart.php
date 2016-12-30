@@ -28,13 +28,26 @@ class cartControl extends BaseBuyControl {
 	public function indexOp() {
         $model_cart	= Model('cart');
         $logic_buy_1 = logic('buy_1');
-
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
         //购物车列表
         $cart_list	= $model_cart->listCart('db',array('buyer_id'=>$_SESSION['member_id']));
 
+
         //购物车列表 [得到最新商品属性及促销信息] 
         $cart_list = $logic_buy_1->getGoodsCartList($cart_list);
-
+        if(count($classifyInfo) > 0){
+            if((int)$classifyInfo[0]['discount'] > 0){
+                foreach ($cart_list as $key => $goods_info){
+                    $cart_list[$key]['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                    $cart_list[$key]['groupbuy_info']['goods_price'] = floor(((float)$goods_info['groupbuy_info']['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                    $cart_list[$key]['groupbuy_info']['groupbuy_price'] = floor(((float)$goods_info['groupbuy_info']['groupbuy_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                }
+            }
+        }
         //购物车商品以店铺ID分组显示,并计算商品小计,店铺小计与总价由JS计算得出
         $store_cart_list = array();
         foreach ($cart_list as $cart) {
@@ -120,8 +133,12 @@ class cartControl extends BaseBuyControl {
 	public function addOp() {
 	    $model_goods = Model('goods');
 	    $logic_buy_1 = Logic('buy_1');
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
         if (is_numeric($_GET['goods_id'])) {
-
             //商品加入购物车(默认)
             $goods_id = intval($_GET['goods_id']);
             $quantity = intval($_GET['quantity']);
@@ -176,7 +193,13 @@ class cartControl extends BaseBuyControl {
             $goods_info['bl_id'] = $bl_id;
             $quantity = 1;
         }
-
+        if(count($classifyInfo) > 0){
+            if((int)$classifyInfo[0]['discount'] > 0){
+                $goods_info['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                $goods_info['goods_promotion_price'] = floor(((float)$goods_info['goods_promotion_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                $goods_info['groupbuy_info']['groupbuy_price'] = floor(((float)$goods_info['groupbuy_info']['groupbuy_price'] * (float)$classifyInfo[0]['discount']) / 100);
+            }
+        }
         //已登录状态，存入数据库,未登录时，存入COOKIE
         if($_SESSION['member_id']) {
             $save_type = 'db';
@@ -203,7 +226,11 @@ class cartControl extends BaseBuyControl {
 	    if (!preg_match('/^[\d|]+$/', $_GET['goods_ids'])) {
 	        exit(json_encode(array('state'=>'false')));
 	    }
-
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
 	    $model_goods = Model('goods');
 	    $logic_buy_1 = Logic('buy_1');
 	
@@ -215,7 +242,14 @@ class cartControl extends BaseBuyControl {
 
         $model_goods = Model('goods');
         $goods_list = $model_goods->getGoodsOnlineListAndPromotionByIdArray($goods_id_array);
-        
+
+        if(count($classifyInfo) > 0){
+            if((int)$classifyInfo[0]['discount'] > 0){
+                foreach ($goods_list as $key => $goods_info){
+                    $goods_list[$key]['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                }
+            }
+        }
         foreach ($goods_list as $goods) {
             $this->_check_goods($goods,1);
         }
@@ -367,7 +401,17 @@ class cartControl extends BaseBuyControl {
 		    }
 		    $goods_info['goods_price'] = $cart_info['goods_price'];
 		}
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
 
+        if(count($classifyInfo) > 0){
+            if((int)$classifyInfo[0]['discount'] > 0){
+                $goods_info['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+            }
+        }
 		$data = array();
         $data['goods_num'] = $quantity;
         $data['goods_price'] = $goods_info['goods_price'];

@@ -47,7 +47,6 @@ class buyLogic {
      * @return Ambigous <multitype:unknown, multitype:unknown >
      */
     public function buyStep1($cart_id, $ifcart, $member_id, $store_id) {
-
         //得到购买商品信息
         if ($ifcart) {
             $result = $this->getCartList($cart_id, $member_id);
@@ -72,7 +71,11 @@ class buyLogic {
      */
     public function getCartList($cart_id, $member_id) {
         $model_cart = Model('cart');
-
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
         //取得POST ID和购买数量
         $buy_items = $this->_parseItems($cart_id);
         if (empty($buy_items)) {
@@ -89,10 +92,15 @@ class buyLogic {
 
         //购物车列表 [得到最新商品属性及促销信息]
         $cart_list = $this->_logic_buy_1->getGoodsCartList($cart_list);
-
+        if(count($classifyInfo) > 0){
+            if((int)$classifyInfo[0]['discount'] > 0){
+                foreach ($cart_list as $key => $goods_info){
+                    $cart_list[$key]['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                }
+            }
+        }
         //商品列表 [优惠套装子商品与普通商品同级罗列]
         $goods_list = $this->_getGoodsList($cart_list);
-
         //以店铺下标归类
         $store_cart_list = $this->_getStoreCartList($cart_list);
 
@@ -108,7 +116,11 @@ class buyLogic {
      * @param int $store_id 店铺编号
      */
     public function getGoodsList($cart_id, $member_id, $store_id) {
-
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
         //取得POST ID和购买数量
         $buy_items = $this->_parseItems($cart_id);
         if (empty($buy_items)) {
@@ -120,6 +132,13 @@ class buyLogic {
 
         //商品信息[得到最新商品属性及促销信息]
         $goods_info = $this->_logic_buy_1->getGoodsOnlineInfo($goods_id,intval($quantity));
+        if(count($classifyInfo) > 0){
+            if((int)$classifyInfo[0]['discount'] > 0){
+                $goods_info['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                $goods_info['groupbuy_info']['goods_price'] = floor(((float)$goods_info['groupbuy_info']['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                $goods_info['groupbuy_info']['groupbuy_price'] = floor(((float)$goods_info['groupbuy_info']['groupbuy_price'] * (float)$classifyInfo[0]['discount']) / 100);
+            }
+        }
         if(empty($goods_info)) {
             return callback(false, '商品已下架或不存在');
         }
@@ -497,6 +516,28 @@ class buyLogic {
         if(!$fc_id) {
             throw new Exception('F码商品验证错误');
         }
+
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
+        if(count($classifyInfo) > 0){
+            if((int)$classifyInfo[0]['discount'] > 0){
+                foreach ($goods_list as $key => $goods_info){
+                    $goods_list[$key]['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                    $goods_list[$key]['groupbuy_info']['goods_price'] = floor(((float)$goods_info['groupbuy_info']['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                    $goods_list[$key]['groupbuy_info']['groupbuy_price'] = floor(((float)$goods_info['groupbuy_info']['groupbuy_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                }
+                foreach ($store_cart_list as $key => $val){
+                    foreach ($val as $k => $goods_info){
+                        $store_cart_list[$key][$k]['goods_price'] = floor(((float)$goods_info['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                        $store_cart_list[$key][$k]['groupbuy_info']['goods_price'] = floor(((float)$goods_info['groupbuy_info']['goods_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                        $store_cart_list[$key][$k]['groupbuy_info']['groupbuy_price'] = floor(((float)$goods_info['groupbuy_info']['groupbuy_price'] * (float)$classifyInfo[0]['discount']) / 100);
+                    }
+                }
+            }
+        }
         //保存数据
         $this->_order_data['goods_list'] = $goods_list;
         $this->_order_data['store_cart_list'] = $store_cart_list;
@@ -578,7 +619,6 @@ class buyLogic {
     private function _createOrderStep4() {
 
         extract($this->_order_data);
-
         $member_id = $this->_member_info['member_id'];
         $member_name = $this->_member_info['member_name'];
         $member_email = $this->_member_info['member_email'];
@@ -683,7 +723,7 @@ class buyLogic {
             if (!$order_id) {
                 throw new Exception('订单保存失败[未生成订单扩展数据]');
             }
-    
+
             //生成order_goods订单商品数据
             $i = 0;
             foreach ($goods_list as $goods_info) {

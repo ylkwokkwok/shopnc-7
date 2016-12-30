@@ -19,6 +19,12 @@ class goodsControl extends BaseGoodsControl {
      * 单个商品信息页
      */
     public function indexOp() {
+        $model_member= Model('member');
+        //登录用户ID
+        $uid = $_SESSION['member_id'];
+        //获取用户分类信息
+        $classifyInfo = $model_member->getUserClassify($uid);
+        //商品ID
         $goods_id = intval($_GET['goods_id']);
 
         // 商品详细信息
@@ -38,6 +44,7 @@ class goodsControl extends BaseGoodsControl {
 		//  添加 end
         $this->getStoreInfo($goods_info['store_id']);
 
+        Tpl::output('classifyInfo', $classifyInfo);
         Tpl::output('spec_list', $goods_detail['spec_list']);
         Tpl::output('spec_image', $goods_detail['spec_image']);
         Tpl::output('goods_image', $goods_detail['goods_image']);
