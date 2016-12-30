@@ -41,6 +41,19 @@
           <td class="vatop tips"><?php echo $lang['member_index_email']?></td>
         </tr>
         <tr>
+            <td colspan="2" class="required"><label for="member_classify"><?php echo $lang['member_classify_name']?>:</label></td>
+        </tr>
+        <tr class="noborder">
+            <td class="vatop rowform">
+                <select id="member_classify" name="member_classify">
+                    <?php foreach ($output['member_classify'] as $key => $val){ ?>
+                        <option value="<?php echo $val['id']; ?>" <?php if($val['id'] == $output['member_array']['member_classify']){ ?>selected<?php } ?> ><?php echo $val['name']; ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+            <td class="vatop tips"></td>
+        </tr>
+        <tr>
           <td colspan="2" class="required"><label for="member_truename"><?php echo $lang['member_index_true_name']?>:</label></td>
         </tr>
         <tr class="noborder">

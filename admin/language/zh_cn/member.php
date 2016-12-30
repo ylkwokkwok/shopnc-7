@@ -70,3 +70,5 @@ $lang['member_add_fail']			= '新增会员失败';
 $lang['member_add_name_exists']		= '会员名有重复，请您换一个';
 $lang['member_add_name_null']		= '会员名不能为空';
 $lang['member_add_name_length']     = '用户名必须在3-20字符之间';
+
+$lang['member_classify_name'] = '用户分类';

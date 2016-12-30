@@ -69,6 +69,7 @@ $lang['nc_domain_shop']			= '域名列表';
 $lang['nc_store_customer_service']		= '在线客服';
 $lang['nc_member']				= '会员';
 $lang['nc_member_manage']		= '会员管理';
+$lang['nc_member_classify_manager'] = '会员分类管理';
 $lang['nc_member_grade']		= '会员级别';
 $lang['nc_exppoints_manage']	= '经验值管理';
 $lang['nc_exppoints_setting']	= '规则设置';

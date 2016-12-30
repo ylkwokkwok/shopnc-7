@@ -51,6 +51,7 @@ $arr = array(
 					array('args'=>'store,store,dashboard',					'text'=>$lang['nc_store_manage']),
 					array('args'=>'goods,goods,dashboard',					'text'=>$lang['nc_goods_manage']),
 					array('args'=>'index,order,dashboard',			        'text'=>$lang['nc_order_manage']),
+					array('args'=>'classify,member,dashboard',			    'text'=>$lang['nc_member_classify_manager']),
 				)
 			),
 			1 => array(

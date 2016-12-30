@@ -231,7 +231,8 @@ function addFavorite(url, title) {
 <table style="width: 100%;" id="frametable" height="100%" width="100%" cellpadding="0" cellspacing="0">
   <tbody>
     <tr>
-      <td colspan="2" height="90" class="mainhd"><div class="layout-header"> <!-- Title/Logo - can use text instead of image -->
+      <td colspan="2" height="90" class="mainhd">
+		<div class="layout-header"> <!-- Title/Logo - can use text instead of image -->
           <div id="title"><a href="index.php"></a></div>
           <!-- Top navigation -->
           <div id="topnav" class="top-nav">
@@ -267,7 +268,8 @@ function addFavorite(url, title) {
             </div>
           </div>
         </div>
-        <div > </div></td>
+        <div> </div>
+		</td>
     </tr>
     <tr>
       <td class="menutd" valign="top" width="161"><div id="mainMenu" class="main-menu">

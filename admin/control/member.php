@@ -115,6 +115,9 @@ class memberControl extends SystemControl{
 	public function member_editOp(){
 		$lang	= Language::getLangContent();
 		$model_member = Model('member');
+        //会员分类
+        $member_classify = $model_member->getClassifyList();
+        Tpl::output('member_classify',$member_classify);
 		/**
 		 * 保存
 		 */
@@ -144,6 +147,7 @@ class memberControl extends SystemControl{
 				$update_array['is_buy'] 			= $_POST['isbuy'];
 				$update_array['is_allowtalk'] 		= $_POST['allowtalk'];
 				$update_array['member_state'] 		= $_POST['memberstate'];
+                $update_array['member_classify']		= trim($_POST['member_classify']);
 				if (!empty($_POST['member_avatar'])){
 					$update_array['member_avatar'] = $_POST['member_avatar'];
 				}
@@ -179,6 +183,9 @@ class memberControl extends SystemControl{
 	public function member_addOp(){
 		$lang	= Language::getLangContent();
 		$model_member = Model('member');
+        //会员分类
+        $member_classify = $model_member->getClassifyList();
+        Tpl::output('member_classify',$member_classify);
 		/**
 		 * 保存
 		 */
@@ -204,6 +211,7 @@ class memberControl extends SystemControl{
 				$insert_array['member_sex'] 	= trim($_POST['member_sex']);
 				$insert_array['member_qq'] 		= trim($_POST['member_qq']);
 				$insert_array['member_ww']		= trim($_POST['member_ww']);
+				$insert_array['member_classify']		= trim($_POST['member_classify']);
                 //默认允许举报商品
                 $insert_array['inform_allow'] 	= '1';
 				if (!empty($_POST['member_avatar'])){
@@ -268,4 +276,41 @@ class memberControl extends SystemControl{
 		}
 	}
 
+    /**
+     * 会员分类管理一览画面
+     */
+	public function classifyOp(){
+        Language::read('member_classify');
+        $lang	= Language::getLangContent();
+        $model_member = Model('member');
+        $list = $model_member->getClassifyList();
+        Tpl::output('list',$list);
+        Tpl::showpage("member.classify");
+    }
+
+    /**
+     * 保存classify
+     */
+    public function classifySaveOp(){
+        $name = $_POST['name'];
+        $discount = $_POST['discount'];
+        $json = array();
+        foreach ($name as $key => $val){
+            array_push($json,array(
+                "name" => $val,
+                "discount" => $discount[$key]
+            ));
+        }
+        $model_member = Model('member');
+        $model_member->addClassifyList($json);
+        Language::read('member_classify');
+        $lang	= Language::getLangContent();
+        $url = array(
+            array(
+                'url'=>'index.php?act=member&op=classify',
+                'msg'=>$lang['member_classify_add_back_to_list'],
+            )
+        );
+        showMessage($lang['member_classify_add_succ'],$url);
+    }
 }

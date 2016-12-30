@@ -241,6 +241,7 @@ class memberModel extends Model {
 
 		    $member_info['member_truename']		= $param['member_truename'];
 		    $member_info['member_qq']			= $param['member_qq'];
+		    $member_info['member_classify']			= $param['member_classify'];
 		    $member_info['member_sex']			= $param['member_sex'];
 		    $member_info['member_avatar']		= $param['member_avatar'];
 		    $member_info['member_qqopenid']		= $param['member_qqopenid'];
@@ -528,4 +529,25 @@ class memberModel extends Model {
 		}
 		return $grade_arr;
 	}
+
+	/**
+     *会员分类一览
+     */
+	public function getClassifyList(){
+        return $this->table('member_classify')->where(array('is_del'=>0))->select();
+    }
+
+    /**
+     * 添加会员分类
+     * @param $json
+     * @return bool
+     * @throws Exception
+     */
+    public function addClassifyList($json){
+        $this->beginTransaction();
+        $sql = "update shopnc_member_classify set is_del = 1";
+        $this->execute($sql);
+        $this->table('member_classify')->insertAll($json);
+        $this->commit();
+    }
 }
