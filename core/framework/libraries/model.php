@@ -29,6 +29,10 @@ class Model{
 		}
 	}
 
+	public function getLastQuery(){
+        return $this->db->getLastQuery();
+    }
+
     /**
      * 删除表主键缓存
      */
@@ -635,6 +639,11 @@ class ModelDb{
     // 查询表达式
     protected $selectSql  =     'SELECT%DISTINCT% %FIELD% FROM %TABLE%%INDEX%%JOIN%%WHERE%%GROUP%%HAVING%%ORDER%%LIMIT% %UNION%';
 
+    private $sql = "";
+
+    public function getLastQuery(){
+        return $this->sql;
+    }
 
     public function select($options=array()) {
 //     	static $_cache = array();
@@ -661,6 +670,7 @@ class ModelDb{
     	}
         $sql  = $this->parseSql($this->selectSql,$options);
         $sql .= $this->parseLock(isset($options['lock'])?$options['lock']:false);
+        $this->sql = $sql;
         return $sql;
     }
 
