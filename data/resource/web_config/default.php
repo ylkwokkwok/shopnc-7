@@ -13,25 +13,16 @@
       	<?php } ?>
     </div>
     <div class="left-ads">
-      	<?php if(!empty($output['code_act']['code_info']['pic'])) { ?>
-      	<a href="<?php echo $output['code_act']['code_info']['url'];?>" title="<?php echo $output['code_act']['code_info']['title'];?>" target="_blank">
-      	<img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act']['code_info']['pic'];?>" alt="<?php echo $output['code_act']['code_info']['title']; ?>">
+      	<?php if(!empty($output['code_act0']['code_info']['pic'])) { ?>
+      	<a href="<?php echo $output['code_act0']['code_info']['url'];?>" title="<?php echo $output['code_act0']['code_info']['title'];?>" target="_blank">
+      	<img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act0']['code_info']['pic'];?>" alt="<?php echo $output['code_act0']['code_info']['title']; ?>">
       	</a>
       	<?php } ?>
     </div>
-<!--    <div class="recommend-classes">-->
-<!--      <ul>-->
-<!--                  --><?php //if (is_array($output['code_category_list']['code_info']['goods_class']) && !empty($output['code_category_list']['code_info']['goods_class'])) { ?>
-<!--		                  --><?php //foreach ($output['code_category_list']['code_info']['goods_class'] as $k => $v) { ?>
-<!--          <li><a href="--><?php //echo urlShop('search','index',array('cate_id'=> $v['gc_id']));?><!--" title="--><?php //echo $v['gc_name'];?><!--" target="_blank">--><?php //echo $v['gc_name'];?><!--</a></li>-->
-<!--		                  --><?php //} ?>
-<!--                  --><?php //} ?>
-<!--      </ul>-->
-<!--    </div>-->
       <div class="left-ads">
-          <?php if(!empty($output['code_act']['code_info']['pic'])) { ?>
-              <a href="<?php echo $output['code_act']['code_info']['url'];?>" title="<?php echo $output['code_act']['code_info']['title'];?>" target="_blank">
-                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act']['code_info']['pic'];?>" alt="<?php echo $output['code_act']['code_info']['title']; ?>">
+          <?php if(!empty($output['code_act1']['code_info']['pic'])) { ?>
+              <a href="<?php echo $output['code_act1']['code_info']['url'];?>" title="<?php echo $output['code_act1']['code_info']['title'];?>" target="_blank">
+                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act1']['code_info']['pic'];?>" alt="<?php echo $output['code_act1']['code_info']['title']; ?>">
               </a>
           <?php } ?>
       </div>
@@ -100,42 +91,17 @@
   </div>
   <div class="right-sidebar">
     <div class="title"></div>
-<!--    <div class="recommend-brand">-->
-<!--      <ul>-->
-<!--                  --><?php //if (!empty($output['code_brand_list']['code_info']) && is_array($output['code_brand_list']['code_info'])) { ?>
-<!--                  --><?php //foreach ($output['code_brand_list']['code_info'] as $key => $val) { ?>
-<!--        <li>-->
-<!--          <a href="--><?php //echo urlShop('brand', 'list', array('brand'=> $val['brand_id'])); ?><!--" title="--><?php //echo $val['brand_name']; ?><!--" target="_blank">-->
-<!--          	<img src="--><?php //echo UPLOAD_SITE_URL.'/'.$val['brand_pic'];?><!--" alt="--><?php //echo $val['brand_name']; ?><!--"></a>-->
-<!--        </li>-->
-<!--                  --><?php //} ?>
-<!--                  --><?php //} ?>
-<!--      </ul>-->
-<!--    </div>-->
-<!--    <div class="right-side-focus">-->
-<!--      <ul>-->
-<!--                  --><?php //if (is_array($output['code_adv']['code_info']) && !empty($output['code_adv']['code_info'])) { ?>
-<!--                  --><?php //foreach ($output['code_adv']['code_info'] as $key => $val) { ?>
-<!--                      --><?php //if (is_array($val) && !empty($val)) { ?>
-<!--                      <li><a href="--><?php //echo $val['pic_url'];?><!--" title="--><?php //echo $val['pic_name'];?><!--" target="_blank">-->
-<!--                        <img src="--><?php //echo UPLOAD_SITE_URL.'/'.$val['pic_img'];?><!--" alt="--><?php //echo $val['pic_name'];?><!--"/></a>-->
-<!--                      	</li>-->
-<!--                      --><?php //} ?>
-<!--                  --><?php //} ?>
-<!--                  --><?php //} ?>
-<!--      </ul>-->
-<!--    </div>-->
       <div class="left-ads">
-          <?php if(!empty($output['code_act']['code_info']['pic'])) { ?>
-              <a href="<?php echo $output['code_act']['code_info']['url'];?>" title="<?php echo $output['code_act']['code_info']['title'];?>" target="_blank">
-                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act']['code_info']['pic'];?>" alt="<?php echo $output['code_act']['code_info']['title']; ?>">
+          <?php if(!empty($output['code_act2']['code_info']['pic'])) { ?>
+              <a href="<?php echo $output['code_act2']['code_info']['url'];?>" title="<?php echo $output['code_act2']['code_info']['title'];?>" target="_blank">
+                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act2']['code_info']['pic'];?>" alt="<?php echo $output['code_act2']['code_info']['title']; ?>">
               </a>
           <?php } ?>
       </div>
       <div class="left-ads">
-          <?php if(!empty($output['code_act']['code_info']['pic'])) { ?>
-              <a href="<?php echo $output['code_act']['code_info']['url'];?>" title="<?php echo $output['code_act']['code_info']['title'];?>" target="_blank">
-                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act']['code_info']['pic'];?>" alt="<?php echo $output['code_act']['code_info']['title']; ?>">
+          <?php if(!empty($output['code_act3']['code_info']['pic'])) { ?>
+              <a href="<?php echo $output['code_act3']['code_info']['url'];?>" title="<?php echo $output['code_act3']['code_info']['title'];?>" target="_blank">
+                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act3']['code_info']['pic'];?>" alt="<?php echo $output['code_act3']['code_info']['title']; ?>">
               </a>
           <?php } ?>
       </div>

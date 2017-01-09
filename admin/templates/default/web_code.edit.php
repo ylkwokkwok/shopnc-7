@@ -79,45 +79,30 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
                       </div>
                     </dd>
               </dl>
+              <!-- 左上 -->
               <dl>
                 <dt>
                   <h4><?php echo $lang['web_config_picture_act'];?></h4>
-                  <a href="JavaScript:show_dialog('upload_act');"><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
+                  <a id="upload0" href="JavaScript:show_dialog('upload_act','0','upload0');" data-json='<?php echo json_encode($output['code_act0'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
                 <dd class="act-pic">
                   <div id="picture_act" class="picture">
-                    <?php if(!empty($output['code_act']['code_info']['pic'])) { ?>
-                    <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act']['code_info']['pic'];?>"/>
+                    <?php if(!empty($output['code_act0']['code_info']['pic'])) { ?>
+                    <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act0']['code_info']['pic'];?>"/>
                     <?php } ?>
                   </div>
                 </dd>
               </dl>
+                <!-- 左下 -->
               <dl>
                 <dt>
-                  <h4><?php echo $lang['web_config_edit_category'];?></h4>
-                  <a href="JavaScript:show_dialog('category_list');"><i class="icon-th"></i><?php echo $lang['nc_edit'];?></a></dt>
-                <dd class="category-list">
-                  <?php if (is_array($output['code_category_list']['code_info']['goods_class']) && !empty($output['code_category_list']['code_info']['goods_class'])) { ?>
-                  <ul>
-                    <?php foreach ($output['code_category_list']['code_info']['goods_class'] as $k => $v) { ?>
-                    <li title="<?php echo $v['gc_name'];?>"><a href="javascript:void(0);"><?php echo $v['gc_name'];?></a></li>
-                    <?php } ?>
-                  </ul>
-                  <?php }else { ?>
-                  <ul>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                    <li><a href="javascript:void(0);"><?php echo $lang['web_config_gc_name'];?></a></li>
-                  </ul>
-                  <?php } ?>
+                <h4><?php echo $lang['web_config_picture_act'];?></h4>
+                <a id="upload1" href="JavaScript:show_dialog('upload_act','1','upload1');" data-json='<?php echo json_encode($output['code_act1'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
+                <dd class="act-pic">
+                    <div id="picture_act1" class="picture">
+                        <?php if(!empty($output['code_act1']['code_info']['pic'])) { ?>
+                            <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act1']['code_info']['pic'];?>"/>
+                        <?php } ?>
+                    </div>
                 </dd>
               </dl>
             </div>
@@ -172,73 +157,32 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
               </div>
             </div>
             <div class="right">
-              <dl>
-                <dt>
-                  <h4><?php echo $lang['web_config_brand_title'];?></h4>
-                  <a href="JavaScript:show_dialog('brand_list');"><i class="icon-ticket"></i><?php echo $lang['nc_edit'];?></a></dt>
-                <dd>
-                  <ul class="brands">
-                    <?php if (is_array($output['code_brand_list']['code_info']) && !empty($output['code_brand_list']['code_info'])) { ?>
-                    <?php foreach ($output['code_brand_list']['code_info'] as $key => $val) { ?>
-                    <li><span><img title="<?php echo $val['brand_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['brand_pic'];?>"/> </span></li>
-                    <?php } ?>
-                    <?php }else { ?>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <li>
-                      <span><i class="icon-picture"></i></span>
-                    </li>
-                    <?php } ?>
-                  </ul>
-                </dd>
-              </dl>
-              <dl>
-                <dt>
-                  <h4><?php echo '切换广告图片';?></h4>
-                  <a href="JavaScript:show_dialog('upload_adv');"><?php echo $lang['nc_edit'];?></a></dt>
-                <dd class="adv-pic">
-                  <div id="picture_adv" class="picture">
-                    <?php if(is_array($output['code_adv']['code_info']) && !empty($output['code_adv']['code_info'])) {
-					        	$adv = current($output['code_adv']['code_info']);
-					        	?>
-                            <?php if(is_array($adv) && !empty($adv)) { ?>
-                            <img src="<?php echo UPLOAD_SITE_URL.'/'.$adv['pic_img'];?>"/>
+                <!-- 右上 -->
+                <dl>
+                    <dt>
+                    <h4><?php echo $lang['web_config_picture_act'];?></h4>
+                    <a id="upload2" href="JavaScript:show_dialog('upload_act','2','upload2');" data-json='<?php echo json_encode($output['code_act2'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
+                    <dd class="act-pic">
+                        <div id="picture_act2" class="picture">
+                            <?php if(!empty($output['code_act2']['code_info']['pic'])) { ?>
+                                <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act2']['code_info']['pic'];?>"/>
                             <?php } ?>
-                    <?php } ?>
-                  </div>
-                </dd>
-              </dl>
+                        </div>
+                    </dd>
+                </dl>
+                <!-- 右下 -->
+                <dl>
+                    <dt>
+                    <h4><?php echo $lang['web_config_picture_act'];?></h4>
+                    <a id="upload3" href="JavaScript:show_dialog('upload_act','3','upload3');" data-json='<?php echo json_encode($output['code_act3'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
+                    <dd class="act-pic">
+                        <div id="picture_act3" class="picture">
+                            <?php if(!empty($output['code_act3']['code_info']['pic'])) { ?>
+                                <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act3']['code_info']['pic'];?>"/>
+                            <?php } ?>
+                        </div>
+                    </dd>
+                </dl>
             </div>
           </div></td>
       </tr>
@@ -389,6 +333,7 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
     <input type="hidden" name="code_id" value="<?php echo $output['code_act']['code_id'];?>">
     <input type="hidden" name="act[pic]" value="<?php echo $output['code_act']['code_info']['pic'];?>">
     <input type="hidden" name="act[type]" value="pic">
+    <input type="hidden" name="flg" value="">
     <table class="table tb-type2" id="upload_act_type_pic" <?php if($output['code_act']['code_info']['type'] == 'adv') { ?>style="display:none;"<?php } ?>>
       <tbody>
         <tr>

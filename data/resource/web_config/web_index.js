@@ -1,7 +1,11 @@
 
 	DialogManager.close = function(id) {
+		if(id.indexOf("upload_act") != -1){
+			id = "upload_act";
+		}
 		__DIALOG_WRAPPER__[id].hide();
 		ScreenLocker.unlock();
+		window.location.reload();
   }
 	DialogManager.show = function(id) {
 		if (__DIALOG_WRAPPER__[id]) {
@@ -54,8 +58,8 @@ $(function(){
         }
     });
 });
-function show_dialog(id) {//弹出框
-	if(DialogManager.show(id)) return;
+function show_dialog(id,str,obj) {//弹出框
+	//if(DialogManager.show(id)) return;
 	var d = DialogManager.create(id);//不存在时初始化(执行一次)
 	var dialog_html = $("#"+id+"_dialog").html();
 	$("#"+id+"_dialog").remove();
@@ -63,7 +67,7 @@ function show_dialog(id) {//弹出框
 	d.setContents('<div id="'+id+'_dialog" class="'+id+'_dialog">'+dialog_html+'</div>');
 	d.setWidth(640);
 	d.show('center',1);
-	update_dialog(id);
+	update_dialog(id,str,obj);
 }
 function replace_url(url) {//去当前网址
 	return url.replace(UPLOAD_SITE_URL+"/", '');
@@ -80,7 +84,7 @@ function update_data(id) {//更新
 		}).responseText;
 	return get_text;
 }
-function update_dialog(id) {//初始化数据
+function update_dialog(id,str,obj) {//初始化数据
 	switch (id) {
 		case "category_list":
 			$("#category_list_form dl").sortable({ items: 'dd' });
@@ -107,6 +111,16 @@ function update_dialog(id) {//初始化数据
 				$("#"+id+"_dialog .type-file-text").val($(this).val());
 			});
 			$("#upload_adv_form ul").sortable({ items: 'li' });
+			var data = $("#" + obj).data('json');
+            $('#'+ id + '_dialog').find('input[name="flg"]').val(str||'');
+            $('#'+ id + '_dialog').find('input[name="web_id"]').val(data['web_id']);
+            $('#'+ id + '_dialog').find('input[name="code_id"]').val(data['code_id']);
+            $('#'+ id + '_dialog').find('input[name="act[pic]"]').val(data['code_info']['pic']);
+            if(data['code_info']['type'] == 'adv'){
+                $('#'+ id + '_dialog').find('#upload_act_type_pic').hide();
+            }
+            $('#'+ id + '_dialog').find('input[name="act[title]"]').val(data['code_info']['title']);
+            $('#'+ id + '_dialog').find('input[name="act[url]"]').val(data['code_info']['url']);
 			break;
 	}
 }

@@ -179,6 +179,7 @@ class web_apiControl extends SystemControl {
 	 * 保存图片
 	 */
 	public function upload_picOp() {
+	    $flg = intval($_POST['flg']);
 		$code_id = intval($_POST['code_id']);
 		$web_id = intval($_POST['web_id']);
 		$model_web_config = Model('web_config');
@@ -186,15 +187,17 @@ class web_apiControl extends SystemControl {
 		if (!empty($code)) {
 			$code_type = $code['code_type'];
 			$var_name = $code['var_name'];
+            Tpl::output('var_name',$var_name);
+            if(substr($var_name,0,3) == 'act'){
+                $var_name = "act";
+            }
 			$code_info = $_POST[$var_name];
-
 			$file_name = 'web-'.$web_id.'-'.$code_id;
 			$pic_name = $this->_upload_pic($file_name);//上传图片
 			if (!empty($pic_name)) {
 				$code_info['pic'] = $pic_name;
 			}
 
-			Tpl::output('var_name',$var_name);
 			Tpl::output('pic',$code_info['pic']);
 			Tpl::output('type',$code_info['type']);
 			Tpl::output('ap_id',$code_info['ap_id']);
