@@ -111,7 +111,7 @@ function update_dialog(id,str,obj) {//初始化数据
 				$("#"+id+"_dialog .type-file-text").val($(this).val());
 			});
 			$("#upload_adv_form ul").sortable({ items: 'li' });
-			var data = $("#" + obj).data('json');
+			var data = $("#" + obj).data('json')||{code_info:[]};
             $('#'+ id + '_dialog').find('input[name="flg"]').val(str||'');
             $('#'+ id + '_dialog').find('input[name="web_id"]').val(data['web_id']);
             $('#'+ id + '_dialog').find('input[name="code_id"]').val(data['code_id']);
