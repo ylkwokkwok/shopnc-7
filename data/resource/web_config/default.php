@@ -1,32 +1,6 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 
 <div class="home-standard-layout wrapper style-<?php echo $output['style_name'];?>">
-  <div class="left-sidebar">
-    <div class="title">
-      	<?php if ($output['code_tit']['code_info']['type'] == 'txt') { ?>
-      	    <div class="txt-type">
-                        <?php if(!empty($output['code_tit']['code_info']['floor'])) { ?><span><?php echo $output['code_tit']['code_info']['floor'];?></span><?php } ?>
-                        <h2 title="<?php echo $output['code_tit']['code_info']['title'];?>"><?php echo $output['code_tit']['code_info']['title'];?></h2>
-            </div>
-      	<?php }else { ?>
-      	<div class="pic-type"><img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_tit']['code_info']['pic'];?>"/></div>
-      	<?php } ?>
-    </div>
-    <div class="left-ads">
-      	<?php if(!empty($output['code_act0']['code_info']['pic'])) { ?>
-      	<a href="<?php echo $output['code_act0']['code_info']['url'];?>" title="<?php echo $output['code_act0']['code_info']['title'];?>" target="_blank">
-      	<img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act0']['code_info']['pic'];?>" alt="<?php echo $output['code_act0']['code_info']['title']; ?>">
-      	</a>
-      	<?php } ?>
-    </div>
-      <div class="left-ads">
-          <?php if(!empty($output['code_act1']['code_info']['pic'])) { ?>
-              <a href="<?php echo $output['code_act1']['code_info']['url'];?>" title="<?php echo $output['code_act1']['code_info']['title'];?>" target="_blank">
-                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act1']['code_info']['pic'];?>" alt="<?php echo $output['code_act1']['code_info']['title']; ?>">
-              </a>
-          <?php } ?>
-      </div>
-  </div>
   <div class="middle-layout">
     <ul class="tabs-nav">
                   <?php if (!empty($output['code_recommend_list']['code_info']) && is_array($output['code_recommend_list']['code_info'])) {
@@ -66,44 +40,24 @@
                                   </div>
                           <?php } elseif (!empty($val['pic_list']) && is_array($val['pic_list'])) { ?>
                                 <div class="tabs-panel middle-banner-style01 fade-img <?php echo $i==1 ? '':'tabs-hide';?>">
-                                    <a href="<?php echo $val['pic_list']['11']['pic_url'];?>" title="<?php echo $val['pic_list']['11']['pic_name'];?>" class="a1" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['11']['pic_img'];?>" alt="<?php echo $val['pic_list']['11']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['12']['pic_url'];?>" title="<?php echo $val['pic_list']['12']['pic_name'];?>" class="a2" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['12']['pic_img'];?>" alt="<?php echo $val['pic_list']['12']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['14']['pic_url'];?>" title="<?php echo $val['pic_list']['14']['pic_name'];?>" class="b1" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['14']['pic_img'];?>" alt="<?php echo $val['pic_list']['14']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['21']['pic_url'];?>" title="<?php echo $val['pic_list']['21']['pic_name'];?>" class="c1" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['21']['pic_img'];?>" alt="<?php echo $val['pic_list']['21']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['24']['pic_url'];?>" title="<?php echo $val['pic_list']['24']['pic_name'];?>" class="c2" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['24']['pic_img'];?>" alt="<?php echo $val['pic_list']['24']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['31']['pic_url'];?>" title="<?php echo $val['pic_list']['31']['pic_name'];?>" class="d1" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['31']['pic_img'];?>" alt="<?php echo $val['pic_list']['31']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['32']['pic_url'];?>" title="<?php echo $val['pic_list']['32']['pic_name'];?>" class="d2" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['32']['pic_img'];?>" alt="<?php echo $val['pic_list']['32']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['33']['pic_url'];?>" title="<?php echo $val['pic_list']['33']['pic_name'];?>" class="d3" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['33']['pic_img'];?>" alt="<?php echo $val['pic_list']['33']['pic_name'];?>"></a>
-                                    <a href="<?php echo $val['pic_list']['34']['pic_url'];?>" title="<?php echo $val['pic_list']['34']['pic_name'];?>" class="d4" target="_blank">
-                                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['34']['pic_img'];?>" alt="<?php echo $val['pic_list']['34']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['11']['pic_url'];?>" title="<?php echo $val['pic_list']['11']['pic_name'];?>" class="a1" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['11']['pic_img'];?>" alt="<?php echo $val['pic_list']['11']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['12']['pic_url'];?>" title="<?php echo $val['pic_list']['12']['pic_name'];?>" class="a2" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['12']['pic_img'];?>" alt="<?php echo $val['pic_list']['12']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['13']['pic_url'];?>" title="<?php echo $val['pic_list']['13']['pic_name'];?>" class="a3" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['13']['pic_img'];?>" alt="<?php echo $val['pic_list']['13']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['14']['pic_url'];?>" title="<?php echo $val['pic_list']['14']['pic_name'];?>" class="a4" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['14']['pic_img'];?>" alt="<?php echo $val['pic_list']['14']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['15']['pic_url'];?>" title="<?php echo $val['pic_list']['15']['pic_name'];?>" class="b1" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['15']['pic_img'];?>" alt="<?php echo $val['pic_list']['15']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['16']['pic_url'];?>" title="<?php echo $val['pic_list']['16']['pic_name'];?>" class="c1" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['16']['pic_img'];?>" alt="<?php echo $val['pic_list']['16']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['17']['pic_url'];?>" title="<?php echo $val['pic_list']['17']['pic_name'];?>" class="c2" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['17']['pic_img'];?>" alt="<?php echo $val['pic_list']['17']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['18']['pic_url'];?>" title="<?php echo $val['pic_list']['18']['pic_name'];?>" class="c3" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['18']['pic_img'];?>" alt="<?php echo $val['pic_list']['18']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['19']['pic_url'];?>" title="<?php echo $val['pic_list']['19']['pic_name'];?>" class="c4" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['19']['pic_img'];?>" alt="<?php echo $val['pic_list']['19']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['20']['pic_url'];?>" title="<?php echo $val['pic_list']['20']['pic_name'];?>" class="d1" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['20']['pic_img'];?>" alt="<?php echo $val['pic_list']['20']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['21']['pic_url'];?>" title="<?php echo $val['pic_list']['21']['pic_name'];?>" class="d2" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['21']['pic_img'];?>" alt="<?php echo $val['pic_list']['21']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['22']['pic_url'];?>" title="<?php echo $val['pic_list']['22']['pic_name'];?>" class="d3" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['22']['pic_img'];?>" alt="<?php echo $val['pic_list']['22']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['23']['pic_url'];?>" title="<?php echo $val['pic_list']['23']['pic_name'];?>" class="d4" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['23']['pic_img'];?>" alt="<?php echo $val['pic_list']['23']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['24']['pic_url'];?>" title="<?php echo $val['pic_list']['24']['pic_name'];?>" class="d5" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['24']['pic_img'];?>" alt="<?php echo $val['pic_list']['24']['pic_name'];?>"></a>
+                                    <a href="<?php echo $val['pic_list']['25']['pic_url'];?>" title="<?php echo $val['pic_list']['25']['pic_name'];?>" class="d6" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['25']['pic_img'];?>" alt="<?php echo $val['pic_list']['25']['pic_name'];?>"></a>
                                 </div>
                           <?php } ?>
                   <?php } ?>
                   <?php } ?>
-  </div>
-  <div class="right-sidebar">
-    <div class="title"></div>
-      <div class="left-ads">
-          <?php if(!empty($output['code_act2']['code_info']['pic'])) { ?>
-              <a href="<?php echo $output['code_act2']['code_info']['url'];?>" title="<?php echo $output['code_act2']['code_info']['title'];?>" target="_blank">
-                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act2']['code_info']['pic'];?>" alt="<?php echo $output['code_act2']['code_info']['title']; ?>">
-              </a>
-          <?php } ?>
-      </div>
-      <div class="left-ads">
-          <?php if(!empty($output['code_act3']['code_info']['pic'])) { ?>
-              <a href="<?php echo $output['code_act3']['code_info']['url'];?>" title="<?php echo $output['code_act3']['code_info']['title'];?>" target="_blank">
-                  <img src="<?php  echo UPLOAD_SITE_URL.'/'.$output['code_act3']['code_info']['pic'];?>" alt="<?php echo $output['code_act3']['code_info']['title']; ?>">
-              </a>
-          <?php } ?>
-      </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ h3.dialog_head {
 	margin: 0 !important;
 }
 .dialog_content {
-	width: 610px;
+	width: 770px;
 	padding: 0 15px 15px 15px !important;
 	overflow: hidden;
 }
@@ -101,9 +101,9 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
         <?php foreach($val['goods_list'] as $k => $v){ ?>
         <li>
           <div ondblclick="del_sale_goods(<?php echo $v['goods_id'];?>);" class="goods-pic"> <span class="ac-ico" onclick="del_sale_goods(<?php echo $v['goods_id'];?>);"></span>
-            <span class="thumb size-72x72"><i></i><img select_goods_id="<?php echo $v['goods_id'];?>"
+            <span class="thumb size-100x100"><i></i><img select_goods_id="<?php echo $v['goods_id'];?>"
                 title="<?php echo $v['goods_name'];?>" src="<?php echo strpos($v['goods_pic'],'http')===0 ? $v['goods_pic']:UPLOAD_SITE_URL."/".$v['goods_pic'];?>"
-                onload="javascript:DrawImage(this,72,72);" goods_price="<?php echo $v['goods_price'];?>" market_price="<?php echo $v['goods_marketprice'];?>" /></span></div>
+                onload="javascript:DrawImage(this,100,100);" goods_price="<?php echo $v['goods_price'];?>" market_price="<?php echo $v['goods_marketprice'];?>" /></span></div>
           <div class="goods-name"><a href="<?php echo SHOP_SITE_URL."/index.php?act=goods&goods_id=".$v['goods_id'];?>" target="_blank"><?php echo $v['goods_name'];?></a></div>
         </li>
         <?php } ?>

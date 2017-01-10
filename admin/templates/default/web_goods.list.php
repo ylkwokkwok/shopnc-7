@@ -4,9 +4,9 @@
 <ul class="dialog-goodslist-s2">
   <?php foreach($output['goods_list'] as $k => $v){ ?>
   <li>
-    <div onclick="select_recommend_goods(<?php echo $v['goods_id'];?>);" class="goods-pic"><span class="ac-ico"></span><span class="thumb size-72x72"><i></i>
+    <div onclick="select_recommend_goods(<?php echo $v['goods_id'];?>);" class="goods-pic"><span class="ac-ico"></span><span class="thumb size-100x100"><i></i>
         <img goods_id="<?php echo $v['goods_id'];?>" goods_price="<?php echo $v['goods_price'];?>" market_price="<?php echo $v['goods_marketprice'];?>" 
-        title="<?php echo $v['goods_name'];?>" src="<?php echo thumb($v, 240);?>" onload="javascript:DrawImage(this,72,72);" /></span></div>
+        title="<?php echo $v['goods_name'];?>" src="<?php echo thumb($v, 240);?>" onload="javascript:DrawImage(this,100,100);" /></span></div>
     <div class="goods-name"><a href="<?php echo SHOP_SITE_URL."/index.php?act=goods&goods_id=".$v['goods_id'];?>" target="_blank"><?php echo $v['goods_name'];?></a></div>
   </li>
   <?php } ?>

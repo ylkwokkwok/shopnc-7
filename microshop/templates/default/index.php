@@ -119,13 +119,13 @@ $(document).ready(function() {
   <div class="right">
     <div class="member-box">
       <?php if(empty($_SESSION['member_id'])) { ?>
-      <div class="portrait"><img src="<?php echo $member_avatar;?>" onload="javascript:DrawImage(this,72,72);" /></div>
+      <div class="portrait"><img src="<?php echo $member_avatar;?>" onload="javascript:DrawImage(this,100,100);" /></div>
       <dl class="welcome">
         <dt><?php echo $lang['microshop_text_welcome'];?></dt>
         <dd><a href="<?php echo SHOP_SITE_URL.'/index.php?act=login&ref_url='.getRefUrl();?>" class="login-now"><?php echo $lang['microshop_text_login'];?></a></dd>
       </dl>
       <?php } else { ?>
-      <div class="portrait"> <a href="<?php echo MICROSHOP_SITE_URL.DS;?>index.php?act=home&member_id=<?php echo $_SESSION['member_id'];?>" target="_blank"> <img src="<?php echo $member_avatar;?>" onload="javascript:DrawImage(this,72,72);" /> </a> </div>
+      <div class="portrait"> <a href="<?php echo MICROSHOP_SITE_URL.DS;?>index.php?act=home&member_id=<?php echo $_SESSION['member_id'];?>" target="_blank"> <img src="<?php echo $member_avatar;?>" onload="javascript:DrawImage(this,100,100);" /> </a> </div>
       <dl class="welcome">
         <dt> <a href="<?php echo MICROSHOP_SITE_URL.DS;?>index.php?act=home&member_id=<?php echo $_SESSION['member_id'];?>" target="_blank"> <?php echo $output['member_info']['member_name'];?> </a> </dt>
         <dd><span><?php echo $lang['nc_microshop_goods'].$lang['nc_colon'];?><em><?php echo $output['member_info']['goods_count'];?></em></span><span><?php echo $lang['nc_microshop_personal'].$lang['nc_colon'];?><em><?php echo $output['member_info']['personal_count'];?></em></span></dd>

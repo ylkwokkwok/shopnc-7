@@ -16,7 +16,8 @@
 		return false;
   }
   var recommend_max = 4;//推荐数
-  var goods_max = 8;//商品数
+  //var goods_max = 8;//商品数
+  var goods_max = 12;//商品数
   var brand_max = 12;//品牌限制
   var recommend_show = 1;//当前选择的商品推荐
   var slide_pic_max = 5;//切换广告图片限制
@@ -65,7 +66,7 @@ function show_dialog(id,str,obj) {//弹出框
 	$("#"+id+"_dialog").remove();
 	d.setTitle(titles[id]);
 	d.setContents('<div id="'+id+'_dialog" class="'+id+'_dialog">'+dialog_html+'</div>');
-	d.setWidth(640);
+	d.setWidth(800);
 	d.show('center',1);
 	update_dialog(id,str,obj);
 }
@@ -111,16 +112,6 @@ function update_dialog(id,str,obj) {//初始化数据
 				$("#"+id+"_dialog .type-file-text").val($(this).val());
 			});
 			$("#upload_adv_form ul").sortable({ items: 'li' });
-			var data = $("#" + obj).data('json')||{code_info:[]};
-            $('#'+ id + '_dialog').find('input[name="flg"]').val(str||'');
-            $('#'+ id + '_dialog').find('input[name="web_id"]').val(data['web_id']);
-            $('#'+ id + '_dialog').find('input[name="code_id"]').val(data['code_id']);
-            $('#'+ id + '_dialog').find('input[name="act[pic]"]').val(data['code_info']['pic']);
-            if(data['code_info']['type'] == 'adv'){
-                $('#'+ id + '_dialog').find('#upload_act_type_pic').hide();
-            }
-            $('#'+ id + '_dialog').find('input[name="act[title]"]').val(data['code_info']['title']);
-            $('#'+ id + '_dialog').find('input[name="act[url]"]').val(data['code_info']['url']);
 			break;
 	}
 }
@@ -211,13 +202,9 @@ function add_recommend() {//增加商品推荐
     			'<a href="JavaScript:show_recommend_dialog('+i+');"><i class="icon-shopping-cart"></i>商品块</a><a href="JavaScript:show_recommend_pic_dialog('+i+');"><i class="icon-lightbulb"></i>广告块</a></dt>'+
     			'<dd><ul class="goods-list"><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
     			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
-    			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li></ul></dd></dl>';
+    			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li></ul></dd></dl>';
 			$("#btn_add_list").before(add_html);
-			$("#add_recommend_list").before('<dl select_recommend_id="'+i+'"><dt><h4 class="dialog-handle-title">商品推荐模块标题名称</h4>'+
-    			'<div class="dialog-handle-box"><span class="left"><input name="recommend_list['+i+'][recommend][name]" value="商品推荐" type="text" class="w200"></span>'+
-    			'<span class="right">修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏</span>'+
-    			'<div class="clear"></div></div></dt><dd><h4 class="dialog-handle-title">推荐商品</h4><ul class="dialog-goodslist-s1 goods-list">'+
-    			'<div class="s-tips"><i></i>小提示：单击查询出的商品选中，双击已选择的可以删除，最多8个，保存后生效。</div></ul></dd></dl>');
+			$("#add_recommend_list").before('<dl select_recommend_id="'+i+'"><dt><h4 class="dialog-handle-title">商品推荐模块标题名称</h4><div class="dialog-handle-box"><span class="left"><input name="recommend_list['+i+'][recommend][name]" value="商品推荐" type="text" class="w200" style="width:360px!important"></span><span class="right">修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏</span><div class="clear"></div></div></dt><dd><h4 class="dialog-handle-title">推荐商品</h4><div class="s-tips"><i></i>小提示：单击查询出的商品选中，双击已选择的可以删除，最多12个，保存后生效。</div><ul class="dialog-goodslist-s1 goods-list"></ul></dd></dl>');
 			$("#recommend_list_form dl dd ul").sortable({ items: 'li' });
 			break;
 		}
@@ -236,9 +223,9 @@ function select_recommend_goods(goods_id) {//商品选择
 	var market_price = goods.attr("market_price");
 	text_append += '<div ondblclick="del_recommend_goods('+goods_id+');" class="goods-pic">';
 	text_append += '<span class="ac-ico" onclick="del_recommend_goods('+goods_id+');"></span>';
-	text_append += '<span class="thumb size-72x72">';
+	text_append += '<span class="thumb size-100x100">';
 	text_append += '<i></i>';
-  	text_append += '<img select_goods_id="'+goods_id+'" title="'+goods_name+'" src="'+goods_pic+'" onload="javascript:DrawImage(this,72,72);" />';
+  	text_append += '<img select_goods_id="'+goods_id+'" title="'+goods_name+'" src="'+goods_pic+'" onload="javascript:DrawImage(this,100,100);" />';
 	text_append += '</span></div>';
 	text_append += '<div class="goods-name">';
 	text_append += '<a href="'+SHOP_SITE_URL+'/index.php?act=goods&goods_id='+goods_id+'" target="_blank">';
@@ -354,13 +341,19 @@ function show_recommend_pic_dialog(id) {//弹出框
         var text_append = '<div select_recommend_pic_id="'+id+'" class="middle-banner">'+
 							'<a href="javascript:void(0);" recommend_pic_id="11" class="left-a">194*194</a>'+
 							'<a href="javascript:void(0);" recommend_pic_id="12" class="left-b">194*194</a>'+
-							'<a href="javascript:void(0);" recommend_pic_id="14" class="middle-a">388*388</a>'+
-							'<a href="javascript:void(0);" recommend_pic_id="21" class="right-a">194*194</a>'+
-							'<a href="javascript:void(0);" recommend_pic_id="24" class="right-b">194*194</a>'+
-							'<a href="javascript:void(0);" recommend_pic_id="31" class="bottom-a">194*110</a>'+
-							'<a href="javascript:void(0);" recommend_pic_id="32" class="bottom-b">194*110</a>'+
-							'<a href="javascript:void(0);" recommend_pic_id="33" class="bottom-c">194*110</a>'+
-							'<a href="javascript:void(0);" recommend_pic_id="34" class="bottom-d">194*110</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="13" class="left-c">194*194</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="14" class="left-d">194*194</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="15" class="middle-a">388*388</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="16" class="right-a">194*194</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="17" class="right-b">194*194</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="18" class="right-c">194*194</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="19" class="right-d">194*194</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="20" class="bottom-a">194*110</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="21" class="bottom-b">194*110</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="22" class="bottom-c">194*110</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="23" class="bottom-d">194*110</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="24" class="bottom-e">194*110</a>'+
+							'<a href="javascript:void(0);" recommend_pic_id="25" class="bottom-f">194*110</a>'+
             	  '</div>';
         obj.find("#add_recommend_pic").append(text_append);
 	}
@@ -517,10 +510,10 @@ function add_sale_list() {//增加商品推荐
 			add_html = '<dl sale_id="'+i+'"><a href="JavaScript:del_sale_list('+i+');" class="del">X</a><dt><h4>商品推荐</h4><a href="JavaScript:show_sale_dialog('+i+
     			');"><i class="icon-edit"></i>编辑</a><input name="sale_list['+i+'][recommend][name]" value="" type="hidden"></dt>'+
     			'<dd><ul class="goods-list"><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
-    			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li></ul></dd></dl>';
+    			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li></ul></dd></dl>';
 			$("#add_list").before(add_html);
 			$("#select_sale_list").before('<dl select_sale_id="'+i+'"><dt><h4 class="dialog-handle-title">商品推荐模块标题名称</h4>'+
-    			'<div class="dialog-handle-box"><span class="left"><input name="recommend" value="商品推荐" type="text" class="w200"></span>'+
+    			'<div class="dialog-handle-box"><span class="left"><input name="recommend" value="商品推荐" type="text" class="w200" style="width:360px!important"></span>'+
     			'<span class="right">修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏</span>'+
     			'<div class="clear"></div></div></dt><dd><ul class="dialog-goodslist-s1 goods-list">'+
     			'<div class="s-tips"><i></i>小提示：单击查询出的商品选中，双击已选择的可以删除，最多5个，保存后生效。</div></ul></dd></dl>');
@@ -542,9 +535,9 @@ function select_sale_goods(goods_id){//商品选择
 	var market_price = goods.attr("market_price");
 	text_append += '<div ondblclick="del_sale_goods('+goods_id+');" class="goods-pic">';
 	text_append += '<span class="ac-ico" onclick="del_sale_goods('+goods_id+');"></span>';
-	text_append += '<span class="thumb size-72x72">';
+	text_append += '<span class="thumb size-100x100">';
 	text_append += '<i></i>';
-  	text_append += '<img select_goods_id="'+goods_id+'" title="'+goods_name+'" src="'+goods_pic+'" goods_price="'+goods_price+'" market_price="'+market_price+'" onload="javascript:DrawImage(this,72,72);" />';
+  	text_append += '<img select_goods_id="'+goods_id+'" title="'+goods_name+'" src="'+goods_pic+'" goods_price="'+goods_price+'" market_price="'+market_price+'" onload="javascript:DrawImage(this,100,100);" />';
 	text_append += '</span></div>';
 	text_append += '<div class="goods-name">';
 	text_append += '<a href="'+SITEURL+'/index.php?act=goods&goods_id='+goods_id+'" target="_blank">';

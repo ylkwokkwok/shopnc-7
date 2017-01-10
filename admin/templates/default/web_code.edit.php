@@ -8,7 +8,7 @@ h3.dialog_head {
 	margin: 0 !important;
 }
 .dialog_content {
-	width: 610px;
+	width: 770px;
 	padding: 0 15px 15px 15px !important;
 	overflow: hidden;
 }
@@ -62,50 +62,6 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
       </tr>
       <tr class="noborder">
         <td colspan="2" class="vatop"><div class="home-templates-board-layout style-<?php echo $output['web_array']['style_name'];?>">
-            <div class="left">
-              <dl id="left_tit">
-                <dt>
-                  <h4><?php echo $lang['web_config_picture_tit'];?></h4>
-                  <a href="JavaScript:show_dialog('upload_tit');"><i class="icon-edit"></i><?php echo $lang['nc_edit'];?></a></dt>
-                    <dd class="tit-txt" <?php if($output['code_tit']['code_info']['type'] != 'txt'){ ?>style="display:none;"<?php } ?>>
-                      <div id="picture_floor" class="txt-type">
-                        <span><?php echo $output['code_tit']['code_info']['floor'];?></span>
-                        <h2><?php echo $output['code_tit']['code_info']['title'];?></h2>
-                      </div>
-                    </dd>
-                    <dd class="tit-pic" <?php if($output['code_tit']['code_info']['type'] == 'txt'){ ?>style="display:none;"<?php } ?>>
-                      <div id="picture_tit" class="picture">
-                        <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_tit']['code_info']['pic'];?>"/>
-                      </div>
-                    </dd>
-              </dl>
-              <!-- 左上 -->
-              <dl>
-                <dt>
-                  <h4><?php echo $lang['web_config_picture_act'];?></h4>
-                  <a id="upload0" href="JavaScript:show_dialog('upload_act','0','upload0');" data-json='<?php echo json_encode($output['code_act0'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
-                <dd class="act-pic">
-                  <div id="picture_act" class="picture">
-                    <?php if(!empty($output['code_act0']['code_info']['pic'])) { ?>
-                    <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act0']['code_info']['pic'];?>"/>
-                    <?php } ?>
-                  </div>
-                </dd>
-              </dl>
-                <!-- 左下 -->
-              <dl>
-                <dt>
-                <h4><?php echo $lang['web_config_picture_act'];?></h4>
-                <a id="upload1" href="JavaScript:show_dialog('upload_act','1','upload1');" data-json='<?php echo json_encode($output['code_act1'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
-                <dd class="act-pic">
-                    <div id="picture_act1" class="picture">
-                        <?php if(!empty($output['code_act1']['code_info']['pic'])) { ?>
-                            <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act1']['code_info']['pic'];?>"/>
-                        <?php } ?>
-                    </div>
-                </dd>
-              </dl>
-            </div>
             <div class="middle">
               <div><?php if (is_array($output['code_recommend_list']['code_info']) && !empty($output['code_recommend_list']['code_info'])) { ?>
               <?php foreach ($output['code_recommend_list']['code_info'] as $key => $val) { ?>
@@ -129,13 +85,19 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
                         <div class="middle-banner">
                             <a href="javascript:void(0);" class="left-a"><img pic_url="<?php echo $val['pic_list']['11']['pic_url'];?>" title="<?php echo $val['pic_list']['11']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['11']['pic_img'];?>"/></a>
                             <a href="javascript:void(0);" class="left-b"><img pic_url="<?php echo $val['pic_list']['12']['pic_url'];?>" title="<?php echo $val['pic_list']['12']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['12']['pic_img'];?>"/></a>
-                            <a href="javascript:void(0);" class="middle-a"><img pic_url="<?php echo $val['pic_list']['14']['pic_url'];?>" title="<?php echo $val['pic_list']['14']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['14']['pic_img'];?>"/></a>
-                            <a href="javascript:void(0);" class="right-a"><img pic_url="<?php echo $val['pic_list']['21']['pic_url'];?>" title="<?php echo $val['pic_list']['21']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['21']['pic_img'];?>"/></a>
-                            <a href="javascript:void(0);" class="right-b"><img pic_url="<?php echo $val['pic_list']['24']['pic_url'];?>" title="<?php echo $val['pic_list']['24']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['24']['pic_img'];?>"/></a>
-                            <a href="javascript:void(0);" class="bottom-a"><img pic_url="<?php echo $val['pic_list']['31']['pic_url'];?>" title="<?php echo $val['pic_list']['31']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['31']['pic_img'];?>"/></a>
-                            <a href="javascript:void(0);" class="bottom-b"><img pic_url="<?php echo $val['pic_list']['32']['pic_url'];?>" title="<?php echo $val['pic_list']['32']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['32']['pic_img'];?>"/></a>
-                            <a href="javascript:void(0);" class="bottom-c"><img pic_url="<?php echo $val['pic_list']['33']['pic_url'];?>" title="<?php echo $val['pic_list']['33']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['33']['pic_img'];?>"/></a>
-                            <a href="javascript:void(0);" class="bottom-d"><img pic_url="<?php echo $val['pic_list']['34']['pic_url'];?>" title="<?php echo $val['pic_list']['34']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['34']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="left-c"><img pic_url="<?php echo $val['pic_list']['13']['pic_url'];?>" title="<?php echo $val['pic_list']['13']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['13']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="left-d"><img pic_url="<?php echo $val['pic_list']['14']['pic_url'];?>" title="<?php echo $val['pic_list']['14']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['14']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="middle-a"><img pic_url="<?php echo $val['pic_list']['15']['pic_url'];?>" title="<?php echo $val['pic_list']['15']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['15']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="right-a"><img pic_url="<?php echo $val['pic_list']['16']['pic_url'];?>" title="<?php echo $val['pic_list']['16']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['16']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="right-b"><img pic_url="<?php echo $val['pic_list']['17']['pic_url'];?>" title="<?php echo $val['pic_list']['17']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['17']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="right-c"><img pic_url="<?php echo $val['pic_list']['18']['pic_url'];?>" title="<?php echo $val['pic_list']['18']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['18']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="right-d"><img pic_url="<?php echo $val['pic_list']['19']['pic_url'];?>" title="<?php echo $val['pic_list']['19']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['19']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="bottom-a"><img pic_url="<?php echo $val['pic_list']['20']['pic_url'];?>" title="<?php echo $val['pic_list']['20']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['20']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="bottom-b"><img pic_url="<?php echo $val['pic_list']['21']['pic_url'];?>" title="<?php echo $val['pic_list']['21']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['21']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="bottom-c"><img pic_url="<?php echo $val['pic_list']['22']['pic_url'];?>" title="<?php echo $val['pic_list']['22']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['22']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="bottom-d"><img pic_url="<?php echo $val['pic_list']['23']['pic_url'];?>" title="<?php echo $val['pic_list']['23']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['23']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="bottom-e"><img pic_url="<?php echo $val['pic_list']['24']['pic_url'];?>" title="<?php echo $val['pic_list']['24']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['24']['pic_img'];?>"/></a>
+                            <a href="javascript:void(0);" class="bottom-f"><img pic_url="<?php echo $val['pic_list']['25']['pic_url'];?>" title="<?php echo $val['pic_list']['25']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['25']['pic_img'];?>"/></a>
                         </div>
                     <?php }else { ?>
                     <ul class="goods-list">
@@ -155,34 +117,6 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
               <?php } ?>
               <div class="add-tab" id="btn_add_list"><a href="JavaScript:add_recommend();"><i class="icon-plus-sign-alt"></i><?php echo $lang['web_config_add_recommend'];?></a><?php echo $lang['web_config_recommend_max'];?></div>
               </div>
-            </div>
-            <div class="right">
-                <!-- 右上 -->
-                <dl>
-                    <dt>
-                    <h4><?php echo $lang['web_config_picture_act'];?></h4>
-                    <a id="upload2" href="JavaScript:show_dialog('upload_act','2','upload2');" data-json='<?php echo json_encode($output['code_act2'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
-                    <dd class="act-pic">
-                        <div id="picture_act2" class="picture">
-                            <?php if(!empty($output['code_act2']['code_info']['pic'])) { ?>
-                                <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act2']['code_info']['pic'];?>"/>
-                            <?php } ?>
-                        </div>
-                    </dd>
-                </dl>
-                <!-- 右下 -->
-                <dl>
-                    <dt>
-                    <h4><?php echo $lang['web_config_picture_act'];?></h4>
-                    <a id="upload3" href="JavaScript:show_dialog('upload_act','3','upload3');" data-json='<?php echo json_encode($output['code_act3'])?>'><i class="icon-picture"></i><?php echo $lang['nc_edit'];?></a></dt>
-                    <dd class="act-pic">
-                        <div id="picture_act3" class="picture">
-                            <?php if(!empty($output['code_act3']['code_info']['pic'])) { ?>
-                                <img src="<?php echo UPLOAD_SITE_URL.'/'.$output['code_act3']['code_info']['pic'];?>"/>
-                            <?php } ?>
-                        </div>
-                    </dd>
-                </dl>
             </div>
           </div></td>
       </tr>
@@ -380,7 +314,7 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
               <dt>
                 <h4 class="dialog-handle-title"><?php echo $lang['web_config_recommend_title'];?></h4>
                 <div class="dialog-handle-box"><span class="left">
-                  <input name="recommend_list[<?php echo $key;?>][recommend][name]" value="<?php echo $val['recommend']['name'];?>" type="text" class="w200">
+                  <input name="recommend_list[<?php echo $key;?>][recommend][name]" value="<?php echo $val['recommend']['name'];?>" type="text" class="w200" style="width:360px!important;">
                   </span><span class="right"><?php echo $lang['web_config_recommend_tips'];?></span>
                   <div class="clear"></div>
                 </div>
@@ -393,7 +327,7 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
                       <?php foreach($val['goods_list'] as $k => $v) { ?>
                       <li id="select_recommend_<?php echo $key;?>_goods_<?php echo $k;?>">
                         <div ondblclick="del_recommend_goods(<?php echo $v['goods_id'];?>);" class="goods-pic">
-                        <span class="ac-ico" onclick="del_recommend_goods(<?php echo $v['goods_id'];?>);"></span> <span class="thumb size-72x72"><i></i><img select_goods_id="<?php echo $v['goods_id'];?>" title="<?php echo $v['goods_name'];?>" src="<?php echo strpos($v['goods_pic'],'http')===0 ? $v['goods_pic']:UPLOAD_SITE_URL."/".$v['goods_pic'];?>" onload="javascript:DrawImage(this,72,72);" /></span></div>
+                        <span class="ac-ico" onclick="del_recommend_goods(<?php echo $v['goods_id'];?>);"></span> <span class="thumb size-100x100"><i></i><img select_goods_id="<?php echo $v['goods_id'];?>" title="<?php echo $v['goods_name'];?>" src="<?php echo strpos($v['goods_pic'],'http')===0 ? $v['goods_pic']:UPLOAD_SITE_URL."/".$v['goods_pic'];?>" onload="javascript:DrawImage(this,100,100);" /></span></div>
                         <div class="goods-name"><a href="<?php echo SHOP_SITE_URL."/index.php?act=goods&goods_id=".$v['goods_id'];?>" target="_blank"><?php echo $v['goods_name'];?></a></div>
                         <input name="recommend_list[<?php echo $key;?>][goods_list][<?php echo $v['goods_id'];?>][goods_id]" value="<?php echo $v['goods_id'];?>" type="hidden">
                         <input name="recommend_list[<?php echo $key;?>][goods_list][<?php echo $v['goods_id'];?>][market_price]" value="<?php echo $v['market_price'];?>" type="hidden">
@@ -464,7 +398,7 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
           <dt>
             <h4 class="dialog-handle-title"><?php echo '推荐模块标题名称';?></h4>
             <div class="dialog-handle-box"><span class="left">
-              <input name="recommend_list[recommend][name]" value="" type="text" class="w200">
+              <input name="recommend_list[recommend][name]" value="" type="text" class="w200" style="width:360px!important;">
               </span><span class="right"><?php echo ' 修改该区域中部推荐模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏';?></span>
               <div class="clear"></div>
             </div>
@@ -480,13 +414,19 @@ var UPLOAD_SITE_URL = "<?php echo UPLOAD_SITE_URL; ?>";
                 <div select_recommend_pic_id="<?php echo $key;?>" class="middle-banner">
                         <a recommend_pic_id="11" href="javascript:void(0);" class="left-a"><img pic_url="<?php echo $val['pic_list']['11']['pic_url'];?>" title="<?php echo $val['pic_list']['11']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['11']['pic_img'];?>"/></a>
                         <a recommend_pic_id="12" href="javascript:void(0);" class="left-b"><img pic_url="<?php echo $val['pic_list']['12']['pic_url'];?>" title="<?php echo $val['pic_list']['12']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['12']['pic_img'];?>"/></a>
-                        <a recommend_pic_id="14" href="javascript:void(0);" class="middle-a"><img pic_url="<?php echo $val['pic_list']['14']['pic_url'];?>" title="<?php echo $val['pic_list']['14']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['14']['pic_img'];?>"/></a>
-                        <a recommend_pic_id="21" href="javascript:void(0);" class="right-a"><img pic_url="<?php echo $val['pic_list']['21']['pic_url'];?>" title="<?php echo $val['pic_list']['21']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['21']['pic_img'];?>"/></a>
-                        <a recommend_pic_id="24" href="javascript:void(0);" class="right-b"><img pic_url="<?php echo $val['pic_list']['24']['pic_url'];?>" title="<?php echo $val['pic_list']['24']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['24']['pic_img'];?>"/></a>
-                        <a recommend_pic_id="31" href="javascript:void(0);" class="bottom-a"><img pic_url="<?php echo $val['pic_list']['31']['pic_url'];?>" title="<?php echo $val['pic_list']['31']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['31']['pic_img'];?>"/></a>
-                        <a recommend_pic_id="32" href="javascript:void(0);" class="bottom-b"><img pic_url="<?php echo $val['pic_list']['32']['pic_url'];?>" title="<?php echo $val['pic_list']['32']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['32']['pic_img'];?>"/></a>
-                        <a recommend_pic_id="33" href="javascript:void(0);" class="bottom-c"><img pic_url="<?php echo $val['pic_list']['33']['pic_url'];?>" title="<?php echo $val['pic_list']['33']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['33']['pic_img'];?>"/></a>
-                        <a recommend_pic_id="34" href="javascript:void(0);" class="bottom-d"><img pic_url="<?php echo $val['pic_list']['34']['pic_url'];?>" title="<?php echo $val['pic_list']['34']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['34']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="13" href="javascript:void(0);" class="left-c"><img pic_url="<?php echo $val['pic_list']['13']['pic_url'];?>" title="<?php echo $val['pic_list']['13']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['13']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="14" href="javascript:void(0);" class="left-d"><img pic_url="<?php echo $val['pic_list']['14']['pic_url'];?>" title="<?php echo $val['pic_list']['14']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['14']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="15" href="javascript:void(0);" class="middle-a"><img pic_url="<?php echo $val['pic_list']['15']['pic_url'];?>" title="<?php echo $val['pic_list']['15']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['15']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="16" href="javascript:void(0);" class="right-a"><img pic_url="<?php echo $val['pic_list']['16']['pic_url'];?>" title="<?php echo $val['pic_list']['16']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['16']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="17" href="javascript:void(0);" class="right-b"><img pic_url="<?php echo $val['pic_list']['17']['pic_url'];?>" title="<?php echo $val['pic_list']['17']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['17']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="18" href="javascript:void(0);" class="right-c"><img pic_url="<?php echo $val['pic_list']['18']['pic_url'];?>" title="<?php echo $val['pic_list']['18']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['18']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="19" href="javascript:void(0);" class="right-d"><img pic_url="<?php echo $val['pic_list']['19']['pic_url'];?>" title="<?php echo $val['pic_list']['19']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['19']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="20" href="javascript:void(0);" class="bottom-a"><img pic_url="<?php echo $val['pic_list']['20']['pic_url'];?>" title="<?php echo $val['pic_list']['29']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['20']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="21" href="javascript:void(0);" class="bottom-b"><img pic_url="<?php echo $val['pic_list']['21']['pic_url'];?>" title="<?php echo $val['pic_list']['21']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['21']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="22" href="javascript:void(0);" class="bottom-c"><img pic_url="<?php echo $val['pic_list']['22']['pic_url'];?>" title="<?php echo $val['pic_list']['22']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['22']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="23" href="javascript:void(0);" class="bottom-d"><img pic_url="<?php echo $val['pic_list']['23']['pic_url'];?>" title="<?php echo $val['pic_list']['23']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['23']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="24" href="javascript:void(0);" class="bottom-e"><img pic_url="<?php echo $val['pic_list']['24']['pic_url'];?>" title="<?php echo $val['pic_list']['24']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['24']['pic_img'];?>"/></a>
+                        <a recommend_pic_id="25" href="javascript:void(0);" class="bottom-f"><img pic_url="<?php echo $val['pic_list']['25']['pic_url'];?>" title="<?php echo $val['pic_list']['25']['pic_name'];?>" src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['25']['pic_img'];?>"/></a>
             	</div>
             <?php } ?>
             <?php } ?>
