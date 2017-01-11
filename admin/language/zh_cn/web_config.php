@@ -18,6 +18,7 @@ $lang['web_config_web_name']				= '板块名称';
 $lang['web_config_style_name']				= '色彩风格';
 $lang['web_config_web_edit']				= '基本设置';
 $lang['web_config_code_edit']				= '板块编辑';
+$lang['web_config_code_edit_org']			= '原板块编辑';
 $lang['web_config_web_name_tips']				= '板块名称只在后台首页模板设置中作为板块标识出现，在前台首页不显示。';
 $lang['web_config_style_name_tips']				= '选择板块色彩风格将影响商城首页模板该区域的边框、背景色、字体色彩，但不会影响板块的内容布局。';
 $lang['web_config_style_red']				= '红色';

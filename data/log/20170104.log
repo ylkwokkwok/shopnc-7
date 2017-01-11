@@ -1,0 +1,48 @@
+[2017-01-04 10:02:06] /shop/index.php?act=goods&op=index&goods_id=253 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-01-04 10:08:57] /shop/index.php?act=goods&op=index&goods_id=253 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-01-04 10:10:01] /shop/index.php?act=goods&op=index&goods_id=231 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-01-04 10:10:08] /shop/index.php?act=goods&op=index&goods_id=231 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-01-04 10:10:37] /shop/index.php?act=goods&op=index&goods_id=232 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-01-04 10:13:09] /shop/index.php?act=goods&op=index&goods_id=55 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-01-04 10:26:15] /shop/index.php?act=goods&op=index&goods_id=254 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-01-04 13:18:07] /shop/index.php?act=goods&op=index&goods_id=54 ( act=goods&op=index ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 

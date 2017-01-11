@@ -18,6 +18,7 @@ $lang['web_config_web_name']				= '板塊名稱';
 $lang['web_config_style_name']				= '色彩風格';
 $lang['web_config_web_edit']				= '基本設置';
 $lang['web_config_code_edit']				= '板塊編輯';
+$lang['web_config_code_edit_org']			= '原板塊編輯';
 $lang['web_config_web_name_tips']				= '板塊名稱只在後台首頁模板設置中作為板塊標識出現，在前台首頁不顯示。';
 $lang['web_config_style_name_tips']				= '選擇板塊色彩風格將影響商城首頁模板該區域的邊框、背景色、字型色彩，但不會影響板塊的內容佈局。';
 $lang['web_config_style_red']				= '紅色';

@@ -131,6 +131,9 @@ else {document.cookie='uid='+uid[1];}
 <!--StandardLayout Begin--> 
 <?php echo $output['web_html']['index'];?> 
 <!--StandardLayout End-->
+<!--StandardLayout Begin-->
+<?php echo $output['web_html']['index_org'];?>
+<!--StandardLayout End-->
 <div class="wrapper">
   <div class="mt10"><?php echo loadadv(9,'html');?></div>
 </div>

@@ -109,7 +109,11 @@ class web_configModel extends Model{
         	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'sale_goods.php';
         	    	break;
         	    default:
-        	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'default.php';
+        	        if($_GET['action'] == 'org'){
+                        $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'default_org.php';
+                    }else{
+                        $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'default.php';
+                    }
         	    	break;
     		}
 			if (file_exists($style_file)) {
@@ -119,7 +123,11 @@ class web_configModel extends Model{
                 ob_end_clean();
 			}
 			$web_array = array();
-			$web_array['web_html'] = addslashes($web_html);
+            if($_GET['action'] == 'org'){
+                $web_array['web_html_org'] = addslashes($web_html);
+            }else{
+                $web_array['web_html'] = addslashes($web_html);
+            }
 			$web_array['update_time'] = time();
 			$this->updateWeb(array('web_id'=>$web_id),$web_array);
 		}
@@ -139,6 +147,7 @@ class web_configModel extends Model{
 					$web_array[$key] .= $this->updateWebHtml($v['web_id'],$v['style_name']);
 				} else {
 					$web_array[$key] .= $v['web_html'];
+					$web_array[$key."_org"] .= $v['web_html_org'];
 				}
 			}
 		}

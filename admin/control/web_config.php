@@ -21,8 +21,9 @@ class web_configControl extends SystemControl{
 		$style_array = $model_web_config->getStyleList();//板块样式数组
 		Tpl::output('style_array',$style_array);
 		$web_list = $model_web_config->getWebList(array('web_page' => 'index'));
+
 		Tpl::output('web_list',$web_list);
-		Tpl::showpage('web_config.index');
+        Tpl::showpage('web_config.index');
 	}
 
 	/**
@@ -85,6 +86,43 @@ class web_configControl extends SystemControl{
 			showMessage(Language::get('nc_no_record'));
 		}
 	}
+
+    /**
+     * 板块编辑
+     */
+    public function code_edit_orgOp(){
+        $model_web_config = Model('web_config');
+        $web_id = intval($_GET["web_id"]);
+        $code_list = $model_web_config->getCodeList(array('web_id'=>"$web_id"));
+        if(is_array($code_list) && !empty($code_list)) {
+            $model_class = Model('goods_class');
+            $parent_goods_class = $model_class->getTreeClassList(2);//商品分类父类列表，只取到第二级
+            if (is_array($parent_goods_class) && !empty($parent_goods_class)){
+                foreach ($parent_goods_class as $k => $v){
+                    $parent_goods_class[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['gc_name'];
+                }
+            }
+            Tpl::output('parent_goods_class',$parent_goods_class);
+
+            $goods_class = $model_class->getTreeClassList(1);//第一级商品分类
+            Tpl::output('goods_class',$goods_class);
+
+            foreach ($code_list as $key => $val) {//将变量输出到页面
+                $var_name = $val["var_name"];
+                $code_info = $val["code_info"];
+                $code_type = $val["code_type"];
+                $val['code_info'] = $model_web_config->get_array($code_info,$code_type);
+                Tpl::output('code_'.$var_name,$val);
+            }
+            $style_array = $model_web_config->getStyleList();//样式数组
+            Tpl::output('style_array',$style_array);
+            $web_list = $model_web_config->getWebList(array('web_id'=>$web_id));
+            Tpl::output('web_array',$web_list[0]);
+            Tpl::showpage('web_code_org.edit');
+        } else {
+            showMessage(Language::get('nc_no_record'));
+        }
+    }
 
 	/**
 	 * 更新前台显示的html内容

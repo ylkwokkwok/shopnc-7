@@ -47,8 +47,11 @@
           <td><?php echo $output['style_array'][$v['style_name']];?></td>
           <td class="w150 align-center"><?php echo date('Y-m-d H:i:s',$v['update_time']);?></td>
           <td class="w150 align-center"><?php echo $v['web_show']==1 ? $lang['nc_yes'] : $lang['nc_no'];?></td>
-          <td class="w150 align-center"><a href="index.php?act=web_config&op=web_edit&web_id=<?php echo $v['web_id'];?>"><?php echo $lang['web_config_web_edit'];?></a> | 
-          	<a href="index.php?act=web_config&op=code_edit&web_id=<?php echo $v['web_id'];?>"><?php echo $lang['web_config_code_edit'];?></a></td>
+          <td class="w200 align-center">
+              <a href="index.php?act=web_config&op=web_edit&web_id=<?php echo $v['web_id'];?>"><?php echo $lang['web_config_web_edit'];?></a> |
+              <a href="index.php?act=web_config&op=code_edit&web_id=<?php echo $v['web_id'];?>"><?php echo $lang['web_config_code_edit'];?></a> |
+              <a href="index.php?act=web_config&op=code_edit_org&web_id=<?php echo $v['web_id'];?>"><?php echo $lang['web_config_code_edit_org'];?></a>
+          </td>
         </tr>
         <?php } ?>
         <?php }else { ?>

@@ -2,33 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="623c1b24-8072-4753-bea9-576a65d67786" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/templates/default/css/skin_0_org.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/templates/default/css/skin_1_org.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/templates/default/web_code_org.edit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/resource/web_config/default_org.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/resource/web_config/web_index_org.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_rao62e16erodm6k0c46ts02e44" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_vmr1c0c23rdrupo6hbloskju41" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/upload/shop/store/1/232.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/upload/shop/store/1/233.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/upload/shop/store/1/234.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/upload/shop/store/1/235.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/upload/shop/store/1/236.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-11.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-11.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-12.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-12.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-14.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-14.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-21.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-21.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-24.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-2-25-1-24.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/store/1/275.png" afterPath="$PROJECT_DIR$/data/upload/shop/store/1/275.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-2-129.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-2-129.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shopnc DB定义书.xlsx" afterPath="$PROJECT_DIR$/shopnc DB定义书.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/control/web_config.php" afterPath="$PROJECT_DIR$/admin/control/web_config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/language/zh/web_config.php" afterPath="$PROJECT_DIR$/admin/language/zh/web_config.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/language/zh_cn/web_config.php" afterPath="$PROJECT_DIR$/admin/language/zh_cn/web_config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/css/skin_0.css" afterPath="$PROJECT_DIR$/admin/templates/default/css/skin_0.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/css/skin_1.css" afterPath="$PROJECT_DIR$/admin/templates/default/css/skin_1.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/web_code.edit.php" afterPath="$PROJECT_DIR$/admin/templates/default/web_code.edit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/web_goods.list.php" afterPath="$PROJECT_DIR$/admin/templates/default/web_goods.list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/web_goods_order.php" afterPath="$PROJECT_DIR$/admin/templates/default/web_goods_order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/web_sale.edit.php" afterPath="$PROJECT_DIR$/admin/templates/default/web_sale.edit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/web_config.index.php" afterPath="$PROJECT_DIR$/admin/templates/default/web_config.index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/config/config.ini.php" afterPath="$PROJECT_DIR$/data/config/config.ini.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/resource/web_config/default.php" afterPath="$PROJECT_DIR$/data/resource/web_config/default.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/model/web_config.model.php" afterPath="$PROJECT_DIR$/data/model/web_config.model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/resource/web_config/web_index.js" afterPath="$PROJECT_DIR$/data/resource/web_config/web_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microshop/templates/default/index.php" afterPath="$PROJECT_DIR$/microshop/templates/default/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/default/css/index.css" afterPath="$PROJECT_DIR$/shop/templates/default/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/default/home/index.php" afterPath="$PROJECT_DIR$/shop/templates/default/home/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,204 +35,33 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/resource/web_config/default.php">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shop/templates/default/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="51" column="238" lean-forward="false" selection-start-line="51" selection-start-column="238" selection-end-line="51" selection-end-column="238" />
+            <state relative-caret-position="308">
+              <caret line="282" column="18" lean-forward="false" selection-start-line="282" selection-start-column="18" selection-end-line="282" selection-end-column="18" />
+              <folding>
+                <marker date="1484122766701" expanded="true" signature="13398:13415" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="13441:13457" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="15684:15701" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="15727:15743" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="24596:24613" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="24639:24655" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="33531:33548" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="33573:33589" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="45142:45158" ph="{...}" />
+                <marker date="1484122766701" expanded="true" signature="45184:45200" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web_config.index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/templates/default/web_config.index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="51" column="129" lean-forward="false" selection-start-line="51" selection-start-column="129" selection-end-line="51" selection-end-column="129" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sale_goods.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/resource/web_config/sale_goods.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web_config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/control/web_config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="59" column="48" lean-forward="false" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
-              <folding>
-                <element signature="n#__construct#0;n#web_configControl#0;n#!!top" expanded="false" />
-                <element signature="e#239#256#0#PHP" expanded="false" />
-                <element signature="n#web_configOp#0;n#web_configControl#0;n#!!top" expanded="false" />
-                <element signature="e#590#607#0#PHP" expanded="false" />
-                <element signature="n#web_editOp#0;n#web_configControl#0;n#!!top" expanded="false" />
-                <element signature="e#1533#1550#0#PHP" expanded="false" />
-                <element signature="e#2891#2917#0#PHP" expanded="false" />
-                <element signature="n#web_htmlOp#0;n#web_configControl#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web_code.edit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/templates/default/web_code.edit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="99" column="251" lean-forward="false" selection-start-line="99" selection-start-column="251" selection-end-line="99" selection-end-column="251" />
-              <folding>
-                <element signature="n#style#0;n#input#0;n#span#0;n#div#0;n#dl#0;n#form#0;n#div#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#1;n#ul#0;n#dd#0;n#dl#0;n#form#0;n#div#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#form#0;n#div#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#0;n#div#0;n#dl#0;n#form#0;n#div#5;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web_api.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/control/web_api.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="78" column="31" lean-forward="false" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="31" />
-              <folding>
-                <element signature="n#__construct#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#193#306#0#PHP" expanded="false" />
-                <element signature="e#344#364#0#PHP" expanded="false" />
-                <element signature="n#focus_editOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#1167#1188#0#PHP" expanded="false" />
-                <element signature="n#html_updateOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#1626#1644#0#PHP" expanded="false" />
-                <element signature="e#1828#2313#0#PHP" expanded="false" />
-                <element signature="e#2032#2309#0#PHP" expanded="false" />
-                <element signature="e#2353#2370#0#PHP" expanded="false" />
-                <element signature="n#category_listOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#2659#2676#0#PHP" expanded="false" />
-                <element signature="n#recommend_listOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#3245#3264#0#PHP" expanded="false" />
-                <element signature="n#goods_listOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#3466#3545#0#PHP" expanded="false" />
-                <element signature="e#3580#3634#0#PHP" expanded="false" />
-                <element signature="e#3680#3775#0#PHP" expanded="false" />
-                <element signature="e#4001#4016#0#PHP" expanded="false" />
-                <element signature="n#brand_listOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#4086#4105#0#PHP" expanded="false" />
-                <element signature="e#4132#4257#0#PHP" expanded="false" />
-                <element signature="e#4476#4493#0#PHP" expanded="false" />
-                <element signature="n#code_updateOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#4711#5011#0#PHP" expanded="false" />
-                <element signature="e#5014#5077#0#PHP" expanded="false" />
-                <element signature="e#5049#5077#0#PHP" expanded="false" />
-                <element signature="e#5083#5100#0#PHP" expanded="false" />
-                <element signature="n#upload_picOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#6148#6167#0#PHP" expanded="false" />
-                <element signature="n#recommend_picOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#7623#7642#0#PHP" expanded="false" />
-                <element signature="n#slide_advOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#7858#8794#0#PHP" expanded="false" />
-                <element signature="e#8029#8572#0#PHP" expanded="false" />
-                <element signature="e#8163#8288#0#PHP" expanded="false" />
-                <element signature="e#8414#8489#0#PHP" expanded="false" />
-                <element signature="e#8800#8822#0#PHP" expanded="false" />
-                <element signature="n#screen_picOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#10310#10332#0#PHP" expanded="false" />
-                <element signature="n#focus_picOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#10548#11662#0#PHP" expanded="false" />
-                <element signature="e#10793#11440#0#PHP" expanded="false" />
-                <element signature="e#10948#11119#0#PHP" expanded="false" />
-                <element signature="e#11259#11334#0#PHP" expanded="false" />
-                <element signature="e#11668#11685#0#PHP" expanded="false" />
-                <element signature="n#_upload_pic#0;n#web_apiControl#0;n#!!top" expanded="false" />
-                <element signature="e#11756#12225#0#PHP" expanded="false" />
-                <element signature="e#11785#12218#0#PHP" expanded="false" />
-                <element signature="e#12102#12213#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web_sale.edit.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/templates/default/web_sale.edit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web_config.model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/model/web_config.model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
-              <folding>
-                <element signature="e#122#186#0#PHP" expanded="false" />
-                <element signature="n#getCodeRow#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#400#466#0#PHP" expanded="false" />
-                <element signature="n#getCodeList#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#626#689#0#PHP" expanded="false" />
-                <element signature="n#updateCode#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#975#1037#0#PHP" expanded="false" />
-                <element signature="n#getWebList#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#1238#1299#0#PHP" expanded="false" />
-                <element signature="n#updateWeb#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#1382#1428#0#PHP" expanded="false" />
-                <element signature="e#1431#1571#0#PHP" expanded="false" />
-                <element signature="e#1544#1571#0#PHP" expanded="false" />
-                <element signature="e#1577#1604#0#PHP" expanded="false" />
-                <element signature="n#updateWebHtml#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#3027#3052#0#PHP" expanded="false" />
-                <element signature="n#getWebHtml#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#3241#3569#0#PHP" expanded="false" />
-                <element signature="e#3291#3565#0#PHP" expanded="false" />
-                <element signature="e#3357#3560#0#PHP" expanded="false" />
-                <element signature="e#3507#3560#0#PHP" expanded="false" />
-                <element signature="e#3596#3622#0#PHP" expanded="false" />
-                <element signature="n#getAdvList#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#3719#3837#0#PHP" expanded="false" />
-                <element signature="e#3863#3980#0#PHP" expanded="false" />
-                <element signature="e#4105#4128#0#PHP" expanded="false" />
-                <element signature="n#getStyleList#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#4197#4647#0#PHP" expanded="false" />
-                <element signature="e#4717#4735#0#PHP" expanded="false" />
-                <element signature="n#get_array#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#4803#5211#0#PHP" expanded="false" />
-                <element signature="e#4834#5027#0#PHP" expanded="false" />
-                <element signature="e#5037#5150#0#PHP" expanded="false" />
-                <element signature="e#5160#5207#0#PHP" expanded="false" />
-                <element signature="e#5233#5250#0#PHP" expanded="false" />
-                <element signature="n#get_str#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#5773#5791#0#PHP" expanded="false" />
-                <element signature="n#stripslashes_deep#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#5964#6033#0#PHP" expanded="false" />
-                <element signature="n#getGoodsList#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#6374#8221#0#PHP" expanded="false" />
-                <element signature="e#6489#6785#0#PHP" expanded="false" />
-                <element signature="e#6844#7407#0#PHP" expanded="false" />
-                <element signature="e#7006#7396#0#PHP" expanded="false" />
-                <element signature="e#7079#7381#0#PHP" expanded="false" />
-                <element signature="e#7481#8214#0#PHP" expanded="false" />
-                <element signature="e#7645#8203#0#PHP" expanded="false" />
-                <element signature="e#7720#8188#0#PHP" expanded="false" />
-                <element signature="e#7913#8169#0#PHP" expanded="false" />
-                <element signature="e#8246#8271#0#PHP" expanded="false" />
-                <element signature="n#updateWebGoods#0;n#web_configModel#0;n#!!top" expanded="false" />
-                <element signature="e#8427#11307#0#PHP" expanded="false" />
-                <element signature="e#8477#8594#0#PHP" expanded="false" />
-                <element signature="e#8880#11303#0#PHP" expanded="false" />
-                <element signature="e#8967#9788#0#PHP" expanded="false" />
-                <element signature="e#9270#9779#0#PHP" expanded="false" />
-                <element signature="e#9351#9760#0#PHP" expanded="false" />
-                <element signature="e#9416#9737#0#PHP" expanded="false" />
-                <element signature="e#9796#10012#0#PHP" expanded="false" />
-                <element signature="e#10020#11298#0#PHP" expanded="false" />
-                <element signature="e#10110#10836#0#PHP" expanded="false" />
-                <element signature="e#10173#10817#0#PHP" expanded="false" />
-                <element signature="e#10260#10794#0#PHP" expanded="false" />
-                <element signature="e#10460#10767#0#PHP" expanded="false" />
-                <element signature="e#10854#11289#0#PHP" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -249,37 +70,40 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getGoodsClassForCacheModel</find>
-      <find>edit_save_goodsOp</find>
-      <find>g_name</find>
-      <find>vatop</find>
-      <find>upload_act_form</find>
-      <find>upload_act</find>
-      <find>upload_act_dialog</find>
-      <find>getWebList</find>
-      <find>picture_act</find>
-      <find>show_dialog</find>
-      <find>upload_pic</find>
-      <find>get_str</find>
       <find>updateCode</find>
       <find>updateWebHtml</find>
-      <find>getCodeRow</find>
-      <find>web_html</find>
-      <find>getCodeList</find>
       <find>update_dialog</find>
       <find>show_goods_class</find>
       <find>show_recommend_pic_dialog</find>
       <find>DrawImage</find>
-      <find>recommend_pic_form</find>
       <find>code_id</find>
-      <find>recommend_list</find>
       <find>recommend_list_formindex.php?act=web_api&amp;op=recommend_pic</find>
       <find>recommend_listindex.php?act=web_api&amp;op=recommend_pic</find>
       <find>act=web_api&amp;op=recommend_pic</find>
       <find>code_edit</find>
+      <find>submitBtn</find>
+      <find>recommend_pic_form</find>
+      <find>update_recommend();</find>
+      <find>update_recommend</find>
+      <find>recommend_list</find>
+      <find>dialog-handle-box</find>
+      <find>getCodeList</find>
+      <find>getCodeRow</find>
       <find>recommend_list_form</find>
+      <find>del_recommend</find>
+      <find>code_recommend_list</find>
+      <find>getWebHtml</find>
+      <find>h4</find>
+      <find>.home-standard-layout .middle-banner-style01 .c2</find>
+      <find>web_html</find>
+      <find>code_update</find>
       <find>recommend_pic</find>
+      <find>[recommend][name]</find>
+      <find>.home-standard-layout-org .left-ads img</find>
     </findStrings>
+    <replaceStrings>
+      <replace>code_recommend_list_org</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -287,21 +111,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/data/model/payment.model.php" />
-        <option value="$PROJECT_DIR$/data/logic/payment.logic.php" />
-        <option value="$PROJECT_DIR$/shop/control/member_order.php" />
-        <option value="$PROJECT_DIR$/core/framework/function/core.php" />
-        <option value="$PROJECT_DIR$/core/framework/core/base.php" />
-        <option value="$PROJECT_DIR$/core/33hao.php" />
-        <option value="$PROJECT_DIR$/shop/control/payment.php" />
         <option value="$PROJECT_DIR$/shop/templates/default/buy/buy_step2.php" />
         <option value="$PROJECT_DIR$/shop/index.php" />
         <option value="$PROJECT_DIR$/shop/templates/default/layout/index_ensure.php" />
         <option value="$PROJECT_DIR$/data/cache/index/article.php" />
         <option value="$PROJECT_DIR$/data/model/flea_class.model.php" />
         <option value="$PROJECT_DIR$/aa.log" />
-        <option value="$PROJECT_DIR$/shop/control/index.php" />
-        <option value="$PROJECT_DIR$/shop/templates/default/home/index.php" />
         <option value="$PROJECT_DIR$/shop/templates/default/layout/home_goods_class.php" />
         <option value="$PROJECT_DIR$/admin/templates/default/member.index.php" />
         <option value="$PROJECT_DIR$/admin/index.php" />
@@ -330,14 +145,23 @@
         <option value="$PROJECT_DIR$/shop/control/store_goods_online.php" />
         <option value="$PROJECT_DIR$/shop/templates/default/seller/store_goods_add.step2.php" />
         <option value="$PROJECT_DIR$/data/resource/web_config/focus.php" />
-        <option value="$PROJECT_DIR$/data/model/web_config.model.php" />
-        <option value="$PROJECT_DIR$/admin/control/web_config.php" />
         <option value="$PROJECT_DIR$/data/model/goods_class.model.php" />
-        <option value="$PROJECT_DIR$/admin/control/web_api.php" />
-        <option value="$PROJECT_DIR$/data/resource/web_config/web_index.js" />
         <option value="$PROJECT_DIR$/admin/templates/default/web_code.edit.php" />
         <option value="$PROJECT_DIR$/data/resource/web_config/default.php" />
         <option value="$PROJECT_DIR$/admin/templates/default/web_sale.edit.php" />
+        <option value="$PROJECT_DIR$/admin/control/web_config.php" />
+        <option value="$PROJECT_DIR$/admin/templates/default/css/skin_0_org.css" />
+        <option value="$PROJECT_DIR$/admin/templates/default/css/skin_1_org.css" />
+        <option value="$PROJECT_DIR$/data/resource/web_config/web_index.js" />
+        <option value="$PROJECT_DIR$/data/resource/web_config/web_index_org.js" />
+        <option value="$PROJECT_DIR$/shop/control/index.php" />
+        <option value="$PROJECT_DIR$/data/model/web_config.model.php" />
+        <option value="$PROJECT_DIR$/shop/templates/default/home/index.php" />
+        <option value="$PROJECT_DIR$/data/resource/web_config/default_org.php" />
+        <option value="$PROJECT_DIR$/admin/control/web_api.php" />
+        <option value="$PROJECT_DIR$/admin/templates/default/web_code_org.edit.php" />
+        <option value="$PROJECT_DIR$/shop/templates/default/css/index.css" />
+        <option value="$PROJECT_DIR$/admin/templates/default/web_config.index.php" />
       </list>
     </option>
   </component>
@@ -435,24 +259,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shopnc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shopnc" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -469,10 +275,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\php\shopnc\admin\language\zh_cn" />
+      <recent name="D:\project\php\shopnc\data\resource\web_config" />
+      <recent name="D:\project\php\shopnc\admin\templates\default\css" />
       <recent name="D:\project\php\shopnc\admin\templates\default" />
+      <recent name="D:\project\php\shopnc\admin\language\zh_cn" />
       <recent name="D:\project\php\shopnc\data\upload\shop\common" />
-      <recent name="D:\project\php\shopnc\data\upload\shop\editor" />
     </key>
   </component>
   <component name="RunManager">
@@ -563,18 +370,18 @@
       <workItem from="1483494972831" duration="4667000" />
       <workItem from="1483509414096" duration="1200000" />
       <workItem from="1483578328241" duration="18370000" />
-      <workItem from="1483924807339" duration="26794000" />
+      <workItem from="1483924807339" duration="47808000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138438000" />
+    <option name="totallyTimeSpent" value="159452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21695402" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29310346" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -601,90 +408,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/data/resource/web_config/web_index.js</url>
-          <line>330</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/control/member.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="149" column="29" lean-forward="false" selection-start-line="149" selection-start-column="29" selection-end-line="149" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/language/zh_cn/member_classify.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shop/templates/default/layout/home_layout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/framework/libraries/tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="95" column="87" lean-forward="true" selection-start-line="95" selection-start-column="87" selection-end-line="95" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/model/member.model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="552" column="14" lean-forward="false" selection-start-line="552" selection-start-column="6" selection-end-line="552" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shop/control/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="61" lean-forward="true" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shop/control/buy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="102" column="38" lean-forward="false" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shop/templates/default/store/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="468" column="98" lean-forward="false" selection-start-line="468" selection-start-column="98" selection-end-line="468" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shop/templates/default/buy/cart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="75" column="238" lean-forward="false" selection-start-line="75" selection-start-column="223" selection-end-line="75" selection-end-column="238" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/logic/buy.logic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="100" column="9" lean-forward="true" selection-start-line="94" selection-start-column="7" selection-end-line="100" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shop/control/cart.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
@@ -809,6 +537,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="27" column="30" lean-forward="false" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,80 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/model/web_config.model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
-          <folding>
-            <element signature="e#122#186#0#PHP" expanded="false" />
-            <element signature="n#getCodeRow#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#400#466#0#PHP" expanded="false" />
-            <element signature="n#getCodeList#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#626#689#0#PHP" expanded="false" />
-            <element signature="n#updateCode#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#975#1037#0#PHP" expanded="false" />
-            <element signature="n#getWebList#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#1238#1299#0#PHP" expanded="false" />
-            <element signature="n#updateWeb#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#1382#1428#0#PHP" expanded="false" />
-            <element signature="e#1431#1571#0#PHP" expanded="false" />
-            <element signature="e#1544#1571#0#PHP" expanded="false" />
-            <element signature="e#1577#1604#0#PHP" expanded="false" />
-            <element signature="n#updateWebHtml#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#3027#3052#0#PHP" expanded="false" />
-            <element signature="n#getWebHtml#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#3241#3569#0#PHP" expanded="false" />
-            <element signature="e#3291#3565#0#PHP" expanded="false" />
-            <element signature="e#3357#3560#0#PHP" expanded="false" />
-            <element signature="e#3507#3560#0#PHP" expanded="false" />
-            <element signature="e#3596#3622#0#PHP" expanded="false" />
-            <element signature="n#getAdvList#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#3719#3837#0#PHP" expanded="false" />
-            <element signature="e#3863#3980#0#PHP" expanded="false" />
-            <element signature="e#4105#4128#0#PHP" expanded="false" />
-            <element signature="n#getStyleList#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#4197#4647#0#PHP" expanded="false" />
-            <element signature="e#4717#4735#0#PHP" expanded="false" />
-            <element signature="n#get_array#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#4803#5211#0#PHP" expanded="false" />
-            <element signature="e#4834#5027#0#PHP" expanded="false" />
-            <element signature="e#5037#5150#0#PHP" expanded="false" />
-            <element signature="e#5160#5207#0#PHP" expanded="false" />
-            <element signature="e#5233#5250#0#PHP" expanded="false" />
-            <element signature="n#get_str#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#5773#5791#0#PHP" expanded="false" />
-            <element signature="n#stripslashes_deep#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#5964#6033#0#PHP" expanded="false" />
-            <element signature="n#getGoodsList#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#6374#8221#0#PHP" expanded="false" />
-            <element signature="e#6489#6785#0#PHP" expanded="false" />
-            <element signature="e#6844#7407#0#PHP" expanded="false" />
-            <element signature="e#7006#7396#0#PHP" expanded="false" />
-            <element signature="e#7079#7381#0#PHP" expanded="false" />
-            <element signature="e#7481#8214#0#PHP" expanded="false" />
-            <element signature="e#7645#8203#0#PHP" expanded="false" />
-            <element signature="e#7720#8188#0#PHP" expanded="false" />
-            <element signature="e#7913#8169#0#PHP" expanded="false" />
-            <element signature="e#8246#8271#0#PHP" expanded="false" />
-            <element signature="n#updateWebGoods#0;n#web_configModel#0;n#!!top" expanded="false" />
-            <element signature="e#8427#11307#0#PHP" expanded="false" />
-            <element signature="e#8477#8594#0#PHP" expanded="false" />
-            <element signature="e#8880#11303#0#PHP" expanded="false" />
-            <element signature="e#8967#9788#0#PHP" expanded="false" />
-            <element signature="e#9270#9779#0#PHP" expanded="false" />
-            <element signature="e#9351#9760#0#PHP" expanded="false" />
-            <element signature="e#9416#9737#0#PHP" expanded="false" />
-            <element signature="e#9796#10012#0#PHP" expanded="false" />
-            <element signature="e#10020#11298#0#PHP" expanded="false" />
-            <element signature="e#10110#10836#0#PHP" expanded="false" />
-            <element signature="e#10173#10817#0#PHP" expanded="false" />
-            <element signature="e#10260#10794#0#PHP" expanded="false" />
-            <element signature="e#10460#10767#0#PHP" expanded="false" />
-            <element signature="e#10854#11289#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/resource/js/common_select.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -1415,20 +1070,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/control/web_config.php">
+    <entry file="file://$PROJECT_DIR$/admin/templates/default/web_sale.edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="59" column="48" lean-forward="false" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
-          <folding>
-            <element signature="n#__construct#0;n#web_configControl#0;n#!!top" expanded="false" />
-            <element signature="e#239#256#0#PHP" expanded="false" />
-            <element signature="n#web_configOp#0;n#web_configControl#0;n#!!top" expanded="false" />
-            <element signature="e#590#607#0#PHP" expanded="false" />
-            <element signature="n#web_editOp#0;n#web_configControl#0;n#!!top" expanded="false" />
-            <element signature="e#1533#1550#0#PHP" expanded="false" />
-            <element signature="e#2891#2917#0#PHP" expanded="false" />
-            <element signature="n#web_htmlOp#0;n#web_configControl#0;n#!!top" expanded="false" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1446,26 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/resource/web_config/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="51" column="238" lean-forward="false" selection-start-line="51" selection-start-column="238" selection-end-line="51" selection-end-column="238" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/resource/web_config/web_index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="355" column="79" lean-forward="false" selection-start-line="355" selection-start-column="79" selection-end-line="355" selection-end-column="79" />
-          <folding>
-            <marker date="1484033710853" expanded="true" signature="7576:7597" ph="..." />
-            <marker date="1484033710853" expanded="true" signature="17846:17859" ph="..." />
-            <marker date="1484033710853" expanded="true" signature="23350:23371" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/resource/web_config/sale_goods.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1474,10 +1100,219 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/templates/default/web_config_org.index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/templates/default/css/skin_1_org.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="1667" column="58" lean-forward="false" selection-start-line="1667" selection-start-column="58" selection-end-line="1667" selection-end-column="58" />
+          <folding>
+            <marker date="1484101625246" expanded="true" signature="580:604" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="6431:6485" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="41034:41050" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="41076:41092" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="43944:43961" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="43987:44003" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="45086:45103" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="45129:45145" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="46903:46920" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="46946:46962" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="56339:56356" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="56382:56398" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="62486:62502" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="62528:62544" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="72567:72583" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="72609:72625" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="92209:92226" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="107966:107982" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="108008:108024" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="119216:119233" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="124130:124147" ph="{...}" />
+            <marker date="1484101625246" expanded="true" signature="125243:125259" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/templates/default/css/skin_0_org.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="1633" column="0" lean-forward="true" selection-start-line="1633" selection-start-column="0" selection-end-line="1633" selection-end-column="0" />
+          <folding>
+            <marker date="1484101619539" expanded="true" signature="577:601" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="5828:5882" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="6822:6876" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="39994:40010" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="40036:40052" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="43822:43839" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="43865:43881" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="44965:44982" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="45008:45024" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="46782:46799" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="46825:46841" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="56229:56246" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="56272:56288" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="62361:62377" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="62403:62419" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="72428:72444" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="72470:72486" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="92570:92587" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="108319:108335" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="108361:108377" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="120052:120069" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="124966:124983" ph="{...}" />
+            <marker date="1484101619539" expanded="true" signature="126079:126095" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/resource/web_config/web_index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <marker date="1484104673555" expanded="true" signature="8359:8380" ph="..." />
+            <marker date="1484104673555" expanded="true" signature="19179:19192" ph="..." />
+            <marker date="1484104673555" expanded="true" signature="24995:25016" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/resource/web_config/web_index_org.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="203" column="27" lean-forward="false" selection-start-line="203" selection-start-column="27" selection-end-line="203" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!block;n#del_recommend#0" expanded="false" />
+            <marker date="1484114449222" expanded="true" signature="19739:19752" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/control/web_config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+          <folding>
+            <element signature="n#__construct#0;n#web_configControl#0;n#!!top" expanded="false" />
+            <element signature="e#239#256#0#PHP" expanded="false" />
+            <element signature="n#web_configOp#0;n#web_configControl#0;n#!!top" expanded="false" />
+            <element signature="e#597#614#0#PHP" expanded="false" />
+            <element signature="n#web_editOp#0;n#web_configControl#0;n#!!top" expanded="false" />
+            <element signature="e#1540#1557#0#PHP" expanded="false" />
+            <element signature="n#code_editOp#0;n#web_configControl#0;n#!!top" expanded="false" />
+            <element signature="e#2901#2924#0#PHP" expanded="false" />
+            <element signature="n#code_edit_orgOp#0;n#web_configControl#0;n#!!top" expanded="false" />
+            <element signature="e#4549#4575#0#PHP" expanded="false" />
+            <element signature="n#web_htmlOp#0;n#web_configControl#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/resource/web_config/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="51" column="238" lean-forward="false" selection-start-line="51" selection-start-column="238" selection-end-line="51" selection-end-column="238" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/resource/web_config/default_org.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/templates/default/home/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="134" column="41" lean-forward="false" selection-start-line="134" selection-start-column="41" selection-end-line="134" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/model/web_config.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="142" column="54" lean-forward="true" selection-start-line="142" selection-start-column="54" selection-end-line="142" selection-end-column="54" />
+          <folding>
+            <element signature="e#122#186#0#PHP" expanded="false" />
+            <element signature="e#400#466#0#PHP" expanded="false" />
+            <element signature="n#getCodeList#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#626#689#0#PHP" expanded="false" />
+            <element signature="n#updateCode#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#975#1037#0#PHP" expanded="false" />
+            <element signature="n#getWebList#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#1238#1299#0#PHP" expanded="false" />
+            <element signature="e#1577#1604#0#PHP" expanded="false" />
+            <element signature="e#3394#3419#0#PHP" expanded="false" />
+            <element signature="e#4015#4041#0#PHP" expanded="false" />
+            <element signature="n#getAdvList#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#4138#4256#0#PHP" expanded="false" />
+            <element signature="e#4282#4399#0#PHP" expanded="false" />
+            <element signature="e#4524#4547#0#PHP" expanded="false" />
+            <element signature="n#getStyleList#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#4616#5066#0#PHP" expanded="false" />
+            <element signature="e#5136#5154#0#PHP" expanded="false" />
+            <element signature="n#get_array#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#5222#5630#0#PHP" expanded="false" />
+            <element signature="e#5253#5446#0#PHP" expanded="false" />
+            <element signature="e#5456#5569#0#PHP" expanded="false" />
+            <element signature="e#5579#5626#0#PHP" expanded="false" />
+            <element signature="e#5652#5669#0#PHP" expanded="false" />
+            <element signature="n#get_str#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#6192#6210#0#PHP" expanded="false" />
+            <element signature="n#stripslashes_deep#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#6383#6452#0#PHP" expanded="false" />
+            <element signature="n#getGoodsList#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#6793#8640#0#PHP" expanded="false" />
+            <element signature="e#6908#7204#0#PHP" expanded="false" />
+            <element signature="e#7263#7826#0#PHP" expanded="false" />
+            <element signature="e#7425#7815#0#PHP" expanded="false" />
+            <element signature="e#7498#7800#0#PHP" expanded="false" />
+            <element signature="e#7900#8633#0#PHP" expanded="false" />
+            <element signature="e#8064#8622#0#PHP" expanded="false" />
+            <element signature="e#8139#8607#0#PHP" expanded="false" />
+            <element signature="e#8332#8588#0#PHP" expanded="false" />
+            <element signature="e#8665#8690#0#PHP" expanded="false" />
+            <element signature="n#updateWebGoods#0;n#web_configModel#0;n#!!top" expanded="false" />
+            <element signature="e#8846#11726#0#PHP" expanded="false" />
+            <element signature="e#8896#9013#0#PHP" expanded="false" />
+            <element signature="e#9299#11722#0#PHP" expanded="false" />
+            <element signature="e#9386#10207#0#PHP" expanded="false" />
+            <element signature="e#9689#10198#0#PHP" expanded="false" />
+            <element signature="e#9770#10179#0#PHP" expanded="false" />
+            <element signature="e#9835#10156#0#PHP" expanded="false" />
+            <element signature="e#10215#10431#0#PHP" expanded="false" />
+            <element signature="e#10439#11717#0#PHP" expanded="false" />
+            <element signature="e#10529#11255#0#PHP" expanded="false" />
+            <element signature="e#10592#11236#0#PHP" expanded="false" />
+            <element signature="e#10679#11213#0#PHP" expanded="false" />
+            <element signature="e#10879#11186#0#PHP" expanded="false" />
+            <element signature="e#11273#11708#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/control/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="45" column="49" lean-forward="false" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/control/web_api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="78" column="31" lean-forward="false" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="31" />
+        <state relative-caret-position="280">
+          <caret line="212" column="39" lean-forward="false" selection-start-line="212" selection-start-column="39" selection-end-line="212" selection-end-column="39" />
           <folding>
             <element signature="n#__construct#0;n#web_apiControl#0;n#!!top" expanded="false" />
             <element signature="e#193#306#0#PHP" expanded="false" />
@@ -1486,6 +1321,7 @@
             <element signature="e#1167#1188#0#PHP" expanded="false" />
             <element signature="n#html_updateOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
             <element signature="e#1626#1644#0#PHP" expanded="false" />
+            <element signature="n#sale_editOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
             <element signature="e#1828#2313#0#PHP" expanded="false" />
             <element signature="e#2032#2309#0#PHP" expanded="false" />
             <element signature="e#2353#2370#0#PHP" expanded="false" />
@@ -1503,9 +1339,6 @@
             <element signature="e#4132#4257#0#PHP" expanded="false" />
             <element signature="e#4476#4493#0#PHP" expanded="false" />
             <element signature="n#code_updateOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
-            <element signature="e#4711#5011#0#PHP" expanded="false" />
-            <element signature="e#5014#5077#0#PHP" expanded="false" />
-            <element signature="e#5049#5077#0#PHP" expanded="false" />
             <element signature="e#5083#5100#0#PHP" expanded="false" />
             <element signature="n#upload_picOp#0;n#web_apiControl#0;n#!!top" expanded="false" />
             <element signature="e#6148#6167#0#PHP" expanded="false" />
@@ -1533,10 +1366,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/templates/default/web_sale.edit.php">
+    <entry file="file://$PROJECT_DIR$/admin/templates/default/web_code_org.edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        <state relative-caret-position="410">
+          <caret line="467" column="41" lean-forward="false" selection-start-line="467" selection-start-column="41" selection-end-line="467" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/templates/default/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="282" column="18" lean-forward="false" selection-start-line="282" selection-start-column="18" selection-end-line="282" selection-end-column="18" />
+          <folding>
+            <marker date="1484122766701" expanded="true" signature="13398:13415" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="13441:13457" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="15684:15701" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="15727:15743" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="24596:24613" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="24639:24655" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="33531:33548" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="33573:33589" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="45142:45158" ph="{...}" />
+            <marker date="1484122766701" expanded="true" signature="45184:45200" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/templates/default/web_config.index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="51" column="129" lean-forward="false" selection-start-line="51" selection-start-column="129" selection-end-line="51" selection-end-column="129" />
           <folding />
         </state>
       </provider>
