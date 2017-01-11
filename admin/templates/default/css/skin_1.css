@@ -993,7 +993,7 @@ h4.dialog-handle-title { font-size: 12px !important; font-weight: 700; line-heig
 .dialog-goodslist-s1 .goods-name a:hover,
 .dialog-goodslist-s3 .goods-name a:hover { color:#F30;}
 
-.dialog-goodslist-s1 li { display: inline-block; width:100px; height: 112px; margin: 0 0 0 18px;}
+.dialog-goodslist-s1 li { display: inline-block; width:100px; height: 132px; margin: 0 0 0 18px;}
 .dialog-goodslist-s1 li { *display: inline/* IE7 */;}
 .dialog-goodslist-s1 .goods-pic { width: 100px; height: 100px; border-style: dashed; border-color: #E7E7E7; }
 .dialog-goodslist-s1 .goods-pic:hover { border-color: #F30;}

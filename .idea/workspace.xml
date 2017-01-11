@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="623c1b24-8072-4753-bea9-576a65d67786" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/templates/default/css/skin_0_org.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/templates/default/css/skin_1_org.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/templates/default/web_code_org.edit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/resource/web_config/default_org.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/resource/web_config/web_index_org.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_rao62e16erodm6k0c46ts02e44" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/session/sess_vmr1c0c23rdrupo6hbloskju41" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/upload/shop/editor/web-2-129.jpg" afterPath="$PROJECT_DIR$/data/upload/shop/editor/web-2-129.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shopnc DB定义书.xlsx" afterPath="$PROJECT_DIR$/shopnc DB定义书.xlsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/control/web_config.php" afterPath="$PROJECT_DIR$/admin/control/web_config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/language/zh/web_config.php" afterPath="$PROJECT_DIR$/admin/language/zh/web_config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/language/zh_cn/web_config.php" afterPath="$PROJECT_DIR$/admin/language/zh_cn/web_config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/templates/default/web_config.index.php" afterPath="$PROJECT_DIR$/admin/templates/default/web_config.index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/config/config.ini.php" afterPath="$PROJECT_DIR$/data/config/config.ini.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/model/web_config.model.php" afterPath="$PROJECT_DIR$/data/model/web_config.model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/resource/web_config/web_index.js" afterPath="$PROJECT_DIR$/data/resource/web_config/web_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/default/css/index.css" afterPath="$PROJECT_DIR$/shop/templates/default/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/default/home/index.php" afterPath="$PROJECT_DIR$/shop/templates/default/home/index.php" />
-    </list>
+    <list default="true" id="623c1b24-8072-4753-bea9-576a65d67786" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +39,8 @@
       <file leaf-file-name="web_config.index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/templates/default/web_config.index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="51" column="129" lean-forward="false" selection-start-line="51" selection-start-column="129" selection-end-line="51" selection-end-column="129" />
+            <state relative-caret-position="595">
+              <caret line="65" column="27" lean-forward="true" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -370,18 +350,18 @@
       <workItem from="1483494972831" duration="4667000" />
       <workItem from="1483509414096" duration="1200000" />
       <workItem from="1483578328241" duration="18370000" />
-      <workItem from="1483924807339" duration="47808000" />
+      <workItem from="1483924807339" duration="47962000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159452000" />
+    <option name="totallyTimeSpent" value="159606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29310346" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21479885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1395,8 +1375,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/templates/default/web_config.index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="51" column="129" lean-forward="false" selection-start-line="51" selection-start-column="129" selection-end-line="51" selection-end-column="129" />
+        <state relative-caret-position="595">
+          <caret line="65" column="27" lean-forward="true" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
           <folding />
         </state>
       </provider>
