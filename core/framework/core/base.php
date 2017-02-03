@@ -16,9 +16,8 @@ final class Base{
 	public static function init() {
 	    // config info
 	    global $setting_config;
-	    self::parse_conf($setting_config);
+        self::parse_conf($setting_config,APP_ID);
 	    define('MD5_KEY',md5($setting_config['md5_key']));
-
 	    if(function_exists('date_default_timezone_set')){
 	        if (is_numeric($setting_config['time_zone'])){
 	            @date_default_timezone_set('Asia/Shanghai');
@@ -47,21 +46,22 @@ final class Base{
 	    self::init();
 
 		self::control();
+
 	}
 
 	/**
 	 * get setting
 	 */
-	private static function parse_conf(&$setting_config){
+	private static function parse_conf(&$setting_config,$appid){
 		$nc_config = $GLOBALS['config'];
 		if(is_array($nc_config['db']['slave']) && !empty($nc_config['db']['slave'])){
 			$dbslave = $nc_config['db']['slave'];
 			$sid     = array_rand($dbslave);
 			$nc_config['db']['slave'] = $dbslave[$sid];
 		}else{
-			$nc_config['db']['slave'] = $nc_config['db'][1];
+            $nc_config['db']['slave'] = $nc_config['db'][$appid];
 		}
-		$nc_config['db']['master'] = $nc_config['db'][1];
+        $nc_config['db']['master'] = $nc_config['db'][$appid];
 		$setting_config = $nc_config;
 		$setting = ($setting = rkcache('setting')) ? $setting : rkcache('setting',true);
 		$setting['shopnc_version'] = '<div class="text" style="color:#925432">
@@ -92,21 +92,23 @@ final class Base{
 		        showMessage('抱歉！您访问的页面不存在','','html','error');
 		    }
 		}
+        $function = $_GET['op'].'Op';
 
 		if (class_exists($class_name)){
-
 			$main = new $class_name();
-
-			$function = $_GET['op'].'Op';
 			if (method_exists($main,$function)){
-				$main->$function();
+                $method = new ReflectionMethod($main,$function);
 			}elseif (method_exists($main,'indexOp')){
-				$main->indexOp();
+                $method = new ReflectionMethod($main,'indexOp');
 			}else {
 				$error = "Base Error: function $function not in $class_name!";
 				throw_exception($error);
 			}
-
+            if($method->isPublic() && !$method->isStatic()){
+                $method->invoke($main);
+            }else{
+                throw_exception("The function:{$function} is not allowed to be accessed");
+            }
 		}else {
 			$error = "Base Error: class $class_name isn't exists!";
 			throw_exception($error);
