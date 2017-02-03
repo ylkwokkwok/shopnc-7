@@ -1,0 +1,76 @@
+<!doctype html>
+<!--
+/* lyq@newland 添加   **/
+/* 时间：2015/05/29   **/
+/* 功能ID：SHOP013    **/
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/05   **/
+/* 功能ID：SHOP013    **/
+// 会员名称 -> 幸运号
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/10   **/
+/* wap端loading画面   **/
+// 隐藏页面内容
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/11   **/
+// 页面样式优化
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/12   **/
+// 页面样式提取到CSS文件中
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/15   **/
+// 优化错误提示框
+
+/* lyq@newland 修改   **/
+/* 时间：2015/07/08   **/
+// 金米分->>金米
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>金米转赠</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    </head>
+    <body>
+        <header id="header"></header>
+        <div class="address-opera" style="font-size: 15px;display: none;">
+            <div >
+                现有金米：<span id="own_points" class="opera-tips"></span>
+            </div>
+            <div class="">
+                <p class="mt10">幸运号：<span class="opera-tips">(*必填)</span></p>
+                <p>
+                    <input type="text" id="receiver_luck_num" class="input-30" name="receiver_luck_num"/>
+                </p>
+                <p class="mt10">赠送金米：<span class="opera-tips">(*必填)</span></p>
+                <p>
+                    <input type="text" id="points" class="input-30" name="points"/>
+                </p>
+            </div>
+            <div class="error-tips mt10"></div>
+            <a class="add_address send_points mt10" href="javascript:void(0);">赠送</a>
+        </div>
+        <div id="footer"></div>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../../js/config.js"></script>
+        <script type="text/javascript" src="../../js/template.js"></script>
+        <script type="text/javascript" src="../../js/common.js"></script>
+        <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/points_transfer.js"></script>
+    </body>
+</html>

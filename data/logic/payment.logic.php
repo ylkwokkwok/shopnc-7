@@ -1,8 +1,6 @@
 <?php
 /**
  * 支付行为
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class paymentLogic {
@@ -136,9 +134,14 @@ class paymentLogic {
     /**
      * 支付成功后修改实物订单状态
      */
-    public function updateRealOrder($out_trade_no, $payment_code, $order_list, $trade_no) {
+    /* zz@newland.com 修改开始 */
+    /* 2016.4.19 */
+    /* $out_trade_no参数没有被应用，所以我将该参数更名为$milk_card并应用在判断该操所是不是mulk_card页面操作  */
+    public function updateRealOrder($milk_card, $payment_code, $order_list, $trade_no) {
         $post['payment_code'] = $payment_code;
         $post['trade_no'] = $trade_no;
+	    $post['milk_card'] = $milk_card;
+	    /* zz@newland.com 修改结束 */
         return Logic('order')->changeOrderReceivePay($order_list, 'system', '系统', $post);
     }
 

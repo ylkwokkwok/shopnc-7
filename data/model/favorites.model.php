@@ -1,11 +1,6 @@
 <?php
 /**
  * 买家收藏
- *
- * 
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class favoritesModel extends Model{

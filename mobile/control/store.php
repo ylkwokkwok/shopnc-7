@@ -6,7 +6,7 @@
  *
  
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 class storeControl extends mobileHomeControl{
 
 	public function __construct() {
@@ -26,22 +26,102 @@ class storeControl extends mobileHomeControl{
         } elseif (!empty($_GET['keyword'])) { 
             $condition['goods_name|goods_jingle'] = array('like', '%' . $_GET['keyword'] . '%');
         }
+        /* wqw@newland 添加开始   　**/
+        /* 时间：2015/06/08       **/
+        /* 功能ID：ADMIN006       **/
+        $model_store = Model('store');
+        $temp = $model_store->goods_vip_list();
+        if (!empty($temp)){
+                foreach ($temp as $value){
+                        $stroe_vip_list[] = $value['store_id'];
+                }
+        }else{
+            $stroe_vip_list[] = '';
+        }
+        /* wqw@newland 添加结束   **/
 
-        //所需字段
-        $fieldstr = "goods_id,goods_commonid,store_id,goods_name,goods_price,goods_marketprice,goods_image,goods_salenum,evaluation_good_star,evaluation_count";
-
+        /* wqw@newland 修改开始   　**/
+        /* 时间：2015/06/08       **/
+        /* 功能ID：ADMIN006       **/
+        $fieldstr = "store_id as store_id_vip,goods_id,goods_commonid,store_id,goods_name,goods_price,goods_marketprice,goods_image,goods_salenum,evaluation_good_star,evaluation_count";
+        /* wqw@newland 修改结束   **/
+        
         //排序方式
         $order = $this->_goods_list_order($_GET['key'], $_GET['order']);
+        
+        /* lyq@newland 添加开始 **/
+        /* 时间：2015/06/04     **/
+        /* 返回商品列表页无法保持历史状态的问题 **/
+        // 如果不是按商品ID排序
+        if ($order != 'goods_id desc') {
+            // 拼接排序条件：商品ID 降序
+            $order.=",goods_id desc";
+        }
+        /* lyq@newland 添加结束 **/
 
-        $goods_list = $model_goods->getGoodsListByColorDistinct($condition, $fieldstr, $order, $this->page);
+        /* lyq@newland 修改开始 **/
+        /* 时间：2015/06/03     **/
+        /* 功能ID：SHOP018      **/
+        // 修改：更改获取商品列表所调用的方法  getGoodsListByColorDistinct ->> getGoodsListByCommnidDistinct
+        $goods_list = $model_goods->getGoodsListByCommnidDistinct($condition, $fieldstr, $order, $this->page);
+        /* lyq@newland 修改结束 **/
+        
+        /* lyq@newland 添加开始 **/
+        /* 时间：2015/06/03     **/
+        /* 功能ID：SHOP018      **/
+        // 添加：重新获取商品名称
+        $this->_format_goods_name($goods_list);
+        /* lyq@newland 添加结束 **/
+        
         $page_count = $model_goods->gettotalpage();
 
         //处理商品列表(团购、限时折扣、商品图片)
         $goods_list = $this->_goods_list_extend($goods_list);
-
-        output_data(array('goods_list' => $goods_list), mobile_page($page_count));
+        
+        /* wqw@newland 修改开始   　**/
+        /* 时间：2015/06/08       **/
+        /* 功能ID：ADMIN006       **/
+        output_data(array('goods_list' => $goods_list,'stroe_vip_list'=>$stroe_vip_list), mobile_page($page_count));
+        /* wqw@newland 修改结束   **/
     }
 
+    /* lyq@newland 添加开始 **/
+    /* 时间：2015/06/03     **/
+    /* 功能ID：SHOP018      **/
+    
+    /**
+     * 重新获取商品名称
+     *   根据goods_commonid从goods_common表中重新获取商品名称
+     * @param type $goods_list 商品信息列表
+     */
+    private function _format_goods_name(&$goods_list) {
+        // 判断参数是否正确
+        if (!empty($goods_list) && is_array($goods_list)) {
+            // 声明where in 条件数组
+            $goods_common_ids = array();
+            // 循环商品列表
+            foreach ($goods_list as $goods) {
+                // 向条件数组中添加数据
+                $goods_common_ids[] = $goods['goods_commonid'];
+            }
+            // 根据条件数组（goods_commonid）查询goods_common表，获取商品ID、名称
+            $common_infos = Model()->table('goods_common')->field('goods_commonid,goods_name')->where(array('goods_commonid' => array('in', implode(',', $goods_common_ids))))->select();
+            // 声明商品名称数组
+            $names = array();
+            // 循环$common_infos
+            foreach ($common_infos as $value) {
+                // 以 key=goods_commonid  val=goods_name 的方式整理商品名称
+                $names[$value['goods_commonid']] = $value['goods_name'];
+            }
+            // 循环商品列表
+            foreach ($goods_list as &$value) {
+                // 更新商品名称
+                $value['goods_name'] = $names[$value['goods_commonid']];
+            }
+        }
+    }
+    /* lyq@newland 添加结束 **/
+    
     /**
      * 商品列表排序方式
      */

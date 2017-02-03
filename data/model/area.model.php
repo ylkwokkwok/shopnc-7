@@ -1,8 +1,6 @@
 <?php
 /**
  * 地区模型
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 

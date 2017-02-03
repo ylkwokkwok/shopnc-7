@@ -5,12 +5,9 @@
  *
  *
  *
- 
  */
 
-//use Shopnc\Tpl;
-
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 class loginControl extends mobileHomeControl {
 
@@ -42,6 +39,24 @@ class loginControl extends mobileHomeControl {
             }
         } else {
             output_error('用户名密码错误');
+        }
+    }
+    
+    public function wx_loginOp() {
+        
+        
+        $model_member = Model('member');
+
+        $array = array();
+        $array['member_wx_id']	= $_POST['openid'];
+        $member_info = $model_member->getMemberInfo($array);
+        
+        $token = $this->_get_token($member_info['member_id'], $member_info['member_name'], $_POST['client']);
+        
+        if($token) {
+            output_data(array('username' => $member_info['member_name'], 'key' => $token));
+        } else {
+            output_error('登录失败');
         }
     }
 

@@ -1,11 +1,6 @@
 <?php
 /**
- * 限时折扣活动模型 
- *
- * 
- *
- *
- 
+ * 限时折扣活动模型
  */
 defined('InShopNC') or exit('Access Invalid!');
 class p_xianshiModel extends Model{

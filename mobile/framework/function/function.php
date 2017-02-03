@@ -6,7 +6,7 @@
  *
  
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 function output_data($datas, $extend_data = array()) {
     $data = array();

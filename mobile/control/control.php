@@ -6,9 +6,8 @@
  
  */
 
-//use Shopnc\Tpl;
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 /********************************** 前台control父类 **********************************************/
 

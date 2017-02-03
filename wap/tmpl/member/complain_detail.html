@@ -1,0 +1,222 @@
+<!doctype html>
+<!--
+/* lyq@newland 添加   **/
+/* 时间：2015/05/27   **/
+// SHOP009 投诉详细
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投诉详细</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+    <header id="header"></header>
+    <div class="complain-detail-wp" id="complain-detail"></div>
+    <script type="text/html" id="complain-detail-tmpl">
+        <div class="order-detail">
+            <ul>
+                <li>
+                    <p class="order-dtlt">
+                        交易投诉状态：
+                        <% if (complain_info.complain_state == 99) { %>
+                        <span class="order-type ot-finish">已完成</span>
+                        <% } else if (complain_info.complain_state == 40) {%>
+                        <span class="order-type ot-finish">待仲裁</span>
+                        <% } else if (complain_info.complain_state == 30) {%>
+                        <span class="order-type ot-finish">对话中</span>
+                        <% } else if (complain_info.complain_state == 20) {%>
+                        <span class="order-type ot-finish">待申诉</span>
+                        <% } else {%>
+                        <span class="order-type ot-finish">新投诉</span>
+                        <% } %>
+                    </p>
+                </li>
+                <li>
+                    <p class="order-dtlt">
+                        投诉信息
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-d-pdinfor">
+                                <p>
+                                    被投诉店铺：<%=complain_info.accused_name%>
+                                </p>
+                                <p>
+                                    投诉主题<%='　'%>：<%=complain_info.complain_subject_content%>
+                                </p>
+                                <p>
+                                    投诉时间<%='　'%>：<%=$getLocalTime(complain_info.complain_datetime)%>
+                                </p>
+                                <p>
+                                    投诉内容<%='　'%>：<%=complain_info.complain_content%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% if (complain_info.complain_state == 10) { %>
+                <li>
+                    <a href="javascript:void(0)" complain_id="<%=complain_info.complain_id%>" class="btn-prink cancel-complain">取消</a>
+                </li>
+                <% } %>
+                <% if (complain_info.complain_state >= 30) { %>
+                    <% if (complain_info.appeal_datetime > 0) { %>
+                    <li>
+                        <p class="order-dtlt">
+                            申诉信息
+                        </p>
+                        <div class="order-dcnt">
+                            <div class="order-d-detail clearfix">
+                                <div class="order-d-pdinfor">
+                                    <p>
+                                        申诉时间：<%=$getLocalTime(complain_info.appeal_datetime)%>
+                                    </p>
+                                    <p>
+                                        申诉内容：<%=complain_info.appeal_message%>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
+                <% } %>
+                <% if (complain_info.complain_state == 99) { %>
+                    <li>
+                        <p class="order-dtlt">
+                            处理结果
+                        </p>
+                        <div class="order-dcnt">
+                            <div class="order-d-detail clearfix">
+                                <div class="order-d-pdinfor">
+                                    <p>
+                                        处理意见：<%=complain_info.final_handle_message%>
+                                    </p>
+                                    <p>
+                                        处理时间：<%=$getLocalTime(complain_info.final_handle_datetime)%>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                <% } %>
+                <li>
+                    <p class="order-dtlt">
+                        相关商品交易信息
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-pd-pdinfor">
+                                <% for(var i = 0; i < order_list.goods_list.length; i++) { %>
+                                <a class="clearfix opdinfor-wp bd-b-cc" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_list.goods_list[i].goods_id%>">
+                                    <span class="opdinfor-pic">
+                                        <img src="<%=order_list.goods_list[i].image_60_url%>"/>
+                                        <!-- wqw@newland 修改开始 时间：2015/06/02 功能:ADMIN006-->
+                                        <!-- zly@newland 修改开始 时间：2015/08/10 隐藏VIP标示-->
+<!--                                        <% if(in_array(order_list.goods_list[i].store_id,stroe_vip_list) != -1){%>
+                                            <img src="<%=SiteUrl%>/data/upload/shop/store/goods/1/goods_vip.jpg" class="flt_img_complain"/>
+                                        <%}%>-->
+                                        <!-- zly@newland 修改结束-->
+                                        <!-- wqw@newland 修改结束-->
+                                    </span>
+                                    <div class="opdinforw-infor">
+                                        <p>
+                                            <%=order_list.goods_list[i].goods_name%>
+                                        </p>
+                                        <p>
+                                            ￥<%=order_list.goods_list[i].goods_price%>＊<%=order_list.goods_list[i].goods_num%>（数量）
+                                        </p>
+                                        <span class="grayrightarrow"></span>
+                                    </div>
+                                </a>
+                                <% } %>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <div class="bd-b-cc">
+                                    <p class="opdinfor-wp">
+                                        运费<%='　　　　'%>：<%=order_list.shipping_fee > 0 ? '￥'+order_list.shipping_fee : '（免运费）'%>
+                                    </p>
+                                    <p class="opdinfor-wp">
+                                        订单总额<%='　　'%>：<strong><%='￥'+order_list.order_amount%></strong>
+                                        <% if (order_list.refund_amount > 0) { %>
+                                        （退款：￥<%=order_list.refund_amount%>）
+                                        <% } %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <div class="bd-b-cc">
+                                    <p class="opdinfor-wp">
+                                        订单编号<%='　　'%>：<span class="order-sn" order_id="<%=order_list.order_id%>" style="color:blue"><%=order_list.order_sn%></span>
+                                    </p>
+                                    <% if (order_list.payment_code != 'offline' && order_list.order_state != 0 && order_list.order_state != 10) { %>
+                                    <p class="opdinfor-wp">
+                                        付款单号<%='　　'%>：<%=order_list.pay_sn%>
+                                    </p>
+                                    <% } %>
+                                    <p class="opdinfor-wp">
+                                        支付方式<%='　　'%>：<%=order_list.payment_name%>
+                                    </p>
+                                    <p class="opdinfor-wp">
+                                        下单时间<%='　　'%>：<%=$getLocalTime(order_list.add_time)%>
+                                    </p>
+                                    <% if (order_list.payment_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        付款时间<%='　　'%>：<%=$getLocalTime(order_list.payment_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.extend_order_common.shipping_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        发货时间<%='　　'%>：<%=$getLocalTime(order_list.extend_order_common.shipping_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.finnshed_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        完成时间<%='　　'%>：<%=$getLocalTime(order_list.finnshed_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.shipping_code != '' && order_list.shipping_code != null) { %>
+                                    <p class="opdinfor-wp">
+                                        物流单号<%='　　'%>：<span id="viewdelivery-order" order_id="<%=order_list.order_id%>" style="color:blue"><%=order_list.shipping_code%></span>
+                                        <span style="float:right"><%=express_list[order_list.extend_order_common.shipping_express_id]['e_name']%></span>
+                                    </p>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <p class="opdinfor-wp">
+                                    商家<%='　　　　'%>：<%=order_list.store_name%>
+                                </p>
+                                <p class="opdinfor-wp">
+                                    所在地区<%='　　'%>：<%=order_list.extend_store.area_info + '&nbsp;' + order_list.extend_store.store_address%>
+                                </p>
+                                <p class="opdinfor-wp">
+                                    联系电话<%='　　'%>：<%=order_list.extend_store.store_phone%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </script>
+    <div id="footer">
+    </div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/complain_detail.js"></script>
+</body>
+</html>

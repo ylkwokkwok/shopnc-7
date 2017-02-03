@@ -5,10 +5,8 @@
  *
  *
  *
- 
  */
-defined('InShopNC') or exit('Access Invalid!');
-//use Shopnc\Tpl;
+defined('NlWxShop') or exit('Access Invalid!');
 class member_chatControl extends mobileMemberControl {
 
 	public function __construct(){

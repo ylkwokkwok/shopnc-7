@@ -1,8 +1,6 @@
 <?php
 /**
  * 买家发票模型
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 

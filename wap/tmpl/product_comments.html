@@ -1,0 +1,93 @@
+<!doctype html>
+<!--
+/* lyq@newland 添加   **/
+/* 时间：2015/06/02   **/
+// SHOP017 评价详情，独立页面显示
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/12   **/
+// 优化评价详情页
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>评价详情</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/child.css">
+        <link rel="stylesheet" type="text/css" href="../css/member.css">
+    </head>
+    <body>
+        <header id="header"></header>
+        <div class="content">
+            <div class="pddetail-cnt">
+                <div class="pd-detail-tab">
+                    <div class="ncs-goods-title-nav">
+                        <div class="m-center" id="evaluation">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer"></footer>
+        <script type="text/html" id="evaluation_content">
+            <!-- zly@newland 显示评价数目 开始-->
+            <div <% if (goods_evaluate.length <= 0) { %>style="margin-bottom: 45px;"<% } %>>
+                <ul class="comment_tab">
+                    <li data-type="1"> <span><a href="javascript:void(0);" <% if (type === '1') { %>class="choosen"<% } %>>好评(<%=goods_evaluate_info.good%>)</a></span></li>
+                    <li data-type="2"> <span><a href="javascript:void(0);" <% if (type === '2') { %>class="choosen"<% } %>>中评(<%=goods_evaluate_info.normal%>)</a></span></li>
+                    <li data-type="3" style="border-right: 1px solid #ded6c9;"> <span><a href="javascript:void(0);" <% if (type === '3') { %>class="choosen"<% } %>>差评(<%=goods_evaluate_info.bad%>)</a></span></li>
+                </ul>
+            </div>
+            <!-- zly@newland 显示评价数目 结束-->
+
+            <!-- 评价页面跳转置顶评价首位置 开始 -->
+            <div id="evaluation_content_before" class="evaluation_content"></div>
+            <!-- 评价页面跳转置顶评价首位置 结束 -->
+
+            <!-- 评价详情 开始 -->
+            <% if (goods_evaluate.length > 0) {%>
+            <div class = "goods-title" id="evaluate">
+                <% for (var i = 0;i<goods_evaluate.length;i++) { %>
+                    <div class="comment">
+                        <div class="comment_detail">
+                            <div style="float:left;"><%=goods_evaluate[i].geval_frommembername%></div>
+                            <div style="text-align:right;"><%=$getLocalTime(goods_evaluate[i].geval_addtime)%></div>	
+                        </div>
+                        <p style="position: relative;">评分：
+                            <span class="<% if (goods_evaluate[i].geval_scores >= 1) { %>evaluation-star<% } else { %>evaluation-star-gray<% } %> " style="position:absolute;left:40px;bottom:2px;"></span>
+                            <span class="<% if (goods_evaluate[i].geval_scores >= 2) { %>evaluation-star<% } else { %>evaluation-star-gray<% } %> " style="position:absolute;left:67px;bottom:2px;"></span>
+                            <span class="<% if (goods_evaluate[i].geval_scores >= 3) { %>evaluation-star<% } else { %>evaluation-star-gray<% } %> " style="position:absolute;left:94px;bottom:2px;"></span>
+                            <span class="<% if (goods_evaluate[i].geval_scores >= 4) { %>evaluation-star<% } else { %>evaluation-star-gray<% } %> " style="position:absolute;left:121px;bottom:2px;"></span>
+                            <span class="<% if (goods_evaluate[i].geval_scores >= 5) { %>evaluation-star<% } else { %>evaluation-star-gray<% } %> " style="position:absolute;left:148px;bottom:2px;"></span>
+                        </p>
+                        <span>评价内容：<%=goods_evaluate[i].geval_content%></span>
+                    </div>
+                <% } %>
+            </div>
+            <div class="pagination mt10">
+                <a href="javascript:void(0);" class="pre-page <%if(curpage <=1 ){%>disabled<%}%>">上一页</a>
+                <a href="javascript:void(0);" has_more="<%if (hasmore){%>true<%}else{%>false<%}%>"  class="next-page <%if (!hasmore){%>disabled<%}%>">下一页</a>
+            </div>
+            <% } else { %>
+            <div class="no-record">
+                暂无记录
+            </div>
+            <% } %>
+            <!-- 评价详情 结束 -->
+        </script>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../js/template.js"></script>
+        <script type="text/javascript" src="../js/config.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../js/tmpl/product_comments.js"></script>
+        <script type="text/javascript" src="../js/tmpl/footer.js"></script>
+    </body>
+</html>

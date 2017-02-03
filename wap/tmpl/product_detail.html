@@ -1,4 +1,31 @@
 <!doctype html>
+<!--
+/* lyq@newland 修改开始           **/
+/* 时间：2015/06/01 - 2015/06/02  **/
+/* 功能ID：SHOP017                **/
+// 1.删除评论显示相关代码
+// 2.添加商品详情显示
+/* lyq@newland 修改结束           **/
+
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/03    **/
+/* 功能ID：SHOP018     **/
+// 1.删除商品描述扩展
+// 2.移动商品星级显示位置
+// 3.增加商品分类的显示/隐藏
+/* lyq@newland 修改结束 **/
+
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/04    **/
+// 1.移动商品星级显示位置
+// 2.商品不存在分类时，不显示商品分类显示/隐藏项
+/* lyq@newland 修改结束 **/
+
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/09    **/
+// 1.QQ按钮图标链接
+/* lyq@newland 修改结束 **/
+-->
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -25,7 +52,7 @@
 						  <div class='swipe-wrap'>
 						  <% for(var i =0;i<goods_image.length;i++){　%>
 						      <div class="swipe-item"><img src="<%=goods_image[i]%>"/></div>
-						   <%}%>
+						  <%}%>
 						  </div>
 						</div>
 						<div class="pddct-shadow"></div>
@@ -43,36 +70,34 @@
 						</span>
 					</a>
 				</div>
-				<% if(store_info.store_qq!=null&&store_info.store_phone!=null){%>
-					<div style="background: none repeat scroll 0 0 #f5f5f5;
-    padding: 8px 6px 0;">
-					  <span class="pddetail-go-title">联系方式
-					  <div style=" float:right">
-					 <% if(store_info.store_phone){%>
-							<a href="tel:<%=store_info.store_phone%>" target="_blank" title="点我咨询">商家电话：<%=store_info.store_phone%>
-							</a>
-							<% }%>
-							<% if(store_info.store_qq){%>
-							<a  href="http://wpa.qq.com/msgrd?v=3&uin=<%=store_info.store_qq%>&site=qq&menu=yes" target="_blank" title="QQ:<%=store_info.store_qq%>">
-							<img border="0" src="http://wpa.qq.com/pa?p=2:<%=store_info.store_qq%>:52" style=" vertical-align: middle;"/>
-							</a>	
-							<% }%>							
-							</div>
-					  </span>						
-							</div>
-					<%} %>
+				<% if((store_info.store_qq!=null&&store_info.store_qq!='')||(store_info.store_phone!=null&&store_info.store_phone!='')){%>
+                                    <div style="background: none repeat scroll 0 0 #f5f5f5;padding: 8px 6px 0;">
+                                        <span class="pddetail-go-title">联系方式
+                                            <div style=" float:right">
+                                                <% if(store_info.store_phone){%>
+                                                <a href="tel:<%=store_info.store_phone%>" target="_blank" title="点我咨询">商家电话：<%=store_info.store_phone%></a>
+                                                <% }%>
+                                                <% if(store_info.store_qq){%>
+                                                <a id="contact_store" href="http://wpa.qq.com/msgrd?v=3&uin=<%=store_info.store_qq%>&site=qq&menu=yes" target="_blank" title="QQ:<%=store_info.store_qq%>">
+                                                    <img border="0" src="<%=SiteUrl%>/data/upload/shop/store/contact/qq_button_52.png" style=" vertical-align: middle;"/>
+                                                </a>	
+                                                <% }%>							
+                                            </div>
+                                        </span>						
+                                    </div>
+                                <%} %>
 							
-				<div class="pddc-gray-warp">
-	                <a href="product_info.html?goods_id=<%=goods_info.goods_id%>"  class="pddetail-go-title clearfix">
+                    <div class="pddc-gray-warp">
+                        <a href="product_comments.html?goods_id=<%=goods_info.goods_id%>"  class="pddetail-go-title clearfix">
 	                    <span class="pgt-title fleft">
-	                        图文详情
+	                        评价详情
 	                    </span>
 	                    <span class="pgt-go fright">
 	                        <span class="i-go-right"></span>
 	                    </span>
 	                </a>
 	            </div>
-				<div class="pddc-gray-warp">
+                    <div class="pddc-gray-warp">
 	                <a href="go_store.html?store_id=<%=goods_info.store_id%>"  class="pddetail-go-title clearfix">
 	                    <span class="pgt-title fleft">
 	                        进入本店铺
@@ -122,6 +147,18 @@
 									</div>
 								</li>
 								<% } %>
+                                                                <!-- lyq@newland 添加开始 -->
+                                                                <!-- 时间：2015/09/17     -->
+                                                                <% if (goods_info.goods_self_discount != "0.00") { %>
+								<li class="clearfix">
+									<span class="key">自取优惠金额：</span>
+									<div class="price value">
+										￥<%=goods_info.goods_self_discount%>
+									</div>
+								</li>
+                                                                <% } %>
+                                                                <!-- lyq@newland 添加结束 -->
+                                                                <!--zly@newland商品总平均获分值开始-->
 								<li class="clearfix">
 									<span class="key">市场价：</span>
 									<div class="value"><del>￥<%=goods_info.goods_marketprice%></del></div>
@@ -130,6 +167,30 @@
 									<span class="key">销量：</span>
 									<div class="value"><%=goods_info.goods_salenum%>件</div>
 								</li>
+                                                                <!--zly@newland商品总平均获分值开始-->
+                                                                <li>
+                                                                    <div>
+                                                                        <span style="float:left">商品评分：</span>
+                                                                        <p class="pdlist-iwc-pdcomment  clearfix" style="display:inline">
+                                                                                <span class="evaluation_good_swp mr5 fleft" style="margin-top:-5px;">
+                                                                                <%
+                                                                                        for(var s = 1;s<=5;s++){ 
+                                                                                            if (s<=goods_info.evaluation_good_star) {
+                                                                                %>
+                                                                                        <span class="evaluation-star fleft"></span>
+                                                                                <%
+                                                                                            } else {
+                                                                                %>
+                                                                                        <span class="evaluation-star-gray fleft"></span>
+                                                                                <%
+                                                                                            } 
+                                                                                        }
+                                                                                %>
+                                                                                </span>
+                                                                        </p>
+                                                                    </div>
+                                                                </li>
+                                                                <!--zly@newland商品总平均获分值结束-->
 						<% if (goods_info.is_virtual == '1') { %>
 								<li class="clearfix">
 									<span class="key">提货方式：</span>
@@ -159,17 +220,6 @@
 							<% } %>
 						<% } %>
 							</ul>
-							<div class="pddcp-arrow">
-								<span class="graydownarrow"></span>
-							</div>
-						</div>
-						<div class="pddcp-one-hide">
-							<div class="clearfix">
-								<span class="key">商品描述：</span>
-							</div>
-							<p id="mobile_body">
-								暂无商品描述
-							</p>
 						</div>
 					</div>
 				</div>
@@ -238,25 +288,34 @@
 							</div>
 						</li>
 						<% if(goods_map_spec.length>0){%>
-						<% for(var i =0;i<goods_map_spec.length;i++){%>
-						<li class="pddc-stock-spec bd-tdashed-dd">
-							<span class="key-no" spec_id="<%=goods_map_spec[i].id%>">
-								<%=goods_map_spec[i].goods_spec_name%>：
-							</span>
-							<div class="value-no mt10">
-								<%for(var j = 0;j<goods_map_spec[i].goods_spec_value.length;j++){%>
-									<a href="javascript:void(0);" <%if (goods_info.goods_spec[goods_map_spec[i].goods_spec_value[j].specs_value_id]){%> class="current" <%}%>specs_value_id = "<%=goods_map_spec[i].goods_spec_value[j].specs_value_id%>">
-										<%=goods_map_spec[i].goods_spec_value[j].specs_value_name%>
-										<i class="pd-choice-icon"></i>
-									</a>
-								<%}%>
-							</div>
-						</li>
-						<%}%>
+                                                <li class="pddc-stock-spec bd-tdashed-dd">
+                                                    <span class="">商品分类:</span>
+                                                    <div class="pddcp-arrow">
+                                                        <span class="graydownarrow" display_type="hide"></span>
+                                                    </div>
+                                                </li>
+                                                    <% for(var i =0;i<goods_map_spec.length;i++){%>
+                                                    <li class="pddc-stock-spec bd-tdashed-dd spec_list">
+                                                            <span class="key-no" spec_id="<%=goods_map_spec[i].id%>">
+                                                                    <%=goods_map_spec[i].goods_spec_name%>：
+                                                            </span>
+                                                            <div class="value-no mt10">
+                                                                    <%for(var j = 0;j<goods_map_spec[i].goods_spec_value.length;j++){%>
+                                                                            <a href="javascript:void(0);" <%if (goods_info.goods_spec[goods_map_spec[i].goods_spec_value[j].specs_value_id]){%> class="current" <%}%>specs_value_id = "<%=goods_map_spec[i].goods_spec_value[j].specs_value_id%>">
+                                                                                    <%=goods_map_spec[i].goods_spec_value[j].specs_value_name%>
+                                                                                    <i class="pd-choice-icon"></i>
+                                                                            </a>
+                                                                    <%}%>
+                                                            </div>
+                                                    </li>
+                                                    <%}%>
 						<%}%>
 						<li class="bd-tdashed-dd">
 							<span class="key-no">
 								数量：
+                                                        <% if (goods_info.purchase_limit > 0) { %>
+                                                                <span class="product-status" style="background-color: #6fbb15;">限购<%=goods_info.purchase_limit%>件</span>
+                                                        <% } %>
 							</span>
 							<div class="value-no mt10 clearfix">
 								<span class="minus-wp fleft">
@@ -288,23 +347,16 @@
 				</div>
 				<div class="pddc-gray-warp">
 					<div class="pddc-commend-list">
-						<span class="pddc-commendl-title">商品推荐：</span>
-						<div class="pddc-commend-wp clearfix">
-							<%for (var i = 0;i<goods_commend_list.length;i++){%>
-								<a href="product_detail.html?goods_id=<%=goods_commend_list[i].goods_id%>">
-									<img src="<%=goods_commend_list[i].goods_image_url%>">
-									<span class="pddc-commendw-t" title="<%=goods_commend_list[i].goods_name%>">
-										<%=goods_commend_list[i].goods_name%>
-									</span>
-									<span class="pddc-commendw-price" title="￥<%=goods_commend_list[i].goods_price%>">￥<%=goods_commend_list[i].goods_price%></span>
-								</a>
-							<%}%>
+						<span class="pddc-commendl-title">商品描述：</span>
+						<div class="pddc-commend-wp clearfix" id="product_info">
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
-	</script> 
+	</script>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script type="text/javascript" src="../js/zepto.min.js"></script>
 	<script type="text/javascript" src="../js/config.js"></script>
 	<script type="text/javascript" src="../js/template.js"></script>

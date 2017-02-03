@@ -1,11 +1,6 @@
 <?php
 /**
  * 虚拟订单模型
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class vr_orderModel extends Model {

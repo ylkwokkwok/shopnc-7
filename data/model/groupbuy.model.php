@@ -1,11 +1,6 @@
 <?php
 /**
  * 抢购活动模型
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class groupbuyModel extends Model{

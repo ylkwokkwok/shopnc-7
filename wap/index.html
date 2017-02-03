@@ -1,138 +1,302 @@
 <!DOCTYPE html>
+<!--
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/10     **/
+/* wap端loading画面     **/
+// 隐藏首页头部
+/* lyq@newland 修改结束 **/
+
+/* lyq@newland 修改开始 **/
+/* 时间：2015/07/13     **/
+// 广告模块置顶
+-->
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>首页</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/index.css">
-</head>
-<body>
-<header class="main">
-	<div class="header-wrap">
-		<div class="htsearch-wrap with-home-logo">
-			<input type="text" class="htsearch-input clr-999" value="" id="keyword" placeholder="搜索商品"/>
-			<a href="javascript:void(0);" class="search-btn"></a>
-		</div>
-	</div>
-</header>
-<div class="main" id="main-container"></div>
-<footer id="footer"></footer>
-<script type="text/html" id="adv_list">
-	<div class="adv_list">
-		<div class="swipe-wrap">
-		<% for (var i in item) { %>
-			<div class="item">
-				<a href="<%= item[i].url %>">
-					<img src="<%= item[i].image %>" alt="">
-				</a>
-			</div>
-		<% } %>
-		</div>
-	</div>
-</script>
-<script type="text/html" id="home1">
-	<div class="index_block home1">
-	<% if (title) { %>
-		<div class="title"><%= title %></div>
-	<% } %>
-		<div class="content">
-			<div class="item">
-				<a href="<%= url %>">
-					<img src="<%= image %>" alt="">
-				</a>
-			</div>
-		</div>
-	</div>
-</script>
-<script type="text/html" id="home2">
-	<div class="index_block home2">
-	<% if (title) { %>
-		<div class="title"><%= title %></div>
-	<% } %>
-		<div class="content">
-			<div class="item home2_1">
-				<a href="<%= square_url %>"><img src="<%= square_image %>" alt=""></a>
-			</div>
-			<div class="item home2_2">
-				<div class="border-left">
-					<div class="border-bottom">
-						<a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>" alt=""></a>
-					</div>
-					<div>
-						<a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>" alt=""></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</script>
-<script type="text/html" id="home3">
-	<div class="index_block home3">
-	<% if (title) { %>
-		<div class="title"><%= title %></div>
-	<% } %>
-		<div class="content">
-		<% for (var i in item) { %>
-			<div class="item">
-				<a href="<%= item[i].url %>"><img src="<%= item[i].image %>" alt=""></a>
-			</div>
-		<% } %>
-		</div>
-	</div>
-</script>
-<script type="text/html" id="home4">
-	<div class="index_block home2">
-	<% if (title) { %>
-		<div class="title"><%= title %></div>
-	<% } %>
-		<div class="content">
-			<div class="item home2_2">
-				<div class="border-right">
-					<div class="border-bottom">
-						<a href="<%= rectangle1_url %>"><img src="<%= rectangle1_image %>" alt=""></a>
-					</div>
-					<div>
-						<a href="<%= rectangle2_url %>"><img src="<%= rectangle2_image %>" alt=""></a>
-					</div>
-				</div>
-			</div>
-			<div class="item home2_1">
-				<a href="<%= square_url %>"><img src="<%= square_image %>" alt=""></a>
-			</div>
-		</div>
-	</div>
-</script>
-<script type="text/html" id="goods">
-	<div class="index_block goods">
-	<% if (title) { %>
-		<div class="title"><%= title %></div>
-	<% } %>
-		<div class="content">
-		<% for (var i in item) { %>
-			<div class="goods-item">
-				<a href="tmpl/product_detail.html?goods_id=<%= item[i].goods_id %>">
-					<div class="goods-item-pic"><img src="<%= item[i].goods_image %>" alt=""></div>
-					<div class="goods-item-name"><%= item[i].goods_name %></div>
-					<div class="goods-item-price">￥<%= item[i].goods_promotion_price %></div>
-				</a>
-			</div>
-		<% } %>
-		</div>
-	</div>
-</script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/config.js"></script>
-<script type="text/javascript" src="js/zepto.min.js"></script>
-<script type="text/javascript" src="js/template.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/swipe.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/tmpl/footer.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>首页</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/child.css">  
+    </head>
+    <body >
+
+        <!--    zz@newland 修改开始 
+                 时间：2016/03/3    
+                修改整体式样 排版-->
+        <header class="main" style="display: none;">
+            <div class="header-wrap">
+                <div class="search htsearch-wrap with-home-logo">
+                    <input type="text" class="search_txt" value="" id="keyword" placeholder="搜索商品"/>
+                    <a href="javascript:void(0);" class="select"style="color:#fff;">搜索</a>
+                </div>
+            </div>
+        </header>
+        <div class="" style="padding: 0 0 51px 0;">
+            <div class="main" id="adv-container" style="padding-top: 10px;"></div>
+            <div  id="adv-home5"></div>
+            <div class="home_t">
+                <div class="home_tit">
+                    <img src="images/fresh.png" />
+                    鲜生活·乐享受
+                </div>
+            </div>
+            <div class="main" id="main-container"></div>
+        </div>
+        <div id="footer"></div>
+        <script type="text/html" id="adv_list">
+            <div class="adv_list" style="overflow:hidden;background: #fff;">
+                <div class="swipe-wrap">
+                    <% for (var i in item) { %>
+                    <div class="item">
+                        <a href="<%= item[i].url %>">
+                            <img src="<%= item[i].image %>" alt="" style="width:100%; max-width:400px;margin: 0 auto;height:150px;">
+                        </a>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="home1">
+            <div class="index_block home1">
+                <% if (title) { %>
+                <div class="title"><%= title %></div>
+                <% } %>
+                <div class="content">
+                    <div class="item" style="border: 1px solid #e5e5e5;font-size: 16px;margin-bottom: 2px;background: #fff;">
+                        <a href="<%= url %>">
+                            <img src="<%= image %>" alt="" style=" width:100%; max-width:400px;margin: 0 auto;height:150px;">
+                            <% if(data_name) {%>
+                            <span class=" goods-item-name" style="line-height: 24px;"><%= data_name %></span>
+                            <% } %>
+                            <% if(data_nameprice) {%>
+                            <span  class="flt_r goods-item-price" style="border-top: dotted 0px #D1D1D1;">￥<%= data_nameprice %></span>
+                            <% } %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="home2">
+            <div class="index_block home2">
+                <% if (title) { %>
+                <div class="title"><%= title %></div>
+                <% } %>
+                <div class="content">
+                    <div class="item home2_1" style="border: 1px solid #e5e5e5; margin: 1% 0 0 0%;">
+                        <a href="<%= square_url %>" class="pro_pull" ><img style="" src="<%= square_image %>" alt="">
+                            <span class="home_name"><%= square_name %>&nbsp</span>
+                            <span class="home_price"><%= square_nameprice %>&nbsp</span>
+                        </a>
+                    </div>
+                    <div class="item home2_2">
+                        <div class="border-right">
+                            <div class="border-bottom" style="border: 1px solid #e5e5e5;margin: 2% 0 0 0%;">
+                                <a href="<%= rectangle1_url %>" class="pro_pull"><img src="<%= rectangle1_image %>" alt="">
+                                    <span class="home_name"><%= rectangle1_name %>&nbsp</span>
+                                    <span class="home_price"><%= rectangle1_nameprice %>&nbsp</span>
+                                </a>
+                            </div>
+                            <div style="border: 1px solid #e5e5e5;margin: 2% 0 0 0%;">
+                                <a href="<%= rectangle2_url %>" class="pro_pull"><img src="<%= rectangle2_image %>" alt="">
+                                    <span class="home_name"><%= rectangle2_name %>&nbsp</span>
+                                    <span class="home_price"><%= rectangle2_nameprice %>&nbsp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="home3">
+            <div class="index_block home3">
+                <% if (title) { %>
+                <div class="title"><%= title %></div>
+                <% } %>
+                <div class="content">
+                    <% for (var i in item) { %>
+                    <div class="item_border " style="border: 1px solid #e5e5e5;">
+                        <a href="<%= item[i].url %>" class="pro_pull"><img src="<%= item[i].image %>" alt="">
+                            <span class="home_name"><%= item[i].goods_name %>&nbsp</span>
+                            <span class="home_price"><%= item[i].goods_price %>&nbsp</span>
+                        </a>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="home4">
+            <div class="index_block home2">
+                <% if (title) { %>
+                <div class="title"><%= title %></div>
+                <% } %>
+                <div class="content">
+                    <div class="item home2_2">
+                        <div class="border-right">
+                            <div class="border-bottom" style="border: 1px solid #e5e5e5;margin: 2% 0 0 0%;">
+                                <a href="<%= rectangle1_url %>" class="pro_pull"><img src="<%= rectangle1_image %>" alt="">
+                                    <span class="home_name"><%= rectangle1_name %>&nbsp</span>
+                                    <span class="home_price"><%= rectangle1_nameprice %>&nbsp</span>
+                                </a>
+                            </div>
+                            <div style="border: 1px solid #e5e5e5;margin: 2% 0 0 0%;">
+                                <a href="<%= rectangle2_url %>" class="pro_pull"><img src="<%= rectangle2_image %>" alt="">
+                                    <span class="home_name"><%= rectangle2_name %>&nbsp</span>
+                                    <span class="home_price"><%= rectangle2_nameprice %>&nbsp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item home2_1" style="border: 1px solid #e5e5e5; margin: 1% 0 0 0%;">
+                        <a href="<%= square_url %>" class="pro_pull" ><img style="" src="<%= square_image %>" alt="">
+                            <span class="home_name"><%= square_name %>&nbsp</span>
+                            <span class="home_price"><%= square_nameprice %>&nbsp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="home5">
+            <% if (radio==1) { %>
+            <div class="ico_enter">
+                <table width="100%">
+                    <tr>
+                        <% if(rectangle3_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle3_url %>" class="ico_e inline_b">
+                                <span class="ico_txt"><%= title1 %>&nbsp</span>
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle3_image %>" />
+                            </a>
+                        </td>
+                        <% } %>
+                        <% if(rectangle4_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle4_url %>" class="ico_e inline_b">
+                                <span class="ico_txt"><%= title2 %>&nbsp</span>
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle4_image %>" />
+                            </a>
+                        </td>
+                        <% } %>
+                        <% if(rectangle5_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle5_url %>" class="ico_e inline_b">
+                                <span class="ico_txt"><%= title3 %>&nbsp</span>
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle5_image %>" />
+                            </a>
+                        </td>
+                        <% } %>
+                        <% if(rectangle6_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle6_url %>" class="ico_e inline_b">
+                                <span class="ico_txt"><%= title4 %>&nbsp</span>
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle6_image %>" />
+                            </a>
+                        </td>
+                        <% } %>
+                    </tr>
+                </table>
+            </div>
+            <% } %>
+
+            <% if (radio==2) { %>
+            <div class="ico_enter">
+                <table width="100%">
+                    <tr>
+                        <% if(rectangle3_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle3_url %>" class="ico_e inline_b">                             
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle3_image %>" />
+                                <span class="ico_txt"><%= title1 %>&nbsp</span>
+                            </a>
+                        </td>
+                        <% } %>
+                        <% if(rectangle4_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle4_url %>" class="ico_e inline_b">                                
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle4_image %>" />
+                                <span class="ico_txt"><%= title2 %>&nbsp</span>
+                            </a>
+                        </td>
+                        <% } %>
+                        <% if(rectangle5_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle5_url %>" class="ico_e inline_b">                             
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle5_image %>" />
+                                <span class="ico_txt"><%= title3 %>&nbsp</span>
+                            </a>
+                        </td>
+                        <% } %>
+                        <% if(rectangle6_image) {%>
+                        <td align="center">
+                            <a href="<%= rectangle6_data %>" class="ico_e inline_b">                              
+                                <img src="../data/upload/mobile/special/s0/<%= rectangle6_image %>" />
+                                <span class="ico_txt"><%= title4 %>&nbsp</span>
+                            </a>
+                        </td>
+                        <% } %>
+                    </tr>
+                </table>
+            </div>
+            <% } %>
+
+
+        </script>
+        <script type="text/html" id="home6">
+            <div class="index_block home6">
+                <% if (title) { %>
+                <div class="title"><%= title %></div>
+                <% } %>
+                <div class="content">
+                    <% for (var i in item) { %>
+                    <div class="item_border " style="border: 1px solid #e5e5e5;font-size: 16px;margin-bottom: 2px;">
+                        <a href="<%= item[i].url %>" class="home6-a"style="">
+                            <img src="<%= item[i].image %>" alt="" style="height:150px; margin: 0 auto; width:100%; max-width:400px;" >
+                            <% if(item[i].goods_name) {%>
+                            <span class=" goods-item-name" style="line-height: 24px;"><%= item[i].goods_name %></span>
+                            <% } %>
+                            <% if(item[i].goods_price) {%>
+                            <span  class="flt_r goods-item-price" style="border-top: dotted 0px #D1D1D1;">￥<%= item[i].goods_price %></span>
+                            <% } %>
+                        </a>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="goods">
+            <div class="index_block goods">
+                <% if (title) { %>
+                <div class="title"><%= title %></div>
+                <% } %>
+                <div class="content">
+                    <% for (var i in item) { %>
+                    <div class="goods-item">
+                        <a href="tmpl/product_detail.html?goods_id=<%= item[i].goods_id %>">
+                            <div class="goods-item-pic"><img src="<%= item[i].goods_image %>" alt=""></div>
+                            <div class="goods-item-name"><%= item[i].goods_name %></div>
+                            <div class="goods-item-price">￥<%= item[i].goods_promotion_price %></div>
+                        </a>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </script>
+        <!--zz@newland 修改结束-->
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/zepto.min.js"></script>
+        <script type="text/javascript" src="js/template.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/swipe.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/tmpl/footer.js"></script>
+        <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="js/jquery.slides.min.js"></script>
+    </body>
 </html>

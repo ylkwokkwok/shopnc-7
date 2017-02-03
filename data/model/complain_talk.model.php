@@ -1,11 +1,6 @@
 <?php 
 /**
- * 投诉对话模型 
- *
- * 
- *
- *
- 
+ * 投诉对话模型
  */
 defined('InShopNC') or exit('Access Invalid!');
 class complain_talkModel{

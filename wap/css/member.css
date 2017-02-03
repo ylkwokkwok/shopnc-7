@@ -1,8 +1,16 @@
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/12     **/
+/* 修改整体颜色风格     **/
+/* lyq@newland 修改结束 **/
+
 /*header*/
-.header-wrap{position: relative;background: #D9434E;z-index: 8888;height: 50px;}
+
+.head_img{background:#6fbb15;padding: 8% 0 20% 0;position:relative;}
+
+.header-wrap{position: relative;background: #fff;z-index: 8888;height: 50px;}
 .header-back{position: absolute;top: 8px;left: 6px;width: 30px;height: 32px;}
-.header-back span{width: 38px;height: 38px;text-indent:-9999px;background-position: -76px 2px;}
-.header-wrap h2{height: 50px;line-height: 50px;font-size: 16px;color: #fff;text-align: center;}
+.header-back span{width: 20px;height: 38px;text-indent:-9999px;background-position: -76px 2px;}
+.header-wrap h2{height: 50px;line-height: 50px;font-size: 16px;color: #333;margin-left: 50px;}
 .i-main-opera{position: absolute;top: 8px;right: 7px;width: 37px;height: 37px;}
 .i-main-opera span{width: 36px;height: 36px;background-position: 0px 0px;}
 .main-opera-pannel{border-bottom:1px solid #d0cece;background-color: #fff;display:none;}
@@ -18,7 +26,7 @@
 .main-op-warp .quarter.current .i-cart{background-position:-63px -124px;}
 .main-op-warp .quarter.current .i-mine{background-position:0px -161px;}
 .main-op-warp .quarter p{color: #666666;font-size: 14px;}
-.main-op-warp .quarter.current p{color: #D9434E;}
+.main-op-warp .quarter.current p{color: #6fbb15;}
 
 .input-30,.input-40{vertical-align: middle;font-size: 12px;-webkit-appearance:none;text-indent: 10px;width:100%;border:1px solid #9f9f9f;}
 .input-30{height: 30px;line-height: 30px\9;}
@@ -29,13 +37,17 @@
 /*login*/
 .login-form{padding: 10px;}
 .login-form span{display: block;margin-top: 15px;}
-.l-btn-login{height: 40px;line-height: 40px;color: #fff;background: #D9434E;width: 100%;display: block;text-align: center;}
+.l-btn-login{height: 40px;line-height: 40px;color: #fff;background: #6fbb15;width: 100%;display: block;text-align: center;}
 
 
 .member-body .header-back{display: none;}
 .m-top,.m-center{padding: 10px;background: #f5f5f5;}
-.m-avatar{width: 100px;height: 100px;overflow: hidden;text-align: center;border:1px solid #999;background: #fff;}
-.m-avatar img{width: 100px;height: 100px;}
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/17     **/
+/* 个人中心头像         **/
+.m-avatar{width: 96px;height: 96px;overflow: hidden;text-align: center;border:1px solid #999;background: #fff;margin-top:1px}
+.m-avatar img{width: 96px;height: 96px;}
+/* lyq@newland 修改结束 **/
 .m-infor{margin-left: 10px;}
 .m-jifen,.m-yue{display:inline-block;padding: 5px 15px;background:#fff;float: left;text-align: center;}
 .m-jifen span,.m-yue span{display:block;}
@@ -48,29 +60,31 @@
 .favorites-list,.address-list,.order-list,.order-detail,.views-list{padding: 10px;}
 .favorites-list li,.views-list li{border-bottom: 1px solid #e8e5e5;padding: 5px 0px;}
 .mf-item{color: #6d6d6d;display: block;}
-.mf-pic,.order-pdpic{float: left;width: 100px;height: 100px;overflow: hidden;display: block;}
+.mf-pic,.order-pdpic{float: left;width: 100px;height: 100px;overflow: hidden;display: block;position:relative;}
 .mf-pic img,.order-pdpic img{width: 100px;height: 100px;}
 .mf-infor,.order-pdinfor{margin-left: 110px;position: relative;}
-.mf-pd-price{color: #D9434E;padding: 8px 0px;}
+.mf-pd-price{color: #6fbb15;padding: 8px 0px;}
 .mf-pd-comment{color: #909090;}
 .mf-infor .i-del{position: absolute;bottom: 0px;right: 0px;}
 
 .order-ldetail{display: block;color: #6d6d6d;}
-
-.address-list li,.order-detail li{border:1px solid #999;margin-top: 10px;}
-.madrt-phone,.madrt-type{color: #D9434E;}
+/* fq@newland 修改开始 **/
+/* 时间：2015/06/17     **/
+/* 列表边距      **/
+.address-list li,.order-detail li{margin-bottom: 10px;}
+/* 修改结束     **/
+.madrt-phone,.madrt-type{color: #6fbb15;}
 .madr-tlt,.madr-cnt,.order-ltlt,.order-dtlt,.order-dcnt{padding: 10px;}
 .madr-cnt,.order-dcnt{border-top:1px solid #999;}
 .madrc-opera{text-align: right;}
 .madrc-opera a{color: #000;}
-.add_address{display: block;height: 40px;line-height: 40px;color: #fff;text-align: center;width: 100%;background:#D9434E;}
+.add_address{display: block;height: 40px;line-height: 40px;color: #fff;text-align: center;width: 100%;background:#6fbb15;}
 .address-opera{margin: 10px;padding:10px;border:1px solid #999;}
 .address-ocnt p,.address-ocnt div.new-select-wp{padding: 5px 0px 5px 30px;}
-.address-ocnt .address-octlt{padding-left:10px;margin:10px 0px;border-left: 3px solid #D9434E; }
+.address-ocnt .address-octlt{padding-left:10px;margin:10px 0px;border-left: 3px solid #6fbb15; }
 
 /*order*/
 .order-ldetail{display: block;color: #6d6d6d;margin:0px 10px;padding:10px 0px;}
-
 .order-lcnt{font-size:14px;}
 .order-ltlt,.order-lcnt-shop{padding:8px 10px;}
 .order-lcnt-shop p{padding:3px 0px;}
@@ -86,7 +100,7 @@
 .gray-order-skin .order-lcnt-shop{border-bottom:solid 1px #ccc;/*background:#ccc;*/}
 
 .ot-finish,.ot-nofinish,.ot-cancel{padding:5px 10px; }
-.ot-finish{color: #D9434E;}
+.ot-finish{color: #6fbb15;}
 .ot-nofinish{color:#6cb248;}
 .ot-cancel{color:#999;}
 
@@ -94,20 +108,20 @@
 .order-d-pdinfor p,.order-pay-type p{padding: 3px 0px;font-size: 14px;}
 .order-pdinfor .grayrightarrow{position: absolute;right: 10px;top: 50%;}
 .order-pdpic{float:left;width:60px;height:60px;overflow:hidden;}
-.order-pdpic,.order-pdpic img{width:60px;height:60px;}
+.order-pdpic,.order-pdpic img{width:60px;height:60px;position: relative;}
 .order-pdinfor p{font-size:14px;}
 .order-shop-total{background:#fffdf7;padding:10px;border-top:1px solid #dedede;text-align:right;}
 .order-shop-total p,.order-ltlt p{padding:2px 0px;}
 .sure-order,.cancel-order, .viewdelivery-order{padding:5px 20px;color:#fff;}
-.cancel-order{background:#D9434E;}
+/*.cancel-order{background:#6fbb15;}
 .sure-order{background:#6cb248;}
-.viewdelivery-order{background:rgb(73, 175, 205);}
+.viewdelivery-order{background:rgb(73, 175, 205);}*/
 
 .order-pay-type{padding-right: 50px;}
 .opt-pay-total{border-top: 1px solid #ddd;}
 
 .order-pd-pdinfor .opdinfor-wp{padding: 10px 0px;font-size: 14px;display: block;color: #6d6d6d;}
-.opdinfor-pic{width: 50px;height: 50px;overflow: hidden;float: left;}
+.opdinfor-pic{width: 50px;height: 50px;overflow: hidden;float: left;position:relative;}
 .opdinfor-pic img{width: 50px;height: 50px;}
 .opdinforw-infor{margin-left: 60px;position: relative;}
 .opdinforw-infor .grayrightarrow{position: absolute;right: 0px;top: 50%;margin-top: -5px;}
@@ -130,4 +144,145 @@
 .voucher-tab li {width:33%; float:left; font-size:1em; line-height:2em; text-align:center; }
 .voucher-tab li a {display: block; color: #999; background:#eee;}
 .voucher-tab li a.current {color: #666; background:#ccc;}
+.order-pdpic img.flt_img{position:absolute; top:0; left:0; width:15px; height:10px;}
+.opdinfor-pic img.flt_img_complain{position:absolute; top:0; left:0; width:15px; height:10px;}
+.mf-pic img.flt_img_favorite{position:absolute; top:0; left:0; width:15px; height:10px;}
 
+/* xsh@newland 添加开始   **/
+/* 时间：2015/06/04        **/
+.gray{margin-top:0px;width:100%;background:#cdcdcd;display: block;}
+.red{background:#F7DDDF;}
+.red p{padding-top:3px;padding-bottom:3px;text-align:center;color:#6D6D6D;}
+.balance_left{display:inline-block;width:50%;text-align:center;float:left;}
+.balance_right{display:inline-block;width:50%;text-align:center;}
+.bal{font-size:1em;color:6D6D6D;}
+.num{ont-family:Arial;color:red;}
+/* xsh@newland 添加结束   **/
+
+.roundedRectangle{ background:#6CB248; padding:0px 6px; width:75px;border-radius: 50px; /*圆角的大小*/  -webkit-border-radius:50px; -moz-border-radius: 50px;/*边框颜色，依次为上、右、下、左-*/ text-align:center;  font-size: .9em;  color:#FFFFFF; margin-top:5px;}  
+.container{width:100%;height:100px; font-size:1em;}
+.container ul{ display: block;-webkit-margin-before: 1em;-webkit-margin-after: 1em;-webkit-margin-start: 0px;-webkit-margin-end: 0px;}
+.container-img{display:block;float:left; padding:0; margin-top:5px;margin-left:2px;}
+.container-mix{ padding-top:10px; margin-left:5px;float:left; width:40%;}
+.container-mix span, .container-mix a{display:block;}
+.container-mix a{ color:#333;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;}
+.container-mix p{margin-top:5px;}
+.clear{ clear:both;}
+.container-peole{height:100px; display:inline-block; margin-right:3px; float:right;}
+.container-peole p{padding-top:10px; text-align:center;}
+.n-center ul{ display: block;
+              -webkit-margin-before: 1em;
+              -webkit-margin-after: 1em;
+              -webkit-margin-start: 0px;
+              -webkit-margin-end: 0px;
+}
+.n-center li{ list-style:none;padding:0px 5px; margin: 0 0 10px 0;}
+.n-center{background: #fff;}
+/* hid_name */
+
+.bubbleInfo { position: relative; top: 0px; left: 0px;}
+.trigger { display:inline-block;}
+.popup { position: absolute; display: none;	z-index: 50; border-collapse: collapse; color:#333; padding:2px 0px; font-size:.7; border-radius:4px;}
+
+/* lyq@newland 添加开始 **/
+/* 时间：2015/06/12     **/
+/* 积分转赠按钮 **/
+.pointsTransfer { font-size:14px;float:right;padding:2px 10px;color:white;background-color:#6fbb15; }
+/* 订单/退货退款列表 检索框样式 **/
+.order-search p.query, .refund-search p.query { font-size: 14px; padding-top: 10px; }
+.order-search p.btn_grid, .refund-search p.btn_grid {text-align:right;margin:10px 2px 2px 0px;}
+.order-search a.btns, .refund-search a.btns {color:#fff;padding:2px 15px;background-color:#6fbb15;display:inline;}
+.order-search input.date_input, .refund-search input.date_input {width:85px;height:25px;border-color:#666666;border-radius:5px;border:solid 1px;}
+.order-search input.normal_input, .refund-search input.normal_input {width:150px;height:25px;border-color:#666;border-radius:5px;border:solid 1px;}
+/* 订单详细 按钮（订单退款、取消退款）**/
+.order-detail-btns {padding: 5px 20px;color:#fff;background-color:#6fbb15}
+/* 文字颜色 **/
+.main-color {color:#6fbb15}
+/* 退货/取消退货/交易投诉 按钮 **/
+.order-opera-btns {color:#fff;padding:3px 10px;background-color:#6fbb15;display:inline;}
+/* 已退 按钮 **/
+.returned_btn {background-color:#6699FF;padding:3px 10px;color:#fff;}
+/* 订单列表 订单操作 按钮 **/
+.order-list-btns {padding: 5px 15px;color:#fff;}
+/* 订单列表 订单详细 按钮 **/
+.view-order-detail {background-color:#FF6666}
+/* 订单列表 订单退款/取消退款 按钮 **/
+/*.refund-order, .undo-refund-order{background-color:#6fbb15}*/
+/* 订单列表 我要评价 按钮 **/
+/*.do_evaluation {background-color:#6CB248}*/
+/* lyq@newland 添加结束 **/
+
+/* fq@newland 添加开始 **/
+/* 时间：2015/06/12    **/
+/* 评价详情            **/
+.comment{width:100%; border-bottom:solid 1px #DED6C9;padding:6px 0px;font-size:14px;}
+.comment_detail{width:100%;}
+.comment p{padding:2px 0px;}
+.comment_tab li{float:left; width:33%; margin-bottom:5px;}
+.comment_tab li a{border-left:1px solid #ded6c9;border-bottom:1px solid #ded6c9;border-top:1px solid #ded6c9; color:#6d6d6d; 
+                  text-align:center;padding:8px;display:block;}
+/* lyq@newland 添加开始 **/
+/* 时间：2015/06/12     **/
+/* 添加选中时的class    **/
+.comment_tab li a.choosen {background-color:#999; color:#fff;}
+/* lyq@newland 添加结束 **/
+.comment_tab li a:active {background-color:#999; color:#fff;} /* 点击激活链接——在你点击该链接之}	*/		
+.comment_tab li a:hover {background-color:#999; color:#fff;}  
+.comment_detail{margin-top:0px;}
+.comment p{padding:5px 0px;}
+/* fq@newland 添加结束 **/
+/* fq@newland 添加开始 **/
+/* 时间：2015/06/15   **/
+/* 商品评价           **/
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/17     **/
+.evaluation_score{padding-left:10px; margin:15px 0px;position:relative;}
+.evaluation_score p{float:left;font-size:13px;}
+.evaluation_0{padding:0;margin:0;}
+.evaluation_1{width:100%; padding:5px 0px; border-bottom: solid 1px #ccc;}
+.evaluation_1_nb{width:100%; padding:5px 0px;}
+.evaluation_1 p, .evaluation_1_nb p{font-size:13px; float:left;margin-bottom:5px;}
+.evaluation_0 p{font-size:14px;color:#6d6d6d;margin-right: 2px;}
+/* lyq@newland 修改结束 **/
+/* fq@newland 添加结束 **/
+/* lyq@newland 添加开始 **/
+/* 时间：2015/06/17     **/
+/* 默认textarea大小    **/
+.nl-textarea {height:53px;width:100%;resize:none;border-radius:5px;}
+.eval_stars {position:absolute;background-size: 100%;}
+/* lyq@newland 添加结束 **/
+
+/* fq@newland 添加开始 **/
+/* 时间：2015/06/17     **/
+/* pay背景颜色    **/
+.pay{background-color: #6CB248;}
+/* fq@newland 添加结束 **/
+/* fq@newland 添加开始 **/
+/* 时间：2015/07/20   **/
+/*  个人中心           */
+.top{border:1px #ccc solid;background:#eee;height:35px;line-height:35px;padding-left:5px;font-size:.9em;}
+.top a {color:#6d6d6d;}
+.m-center h2{height:30px; line-height:30px;padding-left:5px;border-bottom:#ccc 1px solid;font-size:.9em;background-color:#ddd;}
+.bottom{border:1px #ccc solid;background:#eee;height:60px;}
+.bottom_panel{border:1px #ccc solid;background:#eee;height:80px;}
+.bottom_1{display:inline-block;width:33%;text-align:center;float:left;padding-top:7px;}
+.bottom_4{display:inline-block;width:25%;text-align:center;float:left;font-size:.8em;}
+.bottom a{color:#6d6d6d; font-size:.9em;}
+.bottom_panel a{color:#6d6d6d; font-size:.9em;}
+.ft12{ font-size:12px;}
+/* fq@newland 添加结束 **/
+
+.ftclr-6d{color:#6d6d6d;}
+/* fq@newland待支付、待收货红点显示 开始**/
+/* 时间：2015/07/24                   **/
+.position{ position:relative;}
+.ab{ position:absolute;}
+/* fq@newland待支付、待收货红点显示 结束*/
+ #hidebg { position:absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;
+      background-color:#000;
+      width:100%;  /*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+      filter:alpha(opacity=60);  /*设置透明度为60%*/
+      opacity:0.6;  /*非IE浏览器下设置透明度为60%*/
+      display:none; /* http://www.jb51.net */
+      z-Index:2;}
+   #hidebox { position:absolute;width:200px;height:200px;top:0;left:0;right:0;bottom:0;margin:auto;background-color:#fff;display:none;cursor:pointer;z-Index:3;}

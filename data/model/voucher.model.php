@@ -1,7 +1,6 @@
 <?php
 /**
  * 代金券模型
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class voucherModel extends Model {

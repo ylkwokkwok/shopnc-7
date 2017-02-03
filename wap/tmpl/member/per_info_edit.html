@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>编辑信息</title> 
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/member.css">
+        <link rel="stylesheet" type="text/css" href="../../css/child.css">
+        <!--<link rel="stylesheet" type="text/css" href="../css/nl_cart.css">-->
+    </head>
+    <body>
+        <header id="header"></header>
+        <div class="cart-list-wp">
+            <div id="cart-list-wp"></div>
+        </div>
+
+        <div class="main per_bg" >
+            <div class="per_info">
+                <span class="flt_l per_l head">头像</span>
+                <span class="flt_r per_r"><img src="" id="avatar" /></span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <input type="text" placeholder="昵称" id="user_name" name="user_name" maxlength="50">
+            </div>  
+            <div class="per_info">
+                <span class="flt_l per_l">新鲜号</span>
+                <span class="flt_r per_r" id="luck_num"></span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <input type="text" placeholder="姓名" id="true_name" name="true_name" maxlength="20">
+            </div>
+            <div class="per_info">
+                <input type="email" placeholder="邮箱" id="member_email" name="member_email" maxlength="100" >
+            </div>
+            <div class="per_info">
+                <input type="text" placeholder="手机" id="member_mobile" name="member_mobile" maxlength="11">
+            </div>    
+            <div class="per_info">
+                <span class="flt_l sex">性别</span>
+                <input type="radio" name="sex" value="1" id="sex1" /><span class="flt_l sex">男</span>
+                <input type="radio" name="sex" value="2" id="sex2"/><span class="flt_l sex">女</span>
+                <div class="clean"></div>
+            </div>
+            <div class="error-tips"></div>
+            <br><br><br><br>
+            <div class="" style="position: fixed;bottom:0px;width: 100%;background: #fff; height:110px;">
+                <a href="#" class="add_done">提交信息</a>
+            </div>
+        </div>
+        <div class="footer" id="footer"></div>
+
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../../js/config.js"></script>
+        <script type="text/javascript" src="../../js/template.js"></script>
+        <script type="text/javascript" src="../../js/common.js"></script>
+        <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/per_info_edit.js"></script>
+    </body>
+</html>

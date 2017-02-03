@@ -1,11 +1,6 @@
 <?php
 /**
  * 购买行为
- *
- *
- *
- *
- * by abc  www.abc.com 开发
  */
 defined('InShopNC') or exit('Access Invalid!');
 class buyLogic {
@@ -391,20 +386,45 @@ class buyLogic {
         if (empty($input_buy_items)) {
             throw new Exception('所购商品无效');
         }
-
-        //验证收货地址
-        $input_address_id = intval($post['address_id']);
-        if ($input_address_id <= 0) {
-            throw new Exception('请选择收货地址');
-        } else {
-            $input_address_info = Model('address')->getAddressInfo(array('address_id'=>$input_address_id));
-            if ($input_address_info['member_id'] != $this->_member_info['member_id']) {
+        if(APP_ID == 'shop'){
+            //验证收货地址
+            $input_address_id = intval($post['address_id']);
+            if ($input_address_id <= 0) {
                 throw new Exception('请选择收货地址');
+            } else {
+                $input_address_info = Model('address')->getAddressInfo(array('address_id'=>$input_address_id));
+                if ($input_address_info['member_id'] != $this->_member_info['member_id']) {
+                    throw new Exception('请选择收货地址');
+                }
             }
+            //收货地址城市编号
+            $input_city_id = intval($input_address_info['city_id']);
+        }else{
+            /* lyq@newland 修改开始 **/
+            /* 时间：2015/08/20 - 2015/08/21 **/
+            // 快速订奶接口购物 或 商城接口选择自取 时
+            if (!empty($post['tel']) || !empty($post['self_receive_spot_cd'])) {
+                // 地址信息为空
+                $input_address_info = array();
+                // 收货地址城市编号 大连
+                $input_city_id = 108;
+            }else {
+                // 正常商城入口进入
+                //验证收货地址
+                $input_address_id = intval($post['address_id']);
+                if ($input_address_id <= 0) {
+                    throw new Exception('请选择收货地址');
+                } else {
+                    $input_address_info = Model('address')->getAddressInfo(array('address_id'=>$input_address_id));
+                    if ($input_address_info['member_id'] != $this->_member_info['member_id']) {
+                        throw new Exception('请选择收货地址');
+                    }
+                }
+                //收货地址城市编号
+                $input_city_id = intval($input_address_info['city_id']);
+            }
+            /* lyq@newland 修改结束 **/
         }
-
-        //收货地址城市编号
-        $input_city_id = intval($input_address_info['city_id']);
 
         //是否开增值税发票
         $input_if_vat = $this->buyDecrypt($post['vat_hash'], $this->_member_info['member_id']);
@@ -456,6 +476,17 @@ class buyLogic {
             }
         }
 
+        /* lyq@newland 添加开始 **/
+        /* 时间：2015/07/02    **/
+        if(APP_ID == 'mobile' || APP_ID == 'wx'){
+            // 保存数据 推广积分与现金比例
+            $this->_order_data['points_cash_ratio'] = intval($post['points_cash_ratio']);
+            // 保存数据 推广积分订单抵扣比例
+            $this->_order_data['order_cash_ratio'] = floatval($post['order_cash_ratio']);
+            // 保存数据 当前使用积分
+            $this->_order_data['extend_points'] = intval($post['extend_points']);
+        }
+        /* lyq@newland 添加结束 **/
         //保存数据
         $this->_order_data['input_buy_items'] = $input_buy_items;
         $this->_order_data['input_city_id'] = $input_city_id;
@@ -486,6 +517,19 @@ class buyLogic {
 
             //购物车列表 [得到最新商品属性及促销信息]
             $cart_list = $this->_logic_buy_1->getGoodsCartList($cart_list);
+			/* lyq@newland 添加开始 **/
+            /* 时间：2015/09/18     **/
+            // 自取时
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                if (!empty($post['self_receive_spot_cd'])) {
+                    // 循环购物车商品信息
+                    foreach ($cart_list as $key => $value) {
+                        // 获取商品自取金额
+                        $cart_list[$key]['goods_price'] = $this->get_self_price($value);
+                    }
+                }
+            }
+            /* lyq@newland 添加结束 **/
 
             //商品列表 [优惠套装子商品与普通商品同级罗列]
             $goods_list = $this->_getGoodsList($cart_list);
@@ -503,6 +547,16 @@ class buyLogic {
             if(empty($goods_info)) {
                 throw new Exception('商品已下架或不存在');
             }
+            /* lyq@newland 添加开始 **/
+            /* 时间：2015/09/18     **/
+            // 自取时
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                if (!empty($post['self_receive_spot_cd'])) {
+                    // 获取商品自取金额
+                    $goods_info['goods_price'] = $this->get_self_price($goods_info);
+                }
+            }
+            /* lyq@newland 添加结束 **/
 
             //进一步处理数组
             $store_cart_list = array();
@@ -546,6 +600,22 @@ class buyLogic {
         }
 
     }
+	/* lyq@newland 添加开始 **/
+    /* 时间：2015/09/18     **/
+    /**
+     * 获取商品自取金额
+     * @param type $goods_info
+     * @return type
+     */
+    private function get_self_price($goods_info) {
+        // 根据商品ID查询商品共通ID
+        $goods_commonid = Model()->table('goods')->getfby_goods_id($goods_info['goods_id'], 'goods_commonid');
+        // 根据商品共通ID查询商品自取优惠金额
+        $goods_self_discount = Model()->table('goods_common')->getfby_goods_commonid($goods_commonid, 'goods_self_discount');
+        // 扣除商品优惠金额并返回
+        return floatval($goods_info['goods_price']) - floatval($goods_self_discount);
+    }
+    /* lyq@newland 添加结束 **/
 
     /**
      * 得到购买相关金额计算等信息
@@ -556,6 +626,18 @@ class buyLogic {
         $store_cart_list = $this->_order_data['store_cart_list'];
         $input_voucher_list = $this->_order_data['input_voucher_list'];
         $input_city_id = $this->_order_data['input_city_id'];
+		/* lyq@newland 添加开始 **/
+        /* 时间：2015/07/03    **/
+        // 推广积分相关信息
+        if(APP_ID == 'mobile' || APP_ID == 'wx'){
+            $ep_info = array(
+                'points_cash_ratio' => $this->_order_data['points_cash_ratio'],
+                'order_cash_ratio'  => $this->_order_data['order_cash_ratio'],
+                'extend_points'     => $this->_order_data['extend_points']
+            );
+        }
+
+        /* lyq@newland 添加结束 **/
 
         //商品金额计算(分别对每个商品/优惠套装小计、每个店铺小计)
         list($store_cart_list,$store_goods_total) = $this->_logic_buy_1->calcCartList($store_cart_list);
@@ -578,8 +660,18 @@ class buyLogic {
         //计算每个店铺运费
         list($need_calc_sid_list,$cancel_calc_sid_list) = $this->_logic_buy_1->getStoreFreightDescList($store_final_goods_total);
         $freight_list = $this->_logic_buy_1->getStoreFreightList($goods_list,array_keys($cancel_calc_sid_list));
-        $store_freight_total = $this->_logic_buy_1->calcStoreFreight($freight_list,$input_city_id);
-
+		if(APP_ID == 'shop'){
+            $store_freight_total = $this->_logic_buy_1->calcStoreFreight($freight_list,$input_city_id);
+        }else{
+            /* xsh@newland 添加开始 **/
+            /* 时间：2016/03/14    **/
+            $store_freight_total = $this->_logic_buy_1->calcStoreFreightMilk($freight_list, $this->_post_data['self_receive_spot_cd']);
+            /* xsh@newland 添加结束 **/
+            /* lyq@newland 添加开始 **/
+            /* 时间：2015/07/03    **/
+            list($store_final_goods_total, $store_ep_total) = $this->_logic_buy_1->reCalcGoodsTotal($store_final_goods_total, $ep_info, 'extend_points');
+            /* lyq@newland 添加结束 **/
+        }
         //计算店铺最终订单实际支付金额(加上运费)
         $store_final_order_total = $this->_logic_buy_1->reCalcGoodsTotal($store_final_goods_total,$store_freight_total,'freight');
 
@@ -594,7 +686,13 @@ class buyLogic {
         } else {
             list($store_cart_list,$goods_buy_quantity,$store_mansong_rule_list) = $append_premiums_to_cart_list;
         }
-
+        if(APP_ID == 'mobile' || APP_ID == 'wx'){
+            /* lyq@newland 添加开始 **/
+            /* 时间：2015/07/03    **/
+            // 保存数据 店铺推广积分抵扣情况
+            $this->_order_data['store_ep_total'] = $store_ep_total;
+            /* lyq@newland 添加结束 **/
+        }
         //保存数据
         $this->_order_data['store_goods_total'] = $store_goods_total;
         $this->_order_data['store_final_order_total'] = $store_final_order_total;
@@ -648,7 +746,66 @@ class buyLogic {
         }
     
         //收货人信息
-        list($reciver_info,$reciver_name) = $this->_logic_buy_1->getReciverAddr($input_address_info);
+        if(APP_ID == 'shop'){
+            list($reciver_info,$reciver_name) = $this->_logic_buy_1->getReciverAddr($input_address_info);
+        }else{
+            /* lyq@newland 修改开始 **/
+            /* 时间：2015/08/20 - 2015/08/21 **/
+            /* 时间：2015/09/18     **/
+            /* 订单收货信息相关     **/
+            // 正常商城购物 选择 自取
+            if (!empty($this->_post_data['self_receive_spot_cd']) && empty($this->_post_data['tel'])) {
+                // 获取地址信息
+                $address_info = Model('address')->getAddressInfo(array('address_id'=>$this->_post_data['address_id']));
+                if ($address_info['member_id'] != $this->_member_info['member_id']) {
+                    throw new Exception('请选择收货地址');
+                }
+                $sql = 'SELECT ';
+                $sql.= '    * ';
+                $sql.= 'FROM ';
+                $sql.= '    `mst_self_receive` ';
+                $sql.= 'WHERE ';
+                $sql.= '    self_receive_spot_cd = "'.$this->_post_data['self_receive_spot_cd'].'"';
+                // 获取自取点信息
+                $self_result = Model()->query($sql);
+                $reciver_info['phone'] = trim($address_info['mob_phone'].($address_info['tel_phone'] ? ','.$address_info['tel_phone'] : null),',');
+                $reciver_info['mob_phone'] = $address_info['mob_phone'];
+                $reciver_info['tel_phone'] = $address_info['tel_phone'];
+                $reciver_info['address'] = $self_result[0]['address'];
+                $reciver_info['area'] = $self_result[0]['address'];
+                $reciver_info['street'] = '';
+                $reciver_info = serialize($reciver_info);
+                $reciver_name = $address_info['true_name'];
+            }
+            // 快速订奶入口购物
+            else if (!empty($this->_post_data['tel'])) {
+                // 自取点编号
+                $self_receive_spot_cd = empty($this->_post_data['self_receive_spot_cd']) ? '' : $this->_post_data['self_receive_spot_cd'];
+                $sql = 'SELECT ';
+                $sql.= '    * ';
+                $sql.= 'FROM ';
+                $sql.= '    `mst_self_receive` ';
+                $sql.= 'WHERE ';
+                $sql.= '    self_receive_spot_cd = "'.$self_receive_spot_cd.'"';
+                // 获取自取点信息
+                $self_result = Model()->query($sql);
+                $reciver_info['phone'] = $this->_post_data['tel'];
+                $reciver_info['mob_phone'] = $this->_post_data['tel'];
+                $reciver_info['tel_phone'] = '';
+                // 快速订奶入口进入时，自取订奶的收货地址填写为自取点地址，到户订奶的收货地址填写为用户填写的地址
+                $reciver_info['address'] = empty($self_receive_spot_cd) ? $this->_post_data['address'] : $self_result[0]['address'];
+                $reciver_info['area'] = empty($self_receive_spot_cd) ? $this->_post_data['address'] : $self_result[0]['address'];
+                $reciver_info['street'] = '';
+                $reciver_info = serialize($reciver_info);
+                $reciver_name = $this->_post_data['name'];
+            }
+            // 正常商城购物 配送 有收货数据
+            else {
+                //收货人信息
+                list($reciver_info,$reciver_name) = $this->_logic_buy_1->getReciverAddr($input_address_info);
+            }
+            /* lyq@newland 修改结束 **/
+        }
 
         foreach ($store_cart_list as $store_id => $goods_list) {
     
@@ -690,6 +847,15 @@ class buyLogic {
 				$order['payment_code']="offline";
 			}
 			//中山小修改货到付款bug<<<
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                /* lyq@newland 添加开始 **/
+                /* 时间：2015/07/03    **/
+                // 订单数据 该订单用户所使用的推广积分
+                $order['extend_points'] = $store_ep_total[$store_id];
+                // 订单数据 推广积分与现金比例
+                $order['points_cash_ratio'] = $points_cash_ratio;
+                /* lyq@newland 添加结束 **/
+            }
             $order_id = $model_order->addOrder($order);
             if (!$order_id) {
                 throw new Exception('订单保存失败[未生成订单数据]');
@@ -740,6 +906,14 @@ class buyLogic {
                     $order_goods[$i]['goods_num'] = $goods_info['goods_num'];
                     $order_goods[$i]['goods_image'] = $goods_info['goods_image'];
                     $order_goods[$i]['buyer_id'] = $member_id;
+					if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                        /* wqw@newland 添加开始   　**/
+                        /* 时间：2015/06/18        **/
+                        /* 功能ID：               **/
+                        // 计算利润额
+                        $order_goods[$i]['goods_margin'] = (floatval($goods_info['goods_price']) - floatval($goods_info['goods_costprice']));
+                        /* wqw@newland 添加结束   **/
+                    }
                     if ($goods_info['ifgroupbuy']) {
                         $ifgroupbuy = true;
                         $order_goods[$i]['goods_type'] = 2;
@@ -840,6 +1014,16 @@ class buyLogic {
      *
      */
     private function _createOrderStep5() {
+        if(APP_ID == 'mobile' || APP_ID == 'wx'){
+            /* lyq@newland 添加开始 **/
+            /* 时间：2015/07/03    **/
+            // 使用推广积分抵扣
+            if ($this->_order_data['extend_points'] != 0) {
+                // 扣除用户推广积分
+                $this->_logic_buy_1->epPay($this->_order_data['extend_points'], $this->_member_info['member_id']);
+            }
+            /* lyq@newland 添加结束 **/
+        }
         if (empty($this->_post_data['password'])) return ;
         $buyer_info	= Model('member')->getMemberInfoByID($this->_member_info['member_id']);
         if ($buyer_info['member_paypwd'] == '' || $buyer_info['member_paypwd'] != md5($this->_post_data['password'])) return ;
@@ -1060,5 +1244,57 @@ class buyLogic {
         } else {
             return false;
         }
+    }
+	/**
+     * 奶站运费计算 
+     * 
+     * 选择不同地区时，异步处理并返回每个店铺总运费以及本地区是否能使用货到付款
+     * 如果店铺统一设置了满免运费规则，则运费模板无效
+     * 如果店铺未设置满免规则，且使用运费模板，按运费模板计算，如果其中有商品使用相同的运费模板，则两种商品数量相加后再应用该运费模板计算（即作为一种商品算运费）
+     * 如果未找到运费模板，按免运费处理
+     * 如果没有使用运费模板，商品运费按快递价格计算，运费不随购买数量增加
+     * 
+     * 
+     * @author xsh@newland 2016/03/14  
+     */
+    public function changeAddrMilk($freight_hash, $city_id, $self_receive_spot_cd, $member_id) {
+        //将hash解密，得到运费信息(店铺ID，运费,运费模板ID,购买数量),hash内容有效期为1小时
+        $freight_list = $this->buyDecrypt($freight_hash, $member_id);
+        //算运费
+        $store_freight_list = $this->_logic_buy_1->calcStoreFreightMilk($freight_list, $self_receive_spot_cd);
+        $data = array();
+        $data['state'] = empty($store_freight_list) ? 'fail' : 'success';
+        $data['content'] = $store_freight_list;
+    
+        //$offline_store_id_array = Model('store')->getOwnShopIds();
+        $order_platform_store_ids = array();
+    
+        if (is_array($freight_list['iscalced']))
+        foreach (array_keys($freight_list['iscalced']) as $k)
+        //if (in_array($k, $offline_store_id_array))
+            $order_platform_store_ids[$k] = null;
+    
+        if (is_array($freight_list['nocalced']))
+        foreach (array_keys($freight_list['nocalced']) as $k)
+        //if (in_array($k, $offline_store_id_array))
+            $order_platform_store_ids[$k] = null;
+    
+        //if ($order_platform_store_ids) {
+            $allow_offpay_batch = Model('offpay_area')->checkSupportOffpayBatch($self_receive_spot_cd, array_keys($order_platform_store_ids));
+    /*
+            //JS验证使用
+            $data['allow_offpay'] = array_filter($allow_offpay_batch) ? '1' : '0';
+            $data['allow_offpay_batch'] = $allow_offpay_batch;
+        } else {*/
+            //JS验证使用
+            $data['allow_offpay'] = array_filter($allow_offpay_batch) ? '1' : '0';
+            $data['allow_offpay_batch'] = $allow_offpay_batch;
+        //}
+
+        //PHP验证使用
+        $data['offpay_hash'] = $this->buyEncrypt($data['allow_offpay'] ? 'allow_offpay' : 'deny_offpay', $member_id);
+        $data['offpay_hash_batch'] = $this->buyEncrypt($data['allow_offpay_batch'], $member_id);
+
+        return $data;
     }
 }

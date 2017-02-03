@@ -1,14 +1,8 @@
 <?php
 /**
  * 积分及积分日志管理
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
-
 class pointsModel {
 	/**
 	 * 操作积分

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置送奶计划</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+    <header id="header"></header>
+    <div class="address-list" id="customer_list"></div>
+    <div class="footer" id="footer"></div>
+    <script type="text/html" id="scustomer_list">
+    <%if(customer_list.length>0){%>
+    <ul>
+        <%for(var i=0;i<customer_list.length;i++){%>
+        <li customer_cd="<%=customer_list[i].customer_cd%>">
+            <p class="madr-tlt clearfix">
+                <span class="madrt-name">客户姓名：<%=customer_list[i].customer_name %></span>
+                <%if (customer_list[i].c_address != '') {%>
+                    <span style="color:brown" class="fright">&nbsp;&nbsp;配送奶卡</span>
+                <%}else{%>
+                    <span style="color:cornflowerblue" class="fright">&nbsp;&nbsp;电子奶卡</span>
+                <%}%>
+            </p>
+            <div class="madr-cnt">
+                <p>自取点：<%=customer_list[i].self_receive_nm %></p>
+                <p>地　址：<%=customer_list[i].sr_address %></p>
+                <p>电　话：<%=customer_list[i].sr_tel %></p>
+            </div>
+        </li>
+        <%}%>
+    </ul>
+    <%}else{%>
+    <div class="no-record">
+        暂无记录
+    </div>
+    <%}%>
+    </script>    
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/milk_plan.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+</body>
+</html>

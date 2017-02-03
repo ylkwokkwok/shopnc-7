@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>订奶</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/milk/style.css">
+</head>
+
+<body>
+    <div class="milk_top" style="margin-top:0px">奶卡信息</div>
+    <div id="card_list">
+    </div>
+    <div class="send" style="padding:20px 0 0 0;">
+        <span class="notice" style="text-align: center;padding:0;margin:0;font-size: 1.2em">总金额：<span id="total_price">0.00</span> 元</span>
+    </div>
+    <div class="milk_top">配送信息</div>
+    <div class="send">
+        <span class="notice">※ 支付成功后，会推送给您电子奶卡。</span>
+        <div style="clear:both;"></div>
+        <span>辽宁省大连市</span>
+        <input type="text" value="" class="sque disable_input" id="area" readonly maxlength="5" />
+        <span>区</span>
+        <input type="text" value="" class="address disable_input" id="address" readonly maxlength="30" />
+    </div>
+    <div class="milk_top">备注信息</div>
+         <div style="text-align:center">
+              <textarea name="remark" rows="2" cols="20" id="remark" style="height:60px;width:320px;" maxlength="100" ></textarea>
+         </div>
+    <div class="milk_top">客户信息</div>
+    <div class="user">
+        <div class="user">
+            <span>姓名：</span>
+            <input type="text" name="receiver_name" value="" maxlength="8" />
+        </div>
+        <div class="call">
+            <span>电话：</span>
+            <input type="text" name="receiver_tel" value="" maxlength="15" />
+            <input type="hidden"  value="1" id="flag"  name="flag"/>
+        </div>
+    </div>
+    <div class="pay">
+        <div class="pay_wechat">微信支付</div>
+    </div>
+    <div id="wxpay_loading_mask" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;background-color:white;opacity:.80;display:none;"></div>
+    <div id="wxpay_loading" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:none;">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    <script type="text/html" id="cards">
+        <% if (product_list != null) { %>
+            <% for (var i in product_list) { %>
+                <div class="cards" milk_cd="<%=product_list[i].milk_cd%>">
+                    <div class="milk_card img_card">
+                        <img src="<%=SiteUrl%>/data/upload/shop/common/category-pic-<%=product_list[i].milk_cd%>.jpg" alt="<%=product_list[i].milk_name%>" />
+                    </div>
+                    <div class="milk_card milk_ymd">
+                          <% for (var j in product_list[i].goods) { %>
+                                    <div class="month">
+                                        <span class="timing"><%=product_list[i].goods[j].Constant_Name %></span>
+                                        <input type="text" class="card_num" goods_id="<%=product_list[i].goods[j].goods_id%>" milk_card_type="<%=product_list[i].goods[j].milk_card_type%>"  goods_price="<%=product_list[i].goods[j].goods_price%>" name="month" value="" maxlength="2" />
+                                    </div>
+                            <% } %>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            <% } %>
+        <% } %>
+    </script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../js/config.js"></script>
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/milk/common.js"></script>
+    <script type="text/javascript" src="../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../js/milk/order_milk_card.js"></script>
+</body>
+</html>

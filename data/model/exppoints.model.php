@@ -1,11 +1,8 @@
 <?php
 /**
  * 经验值及经验值日志管理
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
-
 class exppointsModel extends Model{
 	/**
 	 * 操作经验值

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('NlWxShop') or exit('Access Invalid!');?>
 <script type="text/javascript" src="<?php echo NODE_SITE_URL;?>/socket.io/socket.io.js" charset="utf-8"></script>
 <script type="text/javascript">
 var connect_url = "<?php echo NODE_SITE_URL;?>";

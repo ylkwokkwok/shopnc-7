@@ -1,10 +1,6 @@
 <?php
 /**
  * 手机端令牌模型
- *
- * 
- *
- *
  */
 
 defined('InShopNC') or exit('Access Invalid!');

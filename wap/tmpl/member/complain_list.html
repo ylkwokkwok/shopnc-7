@@ -1,0 +1,123 @@
+<!doctype html>
+<!--
+/* lyq@newland 添加   **/
+/* 时间：2015/05/27   **/
+// SHOP009 交易投诉列表
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/10   **/
+/* wap端loading画面   **/
+// 隐藏页面内容
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/11   **/
+// 页面样式优化
+
+product_list.html
+/* fq@newland 修改   **/
+/* 时间：2015/06/16   **/
+// 下拉菜单高度设置
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投诉列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+    <header id="header"></header>
+    <div class="order-search-wp address-opera" id="order-search" style="padding: 5px 10px;margin-bottom: 0px;display: none;">
+        <div class="address-ocnt">
+            <div class="address-octlt">投诉状态
+                <select name="select_complain_state" id="select_complain_state" style="height:28px;">
+                    <option value="0">选择状态</option>
+                    <option value="1">进行中</option>
+                    <option value="2">已完成</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="order-list-wp" id="order-list"></div>
+    <script type="text/html" id="order-list-tmpl">
+        <div class="order-list">
+            <%if (list != null && list.length >0){%>
+                <ul>
+                    <%for(var i = 0;i<list.length;i++){
+                        var goods = goods_list[list[i].order_goods_id];
+                    %>
+                        <li class="gray-order-skin <%if(i>0){%>mt10<%}%>">
+                            <div class="order-ltlt">
+                                <p>
+                                    投诉时间：
+                                   <%=$getLocalTime(list[i].complain_datetime)%>
+                                </p>
+                            </div>
+                            <div class="order-lcnt">
+                                <div class="order-lcnt-shop">
+                                    <p>投诉主题：<%=list[i].complain_subject_content%></p>
+                                    <p>投诉状态：<%=list[i].complain_state_content%></p>
+                                </div>
+                                <div class="order-shop-pd">
+                                    <div style="text-align:right">
+                                        <a class="order-ldetail clearfix" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=goods.goods_id%>">
+                                            <span class="order-pdpic">
+                                                <img src="<%=goods.image_60_url%>"/>
+                                                <!-- wqw@newland 修改开始 时间：2015/06/03 功能ID:ADMIN006-->
+                                                <!-- zly@newland 修改开始 时间：2015/08/10 隐藏VIP标示-->
+<!--                                                <% if(in_array(goods.store_id,stroe_vip_list) != -1){%>
+                                                <img src="<%=SiteUrl%>/data/upload/shop/store/goods/1/goods_vip.jpg" class="flt_img"/>
+                                                <%}%>-->
+                                                <!-- zly@newland 修改结束-->
+                                                <!-- wqw@newland 修改结束-->
+                                            </span>
+                                            <div class="order-pdinfor">
+                                                <p><%=goods.goods_name%></p>
+                                                <p>
+                                                    商家：<span class="clr-d94"><%=list[i].accused_name%></span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="order-shop-total">
+                                    <p class="mt5" style="font-size: 14px;">
+                                        <a href="<%=WapSiteUrl%>/tmpl/member/complain_detail.html?complain_id=<%=list[i].complain_id%>" class="sure-order view-complain" id="" style="padding: 5px 15px;">查看</a>
+                                        <%if(list[i].complain_state == 10){%>
+                                        <a href="javascript:void(0)" complain_id="<%=list[i].complain_id%>" class="cancel-order cancel-complain" id="" style="padding: 5px 15px;">取消</a>
+                                        <%}%>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    <%}%>
+                </ul>
+                <div class="pagination mt10">
+                    <a href="javascript:void(0);" class="pre-page <%if(curpage <=1 ){%>disabled<%}%>">上一页</a>
+                    <a href="javascript:void(0);" has_more="<%if (hasmore){%>true<%}else{%>false<%}%>"  class="next-page <%if (!hasmore){%>disabled<%}%>">下一页</a>
+                </div>
+            <%}else {%>
+                <div class="no-record">
+                    暂无记录
+                </div>
+            <%}%>
+        </div>
+    </script>
+    <div id="footer"></div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/complain_list.js"></script>
+</body>
+</html>

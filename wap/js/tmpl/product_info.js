@@ -1,3 +1,7 @@
+
+/* lyq@newland 删除开始   **/
+/* 时间：2015/06/01   **/
+// SHOP017 此文件已无用
 $(function() {
     var goods_id = GetQueryString("goods_id");
     $.ajax({
@@ -9,3 +13,4 @@ $(function() {
         }
     });
 });
+/* lyq@newland 删除结束   **/

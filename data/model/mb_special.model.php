@@ -1,11 +1,6 @@
 <?php
 /**
  * 手机专题模型
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class mb_specialModel extends Model{
@@ -119,18 +114,112 @@ class mb_specialModel extends Model{
         $item_list = $this->_getMbSpecialItemList($condition);
         if(!empty($item_list)) {
             $new_item_list = array();
-            foreach ($item_list as $value) {
+            foreach ((array)$item_list as $value) {
                 //处理图片
                 $item_data = $this->_formatMbSpecialData($value['item_data'], $value['item_type']);
+                if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                    /* zz@newland 添加开始   * */
+                    /* 时间：2015/03/04      * */
+                    //判断通过调用查询首页面中商品的名称与价格方法
+                    if ($item_data['item'] != NULL) {
+                        $item_data['item'] = $this->information_item($item_data['item']);
+                    } else {
+                        if ($item_data['rectangle1_data']) {
+                            $item_data = $this->information_title($item_data, $item_data['rectangle1_data'], 'rectangle1_name', $item_data['rectangle1_type']);
+                        }
+                        if ($item_data['rectangle2_data']) {
+                            $item_data = $this->information_title($item_data, $item_data['rectangle2_data'], 'rectangle2_name', $item_data['rectangle2_type']);
+                        }
+                        if ($item_data['square_data']) {
+                            $item_data = $this->information_title($item_data, $item_data['square_data'], 'square_name', $item_data['square_type']);
+                        }
+                        if ($item_data['data']) {
+                            $item_data = $this->information_title($item_data, $item_data['data'], 'data_name', $item_data['type']);
+                        }
+                    }
+                    /* zz@newland 添加结束  * */
+                }
                 $new_item_list[] = array($value['item_type'] => $item_data);
+                if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                    $item_list = $new_item_list;
+                }
             }
-            $item_list = $new_item_list;
+            if(APP_ID == 'shop'){
+                $item_list = $new_item_list;
+            }
         }
         $cache = array('special' => serialize($item_list));
         wcache($special_id, $cache, $prefix);
         return $item_list;
     }
 
+	/* zz@newland 添加开始   * */
+    /* 时间：2015/03/08      * */
+
+    //查询首页面中商品的名称与价格
+    public function information_title($item_data, $data, $name, $type) {
+        $model_goods = Model('goods');
+        $model_goods_class = Model('goods_class');
+        if ($type == 'url') {
+            $where = substr(strrchr($data, "="), 1);
+            if (strstr($data, 'goods_id')) {
+                $information = $model_goods->table('goods')->field('goods_name,goods_price')->where(array('goods_id' => $where))->select();
+                $item_data[$name] = $information[0]['goods_name'];
+                $item_data[$name . 'price'] = $information[0]['goods_price'];
+            } else if (strstr($data, 'gc_id')) {
+                $information = $model_goods_class->table('goods_class')->field('gc_name')->where(array('gc_id' => $where))->select();
+                $item_data[$name] = $information[0]['gc_name'];
+            } else if (strstr($data, 'keyword')) {
+                $keyword = urldecode($where);
+                $item_data[$name] = $keyworad;
+            }
+        } else if ($type == 'goods') {
+            $information = $model_goods->table('goods')->field('goods_name,goods_price')->where(array('goods_id' => $data))->select();
+            $item_data[$name] = $information[0]['goods_name'];
+            $item_data[$name . 'price'] = $information[0]['goods_price'];
+        } else if ($type == 'keyword') {
+            $keyword = urldecode($data);
+            $item_data[$name] = $keyword;
+        }
+        return $item_data;
+    }
+
+    /* zz@newland 添加结束   * */
+
+    /* zz@newland 添加开始   * */
+    /* 时间：2015/03/04      * */
+
+	//查询首页面中商品的名称与价格
+    public function information_item($data) {
+        $model_goods = Model('goods');
+        $model_goods_class = Model('goods_class');
+        foreach ($data as $key => $value) {
+            if ($data[$key]['type'] == 'url') {
+                $where = substr(strrchr($data[$key]['data'], "="), 1);
+                if (strstr($data[$key]['data'], 'goods_id')) {
+                    $information = $model_goods->table('goods')->field('goods_name,goods_price')->where(array('goods_id' => $where))->select();
+                    $data[$key]['goods_name'] = $information[0]['goods_name'];
+                    $data[$key]['goods_price'] = $information[0]['goods_price'];
+                } else if (strstr($data[$key]['data'], 'gc_id')) {
+                    $information = $model_goods_class->table('goods_class')->field('gc_name')->where(array('gc_id' => $where))->select();
+                    $data[$key]['goods_name'] = $information[0]['gc_name'];
+                } else if (strstr($data[$key]['data'], 'keyword')) {
+                    $keyword = urldecode($where);
+                    $data[$key]['goods_name'] = $keyword;
+                }
+            } else if ($data[$key]['type'] == 'goods') {
+                $information = $model_goods->table('goods')->field('goods_name,goods_price')->where(array('goods_id' => $data[$key]['data']))->select();
+                $data[$key]['goods_name'] = $information[0]['goods_name'];
+                $data[$key]['goods_price'] = $information[0]['goods_price'];
+            } else if ($data[$key]['type'] == 'keyword') {
+                $keyword = urldecode($data[$key]['data']);
+                $data[$key]['goods_name'] = $keyword;
+            }
+        }
+        return $data;
+    }
+
+    /* zz@newland 添加结束   * */
     /**
      * 首页专题
      */
@@ -151,7 +240,10 @@ class mb_specialModel extends Model{
                 $item_data['square_image'] = getMbSpecialImageUrl($item_data['square_image']);
                 $item_data['rectangle1_image'] = getMbSpecialImageUrl($item_data['rectangle1_image']);
                 $item_data['rectangle2_image'] = getMbSpecialImageUrl($item_data['rectangle2_image']);
-            break;
+                break;
+            case 'home5':
+                $item_data['image'] = getMbSpecialImageUrl($item_data['image']);
+                break;
             case 'goods':
                 $new_item = array();
                 foreach ((array) $item_data['item'] as $value) {
@@ -274,30 +366,33 @@ class mb_specialModel extends Model{
     private function _initMbSpecialItemNullData($item_type) {
         $item_data = array();
         switch ($item_type) {
-        case 'home1':
-            $item_data = array(
-                'title' => '',
-                'image' => '',
-                'type' => '',
-                'data' => '',
-            );
-            break;
-        case 'home2':
-        case 'home4':
-            $item_data= array(
-                'title' => '',
-                'square_image' => '',
-                'square_type' => '',
-                'square_data' => '',
-                'rectangle1_image' => '',
-                'rectangle1_type' => '',
-                'rectangle1_data' => '',
-                'rectangle2_image' => '',
-                'rectangle2_type' => '',
-                'rectangle2_data' => '',
-            );
-            break;
-        default:
+			case 'home1':
+				$item_data = array(
+					'title' => '',
+					'image' => '',
+					'type' => '',
+					'data' => '',
+				);
+				break;
+			case 'home2':
+			case 'home4':
+				$item_data= array(
+					'title' => '',
+					'square_image' => '',
+					'square_type' => '',
+					'square_data' => '',
+					'rectangle1_image' => '',
+					'rectangle1_type' => '',
+					'rectangle1_data' => '',
+					'rectangle2_image' => '',
+					'rectangle2_type' => '',
+					'rectangle2_data' => '',
+				);
+				break;
+			case 'home5':
+				$item_data['image'] = getMbSpecialImageUrl($item_data['image']);
+                break;
+			default:
         }
         return $item_data;
     }
@@ -404,6 +499,11 @@ class mb_specialModel extends Model{
         $module_list['home2'] = array('name' => 'home2' , 'desc' => '模型版块布局B');
         $module_list['home3'] = array('name' => 'home3' , 'desc' => '模型版块布局C');
         $module_list['home4'] = array('name' => 'home4' , 'desc' => '模型版块布局D');
+		$module_list['home5'] = array('name' => 'home5', 'desc' => '模型版块布局E');
+        /* zz@newland 添加开始   * */
+        /* 时间：2016/04/01       * */
+        $module_list['home6'] = array('name' => 'home6', 'desc' => '模型版块布局F');
+        /* zz@newland 添加结束   * */
         $module_list['goods'] = array('name' => 'goods' , 'desc' => '商品版块');
         return $module_list;
     }

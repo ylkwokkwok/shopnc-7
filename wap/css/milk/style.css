@@ -1,0 +1,72 @@
+@charset "utf-8";
+body{ background:#F2F2F2; margin:0; padding:0; font-family:'微软雅黑',Arial,Helvetica,sans-serif; color:#333;}
+a{text-decoration:none;}
+input {line-height:1em;}
+/************************************************************************************************************************/
+/* Milk Cenler */
+.flt_l{ float:left;}
+.milk_top{ background: #6fbb15; padding: 10px; margin: 20px 0 10px 0; color:#fff; font-size:1.0em;}
+.pay{ text-align:center; padding: 0 0 25px 0;}
+.send{padding: 10px 20px;}
+
+.send input,.user input{ border-radius:3px; border:1px solid #ccc; font-family:'微软雅黑',Arial,Helvetica,sans-serif;}
+
+.pay_wechat{ padding: 12px 30px; margin: 3% 30%; background:#690; border:0; border-radius:4px; font-size:1.0em; color:#fff; }
+.pay_wechat:active{background:#6a0;}
+
+.user{}
+.user div{ clear:both; padding: 5px 20px;}
+.user span{ display:inline-block; color:#666; }
+.user input{ width:70%; font-size:1.0em; color:#666;padding:6px;}
+.user div.call input{ font-family:Arial;}
+
+.send input{ font-size:1.0em; color:#666;padding:6px; margin: 5px 0;}
+.send input.sque{ width:20%;}
+.send input.address{ width:95%;}
+.send span.notice{ display:block; color:#c00; margin: 0 0 10px 0;font-size: 0.9em}
+
+.cards{ padding: 10px 0; border-bottom:1px dashed #333;}
+.img_card{ width:48%; overflow:hidden; margin: 0 10px 0 20px; text-align:center;}
+.img_card img{ width:100%;height: 100%;}
+.milk_card{ display:inline-block; float:left;}
+.milk_ymd{ padding: 0 8px 0 2px; float:left;}
+.milk_ymd span,input{ display:inline-block; pading: 10px 4px;}
+/*.milk_ymd div{ margin:1px 0;}*/
+.milk_ymd input{ border-radius:3px; border:1px solid #ccc;padding:4px; width:20px; font-size:1.0em;}
+.milk_ymd span.timing{ width:105px;}
+
+.disable_input { background: #DFDFDF; }
+
+/********************************************************************************************************************/
+/* screen choose */
+@media screen and (min-width: 320px) {
+    .img_card{ width:36%;}
+}
+@media screen and (min-width: 375px) {
+    .img_card{ width:40%;}
+}
+@media screen and (min-width: 414px) {
+    .img_card{ width:45%;}
+}
+
+
+/********************************************************************************************************************/
+/* 0814 */
+.pro_pay{text-align:center; margin: 20% 30% 4% 30%; }
+.pro_pay img{ width:100%; border:0;}
+.pay_plan{ padding: 12px 0px; margin: 3% 20%; background:#690; border:0; border-radius:4px; font-size:1.0em; color:#fff; }
+.pay_plan:active{background:#6a0;}
+.pay_txt{ margin: 4% 20px;}
+.pay_txt span{ display:inline-block; text-align:center; width:100%; font-size:1.2em; color:#6fbb15; font-weight:bold;}
+.pay_txt p{ font-size:0.9em; color:#999; line-height:1.6em;}
+
+
+
+/********************************************************************************************************************/
+/* 1021 */
+.disable_btn {background:#BBBBBB}
+.disable_btn:active{background:#999999;}
+
+
+
+

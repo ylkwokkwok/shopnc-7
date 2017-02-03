@@ -23,6 +23,7 @@ define('BASE_CORE_PATH',BASE_ROOT_PATH.'/core');
 define('BASE_DATA_PATH',BASE_ROOT_PATH.'/data');
 define('DS','/');
 define('InShopNC',true);
+define('NlWxShop',true);
 define('StartTime',microtime(true));
 define('TIMESTAMP',time());
 define('DIR_SHOP','shop');
@@ -127,3 +128,18 @@ define('ORDER_DEL_STATE_DROP', 2);
 define('ORDER_EVALUATE_TIME', 1296000);
 //抢购订单状态
 define('OFFLINE_ORDER_CANCEL_TIME', 3);//单位为天
+
+/* lyq@newland 添加开始 **/
+/* 时间：2015/07/13    **/
+/**
+ * 退货相关
+ */
+// 收货完成后可以申请退款退货
+define('ORDER_REFUND', '15');
+// 卖家不处理退款退货申请时按同意处理
+define('REFUND_CONFIRM', '7');
+// 卖家不处理收货时按弃货处理
+define('RETURN_CONFIRM', '7');
+// 退货的商品发货多少天以后才可以选择没收到
+define('RETURN_DELAY', '5');
+/* lyq@newland 添加结束 **/

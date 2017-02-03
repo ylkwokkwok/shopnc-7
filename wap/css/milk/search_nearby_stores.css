@@ -1,0 +1,54 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-8-13, 13:07:58
+    Author     : Liyiquan
+*/
+
+body{padding:0;margin:0; background:#f3f0f0; position:relative;}
+.head-srch{ height:45px;width:100%;padding:0;margin:0;background:#6fbb15;}
+.location{ height:45px;width:100%;padding:0;margin:0;background:#FFF;}
+.frt{ float:right;} 
+.flt{ float:left;}
+.mg8-10{ margin:8px 10px;}
+.mg9-10{ margin:9px 10px;}
+.mg5-10{ margin:5px 10px;}
+.btm{ border-bottom:1px solid #ccc;}
+p.position{font-size:18px; line-height:45px;margin:0;padding:0px}
+.clear{ clear:both;}
+
+.address li{ list-style:none;float:left;font-size:14px;color:#333333;padding:0 16px;}
+.address a{ color:#666666;}
+.address{margin:0 auto;padding:0; width:100%;}
+.mg{padding:10px;}
+.rword{ color:#666666;}
+.mbt{ margin-bottom:15px;}
+.mbt12{ margin-bottom:12px;}
+.top{ display:inline-block;}
+p{ margin:0;padding:8px 10px 0 0;font-size:12px;}
+.mt45{ margin-top:45px;}
+/* screen choose */
+@media screen and (min-width: 320px) {
+    .top_w{ width:93%;}
+    input[name=search]{border-radius:5px; width:80%;height:25px; line-height:25px; background:#f0f0f0;
+                       text-align:left;color:#6d6d6d;padding-left:10px;border:1px solid #dfdfdf;}
+    .fimg img{margin-left:10px;border:1px solid #ccc;width:135px;height:90px}
+    .rword{ color:#666666;width:160px }
+}
+@media screen and (min-width: 375px) {
+    .top_w{ width:95%;}
+    input[name=search]{border-radius:5px; width:83%;height:25px; line-height:25px; background:#f0f0f0;
+                       text-align:left;color:#6d6d6d;padding-left:10px;border:1px solid #dfdfdf;}
+    .fimg img{margin-left:10px;border:1px solid #ccc;width:165px;height:90px}
+    .rword{ color:#666666;width:180px }
+}
+@media screen and (min-width: 414px) {
+    .top_w{ width:95%;}
+    input[name=search]{border-radius:5px; width:85%;height:25px; line-height:25px; background:#f0f0f0;
+                       text-align:left;color:#6d6d6d;padding-left:10px;border:1px solid #dfdfdf;}
+    .fimg img{margin-left:10px;border:1px solid #ccc;width:190px;height:90px}
+    .rword{ color:#666666;width:190px }
+}

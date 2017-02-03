@@ -1,86 +1,144 @@
 <!doctype html>
+<!--
+/* lyq@newland 修改   **/
+/* 时间：2015/05/22   **/
+// 去除Jquery
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/01   **/
+// SHOP015 个人中心-购物车
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/11   **/
+// 页面样式优化
+-->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>购物车列表</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/child.css">
-    <script type="text/javascript" src="../js/zepto.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/config.js"></script>
-</head>
-<body>
-    <header id="header"></header>
+    <head>
+        <meta charset="UTF-8">
+        <title>购物车</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/child.css">
+        <link rel="stylesheet" type="text/css" href="../css/nl_cart.css">
+    </head>
+    <body >
+        <header id="header"></header>
         <div class="cart-list-wp">
             <div id="cart-list-wp"></div>
-            <script type="text/html" id="cart-list">
-            <% if(cart_list.length >0){%>
-                <ul class="cart-list">
-                    <% for (var i = 0;i<cart_list.length;i++){%>
-                        <li class="cart-list-item">
-                            <div class="cart-shop-name">
-                                店铺名称：<%=cart_list[i].store_name%>
-                            </div>
-                            <div class="cart-litem-wp clearfix">
-                                <a class="cart-litemw-imgwp" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i].goods_id%>">
-                                    <img src="<%=cart_list[i].goods_image_url%>"/>
-                                </a>
-                                <div class="cart-litemw-cnt" cart_id="<%=cart_list[i].cart_id%>">
-                                    <a class="cart-litemwc-pdname" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i].goods_id%>">
+        </div>
+        <div id="footer"></div>
+        <script type="text/html" id="cart-list">
+            <% if(cart_list.length > 0){%>
+            <ul class="cart-list">
+                <% var store_id = '';%>
+                <% for (var i = 0;i<cart_list.length;i++){ %>
+                    <% if (store_id != cart_list[i].store_id) { %>
+                    <%      if (store_id != '') { %>
+                    </li>
+                    <%      }%>
+                    <%      store_id = cart_list[i].store_id;   %>
+                    <li class="cart-list-item">
+                        <!--                        <div class="cart-shop-name  " >
+                                                    <div class="checkboxFive ">
+                                                        <input type="checkbox">
+                                                        <label class="store_select store_checked" store_id="<%=cart_list[i].store_id%>"></label>
+                                                        <span class="storeName">店铺名称：<%=cart_list[i].store_name%></span>
+                                                    </div>
+                                                </div>-->
+                        <% } %>
+                        <div class="goodsDiv car_shop" style="height: 135px; ">
+                            <div class="cart-litem-wp clearfix" style="width:75%;height: 70px;">
+                                <div>
+                                    <a style="margin-left:30px;" class="cart-litemw-imgwp" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i].goods_id%>">
+                                        <img src="<%=cart_list[i].goods_image_url%>"/>
+                                    </a>
+                                    <a class="cart-litemwc-pdname" style="margin-left:105px;" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i].goods_id%>">
                                         <%=cart_list[i].goods_name%>
                                     </a>
-                                    <p class="mt5">
-                                        商品单价：￥<%=cart_list[i].goods_price%>
+
+                                </div>
+
+                            </div>
+                            <% if (cart_list[i].purchase_limit > 0) { %>
+
+                            <span class="cart-list-del p0" style="top:-5px;background-color:#701B44;bottom: auto;color:#FFFFFF">
+                                <span>限购</span>
+                            </span>
+                            <% } %>
+                            <br>
+
+                            <div style="border-bottom: 1px solid #e5e5e5;"></div>
+
+                            <span class="cart-list-del p0 add_set pad_bt settlement" style="min-width: 70px; ">
+                                <div class="cart-litemw-cnt flt_r" style="margin-top:-105px; padding:5px;" cart_id="<%=cart_list[i].cart_id%>">  
+                                    <p class="mt5 flt_r" style="font-size: 14px;" >
+                                        ￥<%=cart_list[i].goods_price%>
                                     </p>
-                                     <p class="mt5">
-                                        商品总价：￥<span class="goods-total-price"><%=cart_list[i].goods_sum%></span>
+                                    <br><br>
+                                    <p class="mt5 none">
+                                        商品总价：￥<span class="goods-total-price" cart_id="<%=cart_list[i].cart_id%>"><%=cart_list[i].goods_sum%></span>
                                     </p>
-                                    <p class="cart-litemwc-pdcount clearfix mt5">
-                                        <span class="minus-wp fleft">
-                                            <span class="i-minus"></span>
+                                    <p class="cart-litemwc-pdcount clearfix mt5"  style="min-width: 70px;">
+                                        <span class="minus-wp fleft box" >
+                                            <span class="i-minus" ></span>
                                         </span>
-                                        <input type="text" class="buy-num buynum fleft" value="<%=cart_list[i].goods_num%>"/>
-                                        <span class="add-wp fleft">
+                                        <input type="text"  class="buy-num buynum fleft box" cart_id="<%=cart_list[i].cart_id%>" pre_value="<%=cart_list[i].goods_num%>" value="<%=cart_list[i].goods_num%>" />
+                                        <span class="add-wp  box"  >
                                             <span class="i-add"></span>
                                         </span>
                                     </p>
                                 </div>
-                            </div>
-                            <span class="cart-list-del" cart_id="<%=cart_list[i].cart_id%>">
-                                <span class="i-del"></span>
+                                <!--<span class="i-del"></span>-->
+                                <a href="#" class="done  flt_r  "cart_id="<%=cart_list[i].cart_id%>" ><i class="fa fa-cny"></i>结算</a>
+                                <a href="#" class="flt_r del" cart_id="<%=cart_list[i].cart_id%>"><i class="fa fa-trash-o"></i>删除</a>
                             </span>
-                        </li>
-                    <%}%>
-                    <li class="cart-list-oitem mt10">
-                        商品总金额：<span class="clr-d94 total_price">￥<%=sum%></span>
+
+                            <div class="checkboxFive checkboxGoods " style="bottom:80%;margin-left:5px;">
+                                <!--<input type="checkbox">-->
+                                <label class=" cart_select cart_checked car_check_bor blue " store_id="<%=cart_list[i].store_id%>" cart_id="<%=cart_list[i].cart_id%>" purchase_limit="<%=cart_list[i].purchase_limit%>" goods_name="<%=cart_list[i].goods_name%>" goods_id="<%=cart_list[i].goods_id%>"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <%}%>
+<br><br><br>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)" class="goto-settlement mt10">去结算</a>
+                    <!--    /* zz@newland 更改样式 **/
+                            /* 时间：2016/03/3     **/-->
+
+                    <li class="pay" style="bottom: 50px; ">
+                        <!--<input type="checkbox">-->
+                        <label class="car_check_bor fa fa-check  flt_l store_select store_checked blue" style="color:#fff;  margin-top: 5px; margin-right:5px;" store_id="<%=cart_list[0].store_id%>"></label>
+                        <span class= "flt_l" style="line-height: 35px;" >全选</span>
+                        <span class=" total_price" style="color:#ff0000 ;font-weight: bold;  line-height:35px;"> 合计：<%=sum%>元</span>
+                        <a  href="#" class="pay_right flt_r" >结算</a>
+                        <!--<a href="javascript:void(0)" class="pay_right flt_r">去结算</a>-->
                     </li>
-                    <li>
-                        <a href="<%=WapSiteUrl%>/tmpl/product_list.html?gc_id=0" class="goto-shopping mt10">去逛逛</a>
-                    </li>
-                </ul>
+                    <!--/* zz@newland 更改结束 **/-->
+                    <!--                    <li>
+                                            <a href="<%=WapSiteUrl%>/tmpl/product_list.html?gc_id=0" class="goto-shopping mt10">去逛逛</a>
+                                        </li>-->
+            </ul>
             <%}else{%>
-                <div class="no-record m10">
-                    暂无记录
-                </div>
+            <div class="no-record m10">
+                暂无记录
+            </div>
             <%}%>
-            </script>
-        </div>
-    </div>
-    <div id="footer"></div>  
-    <script type="text/javascript" src="../js/template.js"></script>
-    <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../js/simple-plugin.js"></script>
-    <script type="text/javascript" src="../js/tmpl/common-top.js"></script>
-    <script type="text/javascript" src="../js/tmpl/footer.js"></script>
-    <script type="text/javascript" src="../js/tmpl/cart-list.js"></script>
-</body>
+
+        </script>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../js/template.js"></script>
+        <script type="text/javascript" src="../js/config.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/simple-plugin.js"></script>
+        <script type="text/javascript" src="../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../js/tmpl/footer.js"></script>
+        <script type="text/javascript" src="../js/tmpl/cart-list.js"></script>
+
+    </body>
 </html>

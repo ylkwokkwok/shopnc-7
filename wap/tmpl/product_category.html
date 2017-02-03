@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>商品分类</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/child.css">      
+    </head>
+    <body class="member-body">
+        <header id="header"></header>
+        <div class="content">
+            <div class="box1" id="root_class">
+            </div>
+        </div>
+        <div class="tab-con" style="bottom: 5px;">
+            <div class="tab-con-item" id="child_class" >
+            </div>
+        </div>
+        
+        <div id="footer"></div>
+        <input type="hidden" id="page" value="0" />
+        <script type="text/html" id="category-root">           
+            <ul>
+                <li>
+                    <a href="javascript:void(0)" gc_id="0" class="gc_list box-item-selected">
+                        全部商品
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" gc_id="purchase_limit" class="gc_list box-item-selected">
+                        限购商品
+                    </a>
+                </li>
+                <% for (var i = 0; i < root_class.length; i++) { %>
+                <li>
+                    <a href="javascript:void(0)" gc_id="<%=root_class[i].gc_id%>" class="gc_list <%if(i == 0){%>box-item<%}else{%>box-item-selected<%}%>">
+                        <%=root_class[i].gc_name%>
+                    </a>
+                </li>
+                <% } %>
+            </ul>          
+        </script>
+        <script type="text/html" id="category-child">
+            <!--zz@newland 修改开始
+     时间：2016/03/3 
+     由显示商品分类改为显示一分类中全部商品 修改全部商品布局-->
+            <% for (var i = 0; i < goods_list.length; i++) { %>
+            <a href="product_detail.html?goods_id=<%=goods_list[i].goods_id;%>" class="ico_menu" style="display: inline-block;">
+                <img src="<%=goods_list[i].goods_image_url%>"/>
+                <p style="height:20px ;word-wrap: break-word; overflow: hidden;"><%=goods_list[i].goods_name%></p>
+                <p style="word-wrap: break-word; overflow: hidden; color:#f00"><%=goods_list[i].goods_price%></p>
+            </a>
+            <% } %>
+            
+            <!--zz@newland 修改结束-->
+        </script>      
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../js/config.js"></script>
+        <script type="text/javascript" src="../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../js/template.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../js/tmpl/product_category.js"></script>
+        <script type="text/javascript" src="../js/tmpl/footer.js"></script>
+    </body>
+</html>

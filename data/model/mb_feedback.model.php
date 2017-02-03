@@ -1,10 +1,6 @@
 <?php
 /**
  * 意见反馈
- *
- * 
- *
- *
  */
 
 defined('InShopNC') or exit('Access Invalid!');

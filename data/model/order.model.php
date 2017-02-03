@@ -1,11 +1,6 @@
 <?php
 /**
  * 订单管理
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class orderModel extends Model {
@@ -53,7 +48,24 @@ class orderModel extends Model {
             $order_info['extend_order_goods'] = $order_goods_list;
         }
 
+		/* zly@newland 获取提现信息 开始   * */
+        /* 时间：2015/07/09                * */
+        /* 功能ID：获取提现信息             * */
+        // 提现信息
+        if (in_array('extract', $extend)) {
+            //取商品列表
+            $store_extract_detail = $this->getExtractDetail(array('extract_id' => $order_info['extract_id'], 'extract_type' => 1));
+            $order_info['extract_detail'] = $store_extract_detail;
+        }
+        /* zly@newland 获取提现信息 结束   * */
         return $order_info;
+    }
+
+	/**
+     * 提现详细
+     */
+    public function getExtractDetail($condition = array(), $field = '*') {
+        return $this->table('extract')->field($field)->where($condition)->find();
     }
 
     public function getOrderCommonInfo($condition = array(), $field = '*') {
@@ -536,6 +548,7 @@ class orderModel extends Model {
         	    $state = true;
         	    break;
 
+
         }
         return $state;
 
@@ -565,5 +578,89 @@ class orderModel extends Model {
         $condition['order_state'] = array('in', array(ORDER_STATE_PAY, ORDER_STATE_SEND, ORDER_STATE_SUCCESS));
         return $this->getOrderAndOrderGoodsList($condition, $field, $page, $order);
     }
+
+	/* zly@newland查询待支付、待收货数目开始* */
+    /* 时间：2015/07/24            * */
+    public function not_pay_num($unreceived = '', $field = '*') {
+        // 条件：待支付
+        $unreceived['order_state'] = array('in', 10);
+        $list_num = $this->table('order')->field($field)->where($unreceived)->select();
+        return count($list_num);
+    }
+
+    public function not_received_num($unreceived = '', $field = '*') {
+        // 条件：待收货
+        $unreceived['order_state'] = array('in', 30);
+        $unreceived['lock_state'] = array('in', 0);
+        $list_num = $this->table('order')->field($field)->where($unreceived)->select();
+        return count($list_num);
+    }
+
+    /* zz@newland 添加开始 * */
+    /* 时间：2016/03/3     * */
+
+    //查询会员待评价商品数量功能
+    public function not_valuate_num($unreceived = '', $field = '*') {
+        // 条件：待评价
+        $unreceived['order_state'] = array('in', 40);
+        $list_num = $this->table('order')->field($field)->where($unreceived)->select();
+        return count($list_num);
+    }
+
+    /* zz@newland 修改结束 * */
+    /* zly@newland查询待支付、待收货数目结束* */
+
+    /* lyq@newland 添加开始 * */
+    /* 时间：2015/11/02     * */
+
+    /**
+     * 获取用户已购买某商品的总数量
+     * @param type $goods_id 商品ID
+     * @param type $buyer_id 买家ID(会员ID)
+     */
+    public function getProductBuyedNum($goods_id, $buyer_id) {
+        $sql = 'SELECT ';
+        $sql.= '        SUM(goods_num) buyed_num ';
+        $sql.= 'FROM ';
+        $sql.= '        `' . DBPRE . 'order_goods` ';
+        $sql.= 'LEFT JOIN `' . DBPRE . 'order` ON ' . DBPRE . 'order.order_id = ' . DBPRE . 'order_goods.order_id ';
+        $sql.= 'WHERE ';
+        $sql.= '        ' . DBPRE . 'order_goods.goods_id = "' . $goods_id . '"';
+        $sql.= 'AND ' . DBPRE . 'order_goods.buyer_id = "' . $buyer_id . '" ';
+        $sql.= 'AND ';
+        $sql.= '( ';
+        $sql.= '    ( ';
+        $sql.= '        ' . DBPRE . 'order.wx_pay_sn = "" ';
+        $sql.= '        AND ' . DBPRE . 'order.order_state != 0 ';
+        $sql.= '    ) || (' . DBPRE . 'order.wx_pay_sn != "") ';
+        $sql.= ') ';
+        $result = $this->query($sql);
+        return count($result) ? intval($result[0]['buyed_num']) : 0;
+    }
+
+    /**
+     * 获取会员Openid
+     * jys 2015/12/24
+     * @param type $order_id
+     * @return type
+     * 
+     */
+    public function getMemberId($order_id) {
+        $sql = 'SELECT ';
+        $sql.=' `' . DBPRE . 'member`.member_wx_id as member_wx_id ,';
+        $sql.=' `' . DBPRE . 'express`.e_name as e_name';
+        $sql.= '  FROM ';
+        $sql.= '        `' . DBPRE . 'order` ';
+        $sql.= 'inner JOIN `' . DBPRE . 'member` ON ' . DBPRE . 'order.buyer_id = ' . DBPRE . 'member.member_id ';
+        $sql.= 'inner JOIN `' . DBPRE . 'order_common` ON ' . DBPRE . 'order.order_id = ' . DBPRE . 'order_common.order_id ';
+        $sql.= 'inner JOIN `' . DBPRE . 'express` ON ' . DBPRE . 'order_common.shipping_express_id = ' . DBPRE . 'express.id ';
+        $sql.= 'WHERE ';
+        $sql.= '        ' . DBPRE . 'order.order_id = "' . $order_id . '"';
+        $result = $this->query($sql);
+        return $result;
+    }
+
+    /* lyq@newland 添加结束 * */
+
 
 }

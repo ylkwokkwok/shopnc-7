@@ -1,8 +1,6 @@
 <?php
 /**
  * 虚拟商品购买行为
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class buy_virtualLogic {

@@ -1,14 +1,8 @@
 <?php
 /**
  * 手机端广告
- *
- * 
- *
- *
  */
-
 defined('InShopNC') or exit('Access Invalid!');
-
 class mb_categoryModel{
 	/**
 	 * 列表

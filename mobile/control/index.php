@@ -4,12 +4,9 @@
  *
  *
  *
- 
  */
 
-//use Shopnc\Tpl;
-
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 class indexControl extends mobileHomeControl{
 
 	public function __construct() {

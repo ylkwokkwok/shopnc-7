@@ -58,9 +58,13 @@ sup{vertical-align:text-top}
 sub{vertical-align:text-bottom}
 /*input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit; vertical-align:middle;}*/
 /*to enable resizing for IE*/
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/17     **/
+/* 用户输入部分的字体    **/
 input,
 textarea,
-select{*font-size:100%}
+select{font-size:14px;}
+/* lyq@newland 修改结束 **/
 /*because legend doesn't inherit in IE */
 legend{color:#000}
 /*clear float*/
@@ -69,7 +73,11 @@ legend{color:#000}
 .fleft{float:left}
 .fright{float:right}
 :not(input){
-    -webkit-user-select:none;
+/* lyq@newland 删除开始 **/
+/* 时间：2015/06/17     **/
+/* 使textarea可编辑     **/
+/*    -webkit-user-select:none;*/
+/* lyq@newland 删除结束 **/
     -webkit-tap-highlight-color:rgba(0,0,0,0);
     -webkit-touch-callout:none;
     -webkit-text-size-adjust:none;

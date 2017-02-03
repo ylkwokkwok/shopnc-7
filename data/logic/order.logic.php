@@ -1,8 +1,6 @@
 <?php
 /**
  * 实物订单行为
- *
- * 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class orderLogic {
@@ -135,13 +133,58 @@ class orderLogic {
 			$inviter_name = $model_member->table('member')->getfby_member_id($inviter_id,'member_name');
 			$rebate_amount = ceil(0.01 * $order_info['order_amount'] * $GLOBALS['setting_config']['points_rebate']);
 			Model('points')->savePointsLog('rebate',array('pl_memberid'=>$inviter_id,'pl_membername'=>$inviter_name,'rebate_amount'=>$rebate_amount),true);
-
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                /* lyq@newland 添加开始   **/
+                /* 时间：2015/05/14        **/
+                /* 功能ID：SHOP005        **/
+                // 自动升级VIP
+                $this->auto_upgrade_vip($order_info['buyer_id']);
+                /* lyq@newland 添加结束   **/
+            }
             return callback(true,'操作成功');
         } catch (Exception $e) {
             return callback(false,'操作失败');
         }
     }
 
+	/* lyq@newland 添加开始   **/
+    /* 时间：2015/05/14        **/
+    /* 功能ID：SHOP005        **/
+    /**
+     * 自动升级VIP
+     * @param type $buyer_id 买家ID
+     */
+    function auto_upgrade_vip($buyer_id) {
+        $model = Model();
+        // 获取会员信息
+        $member_info = $model->table('member')
+                             ->where(array('member_id' => $buyer_id))
+                             ->find();
+        // 会员不是VIP会员
+        if ($member_info['is_vip'] === '0') {
+            // 计算会员消费总金额
+            $sum_goods_amount = $model->table('order')
+                                      ->where(array(
+                                          'buyer_id'    => $buyer_id,           // 会员ID
+                                          'order_state' => 40,                  // 订单状态 已收货
+                                          'delete_state'=> 0                    // 删除状态 未删除
+                                      ))
+                                      ->sum('goods_amount');                    // 商品总价格求和
+            // 会员消费总金额大于128
+            if (intval($sum_goods_amount) > 128) {
+                // 更新会员的VIP会员标识
+                $model->table('member')
+                      ->where(array(
+                          'member_id' => $buyer_id
+                      ))
+                      ->update(array(
+                          'is_vip'    => 1
+                      ));
+            }
+        }
+    }
+    
+    /* lyq@newland 添加结束   **/
     /**
      * 更改运费
      * @param array $order_info
@@ -355,9 +398,28 @@ class orderLogic {
 
             //更新订单状态
             $update_order = array();
-            $update_order['order_state'] = ORDER_STATE_PAY;
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                /* zz@newland.com 修改开始 */
+                /* 2016.4.19 */
+                /* 当milk_card页面请求操作时，订单状态为已收货，交易成功*/
+                if ($post['milk_card'] == 'milk_card') {
+                    $update_order['order_state'] = ORDER_STATE_SUCCESS;
+                } else {
+                    $update_order['order_state'] = ORDER_STATE_PAY;
+                }
+                /* zz@newland.com 修改结束 */
+            }else{
+                $update_order['order_state'] = ORDER_STATE_PAY;
+            }
             $update_order['payment_time'] = ($post['payment_time'] ? strtotime($post['payment_time']) : TIMESTAMP);
             $update_order['payment_code'] = $post['payment_code'];
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                /* hl@newland 添加开始     **/
+                /* 时间：2015/06/18        **/
+                /* 功能ID：SHOP014         **/
+                $update_order['wx_pay_sn'] = $post['trade_no'];
+                /* hl@newland 添加结束   **/
+            }
             $update = $model_order->editOrder($update_order,array('pay_sn'=>$order_info['pay_sn'],'order_state'=>ORDER_STATE_NEW));
             if (!$update) {
                 throw new Exception('操作失败');

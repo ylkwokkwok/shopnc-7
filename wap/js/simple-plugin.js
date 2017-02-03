@@ -150,6 +150,30 @@
                 var length = $.trim(value).length;
                 return this.optional(element) || length >= param;
             },
+            /* lyq@newland 添加开始 **/
+            /* 时间：2015/06/16      **/
+            // 验证 是数字且长度在范围内
+            digits_length_range: function(value, element, param) {
+                var length = $.trim(value).length;
+                return this.optional(element) || (length <= param.max && length >= param.min && /^\d+$/.test(value));
+            },
+            // 验证 是数字且长度等于固定长度
+            digits_length: function(value, element, param) {
+                var length = $.trim(value).length;
+                return this.optional(element) || (length === param && /^\d+$/.test(value));
+            },
+            // 验证 长度在范围内
+            length_range: function(value, element, param) {
+                var length = $.trim(value).length;
+                return this.optional(element) || (length <= param.max && length >= param.min);
+            },
+            /* lyq@newland 添加结束 **/
+            /* xsh@newland 添加结束 **/
+            // 校验2位小数 
+            digits_range: function(value, element, param) {
+                return this.optional(element) || /^[0-9]+(.[0-9]{2})?$/.test(value);
+            },
+            /* xsh@newland 添加结束 **/
             //是否是合法数字（包括正数、负数）
             number: function(value, element, param) {
                 return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
@@ -195,9 +219,22 @@
                 $.each(rules[element], function(idx, item) {
                     if ($.inArray(idx, settingsRules) < 0) {
                         settingsRules.push(idx);
-                        if (idx == "maxlength" || idx == "minlength") {
+                        /* lyq@newland 修改开始 **/
+                        /* 时间：2015/06/16      **/
+                        // 当验证规则的参数为数字时
+                        if (idx == "maxlength" || idx == "minlength" || idx == "digits_length") {
+                            // 将验证参数转换为int型后返回
                             mParam = parseInt(item);
                         }
+                        /* lyq@newland 修改结束 **/
+                        /* lyq@newland 添加开始 **/
+                        /* 时间：2015/06/16      **/
+                        // 当验证规则中包含 长度范围验证时 验证规则的参数为对象
+                        else if (idx == "digits_length_range" || idx == "length_range") {
+                            // 将验证参数直接返回
+                            mParam = item;
+                        }
+                        /* lyq@newland 添加结束 **/
                     }
                 })
             }

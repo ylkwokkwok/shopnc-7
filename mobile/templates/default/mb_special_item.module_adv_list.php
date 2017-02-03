@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!'); ?>
+<?php defined('NlWxShop') or exit('Access Invalid!'); ?>
 
 <div class="adv_list">
     <div class="swipe-wrap">

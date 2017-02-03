@@ -1,0 +1,182 @@
+<!doctype html>
+<!--
+/* lyq@newland 添加   **/
+/* 时间：2015/05/22   **/
+// SHOP009 申请退货退款
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/11   **/
+// 页面样式优化
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>申请退货</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+    <header id="header"></header>
+    <div class="order-detail" id="login-form">
+    </div>
+    <div class="footer" id="footer"></div>
+    <script type="text/html" id="refund-add-tmpl">
+        <form class="address-opera" style="margin:0px 10px;padding-top:0px;">
+            <p style="margin-top:10px">
+            退货原因&nbsp;<span class="opera-tips">(*必选)</span>
+            </p>
+            <span>
+                <select class="select-30" name="reason_id" id="reason_id">
+                    <option value="">请选择退货原因</option>
+                    <% for (var i in reason_list) { %>
+                    <option value="<%=reason_list[i].reason_id%>"><%=reason_list[i].reason_info%></option>
+                    <% } %>
+                    <option value="0">其他</option>
+                </select>
+            </span>
+            <p style="margin-top:10px">
+            退货金额&nbsp;<span class="opera-tips">(*必填)</span>
+            </p>
+            <span>
+                <input type="text" class="input-30" style="width:100px" name="refund_amount" id="refund_amount" value="<%=goods.goods_pay_price%>" /> 元
+                <p style="font-size:14px">（最多 <span style="color:green"><%=goods.goods_pay_price%></span> 元）</p>
+                <!--<p style="font-size:13px">可退金额由系统根据订单商品实际成交额和已退款金额自动计算得出。退款金额不能超过可退金额。</p>-->
+                <input type="hidden" id="goods_pay_price" value="<%=goods.goods_pay_price%>">
+            </span>
+            <p style="margin-top:10px">
+            退货数量&nbsp;<span class="opera-tips">(*必填)</span>
+            </p>
+            <span>
+                <input type="text" placeholder="" class="input-30" name="goods_num" id="goods_num" value="<%=goods.goods_num%>" />
+                <input type="hidden" id="max_goods_num" value="<%=goods.goods_num%>">
+            </span>
+            <p style="margin-top:10px">
+            退货说明&nbsp;<span class="opera-tips">(*必填)</span>
+            </p>
+            <span>
+                <textarea class="nl-textarea" name="buyer_message" id="buyer_message"/>
+            </span>
+            <div class="error-tips mt10"></div>
+            <a href="javascript:void(0);" class="l-btn-login mt10" id="submitbtn">
+                确认提交
+            </a>
+        </form>
+        <div class="order-detail">
+            <ul>
+                <li>
+                    <p class="order-dtlt">
+                        相关商品交易信息
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-pd-pdinfor">
+                                <% for(var i = 0; i < order_list.goods_list.length; i++) { %>
+                                <a class="clearfix opdinfor-wp bd-b-cc" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_list.goods_list[i].goods_id%>">
+                                    <span class="opdinfor-pic">
+                                        <img src="<%=order_list.goods_list[i].image_60_url%>"/>
+                                        <!-- wqw@newland 修改开始 时间：2015/06/04 功能ID:ADMIN006-->
+                                        <!-- zly@newland 修改开始 时间：2015/08/10 隐藏VIP标示-->
+<!--                                        <% if(in_array(order_list.goods_list[i].store_id,stroe_vip_list) != -1){%>
+                                        <img src="<%=SiteUrl%>/data/upload/shop/store/goods/1/goods_vip.jpg" class="flt_img_complain"/>
+                                        <%}%>-->
+                                        <!-- zly@newland 修改结束-->
+                                        <!-- wqw@newland 修改结束-->
+                                    </span>
+                                    <div class="opdinforw-infor">
+                                        <p>
+                                            <%=order_list.goods_list[i].goods_name%>
+                                        </p>
+                                        <p>
+                                            ￥<%=order_list.goods_list[i].goods_price%>＊<%=order_list.goods_list[i].goods_num%>（数量）
+                                        </p>
+                                        <span class="grayrightarrow"></span>
+                                    </div>
+                                </a>
+                                <% } %>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <div class="bd-b-cc">
+                                    <p class="opdinfor-wp">
+                                        运费<%='　　　　'%>：<%=order_list.shipping_fee > 0 ? '￥'+order_list.shipping_fee : '（免运费）'%>
+                                    </p>
+                                    <p class="opdinfor-wp">
+                                        订单总额<%='　　'%>：<strong><%='￥'+order_list.order_amount%></strong>
+                                        <% if (order_list.refund_amount > 0) { %>
+                                        （退款：￥<%=order_list.refund_amount%>）
+                                        <% } %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <div class="bd-b-cc">
+                                    <p class="opdinfor-wp">
+                                        订单编号<%='　　'%>：<span class="order-sn" order_id="<%=order_list.order_id%>" style="color:blue;display:inline"><%=order_list.order_sn%></span>
+                                    </p>
+                                    <% if (order_list.payment_code != 'offline' && order_list.order_state != 0 && order_list.order_state != 10) { %>
+                                    <p class="opdinfor-wp">
+                                        付款单号<%='　　'%>：<%=order_list.pay_sn%>
+                                    </p>
+                                    <% } %>
+                                    <p class="opdinfor-wp">
+                                        支付方式<%='　　'%>：<%=order_list.payment_name%>
+                                    </p>
+                                    <p class="opdinfor-wp">
+                                        下单时间<%='　　'%>：<%=$getLocalTime(order_list.add_time)%>
+                                    </p>
+                                    <% if (order_list.payment_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        付款时间<%='　　'%>：<%=$getLocalTime(order_list.payment_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.extend_order_common.shipping_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        发货时间<%='　　'%>：<%=$getLocalTime(order_list.extend_order_common.shipping_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.finnshed_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        完成时间<%='　　'%>：<%=$getLocalTime(order_list.finnshed_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.shipping_code != '' && order_list.shipping_code != null) { %>
+                                    <p class="opdinfor-wp">
+                                        物流单号<%='　　'%>：<span id="viewdelivery-order" order_id="<%=order_list.order_id%>" style="color:blue"><%=order_list.shipping_code%></span>
+                                        <span style="float:right"><%=express_list[order_list.extend_order_common.shipping_express_id]['e_name']%></span>
+                                    </p>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <p class="opdinfor-wp">
+                                    商家<%='　　　　'%>：<%=order_list.store_name%>
+                                </p>
+                                <p class="opdinfor-wp">
+                                    所在地区<%='　　'%>：<%=order_list.extend_store.area_info + '&nbsp;' + order_list.extend_store.store_address%>
+                                </p>
+                                <p class="opdinfor-wp">
+                                    联系电话<%='　　'%>：<%=order_list.extend_store.store_phone%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/refund_add.js"></script>
+</body>
+</html>

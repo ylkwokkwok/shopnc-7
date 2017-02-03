@@ -38,14 +38,14 @@ define('BASE_DATA_PATH',BASE_ROOT_PATH.'/data');
 define('BASE_UPLOAD_PATH',BASE_DATA_PATH.'/upload');
 define('BASE_RESOURCE_PATH',BASE_DATA_PATH.'/resource');
 
-define('CHARSET',$config['db'][1]['dbcharset']);
 define('DBDRIVER',$config['dbdriver']);
 define('SESSION_EXPIRE',$config['session_expire']);
 define('LANG_TYPE',$config['lang_type']);
 define('COOKIE_PRE',$config['cookie_pre']);
 
-define('DBPRE',$config['tablepre']);
-define('DBNAME',$config['db'][1]['dbname']);
+define('CHARSET',$config['db']["shop"]['dbcharset']);
+define('DBPRE',$config['db']["shop"]['tablepre']);
+define('DBNAME',$config['db']["shop"]['dbname']);
 
 $_GET['act'] = $_GET['act'] ? strtolower($_GET['act']) : ($_POST['act'] ? strtolower($_POST['act']) : null);
 $_GET['op'] = $_GET['op'] ? strtolower($_GET['op']) : ($_POST['op'] ? strtolower($_POST['op']) : null);

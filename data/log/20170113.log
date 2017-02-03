@@ -1,0 +1,573 @@
+[2017-01-13 13:26:45] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.mb_special_item' doesn't exist
+SELECT * FROM `mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  
+[2017-01-13 13:55:19] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.wxshop_mb_special_item' doesn't exist
+SELECT * FROM `wxshop_mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  
+[2017-01-13 13:55:54] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.wxshop_mb_special_item' doesn't exist
+SELECT * FROM `wxshop_mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  
+[2017-01-13 14:07:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 14:07:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.cart' doesn't exist
+SELECT * FROM `cart` WHERE ( buyer_id = '1' ) LIMIT 1000  
+[2017-01-13 14:07:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 14:07:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484287648' ) AND ( end_time > '1484287648' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 14:07:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 14:07:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484287648' ) AND ( end_time > '1484287648' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 14:07:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 14:07:37] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.wxshop_mb_special_item' doesn't exist
+SELECT * FROM `wxshop_mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  
+[2017-01-13 14:07:53] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.wxshop_mb_special_item' doesn't exist
+SELECT * FROM `wxshop_mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  
+[2017-01-13 15:02:55] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.wxshop_mb_special_item' doesn't exist
+SELECT * FROM `wxshop_mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  
+[2017-01-13 15:35:03] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:35:03] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:35:03] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484292902' ) AND ( end_time > '1484292902' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:35:03] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:35:03] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484292902' ) AND ( end_time > '1484292902' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:35:03] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:38:12] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:38:12] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:38:12] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293091' ) AND ( end_time > '1484293091' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:38:12] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:38:12] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293091' ) AND ( end_time > '1484293091' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:38:12] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:38:19] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:38:19] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:38:19] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293098' ) AND ( end_time > '1484293098' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:38:19] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:38:19] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293098' ) AND ( end_time > '1484293098' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:38:19] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:38:56] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:38:56] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:38:56] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293135' ) AND ( end_time > '1484293135' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:38:56] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:38:56] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293135' ) AND ( end_time > '1484293135' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:38:56] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:39:19] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:39:20] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:39:20] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293159' ) AND ( end_time > '1484293159' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:39:20] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:39:20] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293159' ) AND ( end_time > '1484293159' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:39:20] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:39:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:39:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:39:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293168' ) AND ( end_time > '1484293168' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:39:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:39:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293168' ) AND ( end_time > '1484293168' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:39:29] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:39:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:39:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:39:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293197' ) AND ( end_time > '1484293197' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:39:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:39:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293197' ) AND ( end_time > '1484293197' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:39:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:40:51] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:40:51] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:40:51] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293250' ) AND ( end_time > '1484293250' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:40:51] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:40:51] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293250' ) AND ( end_time > '1484293250' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:40:51] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:40:54] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:40:54] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:40:54] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293253' ) AND ( end_time > '1484293253' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:40:54] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:40:54] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293253' ) AND ( end_time > '1484293253' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:40:54] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:40:58] /shop/index.php?act=search&op=index&cate_id=530 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:40:58] /shop/index.php?act=search&op=index&cate_id=530 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:40:58] /shop/index.php?act=search&op=index&cate_id=530 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.goods' doesn't exist
+SELECT count(distinct CONCAT(goods_commonid,',',color_id)) AS nc_count FROM `goods` WHERE ( gc_id_1 = '530' ) AND ( goods_state = '1' ) AND ( goods_verify = '1' ) LIMIT 1  
+[2017-01-13 15:40:58] /shop/index.php?act=search&op=index&cate_id=530 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.goods_browse' doesn't exist
+SELECT * FROM `goods_browse` WHERE ( member_id = '1' ) ORDER BY browsetime desc LIMIT 20  
+[2017-01-13 15:41:00] /shop/index.php?act=compare&op=checkcompare ( act=compare&op=checkcompare ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:00] /shop/index.php?act=compare&op=checkcompare ( act=compare&op=checkcompare ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:01] /shop/index.php?act=search&op=get_booth_goods&cate_id=530 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:01] /shop/index.php?act=search&op=get_booth_goods&cate_id=530 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:01] /shop/index.php?act=search&op=get_booth_goods&cate_id=530 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.p_booth_goods' doesn't exist
+SELECT goods_id FROM `p_booth_goods` WHERE ( gc_id IN ('530','531','532','533','534','535','536','537','538','539','540','541','542','543','544','545','546','547','548','549','550','551','552','553','554','555','556','557','558','559','560','561','563','564','565','566','567','568','569','570','571','572','573','574','575','576','577','578','579','580','581','582','583','584','585','586','587','588','589','590','591','592') ) ORDER BY rand() LIMIT 4  
+[2017-01-13 15:41:02] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:02] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:02] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.goods_browse' doesn't exist
+SELECT gc_id FROM `goods_browse` WHERE ( member_id = '1' ) GROUP BY gc_id ORDER BY rand() LIMIT 20  
+[2017-01-13 15:41:02] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.p_booth_goods' doesn't exist
+SELECT * FROM `p_booth_goods` WHERE ( gc_id IN('') ) AND ( booth_state = '1' ) ORDER BY rand() LIMIT 20  
+[2017-01-13 15:41:02] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.goods' doesn't exist
+SELECT * FROM `goods` WHERE ( goods_id IN('') ) AND ( goods_state = '1' ) AND ( goods_verify = '1' ) ORDER BY goods_id desc LIMIT 1000  
+[2017-01-13 15:41:03] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:03] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:03] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.goods' doesn't exist
+SELECT count(distinct CONCAT(goods_commonid,',',color_id)) AS nc_count FROM `goods` WHERE ( gc_id_1 = '593' ) AND ( goods_state = '1' ) AND ( goods_verify = '1' ) LIMIT 1  
+[2017-01-13 15:41:03] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.goods_browse' doesn't exist
+SELECT * FROM `goods_browse` WHERE ( member_id = '1' ) ORDER BY browsetime desc LIMIT 20  
+[2017-01-13 15:41:05] /shop/index.php?act=compare&op=checkcompare ( act=compare&op=checkcompare ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:05] /shop/index.php?act=compare&op=checkcompare ( act=compare&op=checkcompare ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:06] /shop/index.php?act=search&op=get_booth_goods&cate_id=593 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:06] /shop/index.php?act=search&op=get_booth_goods&cate_id=593 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:06] /shop/index.php?act=search&op=get_booth_goods&cate_id=593 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.p_booth_goods' doesn't exist
+SELECT goods_id FROM `p_booth_goods` WHERE ( gc_id IN ('593','594','595','596','597','598','599','600','601','602','603','604','605','606','607','608','609','610','611','612','613','614','615','616','617','618','619','620','621','622','623','624','625','626','627','628','629','630','631','632','633','634','635','636','637','638','639','640','641','642','643','644','645','646','647','648','649','650','651','652','653','654','655','656','657','658','659','660','661') ) ORDER BY rand() LIMIT 4  
+[2017-01-13 15:41:07] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:07] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:07] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.goods_browse' doesn't exist
+SELECT gc_id FROM `goods_browse` WHERE ( member_id = '1' ) GROUP BY gc_id ORDER BY rand() LIMIT 20  
+[2017-01-13 15:41:07] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.p_booth_goods' doesn't exist
+SELECT * FROM `p_booth_goods` WHERE ( gc_id IN('') ) AND ( booth_state = '1' ) ORDER BY rand() LIMIT 20  
+[2017-01-13 15:41:07] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.goods' doesn't exist
+SELECT * FROM `goods` WHERE ( goods_id IN('') ) AND ( goods_state = '1' ) AND ( goods_verify = '1' ) ORDER BY goods_id desc LIMIT 1000  
+[2017-01-13 15:41:16] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.wxshop_mb_special_item' doesn't exist
+SELECT * FROM `wxshop_mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  
+[2017-01-13 15:41:54] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:54] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:54] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.goods' doesn't exist
+SELECT count(distinct CONCAT(goods_commonid,',',color_id)) AS nc_count FROM `goods` WHERE ( gc_id_1 = '593' ) AND ( goods_state = '1' ) AND ( goods_verify = '1' ) LIMIT 1  
+[2017-01-13 15:41:54] /shop/index.php?act=search&op=index&cate_id=593 ( act=search&op=index ) 
+ERR: Db Error: Table 'shopnc.goods_browse' doesn't exist
+SELECT * FROM `goods_browse` WHERE ( member_id = '1' ) ORDER BY browsetime desc LIMIT 20  
+[2017-01-13 15:41:55] /shop/index.php?act=compare&op=checkcompare ( act=compare&op=checkcompare ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:55] /shop/index.php?act=compare&op=checkcompare ( act=compare&op=checkcompare ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:56] /shop/index.php?act=search&op=get_booth_goods&cate_id=593 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:56] /shop/index.php?act=search&op=get_booth_goods&cate_id=593 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:56] /shop/index.php?act=search&op=get_booth_goods&cate_id=593 ( act=search&op=get_booth_goods ) 
+ERR: Db Error: Table 'shopnc.p_booth_goods' doesn't exist
+SELECT goods_id FROM `p_booth_goods` WHERE ( gc_id IN ('593','594','595','596','597','598','599','600','601','602','603','604','605','606','607','608','609','610','611','612','613','614','615','616','617','618','619','620','621','622','623','624','625','626','627','628','629','630','631','632','633','634','635','636','637','638','639','640','641','642','643','644','645','646','647','648','649','650','651','652','653','654','655','656','657','658','659','660','661') ) ORDER BY rand() LIMIT 4  
+[2017-01-13 15:41:57] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:57] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:57] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.goods_browse' doesn't exist
+SELECT gc_id FROM `goods_browse` WHERE ( member_id = '1' ) GROUP BY gc_id ORDER BY rand() LIMIT 20  
+[2017-01-13 15:41:57] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.p_booth_goods' doesn't exist
+SELECT * FROM `p_booth_goods` WHERE ( gc_id IN('') ) AND ( booth_state = '1' ) ORDER BY rand() LIMIT 20  
+[2017-01-13 15:41:57] /shop/index.php?act=search&op=get_guesslike ( act=search&op=get_guesslike ) 
+ERR: Db Error: Table 'shopnc.goods' doesn't exist
+SELECT * FROM `goods` WHERE ( goods_id IN('') ) AND ( goods_state = '1' ) AND ( goods_verify = '1' ) ORDER BY goods_id desc LIMIT 1000  
+[2017-01-13 15:41:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:41:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:41:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293317' ) AND ( end_time > '1484293317' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:41:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:41:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293317' ) AND ( end_time > '1484293317' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:41:58] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:42:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:42:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:42:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293334' ) AND ( end_time > '1484293334' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:42:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:42:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293334' ) AND ( end_time > '1484293334' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:42:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:44:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:44:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:44:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293454' ) AND ( end_time > '1484293454' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:44:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:44:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293454' ) AND ( end_time > '1484293454' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:44:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:45:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:45:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:45:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293514' ) AND ( end_time > '1484293514' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:45:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:45:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293514' ) AND ( end_time > '1484293514' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:45:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:46:17] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 15:46:17] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 15:46:17] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:46:17] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:46:17] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484294176')
+[2017-01-13 15:46:29] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 15:46:30] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 15:46:30] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:46:30] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:46:30] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484294188')
+[2017-01-13 15:46:42] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.message' doesn't exist
+SELECT  count(message_id) as countnum  FROM `message` as `message`  WHERE  message.message_state != '2' and message.message_open = '0' and (message.to_member_id ='all' or (message.message_ismore=0 and message.to_member_id='1') or (message.message_ismore=1 and message.to_member_id like '%,1,%')) and message.del_member_id not like '%,1,%'  and message.read_member_id not like '%,1,%'
+[2017-01-13 15:46:42] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.member' doesn't exist
+SELECT * FROM `member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 15:46:42] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.groupbuy' doesn't exist
+SELECT * FROM `groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484293601' ) AND ( end_time > '1484293601' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 15:46:42] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.link' doesn't exist
+SELECT * FROM `link` as `link`   order by link_id
+[2017-01-13 15:46:42] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.p_xianshi_goods' doesn't exist
+SELECT * FROM `p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484293601' ) AND ( end_time > '1484293601' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 15:46:42] / ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.web' doesn't exist
+SELECT * FROM `web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 15:52:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 15:52:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 15:52:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:52:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:52:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484294534')
+[2017-01-13 15:53:01] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 15:53:01] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 15:53:01] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:53:01] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:53:01] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484294580')
+[2017-01-13 15:53:37] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 15:53:37] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 15:53:37] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:53:37] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 15:53:37] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484294616')
+[2017-01-13 16:08:42] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 16:08:42] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 16:08:42] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 16:08:42] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 16:08:42] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484295521')
+[2017-01-13 16:09:04] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 16:09:04] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 16:09:04] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 16:09:04] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 16:09:04] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484295543')
+[2017-01-13 16:09:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '213070643305' ) LIMIT 1  
+[2017-01-13 16:09:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.admin' doesn't exist
+SELECT * FROM `admin` as `admin`  WHERE  admin_name = 'siburuxue' and admin_password = 'e10adc3949ba59abbe56e057f20f883e'
+[2017-01-13 16:09:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 16:09:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+SELECT * FROM `lock` WHERE ( pid = '21307064335' ) LIMIT 1  
+[2017-01-13 16:09:15] /admin/index.php?act=login&op=login ( act=login&op=login ) 
+ERR: Db Error: Table 'shopnc.lock' doesn't exist
+INSERT  INTO `lock` (pid,pvalue,expiretime) VALUES ('21307064335','1','1484295554')
+[2017-01-13 16:47:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_member' doesn't exist
+SELECT * FROM `shopnc_member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 16:47:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_groupbuy' doesn't exist
+SELECT * FROM `shopnc_groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484297235' ) AND ( end_time > '1484297235' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 16:47:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_link' doesn't exist
+SELECT * FROM `shopnc_link` as `link`   order by link_id
+[2017-01-13 16:47:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_p_xianshi_goods' doesn't exist
+SELECT * FROM `shopnc_p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484297235' ) AND ( end_time > '1484297235' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 16:47:15] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_web' doesn't exist
+SELECT * FROM `shopnc_web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 16:47:18] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_member' doesn't exist
+SELECT * FROM `shopnc_member` WHERE ( member_id = '1' ) LIMIT 1  
+[2017-01-13 16:47:18] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_groupbuy' doesn't exist
+SELECT * FROM `shopnc_groupbuy` WHERE ( state = '20' ) AND ( start_time < '1484297238' ) AND ( end_time > '1484297238' ) ORDER BY recommended desc LIMIT 4  
+[2017-01-13 16:47:18] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_link' doesn't exist
+SELECT * FROM `shopnc_link` as `link`   order by link_id
+[2017-01-13 16:47:18] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_p_xianshi_goods' doesn't exist
+SELECT * FROM `shopnc_p_xianshi_goods` WHERE ( state = '1' ) AND ( start_time < '1484297238' ) AND ( end_time > '1484297238' ) ORDER BY xianshi_recommend desc LIMIT 4  
+[2017-01-13 16:47:18] / ( act=index&op=index ) 
+ERR: Db Error: Table 'promotion_db.shopnc_web' doesn't exist
+SELECT * FROM `shopnc_web` WHERE ( web_show = '1' ) AND ( web_page LIKE 'index%' ) ORDER BY web_sort LIMIT 1000  
+[2017-01-13 16:47:34] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'shopnc.wxshop_mb_special_item' doesn't exist
+SELECT * FROM `wxshop_mb_special_item` WHERE ( special_id = '0' ) AND ( item_usable = '1' ) ORDER BY item_sort asc LIMIT 1000  

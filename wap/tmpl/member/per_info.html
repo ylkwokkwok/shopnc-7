@@ -1,0 +1,88 @@
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>会员信息</title>
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/member.css">
+        <link rel="stylesheet" type="text/css" href="../../css/child.css">
+        <link rel="stylesheet" type="text/css" href="../css/nl_cart.css">
+    </head>
+    <body>
+        <header id="header"></header>
+        <div class="cart-list-wp">
+            <div id="cart-list-wp"></div>
+        </div>
+        
+        <div class="per_bg">
+            <div class="per_info">
+                <span class="flt_l per_l head">头像</span>
+                <span class="flt_r per_r"><img src="" id="avatar" /></span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <span class="flt_l per_l">昵称</span>
+                <span class="flt_r per_r" id="username"> </span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <span class="flt_l per_l">新鲜号</span>
+                <span class="flt_r per_r" id="luck_num"></span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <span class="flt_l per_l">二维码名片</span>
+                <span class="flt_r per_r">
+                    <img style="width:25px;" src="../../images/2weima.png" id="ewm" onclick="showImage();"/>
+                </span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <span class="flt_l per_l">邮箱</span>
+                <span class="flt_r per_r" id="member_email"></span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <span class="flt_l per_l">手机</span>
+                <span class="flt_r per_r" id="member_mobile"></span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <span class="flt_l per_l">性别</span>
+                <span class="flt_r per_r" id="member_sex"></span>
+                <div class="clean"></div>
+            </div>
+            <div class="per_info">
+                <span class="flt_l per_l">等级</span>
+                <span class="flt_r per_r" id="level"></span>
+                <div class="clean"></div>
+            </div>
+
+            <br><br><br><br>
+            <div class="" style="position: fixed;bottom:0px;width: 100%;background: #fff; height:110px;">
+                <a href="per_info_edit.html" class="add_done">编辑信息</a>
+            </div>
+        </div>
+        <div id="hidebox">
+            <div id="showewm" onclick="hide();"> </div>
+        </div>
+        <div id="footer"></div>
+        <div id="hidebg"></div>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type='text/javascript' src='../../js/jquery-1.8.2.js'></script>
+        <script type='text/javascript' src='../../js/excanvas.js'></script>
+        <script type="text/javascript" src="../../js/qrcode.js"></script>
+        <script type="text/javascript" src="../../js/config.js"></script>
+        <script type="text/javascript" src="../../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../../js/template.js"></script>
+        <script type="text/javascript" src="../../js/common.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/member.js"></script>
+    </body>
+</html>

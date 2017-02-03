@@ -1,8 +1,6 @@
 <?php
 /**
  * 商品评价模型
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class evaluate_goodsModel extends Model {

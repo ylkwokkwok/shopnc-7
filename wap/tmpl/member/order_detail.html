@@ -1,194 +1,261 @@
 <!doctype html>
+<!--
+/* lyq@newland 修改               **/
+/* 时间：2015/05/22 - 2015/05/28  **/
+// SHOP009 订单详情
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/11   **/
+// 页面样式优化
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/12   **/
+// 页面样式提取到CSS文件中
+
+/* lyq@newland 添加开始 **/
+/* 时间：2015/07/03     **/
+// 积分抵扣显示
+
+/* lyq@newland 修改 **/
+/* 时间：2015/07/23 **/
+// 退货相关文言更改
+-->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>订单详情</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/member.css">
-</head>
-<body>
-    <header id="header"></header>
-    <div class="order-detail-wp">
-        <div class="order-detail">
-            <ul>
-                <li>
-                    <p class="order-dtlt">
-                        订单状态：
-                        <span class="order-type ot-finish">已完成</span>
-                    </p>
-                    <div class="order-dcnt">
-                        <div class="order-d-detail clearfix">
-                            <div class="order-d-pdinfor">
-                                <p>
-                                    订单编号：123456789
-                                </p>
-                                 <p>
-                                    订单总价：215
-                                </p>
-                                <p>
-                                    商品数目：3
-                                </p>
+    <head>
+        <meta charset="UTF-8">
+        <title>订单详情</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/member.css">
+        <link rel="stylesheet" type="text/css" href="../../css/child.css">
+    </head>
+    <body>
+        <header id="header"></header>
+        <div class="order-detail-wp" id="order-detail"></div>
+        <script type="text/html" id="order-detail-tmpl">
+            <div class="order-detail">
+                <ul>
+                    <li>
+                        <p class="order-dtlt">
+                            订单状态：
+                            <span class="order-type ot-finish">
+                                <% if (order_info.if_lock) { %>
+                                退款退货中
+                                <% } else if (order_info.order_state == 0 && order_info.refund_state == 2) { %>
+                                已退款
+                                <% } else if (order_info.order_state == 0) { %>
+                                交易关闭
+                                <% } else if (order_info.order_state == 10) {%>
+                                订单已经提交，等待买家付款
+                                <% } else if (order_info.order_state == 20) {%>
+                                <% if (order_info.payment_code == 'offline') { %>
+                                订单已提交，等待卖家发货
+                                <% } else { %>
+                                已支付成功
+                                <% } %>
+                                <% } else if (order_info.order_state == 30) {%>
+                                商家已发货
+                                <% } else if (order_info.order_state == 40) {%>
+                                <% if (order_info.evaluation_state == 1) { %>
+                                评价完成
+                                <% } else { %>
+                                已经收货
+                                <% } %>
+                                <% } %>
+                            </span>
+                        </p>
+                        <div class="order-dcnt">
+                            <div class="order-d-detail clearfix">
+                                <div class="order-d-pdinfor">
+                                    <p>
+                                        订单编号：<%=order_info.order_sn%>
+                                    </p>
+                                    <p>
+                                        订单总价：<%=order_info.order_amount%>
+                                    </p>
+                                    <p>
+                                        商品数目：<%=order_info.goods_count%>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <p class="order-dtlt clearfix">
-                        付款方式：
-                        <span class="clr-d94 fright">货到付款</span>
-                    </p>
-                    <div class="order-dcnt">
-                        <div class="order-d-detail clearfix">
-                            <div class="order-pay-type">
-                                <p class="clearfix">
-                                    商品金额：<span class="clr-d94 fright">215</span>
-                                </p>
-                                 <p class="clearfix">
-                                    返现：<span class="clr-d94 fright">0.0</span>
-                                </p>
-                                <p class="clearfix">
-                                    运费：<span class="clr-d94 fright">0.0</span>
-                                </p>
-                                <p class="clearfix opt-pay-total">
-                                    应付金额：<span class="clr-d94 fright">215</span>
-                                </p>
+                    </li>
+                    <% if (order_info.extend_order_common.reciver_name != '') { %>
+                    <li>
+                        <p class="order-dtlt">
+                            <%=order_info.extend_order_common.reciver_name%>
+                            <span class="clr-d94 fright"><%=order_info.extend_order_common.reciver_info.mob_phone%></span>
+                        </p>
+                        <div class="order-dcnt">
+                            <div class="order-d-detail clearfix">
+                                <div class="order-d-pdinfor">
+                                    <p>
+                                        <%=order_info.extend_order_common.reciver_info.address%>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <p class="order-dtlt">
-                        菜菜
-                        <span class="clr-d94 fright">12345678978</span>
-                    </p>
-                    <div class="order-dcnt">
-                        <div class="order-d-detail clearfix">
-                            <div class="order-d-pdinfor">
-                                <p>
-                                   天津市红桥区观其大厦8层
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <p class="order-dtlt clearfix">
-                        配送方式：
-                        <span class="clr-d94 fright">普通快递</span>
-                    </p>
-                    <div class="order-dcnt">
-                        <div class="order-d-detail clearfix">
-                            <div class="order-d-pdinfor">
-                                <p>
-                                    送货时间：只工作日送货（双休日、假日不用送）
-                                </p>
-                                 <p>
-                                    配送时间：9:00-15:00
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <p class="order-dtlt clearfix">
-                        发票信息：
-                    </p>
-                    <div class="order-dcnt">
-                        <div class="order-d-detail clearfix">
-                            <div class="order-d-pdinfor">
-                                <p>
-                                    发票类型：不需要开发票
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <p class="order-dtlt clearfix">
-                        商品信息：
-                    </p>
-                    <div class="order-dcnt">
-                        <div class="order-d-detail clearfix">
-                            <div class="order-pd-pdinfor">
-                                <a class="clearfix opdinfor-wp bd-b-cc" href="javascript:void(0);">
-                                    <span class="opdinfor-pic">
-                                        <img src="../../upload/pd-4.png"/>
-                                    </span>
-                                    <div class="opdinforw-infor">
-                                        <p>
-                                            商品名称：MySQL必知必会
-                                        </p>
-                                        <p>
-                                            商品数量：2
-                                        </p>
-                                        <span class="grayrightarrow"></span>
+                    </li>
+                    <% } %>
+                    <li>
+                        <p class="order-dtlt clearfix">
+                            商品信息：
+                        </p>
+                        <div class="order-dcnt">
+                            <div class="order-d-detail clearfix">
+                                <div class="order-pd-pdinfor">
+                                    <% for(var i = 0; i < order_info.goods_count; i++) { %>
+                                    <div class="bd-b-cc">
+                                        <a class="clearfix opdinfor-wp" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_info.extend_order_goods[i].goods_id%>">
+                                            <span class="opdinfor-pic">
+                                                <img src="<%=order_info.goods_list[i].image_60_url%>"/>
+                                                <!-- wqw@newland 修改开始 时间：2015/06/02 功能ID:ADMIN006-->
+                                                <!-- zly@newland 修改开始 时间：2015/08/10 隐藏VIP标示-->
+                                                <!--                                            <% if(in_array(order_info.goods_list[i].store_id,stroe_vip_list) != -1){%>
+                                                                                            <img src="<%=SiteUrl%>/data/upload/shop/store/goods/1/goods_vip.jpg" class="flt_img_complain"/>
+                                                                                            <%}%>-->
+                                                <!-- zly@newland 修改结束-->
+                                                <!-- wqw@newland 修改结束-->
+                                            </span>
+                                            <div class="opdinforw-infor">
+                                                <p>
+                                                    商品名称：<%=order_info.extend_order_goods[i].goods_name%>
+                                                </p>
+                                                <p>
+                                                    商品数量：<%=order_info.extend_order_goods[i].goods_num%>
+                                                </p>
+                                                <span class="grayrightarrow"></span>
+                                            </div>
+                                        </a>
+
+                                        <div style="font-size:14px">
+                                            <% if(typeof(refund_all) == 'object') {%>
+                                            退款单号：<a href="<%=WapSiteUrl%>/tmpl/member/refund_detail.html?refund_id=<%=refund_all.refund_id%>&type=detail"><span class="main-color"><%=refund_all.refund_sn%></span></a>
+                                            <% } else if (order_info.goods_list[i].refund == 0 && order_info.goods_list[i].extend_refund && order_info.goods_list[i].extend_refund.goods_state != 1) { %>
+                                            退货单号：<a href="<%=WapSiteUrl%>/tmpl/member/refund_detail.html?refund_id=<%=order_info.goods_list[i].extend_refund.refund_id%>&type=detail"><span class="main-color"><%=order_info.goods_list[i].extend_refund.refund_sn%></span></a>
+                                            <% } else if (order_info.goods_list[i].refund == 0 && order_info.goods_list[i].extend_refund && order_info.goods_list[i].extend_refund.goods_state == 1) { %>
+                                            退货单号：<a href="<%=WapSiteUrl%>/tmpl/member/refund_detail.html?refund_id=<%=order_info.goods_list[i].extend_refund.refund_id%>&type=action"><span class="main-color"><%=order_info.goods_list[i].extend_refund.refund_sn%></span></a>
+                                            <% } %>
+                                        </div>
+                                        <!--/* fq@newland 修改开始   **/
+                                            /* 时间：2015/06/17   **/-->                               
+                                        <div style="font-size:14px;text-align:right;padding-bottom:5px;">
+                                            <!--/* fq@newland 修改结束   **/--> 
+                                            <% if (order_info.goods_list[i].refund == 0 && order_info.goods_list[i].extend_refund && order_info.goods_list[i].extend_refund.admin_time > 0) { %>
+                                            <a href="<%=WapSiteUrl%>/tmpl/member/refund_detail.html?refund_id=<%=order_info.goods_list[i].extend_refund.refund_id%>&type=detail" class="returned_btn">已退</a>
+                                            <% } %>
+                                            <% if (order_info.goods_list[i].refund == 1) { %>
+                                            <a href="javascript:void(0)" order_id="<%=order_info.goods_list[i].order_id%>" goods_id="<%=order_info.goods_list[i].rec_id%>" class="return-goods frame">退货</a>
+                                            <% } %>
+
+                                            <% if (order_info.goods_list[i].refund == 0 && order_info.goods_list[i].extend_refund && order_info.goods_list[i].extend_refund.seller_state == 1) { %>
+                                            <a href="javascript:void(0)" order_id="<%=order_info.goods_list[i].order_id%>" goods_id="<%=order_info.goods_list[i].rec_id%>" class="undo-return-goods frame">取消退货</a>
+                                            <% } %>
+                                            <% if(order_info.if_complain) {%>
+                                            <a href="javascript:void(0)" order_id="<%=order_info.goods_list[i].order_id%>" goods_id="<%=order_info.goods_list[i].rec_id%>" class="complain-order frame">交易投诉</a>
+                                            <% } %>
+                                        </div>
                                     </div>
-                                </a>
-                                <a class="clearfix opdinfor-wp bd-b-cc" href="javascript:void(0);">
-                                    <span class="opdinfor-pic">
-                                        <img src="../../upload/pd-4.png"/>
-                                    </span>
-                                    <div class="opdinforw-infor">
-                                        <p>
-                                            商品名称：MySQL必知必会
-                                        </p>
-                                        <p>
-                                            商品数量：2
-                                        </p>
-                                        <span class="grayrightarrow"></span>
-                                    </div>
-                                </a>
-                                <a class="clearfix opdinfor-wp" href="javascript:void(0);">
-                                    <span class="opdinfor-pic">
-                                        <img src="../../upload/pd-4.png"/>
-                                    </span>
-                                    <div class="opdinforw-infor">
-                                        <p>
-                                            商品名称：MySQL必知必会
-                                        </p>
-                                        <p>
-                                            商品数量：2
-                                        </p>
-                                        <span class="grayrightarrow"></span>
-                                    </div>
-                                </a>
+                                    <% } %>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer-top">
-            <div class="footer-tleft">
-                <a class="btn" href="javascript:void(0);">注销</a>
+                    </li>
+                    <li>
+                        <p class="order-dtlt clearfix">
+                            付款方式：
+                            <span class="clr-d94 fright"><%=order_info.payment_name%></span>
+                        </p>
+                        <div class="order-dcnt">
+                            <div class="order-d-detail clearfix">
+                                <div class="order-pay-type">
+                                    <p class="clearfix">
+                                        商品金额：<span class="clr-d94 fright"><%=order_info.goods_amount_true%></span>
+                                    </p>
+                                    <p class="clearfix">
+                                        优惠券：<span class="clr-d94 fright"><%=order_info.extend_order_common.voucher_price%></span>
+                                    </p>
+                                    <% if (order_info.extend_points != 0) { %>
+                                    <p class="clearfix">
+                                        积分抵扣：<span class="clr-d94 fright"><%=ep_to_cash%></span>
+                                    </p>
+                                    <% } %>
+                                    <p class="clearfix">
+                                        运费：<span class="clr-d94 fright"><%=order_info.shipping_fee%></span>
+                                    </p>
+                                    <p class="clearfix opt-pay-total">
+                                        应付金额：<span class="clr-d94 fright"><%=order_info.order_amount%></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <% if (order_info.order_state == '30' || order_info.order_state == '40') { %>
+                    <li>
+                        <p class="order-dtlt clearfix">
+                            物流公司：
+                            <span class="clr-d94 fright">
+                                <% if (order_info.shipping_code != '' && order_info.shipping_code != null) { %>
+                                <%=order_info.express_info.e_name%>
+                                <% } else { %>
+                                无需物流
+                                <% }%>
+                            </span>
+                        </p>
+                        <% if (order_info.shipping_code != '' && order_info.shipping_code != null && order_info.if_deliver) { %>
+                        <div class="order-dcnt">
+                            <div class="order-d-detail clearfix">
+                                <div class="order-d-pdinfor">
+                                    <p>
+                                        <%=order_info.deliver_info[order_info.deliver_info.length-1]%>
+                                    </p>
+                                    <p>
+                                        <a style="float:right;padding:3px 10px;color:white;" class="viewdelivery-order" id='viewdelivery-order'>物流跟踪</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }%>
+                    </li>
+                    <% } %>
+                    
+                </ul>
+                <div class="mt10" style="text-align:right;">
+                    <p>
+                        <%if(order_info.if_receive){%>
+                        <a href="javascript:void(0)" order_id="<%=order_info.order_id%>" class="sure-order frame" style="border:1px solid #dd2727;color: #dd2727;">确认收货</a>
+                        <%}%>
+                        <%if(order_info.if_cancel){%>
+                        <a href="javascript:void(0)" order_id="<%=order_info.order_id%>" class="cancel-order frame">取消订单</a>
+                        <%}%>
+                        <%if(order_info.if_refund_cancel){%>
+                        <a href="javascript:void(0)" order_id="<%=order_info.order_id%>" class="refund-order frame">订单退款</a>
+                        <%}%>
+                        <%if(refund_all && refund_all.seller_state == 1 && refund_all.goods_id == 0){%>
+                        <a href="javascript:void(0)" order_id="<%=order_info.order_id%>" class="undo-refund-order frame">取消退款</a>
+                        <%}%>
+                    </p>
+                </div>
             </div>
-            <a href="javascript:void(0);"class="gotop">
-                <span class="gotop-icon"></span>
-                <p>回顶部</p>
-            </a>
+            <br>
+        </script>
+        <div id="footer">
         </div>
-        <div class="footer-content">
-            <p class="link">
-                <a href="javascript:void(0);" class="standard">标准版</a>
-                <a href="javascript:void(0);">下载Android客户端</a>
-            </p>
-            <p class="copyright">
-                版权所有 2007-2014 © ...
-            </p>
-        </div>
-    </div>
-    <script type="text/javascript" src="../../js/zepto.min.js"></script>
-    <script type="text/javascript" src="../../js/template.js"></script>
-    <script type="text/javascript" src="../../js/common.js"></script>
-    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
-    <script type="text/javascript" src="../../js/tmpl/order-detail.js"></script>
-</body>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../../js/template.js"></script>
+        <script type="text/javascript" src="../../js/config.js"></script>
+        <script type="text/javascript" src="../../js/common.js"></script>
+        <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/nl_refund_common.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/order_detail.js"></script>
+    </body>
 </html>

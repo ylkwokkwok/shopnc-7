@@ -1,11 +1,6 @@
 <?php
 /**
  * 优惠套装
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 

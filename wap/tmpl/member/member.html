@@ -1,92 +1,216 @@
-<!doctype html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>我的商城</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/member.css">
-</head>
-<body class="member-body">
-    <header id="header"></header>
-    <div class="m-top clearfix">
-        <div class="m-avatar fleft">
-            <img src="" id="avatar"/>
-        </div>
-        <div class="m-infor fleft">
-            <div class="m-name mt10">
-               	 昵称：<span id="username"></span>
+    <head>
+        <meta charset="UTF-8">
+        <title>会员中心</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/member.css">
+        <link rel="stylesheet" type="text/css" href="../../css/child.css">
+    </head>
+    <body>
+        <header id="header"></header>
+        <!-- zz@newland 修改开始 
+ 时间：2016/03/3     
+修改全局样式与排版-->
+        <div class="main" style="margin-top: 8px;">
+            <div class="head_img">
+                <a href="per_info.html">
+                    <img src="" id="avatar" />
+                    <p><span id="username"></span></p>
+                </a>
+                <div class="info_num">
+                    <a href="order_list.html?order_state=10" class="info">
+                        <span class="num" id="num_payment">0</span>
+                        <span>待付款</span>
+                    </a>
+                    <a href="order_list.html?order_state=30" class="info">
+                        <span class="num" id="num_goods_receipt">0</span>
+                        <span>待收货</span>
+                    </a>
+                    <a href="order_list.html?order_state=40" class="info">
+                        <span class="num" id="num_evaluate">0</span>
+                        <span>已收货</span>
+                    </a>
+                </div>
             </div>
-            <div class="clearfix mt10">
-                <span class="m-jifen">
-                    <span>积分</span>
-                    <span class="clr-d94" id="point"></span>
-                </span>
-                 <span class="m-yue">
-                      <span>预存款</span>
-                      <span class="clr-d94" id="predepoit"></span>
-                 </span>
+            <div class="info_list">
+
+
+                <a href="per_center.html" class="c_list">
+                    <span class="ico_order"><img src="../../images/img/icon_user.png" /></span>
+                    <span class="txt_c" >个人中心</span>
+                    <span class="flt_r">
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                    <div class="clean"></div>
+                </a>
+                <a href="service_center.html" class="c_list">
+                    <span class="ico_order"><img src="" /></span>
+                    <span class="txt_c" >服务中心</span>
+                    <span class="flt_r">
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                    <div class="clean"></div>
+                </a>
+                <a href="order_list.html" class="c_list">
+                    <span class="ico_order"><img src="../../images/img/ico_order.png" /></span>
+                    <span class="txt_c">全部订单</span>
+                    <span class="flt_r">
+                        查看全部订单
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                    <div class="clean"></div>
+                </a>
+                <a href="#" class="c_list">
+                    <span class="ico_num"><img src="../../images/img/ico_num.png" /></span>
+                    <span class="txt_c">我的积分</span>
+                    <span class="flt_r" id="point"></span>
+                    <div class="clean"></div>
+                </a>
+               
+                <a href="goods_introduce.html" class="c_list">
+                    <span class="ico_add"><img src="../../images/img/ico_pro.png" /></span>
+                    <span class="txt_c">产品介绍</span>
+                    <span class="flt_r">
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                    <div class="clean"></div>
+                </a>
+                <!--
+                <a href="#" class="c_list">
+                        <span class="ico_online"><img src="img/ico_line.png" /></span>
+                        <span class="txt_c">在线客服</span>
+                        <span class="flt_r">
+                                <i class="fa fa-angle-right"></i>
+                        </span>
+                        <div class="clean"></div>
+                </a>
+                -->
             </div>
         </div>
-    </div>
-    <div class="m-center">
-        <ul class="mc-cnt">
-            <li>
-                <a href="order_list.html">
-                    <i class="im-order"></i>
-                    我的订单
-                    <span class="grayrightarrow"></span>
-                </a>
-            </li>
-            <li>
-                <a href="vr_order_list.html">
-                    <i class="im-order"></i>
-                    我的虚拟订单
-                    <span class="grayrightarrow"></span>
-                </a>
-            </li>
-            <li>
-                <a href="voucher_list.html">
-                    <i class="im-quan"></i>
-                    我的代金券
-                    <span class="grayrightarrow"></span>
-                </a>
-            </li>
-            <li>
-                <a href="favorites.html">
-                     <i class="im-collect"></i>
-                    我的收藏
-                     <span class="grayrightarrow"></span>
-                </a>
-            </li>
-            <li>
-                <a href="address_list.html">
-                    <i class="im-address"></i>
-                    地址管理
-                    <span class="grayrightarrow"></span>
-                </a>
-            </li>
-            <li>
-                <a href="views_list.html">
-                    <i class="im-history"></i>
-                    浏览历史
-                     <span class="grayrightarrow"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="footer" id="footer"></div>
-    <script type="text/javascript" src="../../js/config.js"></script>
-    <script type="text/javascript" src="../../js/zepto.min.js"></script>
-    <script type="text/javascript" src="../../js/template.js"></script>
-    <script type="text/javascript" src="../../js/common.js"></script>
-    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
-    <script type="text/javascript" src="../../js/tmpl/member.js"></script>
-    <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
-</body>
+        <div class="m-top clearfix" style="display: none;">
+            <!--            <div class="m-avatar fleft" style="margin-top:2px">
+                            <img src="" id="avatar"/>
+                        </div>
+            
+                        <div class="m-infor fleft">
+                            <div class="m-name fleft">
+                                <p style="margin-top:0px;">昵　称：</p>
+                                <p style="margin-top:7px;">幸运号：</p>
+                                <p style="margin-top:7px;">积　分：</p>
+                                <p style="margin-top:7px;">等　级：</p>
+                            </div>
+                            <div class="m-name fleft">
+                                <p style="margin-top:0px;"><span id="username"></span></p>
+                                <p style="margin-top:7px;"><span id="luck_num"></span></p>
+                                <p style="margin-top:7px;"><span id="point"></span></p>
+                                <p style="margin-top:7px;"><span id="level"></span></p>
+                            </div>
+                            <div class="m-name fright">
+                                <img style="margin-left:100%;margin-top:30px;" src="../../images/2weima.png" id="ewm" onclick="showImage();"/>
+                            </div>-->
+
+            <div class="clear"></div>
+            <!--        <div class="bottom" id="taskbar" style="display: none;">
+                        <a href="order_list.html?order_state=10">
+                            <div class="bottom_1 position">
+                                <span class="ab  ml20" id="notpay_red_dot" style="display: none;"><img src="../../images/red_dot.png"/ ></span>
+                                <span><img src="../../images/good.png"/></span>
+                                <div class="bal">待支付</div>
+                            </div>
+                        </a>
+                        <a href="order_list.html?order_state=30">
+                            <div class="bottom_1 position">
+                                <span class="ab  ml20" id="notreceived_red_dot" style="display: none;"><img src="../../images/red_dot.png"/ ></span>
+                                <img src="../../images/car.png"/>
+                                <div class="bal">待收货</div>
+                            </div>
+                        </a>
+                        <a href="order_list.html">
+                            <div class="bottom_1">
+                                <img src="../../images/notebook.png"/>
+                                <div class="bal">全部订单</div>
+                            </div>
+                        </a>
+                    </div>-->
+            <div class="m-center" style="display: none;">
+                <!--            <div class="top mt10">
+                                <span class="">消息推送</span>
+                                <span id="allow_push" class="" style="display:inline-block;background-image: url(../../images/icon.png);width:25px;height:25px;vertical-align:middle;float:right;margin:7px 10px 0 0;"></span>
+                            </div>-->
+                <!--                <div class="mt10" id="my_commission">
+                                    <a href="voucher_list.html" class="ftclr-6d">
+                                        <div class="top">代金券
+                                            <span class="grayrightarrow fright mt8 mr5"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mt10">
+                                    <a href="refund_list.html" class="ftclr-6d">
+                                        <div class="top">退款及退货
+                                            <span class="grayrightarrow fright mt8 mr5"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mt10">
+                                    <a href="complain_list.html" class="ftclr-6d">
+                                        <div class="top">交易投诉
+                                            <span class="grayrightarrow fright mt8 mr5"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mt10">
+                                    <a href="favorites.html" class="ftclr-6d">
+                                        <div class="top">我的收藏
+                                            <span class="grayrightarrow fright mt8 mr5"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mt10">
+                                    <a href="address_list.html" class="ftclr-6d">
+                                        <div class="top">地址管理
+                                            <span class="grayrightarrow fright mt8 mr5"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mt10">
+                                    <a href="views_list.html" class="ftclr-6d">
+                                        <div class="top">浏览历史
+                                            <span class="grayrightarrow fright mt8 mr5"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mt10">
+                                    <a href="milk_plan.html" class="ftclr-6d">
+                                        <div class="top">设置送奶计划
+                                            <span class="grayrightarrow fright mt8 mr5"></span>
+                                        </div>
+                                    </a>
+                                </div>-->
+                <!--<br/>-->
+            </div>
+            <!--zz@newland 修改结束-->
+            <div id="hidebg"></div>
+            <div id="hidebox">
+                <div id="showewm" onclick="hide();"> </div>
+            </div>
+            <div class="footer" id="footer"></div>
+            <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+            <script type='text/javascript' src='../../js/jquery-1.8.2.js'></script>
+            <script type='text/javascript' src='../../js/excanvas.js'></script>
+            <script type="text/javascript" src="../../js/qrcode.js"></script>
+            <script type="text/javascript" src="../../js/config.js"></script>
+            <script type="text/javascript" src="../../js/zepto.min.js"></script>
+            <script type="text/javascript" src="../../js/template.js"></script>
+            <script type="text/javascript" src="../../js/common.js"></script>
+            <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+            <script type="text/javascript" src="../../js/tmpl/member.js"></script>
+            <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+    </body>
 </html>

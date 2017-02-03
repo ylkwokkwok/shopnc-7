@@ -1,0 +1,306 @@
+<!doctype html>
+<!--
+/* lyq@newland 添加   **/
+/* 时间：2015/05/22   **/
+// SHOP009 退货退款详细
+
+/* lyq@newland 修改 **/
+/* 时间：2015/07/23 **/
+// 增加延时按钮
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+    <header id="header"></header>
+    <div class="refund-detail-wp" id="refund-detail"></div>
+    <script type="text/html" id="refund-detail-tmpl">
+        <div class="order-detail">
+            <ul>
+                <li>
+                    <p class="order-dtlt">
+                    <% if(refund.type == 'return') {%>
+                        退货退款状态：<span class="order-type ot-finish" style="padding:0px;">
+                        <% if (refund.admin_time > 0) { %>
+                        确认收货，平台审核
+                        <% } else if (refund.ship_time > 0 || refund.return_type == 1) {%>
+                        买家退货给商家
+                        <% } else if (refund.seller_time > 0) {%>
+                        商家处理退货申请
+                        <% } else {%>
+                        买家申请退货
+                        <% } %></span>
+                    <% } else if(refund.type == 'refund') {%>
+                        订单退款状态：<span class="order-type ot-finish" style="padding:0px;">
+                        <% if (refund.admin_time > 0) { %>
+                        平台审核，退款完成
+                        <% } else if (refund.seller_time > 0) {%>
+                        商家处理退款申请
+                        <% } else {%>
+                        买家申请退款
+                        <% } %></span>
+                    <% } %>
+                    </p>
+                </li>
+                <li>
+                    <%
+                    var temp_name = '';
+                    if(refund.type == 'return') {
+                        temp_name = '退货退款';
+                    } else if(refund.type == 'refund') {
+                        temp_name = '订单退款';
+                    } 
+                     %>
+                    <p class="order-dtlt">
+                        我的<%=temp_name%>申请
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-d-pdinfor">
+                                <p>
+                                    <%=temp_name%>编号：<%=refund.refund_sn%>
+                                </p>
+                                <p>
+                                    <%=temp_name%>原因：<%=refund.reason_info%>
+                                </p>
+                                <p>
+                                    退款金额<%='　　'%>：￥<%=refund.refund_amount%>
+                                </p>
+                                <% if(refund.type == 'return') {%>
+                                <p>
+                                    退货数量<%='　　'%>：<%=(refund.return_type == 2 ? refund.goods_num : '无')%>
+                                </p>
+                                <% } %>
+                                <p>
+                                    <%=temp_name%>说明：<%=refund.buyer_message%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p class="order-dtlt">
+                        商家退货退款处理
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-d-pdinfor">
+                                <p>
+                                    审核状态<%='　　'%>：<%=state_list['seller'][refund.seller_state]%>
+                                </p>
+                                <% if (refund.seller_time > 0) { %>
+                                <p>
+                                    商家备注<%='　　'%>：<%=refund.seller_message%>
+                                </p>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% if (refund.seller_state == 2 && refund.return_type == 2 && refund.goods_state == 1 && ship == 1) { %>
+                <li>
+                    <p class="order-dtlt">
+                        请填写退货发货信息
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-d-pdinfor">
+                                <p class="iadd-ip">物流公司<span class="opera-tips"></span></p>
+                                <p class="iadd-ip">
+                                    <select class="select-30" name="express_id" id="express_id">
+                                        <option value="">请选择...</option>
+                                        <% for (var i in express_list) { %>
+                                        <option value="<%=express_list[i].id%>"><%=express_list[i].e_name%></option>
+                                        <% } %>
+                                    </select>
+                                </p>
+                                <p class="iadd-ip">物流单号<span class="opera-tips">&nbsp;(*必填)</span></p>
+                                <p class="iadd-ip">
+                                    <input type="text" class="n-input h22 wp100" name="invoice_no" id="invoice_no"/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="btn-prink submit-invoice-info">确定</a>
+                </li>
+                <% } %>
+                <% if (refund.seller_state == 1 && refund.goods_id == 0) { %>
+                <li>
+                    <a href="javascript:void(0);" refund_id="<%=refund.refund_id%>" class="btn-prink undo-refund-order">取消退款</a>
+                </li>
+                <% } %>
+                <% if (refund.seller_state == 1 && refund.goods_id != 0) { %>
+                <li>
+                    <a href="javascript:void(0);" refund_id="<%=refund.refund_id%>" class="btn-prink undo-return-goods">取消退货</a>
+                </li>
+                <% } %>
+                <% if (refund.seller_state == 2 && refund.return_type == 2 && refund.goods_state == 3) { %>
+                <li>
+                <a href="javascript:void(0)" refund_id="<%=refund.refund_id%>" class="btn-prink delay-action" style="background: rgb(73, 175, 205);border:none;">延时</a>
+                </li>
+                <% } %>
+                <% if (refund.invoice_no != '' && refund.invoice_no != null) { %>
+                <li>
+                    <p class="order-dtlt">
+                        我的退货发货信息
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-d-pdinfor">
+                                <p>
+                                    物流公司<%='　　'%>：<%=refund_e_name%>
+                                </p>
+                                <p>
+                                    物流单号<%='　　'%>：<%=refund.invoice_no%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
+                <% if (refund.seller_state == 2 && refund.refund_state >= 2) { %>
+                <li>
+                    <p class="order-dtlt">
+                        商城退款审核
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-d-pdinfor">
+                                <p>
+                                    平台确认<%='　　'%>：<%=state_list['admin'][refund.refund_state]%>
+                                </p>
+                                <% if (refund.admin_time > 0) { %>
+                                <p>
+                                    平台备注<%='　　'%>：<%=refund.admin_message%>
+                                </p>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
+                <li>
+                    <p class="order-dtlt">
+                        相关商品交易信息
+                    </p>
+                    <div class="order-dcnt">
+                        <div class="order-d-detail clearfix">
+                            <div class="order-pd-pdinfor">
+                                <% for(var i = 0; i < order_list.goods_list.length; i++) { %>
+                                <a class="clearfix opdinfor-wp bd-b-cc" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_list.goods_list[i].goods_id%>">
+                                    <span class="opdinfor-pic">
+                                        <img src="<%=order_list.goods_list[i].image_60_url%>"/>
+                                        <!-- wqw@newland 修改开始 时间：2015/06/08 功能:ADMIN006-->
+                                        <!-- zly@newland 修改开始 时间：2015/08/10 隐藏VIP标示-->
+<!--                                        <% if(in_array(order_list.goods_list[i].store_id,stroe_vip_list) != -1){%>
+                                            <img src="<%=SiteUrl%>/data/upload/shop/store/goods/1/goods_vip.jpg" class="flt_img"/>
+                                        <%}%>-->
+                                        <!-- zly@newland 修改结束-->
+                                        <!-- wqw@newland 修改结束-->
+                                    </span>
+                                    <div class="opdinforw-infor">
+                                        <p>
+                                            <%=order_list.goods_list[i].goods_name%>
+                                        </p>
+                                        <p>
+                                            ￥<%=order_list.goods_list[i].goods_price%>＊<%=order_list.goods_list[i].goods_num%>（数量）
+                                        </p>
+                                        <span class="grayrightarrow"></span>
+                                    </div>
+                                </a>
+                                <% } %>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <div class="bd-b-cc">
+                                    <p class="opdinfor-wp">
+                                        运费<%='　　　　'%>：<%=order_list.shipping_fee > 0 ? '￥'+order_list.shipping_fee : '（免运费）'%>
+                                    </p>
+                                    <p class="opdinfor-wp">
+                                        订单总额<%='　　'%>：<strong><%='￥'+order_list.order_amount%></strong>
+                                        <% if (order_list.refund_amount > 0) { %>
+                                        （退款：￥<%=order_list.refund_amount%>）
+                                        <% } %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <div class="bd-b-cc">
+                                    <p class="opdinfor-wp">
+                                        订单编号<%='　　'%>：<span class="order-sn" order_id="<%=order_list.order_id%>" style="color:blue"><%=order_list.order_sn%></span>
+                                    </p>
+                                    <% if (order_list.payment_code != 'offline' && order_list.order_state != 0 && order_list.order_state != 10) { %>
+                                    <p class="opdinfor-wp">
+                                        付款单号<%='　　'%>：<%=order_list.pay_sn%>
+                                    </p>
+                                    <% } %>
+                                    <p class="opdinfor-wp">
+                                        支付方式<%='　　'%>：<%=order_list.payment_name%>
+                                    </p>
+                                    <p class="opdinfor-wp">
+                                        下单时间<%='　　'%>：<%=$getLocalTime(order_list.add_time)%>
+                                    </p>
+                                    <% if (order_list.payment_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        付款时间<%='　　'%>：<%=$getLocalTime(order_list.payment_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.extend_order_common.shipping_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        发货时间<%='　　'%>：<%=$getLocalTime(order_list.extend_order_common.shipping_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.finnshed_time > 0) { %>
+                                    <p class="opdinfor-wp">
+                                        完成时间<%='　　'%>：<%=$getLocalTime(order_list.finnshed_time)%>
+                                    </p>
+                                    <% } %>
+                                    <% if (order_list.shipping_code != '' && order_list.shipping_code != null) { %>
+                                    <p class="opdinfor-wp">
+                                        物流单号<%='　　'%>：<span id="viewdelivery-order" order_id="<%=order_list.order_id%>" style="color:blue"><%=order_list.shipping_code%></span>
+                                    </p>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="order-d-pdinfor">
+                                <p class="opdinfor-wp">
+                                    商家<%='　　　　'%>：<%=order_list.store_name%>
+                                </p>
+                                <p class="opdinfor-wp">
+                                    所在地区<%='　　'%>：<%=order_list.extend_store.area_info + '&nbsp;' + order_list.extend_store.store_address%>
+                                </p>
+                                <p class="opdinfor-wp">
+                                    联系电话<%='　　'%>：<%=order_list.extend_store.store_phone%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </script>
+    <div id="footer">
+    </div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/nl_refund_common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/refund_detail.js"></script>
+</body>
+</html>

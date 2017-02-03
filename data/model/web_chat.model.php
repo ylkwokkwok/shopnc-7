@@ -1,11 +1,6 @@
 <?php
 /**
  * chat
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class web_chatModel extends Model{

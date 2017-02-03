@@ -3,7 +3,7 @@
  * 支付接口
  *
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 require_once("lib/alipay_submit.class.php");
 class alipay {

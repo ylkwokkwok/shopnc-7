@@ -1,11 +1,6 @@
 <?php
 /**
  * 发货地址
- *
- * 
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class daddressModel extends Model {

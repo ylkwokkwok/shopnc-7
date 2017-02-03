@@ -1,11 +1,6 @@
 <?php
 /**
  * 手机支付方式
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class mb_paymentModel extends Model {

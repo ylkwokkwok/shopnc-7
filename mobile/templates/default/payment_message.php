@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('NlWxShop') or exit('Access Invalid!');?>
 <style>
     .success { width: 100%; text-align: center; padding: 200px 0 10px 0; color: green; }
     .fail { width: 100%; text-align: center; padding: 200px 0 10px 0; color: red; }

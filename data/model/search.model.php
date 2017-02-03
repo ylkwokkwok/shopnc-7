@@ -1,16 +1,8 @@
 <?php
 /**
  * 搜索
- *
- *
- *
- *
- 
  */
-
-
 defined('InShopNC') or exit('Access Invalid!');
-
 class searchModel{
 
     //是否开启分面搜索
@@ -61,12 +53,7 @@ class searchModel{
             return array($this->_indexer_ids, $this->_indexer_count);
 
         } catch (XSException $e) {
-//             if (C('debug')) {
-//                 showMessage($e->getMessage(),'','html','error');
-//             } else {
-                Shopnc\Log::record('search\index'.$e->getMessage()."\r\n".$sql,Shopnc\Log::RUN);
-                return false;
-//             }
+            return false;
         }
     }
 
@@ -363,7 +350,11 @@ class searchModel{
             $tag_list = rkcache('class_tag', true);
             if (!empty($tag_list) && is_array($tag_list)) {
                 foreach($tag_list as $key => $val) {
-                    $tag_value = str_replace(',', '==ShopNC==', $val['gc_tag_value']);
+                    if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                        $tag_value = str_replace(',', '==Shop==', $val['gc_tag_value']);
+                    }else{
+                        $tag_value = str_replace(',', '==ShopNC==', $val['gc_tag_value']);
+                    }
                     if (strpos($tag_value, $keyword)) {
                         $data[] = $val['gc_id'];
                     }

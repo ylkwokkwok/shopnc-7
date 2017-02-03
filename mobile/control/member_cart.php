@@ -5,12 +5,9 @@
  *
  *
  *
- 
  */
 
-//use Shopnc\Tpl;
-
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 class member_cartControl extends mobileMemberControl {
 
@@ -23,17 +20,38 @@ class member_cartControl extends mobileMemberControl {
      */
     public function cart_listOp() {
         $model_cart = Model('cart');
-
+        $model_goods = Model('goods');
+        /* wqw@newland 添加开始   　**/
+        /* 时间：2015/06/08       **/
+        /* 功能ID：ADMIN006       **/
+        $model_store = Model('store');
+        $temp = $model_store->goods_vip_list();
+        if (!empty($temp)){
+                foreach ($temp as $value){
+                        $stroe_vip_list[] = $value['store_id'];
+                }
+        }else{
+            $stroe_vip_list[] = '';
+        }
+        /* wqw@newland 添加结束   **/
         $condition = array('buyer_id' => $this->member_info['member_id']);
-        $cart_list	= $model_cart->listCart('db', $condition);
+        $cart_list = $model_cart->listCart('db', $condition);
         $sum = 0;
         foreach ($cart_list as $key => $value) {
             $cart_list[$key]['goods_image_url'] = cthumb($value['goods_image'], $value['store_id']);
             $cart_list[$key]['goods_sum'] = ncPriceFormat($value['goods_price'] * $value['goods_num']);
+            /* lyq@newland 添加开始 **/
+            /* 时间：2015/11/03     **/
+            // 根据商品id获取限购数量
+            $cart_list[$key]['purchase_limit'] = $model_goods->getPurchaseLimitListByGoodsID($value['goods_id']);
+            /* lyq@newland 添结束 **/
             $sum += $cart_list[$key]['goods_sum'];
         }
-
-        output_data(array('cart_list' => $cart_list, 'sum' => ncPriceFormat($sum)));
+        /* wqw@newland 修改开始   　**/
+        /* 时间：2015/06/08       **/
+        /* 功能ID：ADMIN006       **/
+        output_data(array('cart_list' => $cart_list,'stroe_vip_list'=>$stroe_vip_list, 'sum' => ncPriceFormat($sum)));
+        /* wqw@newland 修改结束   **/
     }
 
     /**
@@ -83,7 +101,11 @@ class member_cartControl extends mobileMemberControl {
         if($result) {
             output_data('1');
         } else {
-            output_error('收藏失败');
+            /* lyq@newland 修改开始    **/
+            /* 时间：2015/06/17        **/
+            // 错误信息
+            output_error('添加失败');
+            /* lyq@newland 修改结束    **/
         }
     }
 
@@ -148,40 +170,46 @@ class member_cartControl extends mobileMemberControl {
      * 检查库存是否充足
      */
     private function _check_goods_storage($cart_info, $quantity, $member_id) {
-		$model_goods= Model('goods');
+        $model_goods= Model('goods');
         $model_bl = Model('p_bundling');
         $logic_buy_1 = Logic('buy_1');
 
-		if ($cart_info['bl_id'] == '0') {
+        if ($cart_info['bl_id'] == '0') {
             //普通商品
-		    $goods_info	= $model_goods->getGoodsOnlineInfoAndPromotionById($cart_info['goods_id']);
+            $goods_info	= $model_goods->getGoodsOnlineInfoAndPromotionById($cart_info['goods_id']);
 
-		    //抢购
-		    $logic_buy_1->getGroupbuyInfo($goods_info);
+            //抢购
+            $logic_buy_1->getGroupbuyInfo($goods_info);
 
-		    //限时折扣
-		    $logic_buy_1->getXianshiInfo($goods_info,$quantity);
- 
-		    $quantity = $goods_info['goods_num'];
-		    if(intval($goods_info['goods_storage']) < $quantity) {
+            //限时折扣
+            $logic_buy_1->getXianshiInfo($goods_info,$quantity);
+
+            /* lyq@newland 修改开始    **/
+            /* 时间：2015/06/01        **/
+            /* 功能ID：SHOP015         **/
+            // 修改：判断$goods_info['goods_num']是否为空
+            $quantity = $goods_info['goods_num'] == NULL ? $quantity : $goods_info['goods_num'];
+            /* lyq@newland 修改结束    **/
+            
+            if(intval($goods_info['goods_storage']) < $quantity) {
                 return false;
-		    }
-		} else {
-		    //优惠套装商品
-		    $bl_goods_list = $model_bl->getBundlingGoodsList(array('bl_id' => $cart_info['bl_id']));
-		    $goods_id_array = array();
-		    foreach ($bl_goods_list as $goods) {
-		        $goods_id_array[] = $goods['goods_id'];
-		    }
-		    $bl_goods_list = $model_goods->getGoodsOnlineListAndPromotionByIdArray($goods_id_array);
+            }
+        } else {
+            //优惠套装商品
+            $bl_goods_list = $model_bl->getBundlingGoodsList(array('bl_id' => $cart_info['bl_id']));
+            $goods_id_array = array();
+            foreach ($bl_goods_list as $goods) {
+                $goods_id_array[] = $goods['goods_id'];
+            }
+            $bl_goods_list = $model_goods->getGoodsOnlineListAndPromotionByIdArray($goods_id_array);
 
-		    //如果有商品库存不足，更新购买数量到目前最大库存
-		    foreach ($bl_goods_list as $goods_info) {
-		        if (intval($goods_info['goods_storage']) < $quantity) {
+            //如果有商品库存不足，更新购买数量到目前最大库存
+            foreach ($bl_goods_list as $goods_info) {
+                if (intval($goods_info['goods_storage']) < $quantity) {
                     return false;
-		        }
-		    }
-		}
+                }
+            }
+        }
         return true;
     }
 

@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-8-13, 13:09:08
+    Author     : Liyiquan
+*/
+
+body{margin:0;padding:0; position:relative;}
+a{ text-decoration:none;}
+ul {display:block; height:30px;padding:0;}
+.address li{ list-style:none;float:left;font-size:14px;color:#333333;padding:0 16px;}
+.address a{ color:#666666;}
+.address{margin:0 auto;padding:0; width:100%;}
+.bg{text-align:center;background-color:#6fbb15; display:block;color:#fff;height:45px; }
+.mg{padding:10px;}
+.flt{ float:left;}
+.frt{ float:right;} 
+.bt{ border-bottom:#ccc 1px solid;}
+p{ margin:0;padding:8px 10px 0 0;font-size:12px;}
+.btm{ border-bottom:1px solid #ccc;}
+.mbt{ margin-bottom:15px;}
+.mbt12{ margin-bottom:12px;}
+.top{ display:inline-block;}
+h4{ color:#fff;display:inline-block; margin:0;}
+.gd{ position:fixed;position:fixed;top:0px; left:0;}
+.mt6{ margin-top:60px;}
+/* screen choose */
+@media screen and (min-width: 320px) {
+    .fimg img{margin-left:10px;border:1px solid #ccc;width:135px;height:90px}
+    .rword{ color:#666666;width:160px }
+}
+@media screen and (min-width: 375px) {
+    .fimg img{margin-left:10px;border:1px solid #ccc;width:165px;height:90px}
+    .rword{ color:#666666;width:180px }
+}
+@media screen and (min-width: 414px) {
+    .fimg img{margin-left:10px;border:1px solid #ccc;width:190px;height:90px}
+    .rword{ color:#666666;width:190px }
+}
+

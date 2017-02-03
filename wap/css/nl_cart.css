@@ -1,0 +1,117 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-6-1, 14:14:43
+    Author     : Liyiquan
+*/
+
+
+/* lyq@newland 添加开始    **/
+/* 时间：2015/06/01        **/
+/* 功能ID：SHOP015         **/
+
+/**
+ * 复选框
+ */
+.checkboxFive {
+    position: relative;
+}
+
+/* lyq@newland 修改开始   **/
+/* 时间：2015/06/11       **/
+// 页面样式优化
+
+.p0{
+    padding:0px;
+}
+
+/**
+ * 商品复选框
+ */
+.checkboxFive.checkboxGoods {
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+}
+
+/**
+ * 商品 div
+ */
+.goodsDiv {
+    border-bottom: 1px solid #e8e5e5; 
+    position:inherit;
+    margin-bottom: 3px;
+}
+
+/**
+ * 店铺名
+ */
+.storeName {
+    position:absolute;
+    left:30px
+}
+/* lyq@newland 修改结束   **/
+
+/**
+ * 复选框 LABEL 未选中
+ */
+.checkboxFive label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -2px;
+    left: -2px;
+    /*border:1px solid #ddd;*/
+}
+
+/**
+ * 复选框 LABEL 已选中
+ */
+.checkboxFive label.cart_checked:after {
+    opacity: 1;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 3px;
+    left: 3px;
+    border: 3px solid #fff;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+/**
+ * Display the tick inside the checkbox
+ */
+.checkboxFive label.store_checked:after {
+    opacity: 1;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 6px;
+    left: 7px;
+    border: 3px solid #333;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+/* lyq@newland 添加结束    **/

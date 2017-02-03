@@ -1,7 +1,7 @@
 $(function() {
     var key = getcookie('key');
     if (key == '') {
-        window.location.href = WapSiteUrl+'/tmpl/member/login.html';
+        window.location.href = WapSiteUrl + '/tmpl/member/login.html';
         return;
     }
 
@@ -10,17 +10,18 @@ $(function() {
     var hasMore = true;
 
     var voucher_state = GetQueryString('voucher_state');
-    if (!voucher_state) voucher_state = 1;
+    if (!voucher_state)
+        voucher_state = 1;
 
-    $("[data-state='"+voucher_state+"']").addClass('current');
+    $("[data-state='" + voucher_state + "']").addClass('current');
 
-    function initPage(page,curpage) {
+    function initPage(page, curpage) {
         $.ajax({
-            type:'post',
-            url:ApiUrl+"/index.php?act=member_voucher&op=voucher_list&page="+page+"&curpage="+curpage,
-            data:{key:key,voucher_state:voucher_state},
-            dataType:'json',
-            success:function(result){
+            type: 'post',
+            url: ApiUrl + "/index.php?act=member_voucher&op=voucher_list&page=" + page + "&curpage=" + curpage,
+            data: {key: key, voucher_state: voucher_state},
+            dataType: 'json',
+            success: function(result) {
                 checklogin(result.login); //检测是否登录了
                 var data = result.datas;
                 data.hasmore = result.hasmore; //是不是可以用下一页的功能，传到页面里去判断下一页是否可以用
@@ -29,7 +30,7 @@ $(function() {
                 data.ApiUrl = ApiUrl;
                 data.key = getcookie('key');
 
-                template.helper('tsToDateString', function (t) {
+                template.helper('tsToDateString', function(t) {
                     var d = new Date(parseInt(t) * 1000);
                     var s = '';
                     s += d.getFullYear() + '年';
@@ -47,7 +48,20 @@ $(function() {
                 //上一页
                 $(".pre-page").click(prePage);
 
-                $(window).scrollTop(0);
+                /* lyq@newland 添加开始 **/
+                /* 时间：2015/06/10      **/
+                /* wap端loading画面      **/
+                // 显示页面内容
+                $(".voucher-tab").show();
+                // 隐藏loading画面
+                $("#loading_page").hide();
+                /* lyq@newland 添加结束 **/
+
+                /* lyq@newland 修改开始 **/
+                /* 时间：2015/06/10      **/
+                // 页面置顶
+                document.body.scrollTop = 0;
+                /* lyq@newland 修改结束 **/
             }
         });
     }

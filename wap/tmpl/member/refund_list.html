@@ -1,0 +1,177 @@
+<!doctype html>
+<!--
+/* lyq@newland 添加   **/
+/* 时间：2015/05/19   **/
+// SHOP009 退货退款列表
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/10   **/
+/* wap端loading画面   **/
+// 隐藏页面内容
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/11   **/
+// 页面样式优化
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/12   **/
+// 页面样式提取到CSS文件中
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>退款列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    <!--   日期控件css开始    -->
+    <link rel="stylesheet" type="text/css" href="../../css/calendar/calendar.css">
+    <link rel="stylesheet" type="text/css" href="../../css/calendar/calendar.iOS7.css">
+    <!--   日期控件css结束    -->
+</head>
+<body>
+    <header id="header"></header>
+    <div class="type_select address-opera" style="padding-top: 5px;margin-bottom: 0px;display: none;">
+	<div class="address-ocnt" style="border-bottom:1px solid #999;">
+            <div class="address-octlt">退款类别
+                <select name="refund_type" id="refund_type" style="height:28px;">
+                    <option value="refund">订单退款</option>
+                    <option value="return">退货退款</option>
+                </select>
+            </div>
+	</div>
+        <div class="refund-search">
+            <p class="query">申请时间：<input type="text" name="add_time_from" id="add_time_from" readonly="readonly" class="date_input">
+                ～ <input type="text" name="add_time_to" id="add_time_to" readonly="readonly" class="date_input"></p>
+            <p class="query">订单编号：<input type="text" name="order_sn" class="normal_input"></p>
+            <p class="query"><span id="type_des"></span>编号：<input type="text" name="refund_sn" class="normal_input"></p>
+            <p class="btn_grid">
+                <a href="javascript:void(0)" id="clear-query" class="btns">清空</a>
+                <a href="javascript:void(0)" id="refund-search" class="btns">查询</a>
+            <p>
+        </div>
+    </div>
+    <div class="refund-list-wp" id="refund-list"></div>
+    <script type="text/html" id="refund-list-tmpl">
+        <div class="order-list">
+            <%if (refund_list.length >0){%>
+                <ul>
+                    <%for(var i = 0;i<refund_list.length;i++){%>
+                        <li class="gray-order-skin <%if(i!==0){%>mt10<%}%>">
+                            <div class="order-ltlt">
+                                <p>
+                                    申请时间：
+                                   <%=$getLocalTime(refund_list[i].add_time)%>
+                                </p>
+                            </div>
+                                <div class="order-lcnt">
+                                    <div class="order-lcnt-shop">
+                                        <p>店铺名称：<%=refund_list[i].store_name%></p>
+                                        <p><%if(type=='return'){%>退货编号<%}else{%>退款编号<%}%>：<%=refund_list[i].refund_sn%></p>
+                                        <p>订单编号：<span class="order-sn" order_id="<%=refund_list[i].order_id%>" style="color:blue"><%=refund_list[i].order_sn%></span></p>
+                                    </div>
+                                    <div class="order-shop-pd">
+                                        <a class="order-ldetail clearfix">
+                                            <% if (type == 'return') {%>
+                                            <span class="order-pdpic" goods_id="<%=refund_list[i].goods_id%>">
+                                                <img src="<%=refund_list[i].image_60_url%>"/>
+                                                <!-- wqw@newland 修改开始 时间：2015/06/04 功能ID:ADMIN006-->
+                                                <!-- zly@newland 修改开始 时间：2015/08/10 隐藏VIP标示-->
+<!--                                                <% if(in_array(refund_list[i].store_id,stroe_vip_list) != -1){%>
+                                                <img src="<%=SiteUrl%>/data/upload/shop/store/goods/1/goods_vip.jpg" class="flt_img"/>
+                                                <%}%>-->
+                                                <!-- zly@newland 修改结束-->
+                                                <!-- wqw@newland 修改结束-->
+                                            </span>
+                                            <% } %>
+                                            <div class="<% if (type == 'return') {%>order-pdinfor<% } %>">
+                                                <p><%=refund_list[i].goods_name%></p>
+                                                <p>
+                                                    退款金额：<span class="clr-d94">￥<%=refund_list[i].refund_amount%></span>
+                                                </p>
+                                                <% if (type == 'return') {%>
+                                                 <p>
+                                                    退货数量：<%=refund_list[i].goods_num%>
+                                                </p>
+                                                <% } %>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="order-shop-total">
+                                    <p style="text-align: left;">
+                                        审核状态：<span class="clr-d94"><%=state_list['seller'][refund_list[i].seller_state]%></span>
+                                    </p>
+                                    <p style="text-align: left;">
+                                        平台确认：<span class="clr-d94"><%=(refund_list[i].seller_state == 2 && refund_list[i].refund_state >= 2) ? state_list['admin'][refund_list[i].refund_state]:'无';%></span>
+                                    </p>
+                                    <p class="mt5" style="font-size: 14px;">
+                                        <% if (refund_list[i].seller_state == 1 && refund_list[i].goods_id == 0) { %>
+                                        <a href="javascript:void(0)" refund_id="<%=refund_list[i].refund_id%>" class="cancel-order undo-refund-order" style="padding: 5px 15px;">取消退款</a>
+                                        <% } %>
+                                        <% if (refund_list[i].seller_state == 1 && refund_list[i].goods_id != 0) { %>
+                                        <a href="javascript:void(0)" refund_id="<%=refund_list[i].refund_id%>" class="cancel-order undo-return-goods" style="padding: 5px 15px;">取消退货</a>
+                                        <% } %>
+                                        <% if (refund_list[i].seller_state == 2 && refund_list[i].return_type == 2 && refund_list[i].goods_state == 3) { %>
+                                        <a href="javascript:void(0)" refund_id="<%=refund_list[i].refund_id%>" class="viewdelivery-order delay-action" style="padding: 5px 15px;">延时</a>
+                                        <% } %>
+                                        <% if (refund_list[i].seller_state == 2 && refund_list[i].return_type == 2 && refund_list[i].goods_state == 1) { %>
+                                        <a href="javascript:void(0)" refund_id="<%=refund_list[i].refund_id%>" class="sure-order refund-action" style="padding: 5px 15px;">退货</a>
+                                        <% } else { %>
+                                        <a href="javascript:void(0)" refund_id="<%=refund_list[i].refund_id%>" class="cancel-order view-refund-detail" style="padding: 5px 15px;">查看</a>
+                                        <% } %>
+                                    </p>
+                                </div>
+                        </li>
+                    <%}%>
+                </ul>
+                <div class="pagination mt10">
+                    <a href="javascript:void(0);" class="pre-page <%if(curpage <=1 ){%>disabled<%}%>">上一页</a>
+                    <a href="javascript:void(0);" has_more="<%if (hasmore){%>true<%}else{%>false<%}%>"  class="next-page <%if (!hasmore){%>disabled<%}%>">下一页</a>
+                </div>
+            <%}else {%>
+                <div class="no-record">
+                    暂无记录
+                </div>
+            <%}%>
+        </div>
+    </script>
+    <div id="footer"></div>
+<!--    <script type="text/javascript" src="../../js/zepto.min.js"></script>-->
+    <!-- 日期控件js开始 -->
+    <script type="text/javascript" src="../../js/zepto_gmu/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/extend/highlight.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/core/gmu.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/core/event.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/core/widget.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/widget/calendar/calendar.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/widget/calendar/$picker.js"></script>
+    <script type="text/javascript">
+        (function($){
+            $(function(){
+                $('#add_time_from').on('focus', function(){
+                    $(this).calendar('show');
+                });
+                $('#add_time_to').on('focus', function(){
+                    $(this).calendar('show');
+                });
+            });
+        })(Zepto);
+    </script>
+    <!-- 日期控件js开始 -->
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../js/template.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/nl_refund_common.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/refund_list.js"></script>
+</body>
+</html>

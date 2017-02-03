@@ -1,0 +1,120 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-6-10, 10:18:37
+    Author     : Liyiquan
+*/
+
+/* lyq@newland 添加开始 **/
+/* 时间：2015/06/10     **/
+/* wap端loading画面     **/
+
+/* lyq@newland 修改开始 **/
+/* 时间：2015/06/12     **/
+/* 修改整体颜色风格     **/
+/* lyq@newland 修改结束 **/
+
+/* loading页面 **/
+#loading_page {
+    position:relative;
+    z-index:9999;
+}
+
+/* loading动画 **/
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+/* 底部效果 开始 **/
+.bottom-mask .nav {
+background: #fff;
+border-bottom: 0 none;
+bottom: 0;
+box-shadow: 0 -1px 3px #999;
+color: #fff;
+left: 0;
+position: fixed;
+width: 100%;
+z-index: 1000;
+}
+
+.bottom-mask .nav .tab-line-item {
+font-size: 12px;
+line-height: 16px;
+padding-top: 5px;
+}
+
+.bottom-mask .nav a {
+color: #6fbb15;
+display: block;
+}
+
+.bottom-mask .nav .tab-line-item i {
+font-size: 18px;
+}
+/* 底部效果 结束 **/
+
+/* loading效果 开始 **/
+.spinner {
+    margin: 150px auto;
+    width: 50px;
+    height: 60px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #6fbb15;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
+/* loading效果 结束 **/
+
+/* lyq@newland 添加结束 **/
+
+.goods_load{z-index:99999; margin: auto;position: absolute; top: 50%; left: 50%; bottom: 50%; right: 50%;}

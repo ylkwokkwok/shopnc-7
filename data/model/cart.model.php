@@ -1,11 +1,6 @@
 <?php
 /**
  * 购物车模型
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class cartModel extends Model {
@@ -84,8 +79,31 @@ class cartModel extends Model {
 	        $condition['bl_id'] = 0;
 	    }
     	$check_cart	= $this->checkCart($condition);
-    	if (!empty($check_cart)) return true;
+        if(APP_ID == 'mobile' || APP_ID == 'wx'){
+            /* zly@newland 更改购物车商品件数开始**/
+            /* 时间：2015/07/17                 **/
+            if(!empty($check_cart)){
 
+                $where ='';
+                $where .= 'buyer_id = '.$goods_info['buyer_id'];
+                $where .= ' AND store_id = '.$goods_info['store_id'];
+                $where .= ' AND goods_id = '.$goods_info['goods_id'];
+                $where .= ' AND goods_name = "'.$goods_info['goods_name'].'"';
+                $where .= ' AND goods_price = '.$goods_info['goods_price'];
+                $where .= ' AND goods_image = "'.$goods_info['goods_image'].'"';
+                $where .= ' AND store_name = "'.$goods_info['store_name'].'"';
+                $where .= ' AND bl_id = '.(isset($goods_info['bl_id']) ? $goods_info['bl_id'] : 0);
+                $sql = "UPDATE ".DBPRE."cart
+                    SET goods_num = goods_num + $quantity
+                    WHERE
+                        $where";
+                $result = $this->execute($sql);
+                return $result;
+            }
+            /* zly@newland 更改购物车商品件数结束**/
+        }else{
+            if (!empty($check_cart)) return true;
+        }
 		$array    = array();
 		$array['buyer_id']	= $goods_info['buyer_id'];
 		$array['store_id']	= $goods_info['store_id'];
@@ -149,7 +167,16 @@ class cartModel extends Model {
 	 */
 	public function listCart($type, $condition = array(), $limit = '') {
         if ($type == 'db') {
-    		$cart_list = $this->where($condition)->limit($limit)->select();
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                /* lyq@newland 修改开始    **/
+                /* 时间：2015/06/01        **/
+                /* 功能ID：SHOP015         **/
+                // 修改：增加查询的排序条件，按店铺ID排序
+                $cart_list = $this->where($condition)->order('store_id asc')->limit($limit)->select();
+                /* lyq@newland 修改结束    **/
+            }else{
+                $cart_list = $this->where($condition)->limit($limit)->select();
+            }
         } elseif ($type == 'cookie') {
         	//去除斜杠
         	$cart_str = get_magic_quotes_gpc() ? stripslashes(cookie('cart')) : cookie('cart');

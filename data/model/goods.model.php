@@ -1,14 +1,8 @@
 <?php
 /**
  * 商品管理
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
-
 class goodsModel extends Model{
     public function __construct(){
         parent::__construct('goods');
@@ -100,6 +94,32 @@ class goodsModel extends Model{
         return $goods_list;
     }
 
+	/* lyq@newland 添加开始 **/
+    /* 时间：2015/06/03     **/
+    /* 功能ID：SHOP018      **/
+    
+    /**
+     * 出售中的商品列表
+     *   根据商品公共内容ID分组
+     * @param array $condition
+     * @param string $field
+     * @param string $order
+     * @param number $page
+     * @return array
+     */
+    public function getGoodsListByCommnidDistinct($condition, $field = '*', $order = 'goods_id asc', $page = 0) {
+        $condition['goods_state']   = self::STATE1;
+        $condition['goods_verify']  = self::VERIFY1;
+        $condition = $this->_getRecursiveClass($condition);
+        $field = "goods_commonid as nc_distinct ," . $field;
+        $count = $this->getGoodsOnlineCount($condition,"distinct goods_commonid");
+        $goods_list = array();
+        if ($count != 0) {
+            $goods_list = $this->getGoodsOnlineList($condition, $field, $page, $order, 0, 'nc_distinct', false, $count);
+        }
+        return $goods_list;
+    }
+    /* lyq@newland 添加结束 **/
     /**
      * 在售商品SKU列表
      *
@@ -460,6 +480,18 @@ class goodsModel extends Model{
         $return1 = $this->editGoodsCommonById($update1, $commonid_array);
         $return2 = $this->editGoods($update2, array('goods_commonid' => array('in', $commonid_array)));
         if ($return1 && $return2) {
+            if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                /* wqw@newland 修改开始   　**/
+                /* 时间：2015/05/28        **/
+                /* 功能ID：ADMIN005               **/
+                $common_list = $this->getGoodsCommonList($condition, 'goods_commonid,store_id,goods_stateremark', 0);
+                foreach ($common_list as $val) {
+                    $param = array();
+                    $param['common_id'] = $val['goods_commonid'];
+                    $this->_sendStoreMsg('goods_verify_succ', $val['store_id'], $param);
+                }
+                /* wqw@newland 修改结束   **/
+            }
             return true;
         } else {
             return false;
@@ -1322,4 +1354,66 @@ class goodsModel extends Model{
          return $common_info;
      }	
 	
+	/* lyq@newland 添加开始 **/
+    /* 时间：2015/11/02 - 2015/11/03 **/
+    /**
+     * 根据goods_common_id获取限购信息
+     * @param type $goods_commonid_string
+     * @return type
+     */
+    public function getPurchaseLimitListByGoodsCommonIDString($goods_commonid_string) {
+        $condition['goods_commonid'] = array('in', $goods_commonid_string);
+        $purchase_limit_list = Model()->table('goods_common')->where($condition)->field('goods_commonid, purchase_limit')->select();
+        $purchase_limit_list = array_under_reset($purchase_limit_list, 'goods_commonid');
+        return $purchase_limit_list;
+    }
+    /**
+     * 根据goods_id获取限购信息
+     * @param type $goods_id
+     * @return type
+     */
+    public function getPurchaseLimitListByGoodsID($goods_id) {
+        $sql = 'SELECT ';
+        $sql.= '    '.DBPRE.'goods_common.purchase_limit ';
+        $sql.= 'FROM ';
+        $sql.= '    '.DBPRE.'goods_common ';
+        $sql.= 'LEFT JOIN '.DBPRE.'goods ON '.DBPRE.'goods.goods_commonid = '.DBPRE.'goods_common.goods_commonid ';
+        $sql.= 'WHERE ';
+        $sql.= '    '.DBPRE.'goods.goods_id = "'.$goods_id.'" ';
+        $result = Model()->query($sql);
+        return count($result) ? intval($result[0]['purchase_limit']) : 0;
+    }
+    
+    /**
+     * 动态取奶品
+     * @return type
+     */
+    public function getMilkProduct() {
+        $sql = 'SELECT ';
+        $sql.= '    O_Number,O_Name ';
+        $sql.= 'FROM ';
+        $sql.= '   td_milkproducts ';
+        $sql.= 'WHERE ';
+        $sql.= '  td_milkproducts.O_Enable = 1 ';
+        $result = Model()->query($sql);
+        return $result;
+    }
+    
+     /**
+     * 动态取奶卡类型
+     * @return type
+     */
+    public function getMilkCardType() {
+        $sql = 'SELECT ';
+        $sql.= '    Constant_Num,Constant_Name ';
+        $sql.= 'FROM ';
+        $sql.= '   mst_constant ';
+        $sql.= 'WHERE ';
+        $sql.= '  mst_constant.Constant_Type = "奶卡类别" ';
+         $sql.= ' order by Constant_Val asc ';
+        $result = Model()->query($sql);
+        return $result;
+    }
+    
+    /* lyq@newland 添加结束 **/
 }

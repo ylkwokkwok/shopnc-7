@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>交易成功</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/milk/style.css">
+    </head>
+    <body style="position: relative;">
+        <div class="pro_pay" style="margin-top:20%;">
+		<img src="../images/milk/trade_success.png" alt="" />
+	</div>
+        <div class="pay_txt" style="margin-top:10%">
+            <span>付款成功</span>
+            <p id="tohome_assign_succed" style="display:none;margin-top:20%">点击下方“订单列表”按钮可以进入“微商城”的订单列表查看本次支付成功的订单。
+                如有疑问，请拨打客服电话【400-811-8333】。</p>
+            <p id="assign_succed" style="display:none;margin-top:20%">如果需要现在开卡，请点击下方“设置送奶计划”按钮。如果需要修改计划，请到“微商城”的“个人中心”进行修改。
+                如有疑问，请拨打客服电话【400-811-8333】。</p>
+            <p id="assign_failed" style="display:none;margin-top:20%">由于系统原因，奶卡分配失败，稍后工作人员将与您联系，请耐心等待。
+                如有疑问，请拨打客服电话【400-811-8333】，将记录编号【<text id="log_id"></text>】告知客服。</p>
+	</div>
+        <div class="pay plan" style="display:none;margin-top:15%">
+            <div class="pay_plan" id="pay_plan">设置送奶计划</div>
+        </div>
+        <div class="pay order" style="display:none;margin-top:15%">
+            <div class="pay_plan" id="order_list">订单列表</div>
+        </div>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../js/config.js"></script>
+        <script type="text/javascript" src="../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../js/milk/common.js"></script>
+        <script type="text/javascript" src="../js/milk/trade_success.js"></script>
+    </body>
+</html>

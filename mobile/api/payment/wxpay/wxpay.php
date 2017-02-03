@@ -5,7 +5,7 @@
  * 
  
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 class wxpay{
 

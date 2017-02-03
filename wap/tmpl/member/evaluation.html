@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+/* zly@newland 评价录入页面 **/
+
+/* lyq@newland 修改 **/
+/* 时间：2015/06/17 **/
+// 评价星级显示
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>评价</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    </head>
+    <body>
+        <header id="header"></header>
+        <div class="" id="order-evaluation-wp"></div>
+        <script type="text/html" id="order-evaluation-tmpl">
+            <div class="order-list">
+                <ul>
+                    <li class="gray-order-skin">
+                        <div class="evaluation_0">
+                            <%for (var k = 0;k<order_goods.length;k++){ %>
+                            <div class="skip" style="margin:10px 5px 0 5px;">
+                                <a href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_goods[k].goods_id;%>">
+                                    <span class="order-pdpic"  style="margin-right:5px;">
+                                        <img src="<%=order_goods[k].goods_image_url%>"/>
+                                    </span>
+                                    <p><%=order_goods[k].goods_name%></p>
+                                </a>
+                                <div class="order-pdinfor">
+                                    <p style="margin:2px 0px;"><span class="clr-d94" style="margin-right:50px;">￥<%=order_goods[k].goods_price%>商品数目</span><%=order_goods[k].goods_num%>件</p>
+                                </div>
+                                <div>
+                                    <div class="<%if (k === order_goods.length - 1) {%>evaluation_1_nb<%} else {%>evaluation_1<%}%>">
+                                        <div class="evaluation_score">
+                                            <p>商品评价:&nbsp;</p>
+                                            <div class="raty-x2">
+                                                <span class="evaluation-star-gray fleft eval_stars" name="score<%=order_goods[k].goods_id%>" score="1" style="left:75px;bottom:-23px;"></span>
+                                                <span class="evaluation-star-gray fleft eval_stars" name="score<%=order_goods[k].goods_id%>" score="2" style="left:110px;bottom:-23px;"></span>
+                                                <span class="evaluation-star-gray fleft eval_stars" name="score<%=order_goods[k].goods_id%>" score="3" style="left:145px;bottom:-23px;"></span>
+                                                <span class="evaluation-star-gray fleft eval_stars" name="score<%=order_goods[k].goods_id%>" score="4" style="left:180px;bottom:-23px;"></span>
+                                                <span class="evaluation-star-gray fleft eval_stars" name="score<%=order_goods[k].goods_id%>" score="5" style="left:215px;bottom:-23px;"></span>
+                                            </div>
+                                        </div>
+                                        <div style="margin: 0px 8px;">
+                                        <textarea class="nl-textarea <%=order_goods[k].goods_id%>" name="eval_comment"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}%>
+                            <%if(store_info.is_own_shop == "0"){%>
+                            <h4 style="padding-left:5px;padding-top:10px;background:#999;color:#fff;height:30px;">对该店此次服务的评分</h4>
+                            <div class="evaluation_score">
+                                <p>宝贝与描述相符:&nbsp;</p>
+                                <div class="raty-x2">&nbsp;
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_desccredit" score="1" style="left:115px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_desccredit" score="2" style="left:150px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_desccredit" score="3" style="left:185px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_desccredit" score="4" style="left:220px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_desccredit" score="5" style="left:255px;bottom:-3px;"></span>
+                                </div>
+                            </div>
+                            <div class="evaluation_score">
+                                <p>卖家的服务态度:&nbsp;</p>
+                                <div class="raty-x2">&nbsp;
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_servicecredit" score="1" style="left:115px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_servicecredit" score="2" style="left:150px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_servicecredit" score="3" style="left:185px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_servicecredit" score="4" style="left:220px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_servicecredit" score="5" style="left:255px;bottom:-3px;"></span>
+                                </div>
+                            </div>
+                            <div class="evaluation_score">
+                                <p>卖家的发货速度:&nbsp;</p>
+                                <div class="raty-x2">&nbsp;
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_deliverycredit" score="1" style="left:115px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_deliverycredit" score="2" style="left:150px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_deliverycredit" score="3" style="left:185px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_deliverycredit" score="4" style="left:220px;bottom:-3px;"></span>
+                                    <span class="evaluation-star-gray fleft eval_stars" name="seval_deliverycredit" score="5" style="left:255px;bottom:-3px;"></span>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <% } %>
+                            <div style="margin:25px 5px 10px 10px;font-size:14px;">
+                                <span><input id="checkbox" type="checkbox" name="anony" value="1" style="vertical-align:middle;"><label style="vertical-align:middle">&nbsp;匿名购买</label></span>
+                                <a href="javascript:void(0)" class="complain-order order-opera-btns" style="font-size:14px;color:#FFF;float:right;">提交评论</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </script>
+        <footer id="footer"></footer>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="../../js/zepto.min.js"></script>
+        <script type="text/javascript" src="../../js/template.js"></script>
+        <script type="text/javascript" src="../../js/config.js"></script>
+        <script type="text/javascript" src="../../js/common.js"></script>
+        <script type="text/javascript" src="../../js/simple-plugin.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+        <script type="text/javascript" src="../../js/tmpl/order_evaluation.js"></script>
+    </body>
+</html>

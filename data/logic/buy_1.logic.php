@@ -1,8 +1,6 @@
 <?php
 /**
  * 购买行为
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class buy_1Logic {
@@ -154,6 +152,31 @@ class buy_1Logic {
 	    	        $store_goods_total[$store_id] += $freight_total;
 	    	    }
 	    	    break;
+			/* lyq@newland 添加开始 **/
+			/* 时间：2015/07/03    **/
+			// 推广积分计算
+			case 'extend_points':
+				// 店铺推广积分抵扣数组
+				$store_ep_total = array();
+				// 当前使用推广积分
+				$extend_points = $preferential_array['extend_points'];
+				// 推广积分已开启且使用了推广积分时
+				if ($preferential_array['points_cash_ratio'] != '' && $preferential_array['extend_points'] != 0) {
+					// 循环店铺商品总价
+					foreach ($store_goods_total as $store_id => $goods_total) {
+						// 允许使用的最大推广积分
+						$valid_ep_to_cash = floor(floor($goods_total * $preferential_array['order_cash_ratio'] * 100) / $preferential_array['points_cash_ratio']);
+						// 该店铺推广积分（允许使用的推广积分大于等于当前使用积分，取当前使用积分，否则取最大值）
+						$store_ep_total[$store_id] = $valid_ep_to_cash >= $extend_points ? $extend_points : $valid_ep_to_cash;
+						// 更新店铺商品总价
+						$store_goods_total[$store_id] -= $store_ep_total[$store_id] * $preferential_array['points_cash_ratio'] / 100;
+						// 更新当前使用推广积分
+						$extend_points -= $store_ep_total[$store_id];
+					}
+				}
+				// 返回 店铺商品总价和店铺推广积分
+				return array($store_goods_total, $store_ep_total);
+			/* lyq@newland 添加结束 **/
 	    }
 	    return $store_goods_total;
 	}
@@ -378,6 +401,46 @@ class buy_1Logic {
 		return $return_list;
     }
 
+	/**
+     * 根据地区选择计算出所有店铺最终运费(奶站自取点)
+     * @param array $freight_list 运费信息(店铺ID，运费，运费模板ID，购买数量)
+     * @param int $self_receive_spot_cd 自取点ID 
+     * @return array 返回店铺ID=>运费
+     * 
+     * 
+     * 
+     * @author xsh@newland 2016/03/14  
+     */
+    public function calcStoreFreightMilk($freight_list, $self_receive_spot_cd) {
+		if (!is_array($freight_list) || empty($freight_list) || empty($self_receive_spot_cd)) return;
+
+		//免费和固定运费计算结果
+		$return_list = $freight_list['iscalced'];
+
+		//使用运费模板的信息(array(店铺ID=>array(运费模板ID=>购买数量))
+		$nocalced_list = $freight_list['nocalced'];
+
+		//然后计算使用运费运费模板的在该$city_id时的运费值
+		if (!empty($nocalced_list) && is_array($nocalced_list)) {
+		    //如果有商品使用的运费模板，先计算这些商品的运费总金额
+            $model_transport = Model('transport_milk');
+            foreach ($nocalced_list as $store_id => $value) {
+                if (is_array($value)) {
+                    foreach ($value as $transport_id => $buy_num) {
+                        $freight_total = $model_transport->calc_transport($transport_id, $buy_num, $self_receive_spot_cd);
+                        if (empty($return_list[$store_id])) {
+                            $return_list[$store_id] = $freight_total;
+                        } else {
+                            $return_list[$store_id] += $freight_total;
+                        }
+                    }
+                }
+            }
+		}
+
+		return $return_list;
+    }
+	
     /**
      * 追加赠品到下单列表,并更新购买数量
      * @param array $store_cart_list 购买列表
@@ -646,6 +709,25 @@ class buy_1Logic {
         }
     }
 
+	/* lyq@newland 添加开始 **/
+    /* 时间：2015/07/03    **/
+    /**
+     * 推广积分抵扣
+     *   扣除会员推广积分
+     * @param type $extend_points 推广积分
+     * @param type $member_id 会员ID
+     */
+    public function epPay($extend_points, $member_id) {
+        // 会员现在拥有的推广积分
+        $own_ep = Model()->table('member')->field('extend_points')->where(array('member_id' => $member_id))->find();
+        if ($own_ep['extend_points'] < $extend_points) { // 积分不足
+            throw new Exception('推广积分不足');
+        }
+        // 更新会员推广积分
+        Model()->execute('UPDATE `'.DBPRE.'member` SET extend_points = extend_points - '
+                            . $extend_points . ' WHERE member_id = ' . $member_id);
+    }
+    /* lyq@newland 添加结束 **/
 	/**
 	 * 生成支付单编号(两位随机 + 从2000-01-01 00:00:00 到现在的秒数+微秒+会员ID%1000)，该值会传给第三方支付接口
 	 * 长度 =2位 + 10位 + 3位 + 3位  = 18位
@@ -800,7 +882,7 @@ class buy_1Logic {
      */
     public function getStorePayTypeList($store_id_array, $if_offpay, $pay_name) {
         $store_pay_type_list = array();
-        if ($_POST['pay_name'] == 'online') {
+        if ($_POST['pay_name'] == 'online' || $pay_name == 'online') {
             foreach ($store_id_array as $store_id) {
                 $store_pay_type_list[$store_id] = 'online';
             }
@@ -835,6 +917,15 @@ class buy_1Logic {
             return null;
         }
         $new_array = array();
+        if(APP_ID == 'mobile' || APP_ID == 'wx'){
+            /* wqw@newland 添加开始   　**/
+            /* 时间：2015/06/18        **/
+            /* 功能ID：               **/
+            // 取得成本价
+            $goods_common_info = Model('goods')->getGoodeCommonInfo(array('goods_commonid' => $goods_info['goods_commonid']));
+            $new_array['goods_costprice'] = $goods_common_info['goods_costprice'];
+            /* wqw@newland 添加结束   **/
+        }
         $new_array['goods_num'] = $goods_info['is_fcode'] ? 1 : $quantity;
         $new_array['goods_id'] = $goods_id;
         $new_array['goods_commonid'] = $goods_info['goods_commonid'];
@@ -931,6 +1022,15 @@ class buy_1Logic {
             if (in_array($cart_info['goods_id'],array_keys($goods_online_array))) {
                 $goods_online_info = $goods_online_array[$cart_info['goods_id']];
                 $cart_list[$key]['goods_commonid'] = $goods_online_info['goods_commonid'];
+                if(APP_ID == 'mobile' || APP_ID == 'wx'){
+                    /* wqw@newland 修改开始    **/
+                    /* 时间：2015/06/18        **/
+                    /* 功能ID：                **/
+                    // 取得成本价
+                    $goods_common_info = $model_goods->getGoodeCommonInfo(array('goods_commonid' => $goods_online_info['goods_commonid']));
+                    $cart_list[$key]['goods_costprice'] = $goods_common_info['goods_costprice'];
+                    /* wqw@newland 修改结束   **/
+                }
                 $cart_list[$key]['goods_name'] = $goods_online_info['goods_name'];
                 $cart_list[$key]['gc_id'] = $goods_online_info['gc_id'];
                 $cart_list[$key]['goods_image'] = $goods_online_info['goods_image'];

@@ -1,15 +1,8 @@
 <?php
 /**
  * 商品类别模型
- *
- *
- *
- *
- * by abc 网店技术交流中心  www.abc.com 开发
  */
-
 defined('InShopNC') or exit('Access Invalid!');
-
 class goods_classModel extends Model
 {
     /**

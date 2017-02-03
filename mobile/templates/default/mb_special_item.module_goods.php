@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!'); ?>
+<?php defined('NlWxShop') or exit('Access Invalid!'); ?>
 
 <div class="index_block goods">
     <?php if(!empty($vv['title'])) {?>

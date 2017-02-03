@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('NlWxShop') or exit('Access Invalid!');?>
 <!DOCTYPE html>
 <html>
 <head>

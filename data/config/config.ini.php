@@ -15,18 +15,40 @@ $config['chat_site_url'] 		= 'http://shopnc.siburuxue.org/chat';
 $config['node_site_url'] 		= 'http://127.0.0.1:8090';
 $config['upload_site_url']		= 'http://shopnc.siburuxue.org/data/upload';
 $config['resource_site_url']	= 'http://shopnc.siburuxue.org/data/resource';
+$config['milk_return_url'] = 'http://192.168.33.107:8080/';
+$config['milk_return_url_p'] = 'http://192.168.33.107:8080/salesPromotion/common.do?method=getCustomerReturnOrders&refundSn=';
+$config['milk_return_url_z'] = 'http://192.168.33.107:8080/selfTakeMilkSpot/common.do?method=getCustomerReturnOrders&refundSn=';
 $config['version'] 		= '201502020388';
 $config['setup_date'] 	= '2016-12-19 11:59:12';
 $config['gip'] 			= 0;
 $config['dbdriver'] 	= 'mysqli';
-$config['tablepre']		= 'shopnc_';
-$config['db']['1']['dbhost']       = 'localhost';
-$config['db']['1']['dbport']       = '3306';
-$config['db']['1']['dbuser']       = 'root';
-$config['db']['1']['dbpwd']        = '123456';
-$config['db']['1']['dbname']       = 'shopnc';
-$config['db']['1']['dbcharset']    = 'UTF-8';
-$config['db']['slave']                  = $config['db']['master'];
+$config['db']['slave']        = $config['db']['master'];
+
+$config['db']['shop']['tablepre']		= 'shopnc_';
+$config['db']['shop']['dbhost']       = 'localhost';
+$config['db']['shop']['dbport']       = '3306';
+$config['db']['shop']['dbuser']       = 'root';
+$config['db']['shop']['dbpwd']        = '123456';
+$config['db']['shop']['dbname']       = 'shopnc';
+$config['db']['shop']['dbcharset']    = 'UTF-8';
+
+
+$config['db']['mobile']['tablepre']		= 'wxshop_';
+$config['db']['mobile']['dbhost']       = '127.0.0.1';
+$config['db']['mobile']['dbport']       = '3306';
+$config['db']['mobile']['dbuser']       = 'root';
+$config['db']['mobile']['dbpwd']        = '123456';
+$config['db']['mobile']['dbname']       = 'dlxinle_new';
+$config['db']['mobile']['dbcharset']    = 'UTF-8';
+
+$config['db']['wx']['tablepre']		= '';
+$config['db']['wx']['dbhost']       = $config['db']['2']['dbhost'];
+$config['db']['wx']['dbport']       = $config['db']['2']['dbport'];
+$config['db']['wx']['dbuser']       = $config['db']['2']['dbuser'];
+$config['db']['wx']['dbpwd']        = $config['db']['2']['dbpwd'];
+$config['db']['wx']['dbname']       = 'promotion_db';
+$config['db']['wx']['dbcharset']    = 'UTF-8';
+
 $config['session_expire'] 	= 3600;
 $config['lang_type'] 		= 'zh_cn';
 $config['cookie_pre'] 		= 'C292_';

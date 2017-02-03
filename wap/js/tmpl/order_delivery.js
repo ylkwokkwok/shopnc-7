@@ -1,6 +1,6 @@
 $(function() {
     var key = getcookie('key');
-    if (key=='') {
+    if (key == '') {
         window.location.href = WapSiteUrl + '/tmpl/member/login.html';
         return;
     }
@@ -10,9 +10,9 @@ $(function() {
     $.ajax({
         type: 'post',
         url: ApiUrl + "/index.php?act=member_order&op=search_deliver",
-        data:{key:key,order_id:order_id},
-        dataType:'json',
-        success:function(result) {
+        data: {key: key, order_id: order_id},
+        dataType: 'json',
+        success: function(result) {
             //检测是否登录了
             checklogin(result.login);
 
@@ -24,6 +24,13 @@ $(function() {
 
             var html = template.render('order-delivery-tmpl', data);
             $("#order-delivery").html(html);
+
+            /* lyq@newland 添加开始 **/
+            /* 时间：2015/06/10      **/
+            /* wap端loading画面      **/
+            // 隐藏loading画面
+            $("#loading_page").hide();
+            /* lyq@newland 添加结束 **/
         }
     });
 

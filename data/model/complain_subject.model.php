@@ -1,11 +1,6 @@
 <?php
 /**
  * 投诉主题模型
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class complain_subjectModel{

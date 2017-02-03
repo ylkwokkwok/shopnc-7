@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+/* lyq@newland 添加开始 **/
+/* 时间：2015/06/09    **/
+// 1.联系卖家，打开QQ客户端，开启会话
+/* lyq@newland 添加结束 **/
+-->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <meta name="Keywords" content=" ">
+        <meta name="Description" content=" ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>联系卖家</title>
+        <style>
+            body{ margin:0; padding:0; font-family:"微软雅黑";}
+            .down_w{ width:280px; margin-top:10px;}
+            .ul_btn{ list-style:none; margin:0; padding:0; border-top:1px solid #ccc;}
+            .ul_btn li{ list-style-type:none; width:180px; border-radius:30px; margin:15px; border:3px solid #fff; padding:0;}
+            .ul_btn li span{ font-family:Arial;}
+            .en{ font-family:Arial;}
+            .ul_btn li a{ text-decoration:none; color:#fff; padding:10px; display:block;}
+            .ul_btn li:hover{ border-radius:30px; border:3px solid #ccc;}
+            .android{ background:#66cc00;}
+            .iPhone{ background:#3399ff;}
+            .touch{ background:#e0e0e0;}
+            .title{ font-size:30px; font-weight:bold; color:#701b44; height:60px; line-height:60px;}
+            .foot{ font-size:12px; color:#aaa; border-top:1px solid #aaa; position:absolute; bottom:0px; width:100%; height:30px; line-height:30px; text-align:center;}
+            .weixin-android-wrap {padding:6px 25px;}
+            .weixin-android-tips {border: 1px solid #9d9d9d; border-radius: 3px;padding: 10px 5px 10px 5px;font-size: 14px;background: #eeeeee; font-size:1em;}
+            .weixin-android-arrow {text-align: right;}
+            .weixin-android-open {color:#FF9C00}
+        </style>
+        <script type="text/javascript" src="../js/config.js"></script>
+        <script type="text/javascript">
+            /**
+             * 初始化页面
+             */
+            function init() {
+                // 设置箭头背景图片
+                document.getElementById("arrow").src = SiteUrl + '/data/upload/shop/store/contact/getapp_arrow.png';
+                // 获取手机类型
+                var phoneType = getPhoneType();
+                // 根据手机类型设置提示文字
+                if (phoneType == '1') { // 安卓手机
+                    document.getElementById("alert_mess").innerHTML = "【在浏览器中打开】";
+                } else if (phoneType == '2') { // 苹果手机
+                    document.getElementById("alert_mess").innerHTML = "【在Safari中打开】";
+                } else if (phoneType == '3') { // winphone手机
+                    document.getElementById("alert_mess").innerHTML = "【在浏览器中打开】";
+                }
+                // 打开QQ
+                contact_qq();
+            }
+
+            /**
+             * 打开QQ
+             */
+            function contact_qq() {
+                // 获取url中?后面的字符串
+                var search_str = window.location.search;
+                // 获取url参数
+                var url = search_str.replace('?url=', '');
+                // 延迟1秒执行跳转
+                setTimeout('location.href = "'+url+'";', 1000);
+            }
+
+            /**
+             * 获取手机类型
+             */
+            function getPhoneType() {
+                var u = navigator.userAgent;
+                if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) { // 安卓手机
+                    return '1';
+                } else if (u.indexOf('iPhone') > -1) { // 苹果手机
+                    return '2';
+                } else if (u.indexOf('Windows Phone') > -1) { // winphone手机
+                    return '3';
+                }
+            }
+        </script>
+    </head>
+
+    <body onload="init();">
+        <div class="weixin-android-wrap" id="weixintips" style="display:block;">
+            <div class="weixin-android-arrow"><img id="arrow" src="" width="24"></div>
+            <div class="weixin-android-tips">
+                正在打开手机QQ，若无反应请点击右上角按钮选择 <span class="weixin-android-open" id="alert_mess"> </span>
+            </div>
+        </div>
+    </body>
+</html>

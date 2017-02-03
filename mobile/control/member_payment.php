@@ -5,12 +5,9 @@
  *
  *
  *
- 
  */
 
-//use Shopnc\Tpl;
-
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 class member_paymentControl extends mobileMemberControl {
 

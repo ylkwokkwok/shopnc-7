@@ -1,4 +1,30 @@
 <!doctype html>
+<!--
+/* lyq@newland 修改               **/
+/* 时间：2015/05/22 - 2015/05/28  **/
+// SHOP009 订单详情
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/10   **/
+/* wap端loading画面   **/
+// 隐藏页面内容
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/11   **/
+// 页面样式优化
+
+/* lyq@newland 修改   **/
+/* 时间：2015/06/12   **/
+// 页面样式提取到CSS文件中
+
+/* lyq@newland 添加   **/
+/* 时间：2015/06/19   **/
+// 添加等待付款响应的mask
+
+/* lyq@newland 修改 **/
+/* 时间：2015/07/23 **/
+// 退货相关文言更改
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,11 +35,41 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" type="text/css" href="../../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/member.css">
+    <!--   日期控件css开始    -->
+    <link rel="stylesheet" type="text/css" href="../../css/calendar/calendar.css">
+    <link rel="stylesheet" type="text/css" href="../../css/calendar/calendar.iOS7.css">
+    <link rel="stylesheet" type="text/css" href="../../css/child.css">
+    <!--   日期控件css结束    -->
 </head>
 <body>
     <header id="header"></header>
+    <div class="order-state address-opera" style="padding-top: 5px;margin-bottom: 0px;display: none;">
+        <div class="address-ocnt" style="border-bottom:1px solid #999;">
+            <div class="address-octlt">订单状态
+                <select name="order_state" id="order-state" style="height:25px;">
+                    <option value="0,10,20,30,40">全部</option>
+                    <option value="10">待支付</option>
+                    <option value="20">待发货</option>
+                    <option value="30">待收货</option>
+                    <option value="40">已收货</option>
+                    <option value="0">已取消</option>
+                    <option value="50">退款中</option>
+                    <option value="60">已退款</option>
+                </select>
+            </div>
+        </div>
+        <div class="order-search">
+            <p class="query">下单时间：<input type="text" name="query_start_date" id="query_start_date" readonly="readonly" class="date_input">
+                ～ <input type="text" name="query_end_date" id="query_end_date" readonly="readonly" class="date_input"></p>
+            <p class="query">订单编号：<input type="text" name="order_sn" class="normal_input"></p>
+            <p class="btn_grid">
+                <a href="javascript:void(0)" class="frame" id="clear-query" style="padding: 2px 15px;">清空</a>
+                <a href="javascript:void(0)" class="frame" id="order-search" style="padding: 2px 15px;">查询</a>
+            <p>
+        </div>
+    </div>
     <div class="order-list-wp" id="order-list"></div>
     <script type="text/html" id="order-list-tmpl">
         <div class="order-list">
@@ -21,6 +77,7 @@
                 <ul>
                     <%for(var i = 0;i<order_group_list.length;i++){
                         var orderlist = order_group_list[i].order_list;
+                        
                     %>
                         <li class="<%if(order_group_list[i].pay_amount){%>green-order-skin<%}else{%>gray-order-skin<%}%> <%if(i>0){%>mt10<%}%>">
                             <div class="order-ltlt">
@@ -34,25 +91,49 @@
                             %>
                                 <div class="order-lcnt">
                                     <div class="order-lcnt-shop">
-                                        <p>店铺名称：<%=orderlist[j].store_name%></p>
-                                        <p>订单编号：<%=orderlist[j].order_sn%></p>
+                                        <p>店铺名称：<a class="main-color" href="../go_store.html?store_id=<%=orderlist[j].store_id%>"><%=orderlist[j].store_name%></a></p>
+                                        <p>订单编号：<a class="main-color" href="order_detail.html?order_id=<%=orderlist[j].order_id%>"><%=orderlist[j].order_sn%></a></p>
                                     </div>
                                     <div class="order-shop-pd">
                                         <%for (var k = 0;k<order_goods.length;k++){%>
-                                        <a class="order-ldetail clearfix <%if(k>0){%>bd-t-de<%}%>" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_goods[k].goods_id%>">
-                                            <span class="order-pdpic">
-                                                <img src="<%=order_goods[k].goods_image_url%>"/>
-                                            </span>
-                                            <div class="order-pdinfor">
-                                                <p><%=order_goods[k].goods_name%></p>
-                                                <p>
-                                                    单价：<span class="clr-d94">￥<%=order_goods[k].goods_price%></span>
-                                                </p>
-                                                 <p>
-                                                    商品数目：<%=order_goods[k].goods_num%>
-                                                </p>
+                                            <div style="text-align:right">
+                                                <a class="order-ldetail clearfix <%if(k>0){%>bd-t-de<%}%>" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_goods[k].goods_id%>">
+                                                    <span class="order-pdpic">
+                                                        <img src="<%=order_goods[k].goods_image_url%>"/>
+                                                        <!-- wqw@newland 修改开始 时间：2015/06/02 功能:ADMIN006-->
+                                                        <!-- zly@newland 修改开始 时间：2015/08/10 隐藏VIP标示-->
+<!--                                                        <% if(in_array(order_goods[k].store_id,stroe_vip_list) != -1){%>
+                                                            <img src="<%=SiteUrl%>/data/upload/shop/store/goods/1/goods_vip.jpg" class="flt_img"/>
+                                                        <%}%>-->
+                                                        <!-- zly@newland 修改结束-->
+                                                        <!-- wqw@newland 修改结束-->
+                                                    </span>
+                                                    <div class="order-pdinfor">
+                                                        <p style="text-align: left;"><%=order_goods[k].goods_name%></p>
+                                                        <p>
+                                                            单价：<span class="clr-d94">￥<%=order_goods[k].goods_price%></span>
+                                                        </p>
+                                                         <p>
+                                                            商品数目：<%=order_goods[k].goods_num%>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                                <div style="text-align:right;margin: 1px 1px;padding: 0px 5px 2px 5px; margin-bottom: 10px;">
+                                                <% if (order_goods[k].refund == 0 && order_goods[k].extend_refund && order_goods[k].extend_refund.admin_time > 0) { %>
+                                                <a href="<%=WapSiteUrl%>/tmpl/member/refund_detail.html?refund_id=<%=order_goods[k].extend_refund.refund_id%>&type=detail" class="frame">已退</a>
+                                                <% } %>
+                                                <% if (order_goods[k].refund == 1) { %>
+                                                    <a href="javascript:void(0)" order_id="<%=order_goods[k].order_id%>" goods_id="<%=order_goods[k].rec_id%>" class="return-goods frame">退货</a>
+                                                <% } %>
+                                                <% if (order_goods[k].extend_refund && order_goods[k].extend_refund.seller_state == 1) { %>
+                                                    <a href="javascript:void(0)" order_id="<%=order_goods[k].order_id%>" goods_id="<%=order_goods[k].rec_id%>" class="undo-return-goods frame">取消退货</a>
+                                                <% } %>
+                                                <% if(orderlist[j].if_complain) {%>
+                                                    <a href="javascript:void(0)" order_id="<%=order_goods[k].order_id%>" goods_id="<%=order_goods[k].rec_id%>" class="complain-order frame">交易投诉</a>
+                                                <% } %>
+                                                
+                                                </div>
                                             </div>
-                                        </a>
                                         <%}%>
                                     </div>
                                     <div class="order-shop-total">
@@ -70,29 +151,48 @@
                                                     stateClass = "ot-nofinish";
                                                 }
                                             %>
-                                            <span class="<%=stateClass%>"><%=orderlist[j].state_desc%></span>
+                                            <span class="<%=stateClass%>">
+                                            <% if (orderlist[j].order_state === '0' && orderlist[j].refund_state === '2') { %>
+                                                已退款
+                                            <% } else if (orderlist[j].if_lock) { %>
+                                                退款退货中
+                                            <% } else { %>
+                                                <%=orderlist[j].state_desc%>
+                                            <% } %>
+                                            </span>
                                         </p>
-                                        <p class="mt5">
+                                        <p class="mt5" style="font-size: 14px;">
+                                            <a href="order_detail.html?order_id=<%=orderlist[j].order_id%>" class="frame">订单详情</a>
                                             <%if(orderlist[j].if_receive){%>
-                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="sure-order">确认订单</a>
+                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="sure-order frame" style="border: 1px solid #dd2727;color: #dd2727;">确认收货</a>
                                             <%}%>
                                              <%if(orderlist[j].if_cancel){%>
-                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="cancel-order">取消订单</a>
+                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="cancel-order frame">取消订单</a>
                                             <%}%>
                                             <%if(orderlist[j].if_deliver){%>
-                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="viewdelivery-order">查看物流</a>
+                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="viewdelivery-order frame">查看物流</a>
                                             <%}%>
+                                            <%if(orderlist[j].if_refund_cancel){%>
+                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="refund-order frame">订单退款</a>
+                                            <%}%>
+                                            <%if(orderlist[j].if_undo_refund_cancel){%>
+                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="undo-refund-order frame">取消退款</a>
+                                            <%}%>
+                                            <!--zly@newland 新增 我要评价 按钮 开始-->
+                                            <%if(orderlist[j].if_evaluation){%>
+                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="evaluation frame" style="border: 1px solid #dd2727;color: #dd2727;">我要评价</a>
+                                            <%}%>
+                                            <!--zly@newland 新增 我要评价 按钮 结束-->  
+                                          
                                         </p>
                                     </div>
                                 </div>
                             <%}%>
                             <%if(order_group_list[i].pay_amount && order_group_list[i].pay_amount>0 &&
                             payment_list.length > 0) {%>
-                            <%for(var p = 0;p < payment_list.length;p++){%>
-                            <a href="<%=ApiUrl %>/index.php?act=member_payment&op=pay&key=<%=key %>&pay_sn=<%=order_group_list[i].pay_sn %>&payment_code=<%=payment_list[p].payment_code%>"
-                               class="l-btn-login check-payment"><%=payment_list[p].payment_name%>（￥<%=
+                            <a pay_sn="<%=order_group_list[i].pay_sn %>" href="javascript:void(0)" class="payment l-btn-login check-payment">微信支付（￥<%=
                                 p2f(order_group_list[i].pay_amount) %>）</a><br>
-                            <%}}%>
+                            <%}%>
                         </li>
                     <%}%>
                 </ul>
@@ -108,13 +208,50 @@
         </div>
     </script>
     <div id="footer"></div>
-    <script type="text/javascript" src="../../js/zepto.min.js"></script>
+    <div id="wxpay_loading_mask" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;background-color:white;opacity:.80;display:none;"></div>
+    <div id="wxpay_loading" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:none;">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    <!-- 日期控件js开始 -->
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/touch.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/extend/highlight.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/core/gmu.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/core/event.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/core/widget.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/widget/calendar/calendar.js"></script>
+    <script type="text/javascript" src="../../js/zepto_gmu/widget/calendar/$picker.js"></script>
+    <script type="text/javascript">
+        (function($){
+            $(function(){
+                $('#query_start_date').on('focus', function(){
+                    $(this).calendar('show');
+                });
+                $('#query_end_date').on('focus', function(){
+                    $(this).calendar('show');
+                });
+                
+               
+            });
+            
+        })(Zepto);
+    </script>
+    <!-- 日期控件js结束 -->
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="../../js/template.js"></script>
     <script type="text/javascript" src="../../js/config.js"></script>
     <script type="text/javascript" src="../../js/common.js"></script>
-	<script type="text/javascript" src="../../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../../js/simple-plugin.js"></script>
     <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
     <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/nl_refund_common.js"></script>
     <script type="text/javascript" src="../../js/tmpl/order_list.js"></script>
 </body>
 </html>

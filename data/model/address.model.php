@@ -1,11 +1,6 @@
 <?php
 /**
  * 我的地址
- *
- * 
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class addressModel extends Model {
@@ -176,4 +171,19 @@ class addressModel extends Model {
 	public function delAddress($condition){
 	    return $this->where($condition)->delete();
 	}
+	/* zz@newland 添加开始 * */
+    /* 时间：2016/03/09   * */
+    
+    //查询被删除项是不是默认地址
+    public function is_default($condition) {
+        return $this->where($condition)->field('is_default')->find();
+    }
+
+    //如果被删除项是默认地址，那么取address_id得最大值为默认地址
+    public function default_Address($condition) {
+        $max = $this->table('address')->where(array('member_id' => $condition))->max('address_id');
+        return $this->where(array('member_id' => $condition, 'address_id' => $max))->update(array('is_default' => 1));
+    }
+    
+    /* 时间：2016/03/09    * */
 }

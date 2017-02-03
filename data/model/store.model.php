@@ -1,11 +1,6 @@
 <?php
 /**
  * 店铺模型管理
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class storeModel extends Model {
@@ -432,4 +427,85 @@ class storeModel extends Model {
     	}
     	return $store_array;
     }
+	/* zly@newland 平台直接更改店铺认证状态开始 **/            
+	/* 时间：2015/05/27                        **/		
+	/* 功能ID：ADMIN002                        **/
+	/**
+	 * 变更认证状态
+	 * @param type $store_id 店铺id
+	 * @param type $authentication 更改为的认证状态
+	 * @return 
+	*/
+	public function authentication($store_id,$authentication){
+		// 更改条件为当前店铺
+		$where = array(
+			"store_id" => $store_id
+		);
+		// 认证状态
+		$data = array(
+			"authentication_state" => $authentication
+		);
+		// 更改认证状态
+		return $this->table('store')->where($where)->update($data);
+	}
+	/* zly@newland 平台直接更改店铺认证状态结束**/
+	
+	/* wqw@newland 添加开始**/
+	/* 时间：2015/06/08    **/
+	/* 功能ID：ADMIN006    **/
+	public function goods_vip_list(){
+		$model = Model('store');
+		$field = 'store_id';
+		$store_array = $model->table('store')->field($field)->where('authentication_state', 1)->select();
+
+		return $store_array;
+	}
+	/* wqw@newland 添加结束   **/
+	
+	/* zly@newland 平台看店铺详细更改店铺认证状态开始**/
+	/* 时间：2015/06/06                            **/
+	/* 功能ID:ADMIN002                             **/
+	/**
+	 * 更改店铺认证状态
+	 * @param type $member_id 会员ID
+	 * @param type $state 认证状态
+	 * @param type $authentication_message 店铺审核
+	 * @return type 更改是否成功
+	*/
+	public function update_autentication_type($member_id='' , $state = '',$authentication_message=''){
+		// 会员ID
+		$where = array(
+			'member_id' => $member_id
+		);
+		// 认证状态、店铺审核意见
+		$update_info = array(
+			'authentication_state' => $state,
+			'authentication_message' => $authentication_message
+		);
+		$result = $this->table('store')->where($where)->update($update_info);
+		return $result;
+	}
+	/* zly@newland 平台看店铺详细更改店铺认证状态结束**/ 
+	
+	/* zly@newland 更改店铺申请认证状态开始**/
+	/* 时间：2015/06/06                   **/
+	/* 功能ID:ADMIN002                    **/
+	/**
+	 * 更改店铺申请认证状态
+	 * @param type $store 店铺ID
+	 * @return type 更改是否成功
+	 */
+	public function update_apply_autentication($store_id = ""){
+		// 店铺ID
+		$where = array(
+			'store_id' => $store_id
+		);
+		// 申请认证状态
+		$update_info = array(
+			'apply_authentication' => 1
+		);
+		$result = $this->table('store')->where($where)->update($update_info);
+		return $result;
+	}
+	/* zly@newland 更改店铺申请认证状态结束**/
 }

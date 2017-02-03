@@ -5,12 +5,9 @@
  *
  *
  *
- 
  */
 
-//use Shopnc\Tpl;
-
-defined('InShopNC') or exit('Access Invalid!');
+defined('NlWxShop') or exit('Access Invalid!');
 
 class member_favoritesControl extends mobileMemberControl {
 
@@ -24,6 +21,19 @@ class member_favoritesControl extends mobileMemberControl {
     public function favorites_listOp() {
 		$model_favorites = Model('favorites');
 
+        /* wqw@newland 添加开始   　**/
+        /* 时间：2015/06/08       **/
+        /* 功能ID：ADMIN006       **/
+        $model_store = Model('store');
+        $temp = $model_store->goods_vip_list();
+        if (!empty($temp)){
+                foreach ($temp as $value){
+                        $stroe_vip_list[] = $value['store_id'];
+                }
+        }else{
+            $stroe_vip_list[] = '';
+        }
+        /* wqw@newland 添加结束   **/
         $favorites_list = $model_favorites->getGoodsFavoritesList(array('member_id'=>$this->member_info['member_id']), '*', $this->page);
         $page_count = $model_favorites->gettotalpage();
         $favorites_id = '';
@@ -39,8 +49,11 @@ class member_favoritesControl extends mobileMemberControl {
             $goods_list[$key]['fav_id'] = $value['goods_id'];
             $goods_list[$key]['goods_image_url'] = cthumb($value['goods_image'], 240, $value['store_id']);
         }
-
-        output_data(array('favorites_list' => $goods_list), mobile_page($page_count));
+        /* wqw@newland 修改开始   　**/
+        /* 时间：2015/06/08       **/
+        /* 功能ID：ADMIN006       **/
+        output_data(array('favorites_list' => $goods_list,'stroe_vip_list'=>$stroe_vip_list), mobile_page($page_count));
+        /* wqw@newland 修改结束   **/
     }
 
     /**

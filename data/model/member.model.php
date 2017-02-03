@@ -1,11 +1,6 @@
 <?php
 /**
  * 会员模型
- *
- *
- *
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class memberModel extends Model {
@@ -558,4 +553,52 @@ class memberModel extends Model {
                     where shopnc_member.member_id = $uid";
         return $this->query($sql);
     }
+	/*zly@newland 获取会员名单开始**/            
+	/*时间：2015/05/28           **/		
+	/*功能ID：ADMIN007           **/
+	/**
+	* 获取会员名单
+	* @param type $condition 下载条件
+	* @param type $order 排序
+	* @return 下载数据
+	*/
+	public function download_member_detail($condition,$order){
+		// 整理下载数据
+		$fields = array("member_name","member_truename","member_sex","member_birthday",
+						"member_email","member_mobile","member_qq","member_ww",
+						"member_time","member_points","available_predeposit","freeze_predeposit",
+						"available_rc_balance","freeze_rc_balance","member_areainfo","member_exppoints"
+						);
+		// 调取下载数据
+		return $this->table('member')->where($condition)->field($fields)->order($order)->group('member_id')->select(array('limit' => false));
+	}
+	/*zly@newland 获取会员名单结束**/ 
+	/*zly@newland 将会员加入黑名单开始   **/            
+	/*时间：2015/06/02                  **/		
+	/*功能ID：ADMIN009                  **/
+	function add_blacklist($member_id){
+		// 要加入黑名单的会员ID
+		$where =array(
+			"member_id" => $member_id
+		);
+		// 默认黑名单字段值
+		$data = array(
+			"add_blacklist" => 1
+		);
+		// 加入黑名单
+		return $this->table('member')->where($where)->update($data);
+	}
+	/*zly@newland 将会员加入黑名单结束  **/  
+	/*zly@newland 获取所有会员ID开始   **/            
+	/*时间：2015/06/04                 **/		
+	/*功能ID：ADMIN009                 **/
+	/**
+	 * 获取所有会员ID
+	 * @return type 所有会员ID
+	 */
+	function get_member_id(){
+		$member_ids = Model()->table('member')->field('member_id')->select(array('limit' => false));
+		return $member_ids;
+	}
+	/* zly@newland 获取所有会员ID结束   **/
 }

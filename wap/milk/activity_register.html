@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>订奶</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/milk/style.css">
+</head>
+
+<body>
+    <div class="milk_top" style="margin-top:0px">活动注册</div>
+    <div id="binded_page" style="display: none;">
+        <div class="user">
+            <div class="name">
+                <p>您的账号已经绑定过手机号</p>
+                <p>姓　　名：<span id="binded_truename"></span></p>
+                <p>手机号码：<span id="binded_mobile"></span></p>
+                <p>绑定日期：<span id="binded_date"></span></p>
+                <p>如需重新绑定其他号码，请点击下方“重新绑定”按钮</p>
+            </div>
+        </div>
+        <div class="pay">
+            <div id="rebind" class="pay_wechat">重新绑定</div>
+        </div>
+    </div>
+    <div id="bind_page" style="display: none;">
+        <div class="user">
+            <div class="name">
+                <span>姓　名：</span>
+                <input type="text" name="truename" value="" maxlength="20" />
+            </div>
+            <div class="name">
+                <span>手机号：</span>
+                <input type="text" name="mobile" value="" maxlength="11" />
+            </div>
+            <div class="name">
+                <span>验证码：</span>
+                <input type="text" name="verify" value="" maxlength="6" style="width:20%" /><div id="get_verify" class="disable_btn pay_wechat " style="display:inline;margin:0 0 0 15px;padding:6px 13px;">获取验证码</div>
+            </div>
+        </div>
+        <div class="pay">
+            <div id="bind_btn" class="pay_wechat">绑定</div>
+        </div>
+    </div>
+    <div id="succsss_page" style="display: none;">
+        <div class="pro_pay" style="margin-top:20%;">
+		<img src="../images/milk/trade_success.png" alt="" />
+	</div>
+        <div class="pay_txt" style="margin-top:10%">
+            <span>绑定成功</span>
+	</div>
+    </div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../js/config.js"></script>
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/milk/common.js"></script>
+    <script type="text/javascript" src="../js/simple-plugin.js"></script>
+    <script type="text/javascript" src="../js/milk/activity_register.js"></script>
+</body>
+</html>

@@ -1,8 +1,6 @@
 <?php
 /**
  * 店铺评分模型
- *
- 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class evaluate_storeModel extends Model {
