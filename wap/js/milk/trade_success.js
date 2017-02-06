@@ -31,7 +31,7 @@ $(function () {
                     // 设置送奶计划 按钮点击事件
                     $("#pay_plan").click(function(){
                         // 跳转至执行系统设置送奶计划
-                        location.href = 'http://fresh.cenler-shop.com/selfTakeMilkSpot/milkPlan.do?method=milkPlan&customer_cd='+data.customer_cd+'&cssFlag=1';
+                        location.href = 'http://shopnc.siburuxue.org/selfTakeMilkSpot/milkPlan.do?method=milkPlan&customer_cd='+data.customer_cd+'&cssFlag=1';
                     });
                     // 显示奶卡分配成功提示信息
                     $("#assign_succed").show();

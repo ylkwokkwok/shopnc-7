@@ -45,5 +45,18 @@ class mb_user_tokenModel extends Model{
 	 */
 	public function delMbUserToken($condition){
         return $this->where($condition)->delete();
-	}	
+	}
+
+    /**
+     * 获取OPENID
+     */
+	public function getOpenId($condition){
+        $model = Model();
+        return $model->table('mb_user_token,member')
+                ->join('left')
+                ->on('mb_user_token.member_id = member.member_id')
+                ->field('member.member_wx_id, member.member_id')
+                ->select();
+    }
 }
+

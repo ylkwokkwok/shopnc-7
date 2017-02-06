@@ -154,17 +154,14 @@ class wechatCallbackapi {
     private function update_location($postObj) {
         // 获取转换后的经纬度（百度API需要的经纬度）
         $location_info = $this->geoconvert($postObj->Longitude.','.$postObj->Latitude);
-        // 更新用户位置sql
-        $update_sql = 'UPDATE '
-                    . '    `' . DBPRE . 'member` '
-                    . 'SET '
-                    . '    longitude = "' . $location_info->x . '",'                // 经度
-                    . '    latitude = "' . $location_info->y . '",'                 // 纬度
-                    . '    location_update_time = "' . $postObj->CreateTime . '" '  // 用户位置更新时间
-                    . 'WHERE '
-                    . '    member_wx_id = "' . $postObj->FromUserName . '"';        // 用户微信openid
-        // 执行更新操作
-        Model()->execute($update_sql);
+        // 更新用户位置
+        $data = array(
+            'longitude' => $location_info->x,
+            'latitude' => $location_info->y,
+            'location_update_time' => $postObj->CreateTime,
+            'member_wx_id' => $postObj->FromUserName,
+        );
+        Model()->table('member')->update($data);
     }
     
     /**

@@ -9,7 +9,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class articleModel{
+class articleModel extends Model {
 	/**
 	 * 列表
 	 *

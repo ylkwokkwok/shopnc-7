@@ -8,7 +8,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class groupbuy_price_rangeModel{
+class groupbuy_price_rangeModel extends Model {
 
     //表名
     const TABLE_NAME = 'groupbuy_price_range';

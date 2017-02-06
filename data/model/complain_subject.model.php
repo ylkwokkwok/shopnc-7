@@ -3,7 +3,7 @@
  * 投诉主题模型
  */
 defined('InShopNC') or exit('Access Invalid!');
-class complain_subjectModel{
+class complain_subjectModel extends Model {
 
 	/*
 	 * 构造条件

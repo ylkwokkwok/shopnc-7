@@ -26,20 +26,20 @@ $para = '{
                 "sub_button": [{
                         "type": "view",
                         "name": "进入商城",
-                        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://fresh.cenler-shop.com/wx/index.php&response_type=code&scope=snsapi_userinfo&state=code#wechat_redirect"
+                        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://shopnc.siburuxue.org/wx/index.php&response_type=code&scope=snsapi_userinfo&state=code#wechat_redirect"
                     }, {
                         "type": "view",
                         "name": "绑定手机",
-                        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://fresh.cenler-shop.com/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=activity_register#wechat_redirect"
+                        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://shopnc.siburuxue.org/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=activity_register#wechat_redirect"
                     }]
             }, {
                 "type": "view",
                 "name": "到户订奶",
-                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://fresh.cenler-shop.com/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=tohome#wechat_redirect"
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://shopnc.siburuxue.org/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=tohome#wechat_redirect"
             }, {
                 "type": "view",
                 "name": "自取订奶",
-                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://fresh.cenler-shop.com/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=nearby_store#wechat_redirect"
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://shopnc.siburuxue.org/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=nearby_store#wechat_redirect"
             }]
     }';
 

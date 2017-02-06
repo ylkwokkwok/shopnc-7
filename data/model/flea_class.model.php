@@ -4,7 +4,7 @@
  *by 3 3hao .com 
  */
 defined('InShopNC') or exit('Access Invalid!');
-class flea_classModel{
+class flea_classModel extends Model {
 	/**
 	 * 类别列表
 	 *

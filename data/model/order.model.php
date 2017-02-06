@@ -646,21 +646,37 @@ class orderModel extends Model {
      * 
      */
     public function getMemberId($order_id) {
-        $sql = 'SELECT ';
-        $sql.=' `' . DBPRE . 'member`.member_wx_id as member_wx_id ,';
-        $sql.=' `' . DBPRE . 'express`.e_name as e_name';
-        $sql.= '  FROM ';
-        $sql.= '        `' . DBPRE . 'order` ';
-        $sql.= 'inner JOIN `' . DBPRE . 'member` ON ' . DBPRE . 'order.buyer_id = ' . DBPRE . 'member.member_id ';
-        $sql.= 'inner JOIN `' . DBPRE . 'order_common` ON ' . DBPRE . 'order.order_id = ' . DBPRE . 'order_common.order_id ';
-        $sql.= 'inner JOIN `' . DBPRE . 'express` ON ' . DBPRE . 'order_common.shipping_express_id = ' . DBPRE . 'express.id ';
-        $sql.= 'WHERE ';
-        $sql.= '        ' . DBPRE . 'order.order_id = "' . $order_id . '"';
-        $result = $this->query($sql);
+        $condition = array(
+            'order.order_id' => $order_id
+        );
+        $model = Model();
+        $result = $model->table('order,member,order_common,express')
+                ->join('inner,inner,inner')
+                ->on('order.buyer_id = member.member_id,order.order_id = order_common.order_id,order_common.shipping_express_id = express.id')
+                ->field('member`.member_wx_id as member_wx_id,express`.e_name as e_name')
+                ->where($condition)
+                ->select();
         return $result;
     }
 
     /* lyq@newland 添加结束 * */
+    /**
+     * 订单信息
+     */
+    public function getWXOrderInfo($condition){
+        $model = Model();
+        return $model->table('order,order_goods')
+                        ->left('left')
+                        ->on('order.order_id = order_goods.order_id')
+                        ->field('sum(order.order_amount) pay_amount,count(*) goods_num,order_goods.goods_name')
+                        ->where($condition)
+                        ->select();
+    }
 
-
+    /**
+     * 订单信息
+     */
+    public function getSNOrderInfo($condition){
+        return $this->field('sum(order_amount) pay_amount')->where($condition)->select();
+    }
 }

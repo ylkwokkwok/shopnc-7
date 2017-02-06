@@ -32,20 +32,19 @@ $config['db']['shop']['dbpwd']        = '123456';
 $config['db']['shop']['dbname']       = 'shopnc';
 $config['db']['shop']['dbcharset']    = 'UTF-8';
 
-
 $config['db']['mobile']['tablepre']		= 'wxshop_';
 $config['db']['mobile']['dbhost']       = '127.0.0.1';
 $config['db']['mobile']['dbport']       = '3306';
 $config['db']['mobile']['dbuser']       = 'root';
 $config['db']['mobile']['dbpwd']        = '123456';
-$config['db']['mobile']['dbname']       = 'dlxinle_new';
+$config['db']['mobile']['dbname']       = 'dlxinle';
 $config['db']['mobile']['dbcharset']    = 'UTF-8';
 
 $config['db']['wx']['tablepre']		= '';
-$config['db']['wx']['dbhost']       = $config['db']['2']['dbhost'];
-$config['db']['wx']['dbport']       = $config['db']['2']['dbport'];
-$config['db']['wx']['dbuser']       = $config['db']['2']['dbuser'];
-$config['db']['wx']['dbpwd']        = $config['db']['2']['dbpwd'];
+$config['db']['wx']['dbhost']       = $config['db']['mobile']['dbhost'];
+$config['db']['wx']['dbport']       = $config['db']['mobile']['dbport'];
+$config['db']['wx']['dbuser']       = $config['db']['mobile']['dbuser'];
+$config['db']['wx']['dbpwd']        = $config['db']['mobile']['dbpwd'];
 $config['db']['wx']['dbname']       = 'promotion_db';
 $config['db']['wx']['dbcharset']    = 'UTF-8';
 

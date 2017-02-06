@@ -19,7 +19,7 @@ $(function() {
             // 绑定客户信息点击事件
             $("li").click(function(){
                 // 跳转至执行系统设置送奶计划
-                location.href = 'http://fresh.cenler-shop.com/selfTakeMilkSpot/milkPlan.do?method=milkPlan&customer_cd='+$(this).attr("customer_cd")+'&cssFlag=1';
+                location.href = 'http://shopnc.siburuxue.org/selfTakeMilkSpot/milkPlan.do?method=milkPlan&customer_cd='+$(this).attr("customer_cd")+'&cssFlag=1';
             });
 
             /* lyq@newland 添加开始 **/

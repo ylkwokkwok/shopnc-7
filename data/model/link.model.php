@@ -10,7 +10,7 @@
 
 defined('InShopNC') or exit('Access Invalid!');
 
-class linkModel{
+class linkModel extends Model {
 	/**
 	 * 列表
 	 *

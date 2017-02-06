@@ -3,7 +3,7 @@
  * 搜索
  */
 defined('InShopNC') or exit('Access Invalid!');
-class searchModel{
+class searchModel extends Model {
 
     //是否开启分面搜索
     private $_open_face = false;

@@ -36,6 +36,7 @@ class member_indexControl extends mobileMemberControl {
         /* lyq@newland 修改开始   * */
         /* 时间：2015/06/16       * */
         // 会员头像
+
         $member_info['avator'] = getMemberAvatarForUrl($this->member_info['member_avatar']);
         /* lyq@newland 修改结束   * */
         /* lyq@newland 修改开始   * */

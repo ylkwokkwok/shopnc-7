@@ -190,7 +190,11 @@ function showMessage($msg,$url='',$show_type='html',$msg_type='succ',$is_show=1,
 			Tpl::output('url',$url);
 			Tpl::output('msg_type',$msg_type);
 			Tpl::output('is_show',$is_show);
-			Tpl::showpage('msg','msg_layout',$time);
+            if (!is_array($url) && strpos($url, 'seller_center')) {
+                Tpl::showpage('msg','seller_layout',$time);
+            } else {
+                Tpl::showpage('msg','msg_layout',$time);
+            }
 	}
 	exit;
 }
@@ -2291,4 +2295,50 @@ function encryptShow($str,$start,$length) {
  */
 function callback($state = true, $msg = '', $data = array()) {
     return array('state' => $state, 'msg' => $msg, 'data' => $data);
+}
+
+/* lyq@newland 添加开始   **/
+/* 时间：2015/06/16       **/
+/**
+ * 成员头像
+ *   通过member表中的member_avatar字段获取会员头像
+ * @param string $member_avatar 会员头像URL
+ * @return string 会员头像URL
+ */
+function getMemberAvatarForUrl($member_avatar){
+    if (is_null($member_avatar) || empty($member_avatar)) { // member表中不存在会员头像
+        // 返回默认会换头像URL
+        return UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait');
+    } else { // member表中存在会员头像
+        // 返回64*64大小的会员头像URL
+        return substr($member_avatar, 0, strlen($member_avatar) - 1).'96';
+    }
+}
+/* lyq@newland 添加结束   **/
+
+function get_broswer() {
+    $broswer_name = '';
+    $sys = $_SERVER['HTTP_USER_AGENT'];
+    if (stripos($sys, "Firefox/") > 0) {
+        preg_match("/Firefox\/([^;)]+)+/i", $sys);
+        $broswer_name = "Firefox";
+    } elseif (stripos($sys, "Maxthon") > 0) {
+        preg_match("/Maxthon\/([\d\.]+)/", $sys);
+        $broswer_name = "傲游";
+    } elseif (stripos($sys, "MSIE") > 0) {
+        preg_match("/MSIE\s+([^;)]+)+/i", $sys);
+        $broswer_name = "IE";
+    } elseif (stripos($sys, "OPR") > 0) {
+        preg_match("/OPR\/([\d\.]+)/", $sys);
+        $broswer_name = "Opera";
+    } elseif (stripos($sys, "Chrome") > 0) {
+        preg_match("/Chrome\/([\d\.]+)/", $sys);
+        $broswer_name = "Chrome";
+    } elseif(stripos($sys,'rv:')>0 && stripos($sys,'Gecko')>0){
+        preg_match("/rv:([\d\.]+)/", $sys);
+        $broswer_name = "IE";
+    }else {
+        $broswer_name = "未知浏览器";
+    }
+    return $broswer_name;
 }

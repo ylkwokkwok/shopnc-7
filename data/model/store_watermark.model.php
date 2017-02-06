@@ -8,7 +8,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class store_watermarkModel {
+class store_watermarkModel  extends Model {
 	/**
 	 * 根据店铺id获取水印
 	 *

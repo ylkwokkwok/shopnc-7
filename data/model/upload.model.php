@@ -9,7 +9,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class uploadModel{
+class uploadModel extends Model {
 	/**
 	 * 列表
 	 *

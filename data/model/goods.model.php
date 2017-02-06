@@ -1416,4 +1416,60 @@ class goodsModel extends Model{
     }
     
     /* lyq@newland 添加结束 **/
+
+    /**
+     * 直接购买奶品
+     */
+    public function get_milk_info($condition){
+        return $this->field("store_id,goods_id,milk_card_type,milk_product_num as gc_id")->where($condition)->select();
+    }
+
+    /**
+     * 检验配送方式
+     */
+    public function type_filter($condition){
+        $model = Model();
+        return $model->table('goods,cart')
+                        ->join('inner')
+                        ->on('goods.goods_id = cart.goods_id')
+                        ->field("delivery_type,cart.goods_name")
+                        ->where($condition)
+                        ->select();
+    }
+
+    /**
+     * 检验配送方式
+     */
+    public function best_filter($condition){
+        $model = Model();
+        return $model->table('goods,cart')
+            ->join('inner')
+            ->on('goods.goods_id = cart.goods_id')
+            ->field("max(best_time) as best_time")
+            ->where($condition)
+            ->select();
+    }
+
+    /**
+     * 获取相应奶品下的商品信息
+     */
+    public function getMilkInfo($type,$ONumber){
+        $condition = array(
+            "goods.milk_product_num" => $ONumber
+        );
+        $field = "goods.goods_id,c.Constant_Name,goods.milk_card_type,";
+        if($type == 'self'){
+            $field .= 'goods.goods_price - goods_common.goods_self_discount AS goods_price';
+        }else if($type == 'home'){
+            $field .= 'goods.goods_price ';
+        }
+        $model = Model();
+        return $model->table('goods,goods_common,mst_constant')
+                        ->join('left,inner')
+                        ->on("goods.goods_commonid = goods_common.goods_commonid,goods.milk_card_type = mst_constant.Constant_Num and mst_constant.Constant_Type='快速入口'")
+                        ->field($field)
+                        ->where($condition)
+                        ->order("goods.milk_card_type ASC")
+                        ->select();
+    }
 }

@@ -179,7 +179,7 @@
                     // 整理模板消息需要的数据
                     $data = array(
                         'member_wx_id' => $notify->data['openid'],                  // 接收消息方的微信openid
-                        'url'          => 'http://fresh.cenler-shop.com/selfTakeMilkSpot/common.do?method=getMilkCard'
+                        'url'          => 'http://shopnc.siburuxue.org/selfTakeMilkSpot/common.do?method=getMilkCard'
                                             . '&customerCd='.$customer_cd_info['customer_cd'].'&milkType='.$milk_cd,  // 点击消息时跳转的url
                         'first'        => '恭喜您成功订购【'.$gc_info['gc_name'].'】！',   // 消息内容头部
                         'keyword1'     => $customer_cd_info['customer_cd'],         // 会员（客户）编号
@@ -243,30 +243,21 @@
      * @return array need_insert：是否需要新增客户，customer_cd：客户编号
      */
     function get_customer_cd_info($milk_order_data) {
-        $sql = 'SELECT ';
-        $sql.= '    customer_cd ';
-        $sql.= 'FROM ';
-        $sql.= '    `mst_customer` ';
-        $sql.= 'WHERE ';
-        $sql.= '    member_id = "'.$milk_order_data['member_id'].'" ';
-        $sql.= 'AND customer_name = "'.$milk_order_data['name'].'" ';
-        $sql.= 'AND address = "'.$milk_order_data['address'].'" ';
-        $sql.= 'AND tel = "'.$milk_order_data['tel'].'" ';
-        // 自取点编号不为空时
+        $condition = array(
+            'member_id' => $milk_order_data['member_id'],
+            'customer_name' => $milk_order_data['name'],
+            'address' => $milk_order_data['address'],
+            'tel' => $milk_order_data['tel'],
+            'delete_flag' => 0,
+        );
         if ($milk_order_data['self_receive_spot_cd'] !== '') {
-            $sql.= 'AND customer_cd LIKE "'.$milk_order_data['self_receive_spot_cd'].'%" ';
+            // 自取点编号不为空时
+            $condition['customer_cd'] = array(array('like',$milk_order_data['self_receive_spot_cd'].'%'));
+        }else {
+            // 自取点编号为空时（到户）
+            $condition['customer_cd'] = array(array('like','DH%'));
         }
-        // 自取点编号为空时（到户）
-        else {
-            $sql.= 'AND customer_cd LIKE "DH%" ';
-        }
-        $sql.= 'AND delete_flag = "0" ';
-        $sql.= 'ORDER BY ';
-        $sql.= '    customer_cd DESC ';
-        $sql.= 'LIMIT 1 ';
-        // 根据订单信息查询客户编号
-        $result = Model()->query($sql);
-        logResult("查询客户".$sql);
+        $result = Model('mst_customer')->get_milk_order_info($condition);
         // 默认不需要新增客户信息
         $ret_arr['need_insert'] = FALSE;
 
@@ -292,17 +283,8 @@
     function create_customer_cd($milk_order_data) {
         // 自取点编号不为空时(自取)
         if ($milk_order_data['self_receive_spot_cd'] !== '') {
-            $sql = 'SELECT ';
-            $sql.= '    customer_cd ';
-            $sql.= 'FROM ';
-            $sql.= '    `mst_customer` ';
-            $sql.= 'WHERE ';
-            $sql.= '    customer_cd LIKE "'.$milk_order_data['self_receive_spot_cd'].'%" ';
-            $sql.= 'ORDER BY ';
-            $sql.= '    customer_cd DESC ';
-            $sql.= 'LIMIT 1 ';
-            // 根据订单信息查询客户编号
-            $result = Model()->query($sql);
+            $condition = array(array('like',$milk_order_data['self_receive_spot_cd'].'%'));
+            $result = Model('mst_customer')->get_milk_order_info($condition);
 
             // 未查询到客户信息
             if (empty($result)) {
@@ -318,17 +300,8 @@
         }
         // 自取点编号为空时（到户）
         else {
-            $sql = 'SELECT ';
-            $sql.= '    customer_cd ';
-            $sql.= 'FROM ';
-            $sql.= '    `mst_customer` ';
-            $sql.= 'WHERE ';
-            $sql.= '    customer_cd LIKE "DH%" ';
-            $sql.= 'ORDER BY ';
-            $sql.= '    customer_cd DESC ';
-            $sql.= 'LIMIT 1 ';
-            // 根据订单信息查询客户编号
-            $result = Model()->query($sql);
+            $condition = array(array('like','DH%'));
+            $result = Model('mst_customer')->get_milk_order_info($condition);
 
             // 未查询到客户信息
             if (empty($result)) {
@@ -509,43 +482,7 @@
      * @return type 可用奶卡区间信息
      */
     function get_valid_milk_cards($used_milk_card_list, $milk_cd, $card_num) {
-        $sql = 'SELECT ';
-        $sql.= '    MIN(milk_card_cd) start_range, ';
-        $sql.= '    MAX(milk_card_cd) end_range ';
-        $sql.= 'FROM ';
-        $sql.= '    ( ';
-        $sql.= '        SELECT ';
-        $sql.= '            milk_card_cd, ';
-        $sql.= '            rn, ';
-        $sql.= '            milk_card_cd - rn AS diff ';
-        $sql.= '        FROM ';
-        $sql.= '            ( ';
-        $sql.= '                SELECT ';
-        $sql.= '                    milk_card_cd ,@milk_card_cd :=@milk_card_cd + 1 rn ';
-        $sql.= '                FROM ';
-        $sql.= '                    mst_milk_card , ';
-        $sql.= '                    (SELECT @milk_card_cd := 0) AS milk_card_cd ';
-        $sql.= '                WHERE ';
-        $sql.= '                    mst_milk_card.milk_cd = "'.$milk_cd.'" ';
-        $sql.= '                AND mst_milk_card.active_flag = "0" ';
-        $sql.= '                AND ( ';
-        $sql.= '                    mst_milk_card.owner_user = "" ';
-        $sql.= '                    OR mst_milk_card.owner_user IS NULL ';
-        $sql.= '                ) ';
-        $sql.= '                AND mst_milk_card.delete_flag = "0" ';
-        // 已分配的奶卡列表 不为空时
-        if (!empty($used_milk_card_list)) {
-            // 查询区间中排除已分配的奶卡
-            $sql.= '            AND milk_card_cd NOT IN ('.implode(',', $used_milk_card_list).')  ';
-        }
-        $sql.= '            ) AS b ';
-        $sql.= '    ) AS c ';
-        $sql.= 'GROUP BY ';
-        $sql.= '    diff ';
-        $sql.= 'HAVING end_range - start_range + 1 >= '.$card_num.' ';
-        $sql.= 'LIMIT 1 ';
-        
-        return Model()->query($sql);
+        return Model('mst_customer_card')->get_valid_milk_cards($used_milk_card_list, $milk_cd, $card_num);
     }
     
     /**
@@ -598,37 +535,8 @@
      * @param type $order_data 订单数据
      */
     function insert_milk_order($order, $order_data) {
-        // 执行系统sql头
-        $sql_self = 'INSERT INTO `trn_milk_order` ( ';
-        $sql = '    customer_cd, ';         // 客户编号
-        $sql.= '    gc_id, ';               // 商品分类
-        $sql.= '    goods_id, ';            // 商品ID
-        $sql.= '    card_type, ';           // 奶卡种类
-        $sql.= '    milk_card_cd_start, ';  // 奶卡编号
-        $sql.= '    order_from_flag, ';     // 订单来源
-        $sql.= '    purchase_date, ';       // 购买日期
-        $sql.= '    create_user, ';         // 作成者
-        $sql.= '    create_date, ';         // 作成日时
-        $sql.= '    update_user, ';         // 更新者
-        $sql.= '    update_date ';          // 更新日时
-        $sql.= ') ';
-        $sql.= 'VALUES ';
-        $sql.= '    (';
-        $sql.= '        "'.$order['customer_cd'].'", ';
-        $sql.= '        "'.$order['gc_id'].'", ';
-        $sql.= '        "'.$order['goods_id'].'", ';
-        $sql.= '        "'.$order['card_type'].'", ';
-        $sql.= '        "'.$order['milk_card_cd_start'].'", ';
-        $sql.= '        "'.$order['order_from_flag'].'", ';
-        $sql.= '        "'.$order['purchase_date'].'", ';
-        $sql.= '        "'.$order['create_user'].'", ';
-        $sql.= '        "'.$order['create_date'].'", ';
-        $sql.= '        "'.$order['update_user'].'", ';
-        $sql.= '        "'.$order['update_date'].'" ';
-        $sql.= '    )';
-        logResult('insert milk_order sql:'.$sql_self.$sql);
         // 插入订单信息
-        Model()->execute($sql_self.$sql);
+        Model('trn_milk_order')->insertAction($order);
         
         /* lyq@newland 添加开始 **/
         /* 时间：2015/10/15     **/
@@ -636,6 +544,33 @@
         if (empty($order_data['self_receive_spot_cd'])) {
             // 促销系统sql头
             $sql_tohome = 'INSERT INTO `trn_milk_distribution_order` ( ';
+            // 执行系统sql
+            $sql = '    customer_cd, ';         // 客户编号
+            $sql.= '    gc_id, ';               // 商品分类
+            $sql.= '    goods_id, ';            // 商品ID
+            $sql.= '    card_type, ';           // 奶卡种类
+            $sql.= '    milk_card_cd_start, ';  // 奶卡编号
+            $sql.= '    order_from_flag, ';     // 订单来源
+            $sql.= '    purchase_date, ';       // 购买日期
+            $sql.= '    create_user, ';         // 作成者
+            $sql.= '    create_date, ';         // 作成日时
+            $sql.= '    update_user, ';         // 更新者
+            $sql.= '    update_date ';          // 更新日时
+            $sql.= ') ';
+            $sql.= 'VALUES ';
+            $sql.= '    (';
+            $sql.= '        "'.$order['customer_cd'].'", ';
+            $sql.= '        "'.$order['gc_id'].'", ';
+            $sql.= '        "'.$order['goods_id'].'", ';
+            $sql.= '        "'.$order['card_type'].'", ';
+            $sql.= '        "'.$order['milk_card_cd_start'].'", ';
+            $sql.= '        "'.$order['order_from_flag'].'", ';
+            $sql.= '        "'.$order['purchase_date'].'", ';
+            $sql.= '        "'.$order['create_user'].'", ';
+            $sql.= '        "'.$order['create_date'].'", ';
+            $sql.= '        "'.$order['update_user'].'", ';
+            $sql.= '        "'.$order['update_date'].'" ';
+            $sql.= '    )';
             logResult('insert milk_distribution_order sql:'.$sql_tohome.$sql);
             // 链接促销系统数据库
             $connect = mysqli_connect('inxinleshop.mysql.rds.aliyuncs.com','wx_shop','yj1fS7eSd1','promotion_db');
@@ -656,27 +591,21 @@
      * @param type $order_data 订单数据
      */
     function update_milk_card_info($used_milk_card_list, $customer_cd, $order_data) {
-        $sql = 'UPDATE `mst_milk_card` ';
-        $sql.= 'SET ';
-        $sql.= '    milk_card_flag = "'.(empty($order_data['self_receive_spot_cd'])?'1':'0').'", ';   // 奶卡区分 0:自取 1:到户
-        $sql.= '    active_flag = "1", ';                                           // 有效区分 1：已发行(未使用)
-        $sql.= '    post_flag = "'.(empty($order_data['address']) ? 1 : 0).'", ';   // 邮寄区分 填写地址时：0邮寄，否则：1未邮寄
-        $sql.= '    customer_cd = "'.$customer_cd.'", ';                            // 客户编号
-        $sql.= '    update_user = "wap user", ';                                    // 更新者
-        $sql.= '    update_date = "'.date('Y-m-d H:i:s').'" ';                      // 更新日时
-        $sql.= 'WHERE ';
-        $sql.= '    milk_card_cd IN ('.implode(',', $used_milk_card_list).')';      // 奶卡编号
-        logResult('update milk_card sql:'.$sql);
-        // 更新奶卡信息
-        Model()->execute($sql);
-        
+        $array = array();
+        $array['milk_card_flag'] = (empty($order_data['self_receive_spot_cd'])?'1':'0');
+        $array['active_flag'] = 1;
+        $array['customer_cd'] = $customer_cd;
+        $array['update_user'] = "wap user";
+        $array['update_date'] = date('Y-m-d H:i:s');
+        $array['milk_card_cd'] = array('in',implode(',', $used_milk_card_list));
+        $array['post_flag'] = (empty($order_data['address']) ? 1 : 0);
+        Model('mst_customer_card')->update($array);
         /* lyq@newland 添加开始 **/
         /* 时间：2015/10/15     **/
         // 到户订奶，奶卡信息添加到促销系统的奶卡表中
         if (empty($order_data['self_receive_spot_cd'])) {
-            $search_sql = 'SELECT * FROM `mst_milk_card` WHERE milk_card_cd IN ('.implode(',', $used_milk_card_list).')';
-            // 查询更新后的奶卡列表
-            $milk_card_list = Model()->query($search_sql);
+            $condition = array('milk_card_cd' => array('in',implode(',', $used_milk_card_list)));
+            $milk_card_list = Model('mst_customer_card')->queryAllItem($condition);
             // 查询结果不为空
             if (!empty($milk_card_list)) {
                 // 循环查询到的奶卡列表
@@ -742,37 +671,23 @@
      * @param type $self_receive_spot_cd 自取点编号
      */
     function insert_notice($log_id, $out_trade_no, $self_receive_spot_cd) {
-        $sql = 'INSERT INTO `mst_notice` ( ';
-        $sql.= '    info_title, ';      // 信息标题
-        $sql.= '    info_content, ';    // 信息内容
-        $sql.= '    start_date, ';      // 有效日期开始
-        $sql.= '    end_date, ';        // 有效日期终了
-        $sql.= '    info_flag, ';       // 信息区分
-        $sql.= '    new_flag, ';        // 更新区分
-        $sql.= '    milk_station_no, '; // 自取点编号
-        $sql.= '    user_type, ';       // 用户区分
-        $sql.= '    create_user, ';     // 作成者
-        $sql.= '    create_date, ';     // 作成日时
-        $sql.= '    update_user, ';     // 更新者
-        $sql.= '    update_date ';      // 更新日时
-        $sql.= ') ';
-        $sql.= 'VALUES ';
-        $sql.= '    (';
-        $sql.= '        "奶卡数量不足，订单相关信息更新失败", ';
-        $sql.= '        "客户微信支付成功，但由于奶卡数量不足，无法更新订单相关信息。\n微信支付商户订单号：'.$out_trade_no.'\n记录ID：'.$log_id.'", ';
-        $sql.= '        "'.date('Y-m-d H:i:s').'", ';
-        $sql.= '        "9999-12-31 23:59:59", ';
-        $sql.= '        "4", '; // 管理员(wap端订奶，付款成功，但奶卡数量不足时，提醒管理员手动操作)
-        $sql.= '        "0", '; // 0:新增
-        $sql.= '        "'.(empty($self_receive_spot_cd)?'':$self_receive_spot_cd).'", ';
-        $sql.= '        "0", '; // 0：管理员
-        $sql.= '        "wap user", ';
-        $sql.= '        "'.date('Y-m-d H:i:s').'", ';
-        $sql.= '        "wap user", ';
-        $sql.= '        "'.date('Y-m-d H:i:s').'" ';
-        $sql.= '    )';
-        // 插入通知信息
-        Model()->execute($sql);
+        $data = array(
+            'info_title' => "奶卡数量不足，订单相关信息更新失败",
+            'info_content' => "客户微信支付成功，但由于奶卡数量不足，无法更新订单相关信息。\n微信支付商户订单号：'.$out_trade_no.'\n记录ID：'.$log_id.'",
+            'start_date' => date('Y-m-d H:i:s'),
+            'end_date' => "9999-12-31 23:59:59",
+            'info_flag' => "4",
+            'new_flag' => "0",
+            'milk_station_no' => (empty($self_receive_spot_cd)?'':$self_receive_spot_cd),
+            'user_type' => "0",
+            'create_user' => "wap user",
+            'create_date' => date('Y-m-d H:i:s'),
+            'update_user' => "wap user",
+            'update_date' => date('Y-m-d H:i:s')
+        );
+        $model = Model('mst_notice');
+        $model->table_prefix = '';
+        $model->insert($data);
     }
     
     
@@ -983,17 +898,11 @@
      * 
      */
     function get_milk_card($milk_cd){
-        $get_milk_card_cd_sql = 'SELECT ';
-        $get_milk_card_cd_sql.=  'trim(concat(card_prefix,lpad(card_seq+1,6,0))) start_range, ';
-        $get_milk_card_cd_sql.=  ' card_seq+1 card_seq ';
-        $get_milk_card_cd_sql.= 'FROM ';
-        $get_milk_card_cd_sql.= '  mst_card_increment ';
-        $get_milk_card_cd_sql.= ' WHERE ';
-        $get_milk_card_cd_sql.='milk_cd ='.$milk_cd;
-        $get_milk_card_cd_sql.='  and delete_flag = 0';
-        $result = Model()->query($get_milk_card_cd_sql);
-        logResult('拼接周卡奶卡号语句'.$get_milk_card_cd_sql);
-        return $result;
+        $condition = array(
+            'delete_flag' => 0,
+            'milk_cd' => $milk_cd,
+        );
+        return Model('mst_card_increment')->get_milk_card($condition);
     }
      /* jys@newland 添加开始 **/
     
@@ -1003,50 +912,37 @@
      * 
      */
     function inset_milk_card($used_milk_card_list, $customer_cd, $milkcd){
-        $inset_milk_card_sql = 'insert into  mst_milk_card (';
-        $inset_milk_card_sql.=  ' milk_card_cd,';
-        $inset_milk_card_sql.=  ' milk_cd, ';
-        $inset_milk_card_sql.=  ' milk_num, ';
-        $inset_milk_card_sql.=  ' milk_surplus_num, ';
-        $inset_milk_card_sql.=  ' milk_card_flag, ';
-        $inset_milk_card_sql.=  ' active_flag, ';
-        $inset_milk_card_sql.=  ' print_flag, ';
-        $inset_milk_card_sql.=  ' post_flag, ';
-        $inset_milk_card_sql.=  ' remind_flag, ';
-        $inset_milk_card_sql.=  ' customer_cd, ';
-        $inset_milk_card_sql.=  ' create_user, ';
-        $inset_milk_card_sql.=  ' create_date, ';
-        $inset_milk_card_sql.=  'update_user, ';
-        $inset_milk_card_sql.=  ' update_date )';
-        $inset_milk_card_sql.= 'values ( ';
-        $inset_milk_card_sql.='"'.trim($used_milk_card_list[0]).'",';
-        $inset_milk_card_sql.=  '"'.$milkcd.'",';
-        $inset_milk_card_sql.=  '10,';
-        $inset_milk_card_sql.=  '10,';
-        $inset_milk_card_sql.=  '0,';
-        $inset_milk_card_sql.=  '1,';
-        $inset_milk_card_sql.=  '0,';
-        $inset_milk_card_sql.=  '2,';
-        $inset_milk_card_sql.=  '0,';
-        $inset_milk_card_sql.=  '"'.$customer_cd.'",';
-        $inset_milk_card_sql.=  '"wap user",';
-        $inset_milk_card_sql.=  '"'.date('Y-m-d H:i:s').'",';
-        $inset_milk_card_sql.=  '"wap user",';
-        $inset_milk_card_sql.=  '"'.date('Y-m-d H:i:s').'")';
-        $result = Model()->execute($inset_milk_card_sql);
-        logResult('插入奶卡表语句'.$inset_milk_card_sql);
+        $data = array(
+            'milk_card_cd' => trim($used_milk_card_list[0]),
+            'milk_cd' => $milkcd,
+            'milk_num' => 10,
+            'milk_surplus_num' => 10,
+            'milk_card_flag' => 0,
+            'active_flag' => 1,
+            'print_flag' => 0,
+            'post_flag' => 2,
+            'remind_flag' => 0,
+            'customer_cd' => $customer_cd,
+            'create_user' => "wap user",
+            'create_date' => date('Y-m-d H:i:s'),
+            'update_user' => "wap user",
+            'update_date' => date('Y-m-d H:i:s'),
+        );
+        $model = Model('mst_milk_card');
+        $model->table_prefix = '';
+        $model->insert($data);
     }
     
     function update_increment($milk_cd,$card_seq){
-        $sql = 'UPDATE `mst_card_increment` ';
-        $sql.= 'SET ';
-        $sql.= '    card_seq = '.$card_seq.', ';   // 奶卡序列号
-        $sql.= '    update_user = "wap user", ';                                    // 更新者
-        $sql.= '    update_date = "'.date('Y-m-d H:i:s').'" ';                      // 更新日时
-        $sql.= 'WHERE ';
-        $sql.= '    milk_cd = "'.$milk_cd.'"';      // 奶卡编号
-        $result = Model()->execute($sql);
-        logResult('更新奶品最大号语句:'.$sql);
+        $para = array(
+            'card_seq' => $card_seq,
+            'update_user' => "wap user",
+            'update_date' => date('Y-m-d H:i:s'),
+            'milk_cd' => $milk_cd,
+        );
+        $model = Model(mst_card_increment);
+        $model->table_prefix = '';
+        $model->update($para);
     }
      /* jys@newland 添加开始 **/
  

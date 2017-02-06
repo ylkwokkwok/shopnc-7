@@ -5,7 +5,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class sns_friendModel{
+class sns_friendModel extends Model {
 	/**
 	 * 好友添加
 	 *

@@ -5,7 +5,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class sns_visitorModel{
+class sns_visitorModel extends Model {
 	/**
 	 * 新增访客
 	 *

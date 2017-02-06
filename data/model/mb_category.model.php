@@ -3,7 +3,7 @@
  * 手机端广告
  */
 defined('InShopNC') or exit('Access Invalid!');
-class mb_categoryModel{
+class mb_categoryModel extends Model {
 	/**
 	 * 列表
 	 *

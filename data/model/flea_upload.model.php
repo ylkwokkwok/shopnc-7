@@ -5,7 +5,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class flea_uploadModel{
+class flea_uploadModel extends Model {
 	/**
 	 * 列表
 	 *

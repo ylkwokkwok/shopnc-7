@@ -3,7 +3,7 @@
  * 积分及积分日志管理
  */
 defined('InShopNC') or exit('Access Invalid!');
-class pointsModel {
+class pointsModel  extends Model {
 	/**
 	 * 操作积分
 	 * @author ShopNC Develop Team

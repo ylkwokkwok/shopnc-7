@@ -1,0 +1,270 @@
+[2017-02-04 10:43:47] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176227','1486176227','1486176227','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:43:49] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176229','1486176229','1486176229','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:43:50] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176230','1486176230','1486176230','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:43:50] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176230','1486176230','1486176230','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:43:51] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176231','1486176231','1486176231','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:47:43] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176463','1486176463','1486176463','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:49:02] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176542','1486176542','1486176542','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:50:02] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176602','1486176602','1486176602','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:51:01] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486176661','1486176661','1486176661','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 10:58:40] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486177120','1486177120','1486177120','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 11:01:36] /mobile/index.php?act=login&op=register ( act=login&op=register ) 
+ERR: Db Error: Unknown column 'member_classify' in 'field list'
+INSERT  INTO `wxshop_member` (member_id,member_name,member_passwd,member_email,member_time,member_login_time,member_old_login_time,member_login_ip,member_old_login_ip,member_truename,member_qq,member_classify,member_sex,member_avatar,member_qqopenid,member_qqinfo,member_sinaopenid,member_sinainfo,inviter_id) VALUES (NULL,'siburuxue','202cb962ac59075b964b07152d234b70','siburuxue@sina.com','1486177296','1486177296','1486177296','127.0.0.1','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+[2017-02-04 11:41:15] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:41:35] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:42:30] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:50:33] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:51:22] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:51:53] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:53:23] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:54:00] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:54:17] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 11:54:33] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:25:38] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:25:46] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:25:56] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:26:25] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:26:33] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:26:43] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:26:53] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:27:31] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:27:37] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:27:44] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:27:55] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:28:02] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:34:51] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:35:06] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:36:32] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:46:17] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:46:32] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:46:49] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:47:00] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:47:45] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:47:59] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:48:28] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:49:09] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:49:22] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:49:41] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:49:43] /mobile/index.php?act=member_buy&op=buy_step2 ( act=member_buy&op=buy_step2 ) 
+ERR: Db Error: Table 'dlxinle_new.wxshop_cart t1' doesn't exist
+SELECT t1.cart_id,t1.store_id,t1.goods_id,t2.milk_card_type,t2.milk_product_num as gc_id FROM `wxshop_cart t1` AS `cart t1` LEFT JOIN `wxshop_goods t2` AS `goods t2` ON t1.goods_id = t2.goods_id WHERE ( t1.store_id = '1' ) AND ( t1.cart_id IN ('15625') ) AND ( t2.milk_product_num IN ('1001','1002','1004','1005','1006') ) LIMIT 1000  
+[2017-02-04 13:50:09] /mobile/index.php?act=member_buy&op=buy_step1 ( act=member_buy&op=buy_step1 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 13:50:10] /mobile/index.php?act=member_buy&op=buy_step2 ( act=member_buy&op=buy_step2 ) 
+ERR: Db Error: Table 'dlxinle_new.wxshop_cart t1' doesn't exist
+SELECT t1.cart_id,t1.store_id,t1.goods_id,t2.milk_card_type,t2.milk_product_num as gc_id FROM `wxshop_cart t1` AS `cart t1` LEFT JOIN `wxshop_goods t2` AS `goods t2` ON t1.goods_id = t2.goods_id WHERE ( t1.store_id = '1' ) AND ( t1.cart_id IN ('15625') ) AND ( t2.milk_product_num IN ('1001','1002','1004','1005','1006') ) LIMIT 1000  
+[2017-02-04 13:50:10] /mobile/index.php?act=member_buy&op=buy_step2 ( act=member_buy&op=buy_step2 ) 
+ERR: Db Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+select shopnc_member_classify.* 
+                    from shopnc_member_classify 
+                    left join shopnc_member on shopnc_member.member_classify = shopnc_member_classify.id
+                    where shopnc_member.member_id = 
+[2017-02-04 17:11:07] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'dlxinle.wxshop_mst_customer t1' doesn't exist
+SELECT t1.customer_cd,t1.customer_name,t1.address c_address,t1.tel c_tel,t1.self_receive_spot_cd,t2.self_receive_nm,t2.address sr_address,t2.tel sr_tel FROM `wxshop_mst_customer t1` AS `mst_customer t1` LEFT JOIN `wxshop_mst_self_receive t2` AS `mst_self_receive t2` ON t2.self_receive_spot_cd = t1.self_receive_spot_cd WHERE ( t1.customer_type = '0' ) AND ( t1.delete_flag = '0' ) ORDER BY t1.create_date DESC LIMIT 1000  
+[2017-02-04 17:11:36] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'dlxinle.wxshop_mst_customer t1' doesn't exist
+SELECT t1.customer_cd,t1.customer_name,t1.address c_address,t1.tel c_tel,t1.self_receive_spot_cd,t2.self_receive_nm,t2.address sr_address,t2.tel sr_tel FROM `wxshop_mst_customer t1` AS `mst_customer t1` LEFT JOIN `wxshop_mst_self_receive t2` AS `mst_self_receive t2` ON t2.self_receive_spot_cd = t1.self_receive_spot_cd WHERE ( t1.customer_type = '0' ) AND ( t1.delete_flag = '0' ) ORDER BY t1.create_date DESC LIMIT 1000  
+[2017-02-04 17:13:21] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'dlxinle.wxshop_mst_customer t1' doesn't exist
+SELECT t1.customer_cd,t1.customer_name,t1.address c_address,t1.tel c_tel,t1.self_receive_spot_cd,t2.self_receive_nm,t2.address sr_address,t2.tel sr_tel FROM `wxshop_mst_customer t1` AS `mst_customer t1` LEFT JOIN `wxshop_mst_self_receive t2` AS `mst_self_receive t2` ON t2.self_receive_spot_cd = t1.self_receive_spot_cd WHERE ( t1.customer_type = '0' ) AND ( t1.delete_flag = '0' ) ORDER BY t1.create_date DESC LIMIT 1000  

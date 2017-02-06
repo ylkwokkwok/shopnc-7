@@ -9,7 +9,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class store_gradeModel{
+class store_gradeModel extends Model {
 	/**
 	 * 列表
 	 *

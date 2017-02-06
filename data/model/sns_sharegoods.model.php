@@ -5,7 +5,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class sns_sharegoodsModel{
+class sns_sharegoodsModel extends Model {
 	/**
 	 * 新增分享商品
 	 *

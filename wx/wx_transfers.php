@@ -11,22 +11,12 @@
     Base::run(FALSE);
     
     // 获取收款人信息、金额等
-    $sql = '';
-    $sql .= ' SELECT';
-    $sql .= '	t1.extract_id,';
-    $sql .= '	sum(t1.extract_money) extract_money,';
-    $sql .= '	t2.member_id,';
-    $sql .= '	t2.member_wx_id';
-    $sql .= ' FROM';
-    $sql .= '	'.DBPRE.'extract t1';
-    $sql .= ' LEFT JOIN '.DBPRE.'member t2 ON t1.extract_user = t2.member_id';
-    $sql .= ' WHERE';
-    $sql .= '	t1.extract_flg = 1';
-    $sql .= '	AND t1.extract_type = 0';   // 佣金提现 lyq@newland 添加
-    $sql .= ' GROUP BY';
-    $sql .= '	t2.member_id';
     // 收款信息
-    $extract_info = Model()->query($sql);
+    $condition = array(
+        'extarct.extract_flg' => 1,
+        'extarct.extract_type' => 0,
+    );
+    $extract_info = Model('extract')->getExtractInfo($condition);
     
     $transfer = new Transfer_pub();
     

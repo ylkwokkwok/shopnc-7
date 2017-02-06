@@ -3,7 +3,7 @@
  * 投诉对话模型
  */
 defined('InShopNC') or exit('Access Invalid!');
-class complain_talkModel{
+class complain_talkModel extends Model {
 
 	/*
 	 * 构造条件

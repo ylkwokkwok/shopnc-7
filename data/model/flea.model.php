@@ -5,7 +5,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class fleaModel {
+class fleaModel  extends Model {
 	/**
 	 * 商品保存
 	 *

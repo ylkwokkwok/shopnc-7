@@ -508,4 +508,11 @@ class storeModel extends Model {
 		return $result;
 	}
 	/* zly@newland 更改店铺申请认证状态结束**/
+
+    /**
+     * 过滤店铺ID数组，筛选出自取点绑定类型不为“所有”的店铺
+     */
+	public function store_filter($condition){
+        return $this->field('store_id')->where($condition)->select();
+    }
 }

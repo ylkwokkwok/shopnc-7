@@ -6,7 +6,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class goods_info_by_urlModel{
+class goods_info_by_urlModel extends Model {
 
     /**
      * 根据链接返回商品信息

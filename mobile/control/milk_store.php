@@ -71,43 +71,8 @@ class milk_storeControl extends mobileMemberControl {
      * @param type $apart 相距范围 单位：米
      */
     private function output_store_list($lat, $lng, $apart = 0) {
-        $sql  = 'SELECT ';
-        $sql .= '    mst_self_receive.*, round(';
-        $sql .= '        6378.138 * 2 * asin(sqrt(';
-        $sql .= '        pow(sin((latitude * pi() / 180 - '.$lat.' * pi() / 180) / 2),2)';
-        $sql .= '      + cos(latitude * pi() / 180) * cos('.$lat.' * pi() / 180)';
-        $sql .= '      * pow(sin((longitude * pi() / 180 - '.$lng.' * pi() / 180) / 2),2)';
-        $sql .= '    )) * 1000) AS apart ';
-        $sql .= 'FROM ';
-        $sql .= '    mst_self_receive ';
-        $sql .= 'WHERE ';
-        $sql .= '    delete_flag = "0" AND NOT EXISTS ( ';
-        $sql .= ' SELECT  1  FROM  mst_self_authority ';
-        $sql .= ' WHERE  authority_id = "9" ';
-        $sql .='  AND mst_self_receive.self_receive_spot_cd = mst_self_authority.self_receive_spot_cd )';
-        /* lyq@newland 添加开始 **/
-        /* 时间：2015/09/15     **/
-        // 可用自取点不为空时
-        if (!empty($_POST['self_cds'])) {
-            // 拆分可用自取点
-            $self_cds = explode(',', $_POST['self_cds']);
-            // 循环拼接双引号
-            foreach ($self_cds as $key => $value) {
-                $self_cds[$key] = '"'.$value.'"';
-            }
-            // 拼接自取点cd列表作为条件
-            $sql .= 'AND self_receive_spot_cd IN ('.implode(',', $self_cds).')';
-        }
-        /* lyq@newland 添加结束 **/
-        else if ($apart !== 0) {
-            $sql .= 'HAVING ';
-            $sql .= '    apart <= ' . $apart . ' ';
-        }
-        $sql .= 'ORDER BY ';
-        $sql .= '    apart ASC';
-        // 自取点列表
-        $store_list = Model()->query($sql);
-        
+        $mst_self_receive = Model('mst_self_receive');
+        $store_list = $mst_self_receive->store_list($lat, $lng, $apart);
         // 添加log
         $this->add_log('【查询自取点】自取点列表：'.(empty($store_list)?'未查询到附近的自取点':serialize($store_list)));
         
@@ -123,38 +88,13 @@ class milk_storeControl extends mobileMemberControl {
         // 来瓶取得 
         $model_goods = Model('goods');
         $milk_gc_list = $model_goods->getMilkProduct();
-//        // 获取奶品编号列表
-//        $milk_gc_list = Model('goods_class')->where('gc_id in (1001,1002,1004)')->select();
         // 奶品列表
         $product_list = array();
         foreach ($milk_gc_list as $value) {
             /* lyq@newland 修改开始 **/
             /* 时间：2015/09/17 - 2015/09/18    **/
             // 获取相应奶品下的商品信息
-            $sql = 'SELECT ';
-            $sql.= '    g.goods_id, ';
-            $sql.= ' c.Constant_Name,  ';
-            $sql.= '    g.milk_card_type, ';
-            // 订购类型为自取
-            if ($_POST['type'] === 'self') {
-                // 商品价格为 商品表商品价格-自取优惠金额 
-                $sql.= '    g.goods_price - gcm.goods_self_discount AS goods_price ';
-            }
-            // 订购类型为到户
-            else if($_POST['type'] === 'home') {
-                // 商品价格为 商品表商品价格
-                $sql.= '    g.goods_price ';
-            }
-            $sql.= 'FROM ';
-            $sql.= '    '.DBPRE.'goods g ';
-            $sql.= 'LEFT JOIN '.DBPRE.'goods_common gcm ON g.goods_commonid = gcm.goods_commonid ';
-            $sql.='INNER JOIN mst_constant c on g.milk_card_type = c.Constant_Num and c.Constant_Type="快速入口" ';
-            $sql.= 'WHERE ';
-            $sql.= '    g.milk_product_num = '.$value['O_Number'].' ';
-            $sql.= 'AND g.store_id = 1 ';
-            $sql.= 'ORDER BY ';
-            $sql.= '    g.milk_card_type ASC ';
-            $goods_list = Model()->query($sql);
+            $goods_list = $model_goods->getMilkInfo($_POST['type'],$value['O_Number']);
             /* lyq@newland 修改结束 **/
             // 商品信息不为空时
             if (!empty($goods_list)) {
@@ -184,22 +124,15 @@ class milk_storeControl extends mobileMemberControl {
         if ($data) {
             // 反序列化订奶记录数据，获得订单信息
             $order_data = unserialize($data['order_data']);
-
-            $sql = 'SELECT ';
-            $sql.= '    customer_cd ';
-            $sql.= 'FROM ';
-            $sql.= '    `mst_customer` ';
-            $sql.= 'WHERE ';
-            $sql.= '    member_id = "'.$order_data['member_id'].'" ';
-            $sql.= 'AND customer_name = "'.$order_data['name'].'" ';
-            $sql.= 'AND address = "'.$order_data['address'].'" ';
-            $sql.= 'AND tel = "'.$order_data['tel'].'" ';
-            $sql.= 'AND customer_cd LIKE "'.$order_data['self_receive_spot_cd'].'%" ';
-            $sql.= 'ORDER BY ';
-            $sql.= '    customer_cd DESC ';
-            $sql.= 'LIMIT 1 ';
-            // 根据订单信息查询客户编号
-            $result = Model()->query($sql);
+            $condition = array(
+                'member_id' => $order_data['member_id'],
+                'customer_name' => $order_data['name'],
+                'address' => $order_data['address'],
+                'tel' => $order_data['tel'],
+                'customer_cd' => array(array('like',$order_data['self_receive_spot_cd'].'%')),
+            );
+            $model = Model('mst_customer');
+            $result = $model->get_milk_order_info($condition);
             // 查询到的客户编号
             $customer_cd = $result[0]['customer_cd'];
         }

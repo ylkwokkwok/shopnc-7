@@ -1265,7 +1265,7 @@ class buyLogic {
         $data = array();
         $data['state'] = empty($store_freight_list) ? 'fail' : 'success';
         $data['content'] = $store_freight_list;
-    
+
         //$offline_store_id_array = Model('store')->getOwnShopIds();
         $order_platform_store_ids = array();
     

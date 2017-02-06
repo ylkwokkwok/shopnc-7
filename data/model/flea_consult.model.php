@@ -4,7 +4,7 @@
  *by 3 3hao .com 
  */
 defined('InShopNC') or exit('Access Invalid!');
-class flea_consultModel {
+class flea_consultModel  extends Model {
 	/**
 	 * 添加咨询
 	 * 

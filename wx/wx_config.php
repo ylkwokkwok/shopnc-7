@@ -23,11 +23,11 @@ class wx_config {
 	
 	//=======【异步通知url设置】===================================
 	//异步通知url，商户根据实际开发过程设定
-	const NOTIFY_URL = 'http://fresh.cenler-shop.com/wx/notify_url.php';
+	const NOTIFY_URL = 'http://shopnc.siburuxue.org/wx/notify_url.php';
         
-	const MILK_NOTIFY_URL = 'http://fresh.cenler-shop.com/wx/milk_notify_url.php';
+	const MILK_NOTIFY_URL = 'http://shopnc.siburuxue.org/wx/milk_notify_url.php';
 	
-	const PAY_URL = 'http://fresh.cenler-shop.com/wap/tmpl/member/order_list.html';
+	const PAY_URL = 'http://shopnc.siburuxue.org/wap/tmpl/member/order_list.html';
 	
 	
 

@@ -1,6 +1,6 @@
 $(function() {
 //    $("#loading_page").hide();
-//    $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://fresh.cenler-shop.com/wx/index.php&response_type=code&scope=snsapi_userinfo&state=code#wechat_redirect";
+//    $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://shopnc.siburuxue.org/wx/index.php&response_type=code&scope=snsapi_userinfo&state=code#wechat_redirect";
 //    location.href=$url;
 //    return;
     var memberHtml = '<a class="btn mr5" href="' + WapSiteUrl + '/tmpl/member/member.html?act=member">个人中心</a><a class="btn mr5" href="' + WapSiteUrl + '//tmpl/member/register.html">注册</a><a class="btn mr5" href="#">微信登录</a>';

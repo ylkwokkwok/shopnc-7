@@ -8,7 +8,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class activityModel{
+class activityModel extends Model {
 	/**
 	 * 活动列表
 	 *

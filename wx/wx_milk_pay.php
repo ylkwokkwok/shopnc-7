@@ -29,18 +29,10 @@
             $total_fee += floatval($order['goods_price']) * intval($order['goods_num']);
         }
     }
-    
+
     // 获取OPENID
-    $sql = '';
-    $sql .= ' SELECT';
-    $sql .= '	t2.member_wx_id, t2.member_id';
-    $sql .= ' FROM';
-    $sql .= '	' . DBPRE . 'mb_user_token t1';
-    $sql .= ' LEFT JOIN ' . DBPRE . 'member t2 ON t1.member_id = t2.member_id';
-    $sql .= ' WHERE';
-    $sql .= '	t1.token = "' . $_COOKIE['key'] . '"';
-    // 获取用户信息
-    $member_info = Model()->query($sql);
+    $condition = array('mb_user_token.token' => $_COOKIE['key']);
+    $member_info = Model('mb_user_token')->getOpenId($condition);
     // 获得用户的openid
     $openid = $member_info[0]['member_wx_id'];
     

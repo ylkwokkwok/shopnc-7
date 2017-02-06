@@ -5,7 +5,7 @@
  *  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class buyModel {
+class buyModel  extends Model {
 
     /**
      * 输出有货到付款时，在线支付和货到付款及每种支付下商品数量和详细列表

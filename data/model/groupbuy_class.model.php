@@ -8,7 +8,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class groupbuy_classModel{
+class groupbuy_classModel extends Model {
 
     const TABLE_NAME = 'groupbuy_class';
     const PK = 'class_id';

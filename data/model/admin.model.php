@@ -8,7 +8,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class adminModel{
+class adminModel extends Model {
 	/**
 	 * 管理员列表
 	 *

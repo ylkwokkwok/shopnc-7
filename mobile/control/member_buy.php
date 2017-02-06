@@ -166,7 +166,7 @@ class member_buyControl extends mobileMemberControl {
         $param['password'] = $_POST['password'];
         $param['fcode'] = $_POST['fcode'];
         $param['order_from'] = 2;
-        
+
         /* lyq@newland 添加开始 **/
         /* 时间：2015/07/02     **/
         // 推广积分与现金比例
@@ -182,13 +182,12 @@ class member_buyControl extends mobileMemberControl {
         // 自取点编号
         $param['self_receive_spot_cd'] = empty($_POST['self_receive_spot_cd'])?'':$_POST['self_receive_spot_cd'];
         /* lyq@newland 添加结束 **/
-        
-        
+
+
         /* lyq@newland 添加开始 **/
         /* 时间：2015/08/24     **/
         $milk_order_log_id = $this->add_milk_order_log($param, $_POST['mc_deliver_type']);
         /* lyq@newland 添加结束 **/
-        
         $logic_buy = logic('buy');
 
         $result = $logic_buy->buyStep2($param, $this->member_info['member_id'], $this->member_info['member_name'], $this->member_info['member_email']);
@@ -284,13 +283,14 @@ class member_buyControl extends mobileMemberControl {
     private function add_milk_order_log($shop_order_data, $mc_deliver_type) {
         // 得到所购买的id和数量
         $cart_list = $this->_parseItems($shop_order_data['cart_id']);
+
         // 获取买家地址信息（个人信息）
         $address_info = Model('address')->getAddressInfo(array('address_id'=>$shop_order_data['address_id']));
         // 获取所买商品中的奶卡商品信息
         $milk_info = $this->get_milk_info($cart_list, $shop_order_data['ifcart']);
         // 无奶卡商品时，不做操作
         if (empty($milk_info)) { return false; }
-        
+
         // 获取奶卡类型列表
         $milk_type_list = $this->get_milk_type_list();
         // 整理订奶记录数据
@@ -363,44 +363,22 @@ class member_buyControl extends mobileMemberControl {
            	$milk_gc_list[] = $product['O_Number'];
          }
         /*----------------修改结束------------------------*/
-        // 购物车购买
-        if ($ifcart == 1) {
-            $sql = 'SELECT ';
-            $sql.= '    t1.cart_id, ';
-            $sql.= '    t1.store_id, ';
-            $sql.= '    t1.goods_id, ';
-            $sql.= '    t2.milk_card_type, ';
-            $sql.= '    t2.milk_product_num as gc_id ';
-            $sql.= 'FROM';
-            $sql.= '    '.DBPRE.'cart t1 ';
-            $sql.= 'LEFT JOIN '.DBPRE.'goods t2 ON t1.goods_id = t2.goods_id ';
-            $sql.= 'WHERE ';
-            $sql.= '    t1.cart_id IN ('.implode(',', array_keys($cart_list)).') ';
-            $sql.= 'AND ';
-            $sql.= '    t1.store_id = 1 ';
-            $sql.= 'AND ';
-//            $sql.= '    t2.gc_id in (1001,1002,1004)';
-            $sql.= '    t2.milk_product_num in ('.implode(',', $milk_gc_list).') ';
+        if ($ifcart == 1) {// 购物车购买
+            $condition = array(
+                "cart.store_id" => 1,
+                "cart.cart_id" => array("in",implode(',', array_keys($cart_list))),
+                "goods.milk_product_num" => array("in",implode(',', $milk_gc_list)),
+            );
+            $model = Model('cart');
+            return $model->get_milk_info($condition);
+        }else {// 直接购买商品
+            $condition = array(
+                "store_id" => 1,
+                "goods_id" => array("in",implode(',', array_keys($cart_list))),
+                "milk_product_num" => array("in",implode(',', $milk_gc_list)),
+            );
+            return $model_goods->get_milk_info($condition);
         }
-        // 直接购买商品
-        else {
-            $sql = 'SELECT ';
-            $sql.= '    store_id, ';
-            $sql.= '    goods_id, ';
-            $sql.= '    milk_card_type, ';
-            $sql.= '    milk_product_num as gc_id ';
-            $sql.= 'FROM';
-            $sql.= '    '.DBPRE.'goods ';
-            $sql.= 'WHERE ';
-            $sql.= '    goods_id IN ('.implode(',', array_keys($cart_list)).')';
-            $sql.= 'AND ';
-            $sql.= '    store_id = 1 ';
-            $sql.= 'AND ';
-//            $sql.= '    gc_id in (1001,1002,1004)';
-            $sql.= '    milk_product_num in ('.implode(',', $milk_gc_list).')';
-        }
-        // 返回查询数据
-        return Model()->query($sql);
     }
     
     /**
@@ -461,61 +439,37 @@ class member_buyControl extends mobileMemberControl {
      */
     private function get_self_intersect($store_ids) {
         // 过滤店铺ID数组，筛选出自取点绑定类型不为“所有”的店铺
-        $store_filter_sql = 'SELECT ';
-        $store_filter_sql.= '    store_id ';
-        $store_filter_sql.= 'FROM ';
-        $store_filter_sql.= '    '.DBPRE.'store ';
-        $store_filter_sql.= 'WHERE ';
-        $store_filter_sql.= '    store_id IN ('.implode(',', $store_ids).') ';
-        $store_filter_sql.= 'AND self_bind_type != 2 ';
-        $store_filter_result = Model()->query($store_filter_sql);
+        $condition = array(
+            "store_id" => array('in',implode(',', $store_ids)),
+            "self_bind_type" => array('neq',2),
+        );
+        $store = Model('store');
+        $store_filter_result = $store->store_filter($condition);
+        $store_self_bind = Model('store_self_bind');
         // 所有店铺的自取点绑定类型都为“所有”
         if (empty($store_filter_result)) {
             // 返回 TRUE
             return TRUE;
-        }
-        // 只有一个店铺的自取点绑定类型不为“所有”
-        else if (count($store_filter_result) === 1) {
+        }else if (count($store_filter_result) === 1) {
+            // 只有一个店铺的自取点绑定类型不为“所有”
             // 取该该店铺绑定的自取点
-            $sql = 'SELECT ';
-            $sql.= '    self_receive_spot_cd ';
-            $sql.= 'FROM ';
-            $sql.= '    '.DBPRE.'store_self_bind ';
-            $sql.= 'WHERE ';
-            $sql.= '    store_id = '.$store_filter_result[0]['store_id'];
-            $self_cd_result = Model()->query($sql);
-        }
-        // 多店铺自取点绑定类型不为“所有”
-        else {
+            $condition = array('store_id' => $store_filter_result[0]['store_id']);
+            $self_cd_result = $store_self_bind->find_cd($condition);
+        }else {
+            // 多店铺自取点绑定类型不为“所有”
             // 整理店铺列表作为条件
-            $store_id_in = '';
-            foreach ($store_filter_result as $value) {
-                $store_id_in .= $value['store_id'].',';
-            }
-            // 获取各店铺绑定自取点的交集
-            $sql = 'SELECT ';
-            $sql.= '    self_receive_spot_cd, ';
-            $sql.= '    count(*) count ';
-            $sql.= 'FROM ';
-            $sql.= '    '.DBPRE.'store_self_bind ';
-            $sql.= 'WHERE ';
-            $sql.= '    store_id IN ('.substr($store_id_in, 0, strlen($store_id_in)-1).') ';
-            $sql.= 'GROUP BY ';
-            $sql.= '    self_receive_spot_cd ';
-            $sql.= 'HAVING ';
-            $sql.= '    count > 1 ';
-            $self_cd_result = Model()->query($sql);
+            $store_id_array = array_column($store_filter_result,'store_id');
+            $store_id_in = implode(',',$store_id_array);
+            $condition = array('store_id' => array('in',$store_id_in));
+            $self_cd_result = $store_self_bind->query_cd($condition);
             // 无交集时返回 FALSE
             if (empty($self_cd_result)) {
                 return FALSE;
             }
         }
         // 整理可用自取点并返回
-        $self_cds = '';
-        foreach ($self_cd_result as $value) {
-            $self_cds .= $value['self_receive_spot_cd'].',';
-        }
-        return substr($self_cds, 0, strlen($self_cds)-1);
+        $self_cd_array = array_column($self_cd_result,'self_receive_spot_cd');
+        return implode(',',$self_cd_array);
     }
     /* lyq@newland 添加结束 **/
     
@@ -546,20 +500,17 @@ class member_buyControl extends mobileMemberControl {
         $cart_ids = explode(',', $_POST['cart_id']);
         for($i=0;$i<sizeof($cart_ids);$i++){
             $cart = explode('|',$cart_ids[$i]);
-            $str .= $cart[0].',';
+            $str .= $cart[0];
+            if($i != sizeof($cart_ids) - 1){
+                $str .= ',';
+            }
         }
-
-        $type_filter_sql = 'SELECT ';
-        $type_filter_sql.= '    delivery_type,';
-         $type_filter_sql.= '   '.DBPRE.'cart.goods_name ';
-        $type_filter_sql.= 'FROM ';
-        $type_filter_sql.= '    '.DBPRE.'goods  ';
-        $type_filter_sql.= ' INNER JOIN  '.DBPRE.'cart   ';
-        $type_filter_sql.= ' ON  '.DBPRE.'goods.goods_id = '.DBPRE.'cart.goods_id ';
-        $type_filter_sql.= ' WHERE ';
-        $type_filter_sql.= '  '.DBPRE.'cart.cart_id IN ('.substr($str, 0, strlen($str)-1).') ';
-        $type_filter_result = Model()->query($type_filter_sql);;
-         output_data( array('type_filter_result' => $type_filter_result));
+        $condition = array(
+            "cart.cart_id" => array('in',$str)
+        );
+        $goods = Model('goods');
+        $type_filter_result = $goods->type_filter($condition);
+        output_data( array('type_filter_result' => $type_filter_result));
     }
     
       /* jys@newland 添加开始 **/
@@ -568,21 +519,9 @@ class member_buyControl extends mobileMemberControl {
      * 检验限购次数
      */
     public function get_limitOp(){
-        $pay_sn= $_POST['pay_sn'];
-        $limit_filter_sql = 'SELECT ';
-        $limit_filter_sql.=  '   '.DBPRE.'order_goods.goods_id ,';
-        $limit_filter_sql.=  '   '.DBPRE.'order_goods.goods_name ,';
-        $limit_filter_sql.=  '   '.DBPRE.'order_goods.goods_num ,';
-        $limit_filter_sql.=  '   '.DBPRE.'goods.purchase_limit ';
-        $limit_filter_sql.= 'FROM ';
-        $limit_filter_sql.= '    '.DBPRE.'order_goods  ';
-        $limit_filter_sql.= ' INNER JOIN  '.DBPRE.'order   ';
-        $limit_filter_sql.= ' ON  '.DBPRE.'order_goods.order_id = '.DBPRE.'order.order_id ';
-        $limit_filter_sql.= ' INNER JOIN  '.DBPRE.'goods   ';
-        $limit_filter_sql.= ' ON  '.DBPRE.'order_goods.goods_id = '.DBPRE.'goods.goods_id ';
-        $limit_filter_sql.= ' WHERE ';
-        $limit_filter_sql.= ' '.DBPRE.'order.pay_sn ='.$pay_sn;
-        $resultlimit = Model()->query($limit_filter_sql);
+        $condition = array('order.pay_sn' => $_POST['pay_sn']);
+        $order_goods = Model('order_goods');
+        $resultlimit = $order_goods->limit_filter($condition);
         output_data( array('resultlimit' => $resultlimit));
     }
     
@@ -592,21 +531,20 @@ class member_buyControl extends mobileMemberControl {
      * 检验配送方式
      */
     public function get_best_timeOp(){
-        $str = ""; 
+        $str = "";
         $cart_ids = explode(',', $_POST['cart_id']);
         for($i=0;$i<sizeof($cart_ids);$i++){
             $cart = explode('|',$cart_ids[$i]);
-            $str .= $cart[0].',';
+            $str .= $cart[0];
+            if($i != sizeof($cart_ids) - 1){
+                $str .= ',';
+            }
         }
-        $filter_sql = 'SELECT ';
-        $filter_sql.= '   max(best_time) as best_time';
-        $filter_sql.= '  FROM ';
-        $filter_sql.= '    '.DBPRE.'goods  ';
-        $filter_sql.= ' INNER JOIN  '.DBPRE.'cart   ';
-        $filter_sql.= ' ON  '.DBPRE.'goods.goods_id = '.DBPRE.'cart.goods_id ';
-        $filter_sql.= ' WHERE ';
-        $filter_sql.= '  '.DBPRE.'cart.cart_id IN ('.substr($str, 0, strlen($str)-1).') ';
-        $filter_result = Model()->query($filter_sql);
+        $condition = array(
+            "cart.cart_id" => array('in',$str)
+        );
+        $goods = Model('goods');
+        $filter_result = $goods->best_filter($condition);
         output_data( array('filter_result' => $filter_result));
     }
     

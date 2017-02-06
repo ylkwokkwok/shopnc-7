@@ -9,7 +9,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class documentModel{
+class documentModel extends Model {
 	/**
 	 * 查询所有系统文章
 	 */

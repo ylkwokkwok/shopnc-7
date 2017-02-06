@@ -8,7 +8,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class inform_subject_typeModel{
+class inform_subject_typeModel extends Model {
 
 	/*
 	 * 构造条件

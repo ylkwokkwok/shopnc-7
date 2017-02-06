@@ -6,7 +6,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class advModel
+class advModel extends Model
 {
     /**
      * 新增广告位

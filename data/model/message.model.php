@@ -5,7 +5,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class messageModel {
+class messageModel  extends Model {
 	/**
 	 * 站内信列表
 	 * @param	array $param	条件数组

@@ -19,46 +19,18 @@
 	Base::run(FALSE);
 	
 	// 获取订单信息
-	$pay_sn = $_POST['pay_sn'];
-	$sql = '';
-	$sql .= ' SELECT';
-	$sql .= '	sum(order_amount) pay_amount';
-	$sql .= ' FROM';
-	$sql .= '	'.DBPRE.'order';
-	$sql .= ' WHERE';
-	$sql .= '	pay_sn = '.$pay_sn;
-        logResult("获取订单信息：" . $sql);
 	// 订单信息
-	$order_info = Model()->query($sql);
-    
-    
-    $sql = '';
-	$sql .= ' SELECT';
-	$sql .= '	sum(t1.order_amount) pay_amount,';
-	$sql .= '	count(*) goods_num,';
-	$sql .= '	t2.goods_name';
-	$sql .= ' FROM';
-	$sql .= '	'.DBPRE.'order t1';
-	$sql .= ' LEFT JOIN '.DBPRE.'order_goods t2 ON t1.order_id = t2.order_id';
-	$sql .= ' WHERE';
-	$sql .= '	t1.pay_sn = '.$pay_sn;
-         logResult("订单信息：" . $sql);
+	$condition = array('pay_sn' => $pay_sn);
+	$order_info = Model('order')->getSNOrderInfo($condition);
+
     // 订单信息
-	$goods_info = Model()->query($sql);
-    
+	$condition = array('order.pay_sn' => $pay_sn);
+	$goods_info = Model('order')->getWXOrderInfo($condition);
 	
 	// 获取OPENID
-	$sql = '';
-	$sql .= ' SELECT';
-	$sql .= '	t2.member_wx_id';
-	$sql .= ' FROM';
-	$sql .= '	'.DBPRE.'mb_user_token t1';
-	$sql .= ' LEFT JOIN '.DBPRE.'member t2 ON t1.member_id = t2.member_id';
-	$sql .= ' WHERE';
-	$sql .= '	t1.token = "'.$_COOKIE['key'].'"';
-        logResult("获取OPENID：" . $sql);
-	// 获取用户信息
-	$member_info = Model()->query($sql);
+	$condition = array('mb_user_token.token' => $_COOKIE['key']);
+	$member_info = Model('mb_user_token')->getOpenId($condition);
+
     // 获得用户的openid
     $openid = $member_info[0]['member_wx_id'];
     

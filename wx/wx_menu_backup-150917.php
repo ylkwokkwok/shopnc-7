@@ -24,7 +24,7 @@ $para = '{
         "button": [{
                 "type": "view",
                 "name": "微商城",
-                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://fresh.cenler-shop.com/wx/index.php&response_type=code&scope=snsapi_userinfo&state=code#wechat_redirect"
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://shopnc.siburuxue.org/wx/index.php&response_type=code&scope=snsapi_userinfo&state=code#wechat_redirect"
             }, {
                 "name": "新鲜送",
                 "sub_button": 
@@ -44,7 +44,7 @@ $para = '{
             }, {
                 "type": "view",
                 "name": "手机订奶",
-                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://fresh.cenler-shop.com/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=nearby_store#wechat_redirect"
+                "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbf22b887fc929ff8&redirect_uri=http://shopnc.siburuxue.org/wx/milk_index.php&response_type=code&scope=snsapi_userinfo&state=nearby_store#wechat_redirect"
             }]
     }';
 

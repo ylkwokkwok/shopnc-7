@@ -5,7 +5,7 @@
  
  */
 defined('InShopNC') or exit('Access Invalid!');
-class sns_tracelogModel{
+class sns_tracelogModel extends Model {
 	/**
 	 * 新增动态
 	 *

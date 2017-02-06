@@ -9,7 +9,7 @@
  */
 defined('InShopNC') or exit('Access Invalid!');
 
-class upload_albumModel{
+class upload_albumModel extends Model {
 	/**
 	 * 列表
 	 *
