@@ -8,28 +8,28 @@
  */
 class Model{
 
-	protected $name = '';
-	protected $table_prefix = '';
-	protected $init_table = null;
-	protected $table_name = '';
-	protected $options = array();
-	protected $pk = 'id';
-	protected $db = null;
-	protected $fields = array();
-	protected $unoptions = true;	//是否清空参数项，默认清除
+    protected $name = '';
+    protected $table_prefix = '';
+    protected $init_table = null;
+    protected $table_name = '';
+    protected $options = array();
+    protected $pk = 'id';
+    protected $db = null;
+    protected $fields = array();
+    protected $unoptions = true;	//是否清空参数项，默认清除
 
-	public function __construct($table = null){
-		if (!is_null($table)){
-			$this->table_name = $table;
-			$this->tableInfo($table);
-		}
-		$this->table_prefix = DBPRE;
-		if (!is_object($this->db)){
-			$this->db = new ModelDb();
-		}
-	}
+    public function __construct($table = null){
+        if (!is_null($table)){
+            $this->table_name = $table;
+            $this->tableInfo($table);
+        }
+        $this->table_prefix = DBPRE;
+        if (!is_object($this->db)){
+            $this->db = new ModelDb();
+        }
+    }
 
-	public function getLastQuery(){
+    public function getLastQuery(){
         return $this->db->getLastQuery();
     }
 
@@ -90,41 +90,41 @@ class Model{
         if(in_array(strtolower($method),array('table','order','where','on','limit','having','group','lock','master','distinct','index','attr','key'),true)) {
             $this->options[strtolower($method)] =   $args[0];
             if (strtolower($method) == 'table'){
-            	if (strpos($args[0],',') !== false){
-            		$args[0] = explode(',',$args[0]);
-            		$this->table_name = '';
-            		foreach ((array)$args[0] as $value) {
-            			$this->tableInfo($value);
-            		}
-            	}else{
-            		$this->table_name = $args[0];$this->fields = array();$this->tableInfo($args[0]);
-            	}
+                if (strpos($args[0],',') !== false){
+                    $args[0] = explode(',',$args[0]);
+                    $this->table_name = '';
+                    foreach ((array)$args[0] as $value) {
+                        $this->tableInfo($value);
+                    }
+                }else{
+                    $this->table_name = $args[0];$this->fields = array();$this->tableInfo($args[0]);
+                }
             }
             return $this;
         }elseif(in_array(strtolower($method),array('page'),true)){
             if ($args[0] == null){
-				return $this;
-			}elseif(!is_numeric($args[0]) || $args[0] <= 0){
-				$args[0] = 10;
-			}
+                return $this;
+            }elseif(!is_numeric($args[0]) || $args[0] <= 0){
+                $args[0] = 10;
+            }
 
-			if (is_numeric($args[1]) && $args[1] > 0){
-			    //page(2,30)形式，传入了每页显示数据和总记录数
-			    if ($args[0] > 0){
-			        $this->options[strtolower($method)] =   $args[0];
-			        pagecmd('setEachNum',	$args[0]);
-			        $this->unoptions = false;
-			        pagecmd('setTotalNum',	$args[1]);
-			        return $this;
-			    }else{
-			        $args[0] = 10;
-			    }
-			}
-			$this->options[strtolower($method)] =   $args[0];
-			pagecmd('setEachNum',	$args[0]);
-			$this->unoptions = false;
-			pagecmd('setTotalNum',	$this->get_field('COUNT(*) AS nc_count'));
-        	return $this;
+            if (is_numeric($args[1]) && $args[1] > 0){
+                //page(2,30)形式，传入了每页显示数据和总记录数
+                if ($args[0] > 0){
+                    $this->options[strtolower($method)] =   $args[0];
+                    pagecmd('setEachNum',	$args[0]);
+                    $this->unoptions = false;
+                    pagecmd('setTotalNum',	$args[1]);
+                    return $this;
+                }else{
+                    $args[0] = 10;
+                }
+            }
+            $this->options[strtolower($method)] =   $args[0];
+            pagecmd('setEachNum',	$args[0]);
+            $this->unoptions = false;
+            pagecmd('setTotalNum',	$this->get_field('COUNT(*) AS nc_count'));
+            return $this;
         }elseif(in_array(strtolower($method),array('min','max','count','sum','avg'),true)){
             $field =  isset($args[0])?$args[0]:'*';
             return $this->get_field(strtoupper($method).'('.$field.') AS nc_'.$method);
@@ -146,7 +146,7 @@ class Model{
             $where[$name] =$args[0];
             //getfby_方法只返回第一个字段值
             if (strpos($args[1],',') !== false){
-            	$args[1] = substr($args[1],0,strpos($args[1],','));
+                $args[1] = substr($args[1],0,strpos($args[1],','));
             }
             return $this->where($where)->get_field($args[1]);
         }else{
@@ -155,12 +155,12 @@ class Model{
             return;
         }
     }
-	/**
-	 * 查询
-	 *
-	 * @param array/int $options
-	 * @return null/array
-	 */
+    /**
+     * 查询
+     *
+     * @param array/int $options
+     * @return null/array
+     */
     public function select($options=array()) {
         if(is_string($options) || is_numeric($options)) {
             // 默认根据主键查询
@@ -176,11 +176,11 @@ class Model{
         $options =  $this->parse_options($options);
         if ($options['limit'] !== false) {
             if (empty($options['where']) && empty($options['limit'])){
-            	//如果无条件，默认检索30条数据
-            	$options['limit'] = 30;
+                //如果无条件，默认检索30条数据
+                $options['limit'] = 30;
             }elseif ($options['where'] !== true && empty($options['limit'])){
-            	//如果带WHERE，但无LIMIT，最多只检索1000条记录
-            	$options['limit'] = 1000;
+                //如果带WHERE，但无LIMIT，最多只检索1000条记录
+                $options['limit'] = 1000;
             }
         }
 
@@ -190,30 +190,30 @@ class Model{
             return array();
         }
         if ($options['key'] != '' && is_array($resultSet)){
-        	$tmp = array();
-        	foreach ($resultSet as $value) {
-        		$tmp[$value[$options['key']]] = $value;
-        	}
-        	$resultSet = $tmp;
+            $tmp = array();
+            foreach ($resultSet as $value) {
+                $tmp[$value[$options['key']]] = $value;
+            }
+            $resultSet = $tmp;
         }
         return $resultSet;
     }
 
-	/**
-	 * 取得第N列内容
-	 *
-	 * @param array/int $options
-	 * @return null/array
-	 */
+    /**
+     * 取得第N列内容
+     *
+     * @param array/int $options
+     * @return null/array
+     */
     public function getfield($col = 1) {
-    	if (intval($col)<=1) $col = 1;
+        if (intval($col)<=1) $col = 1;
         $options =  $this->parse_options();
         if (empty($options['where']) && empty($options['limit'])){
-        	//如果无条件，默认检索30条数据
-        	$options['limit'] = 30;
+            //如果无条件，默认检索30条数据
+            $options['limit'] = 30;
         }elseif ($options['where'] !== true && empty($options['limit'])){
-        	//如果带WHERE，但无LIMIT，最多只检索1000条记录
-        	$options['limit'] = 1000;
+            //如果带WHERE，但无LIMIT，最多只检索1000条记录
+            $options['limit'] = 1000;
         }
 
         $resultSet = $this->db->select($options);
@@ -226,7 +226,7 @@ class Model{
         $return = array();
         $cols = array_keys($resultSet[0]);
         foreach ((array)$resultSet as $k => $v) {
-        	$return[$k] = $v[$cols[$col-1]];
+            $return[$k] = $v[$cols[$col-1]];
         }
         return $return;
     }
@@ -234,20 +234,25 @@ class Model{
     protected function parse_options($options=array()) {
         if(is_array($options)) $options =  array_merge($this->options,$options);
         if(!isset($options['table'])){
-        	$options['table'] =$this->getTableName();
+            $options['table'] =$this->getTableName();
         }elseif(false !== strpos(trim($options['table'],', '),',')){
-        	foreach(explode(',', trim($options['table'],', ')) as $val){
-        		$tmp[] = $this->getTableName($val).' AS `'.$val.'`';
-        	}
-        	$options['table'] = implode(',',$tmp);
+            foreach(explode(',', trim($options['table'],', ')) as $val){
+                $tmp[] = $this->getTableName($val).' AS `'.$val.'`';
+            }
+            $options['table'] = implode(',',$tmp);
         }else{
-        	$options['table'] =$this->getTableName($options['table']);
+            $options['table'] =$this->getTableName($options['table']);
         }
         if ($this->unoptions === true){
-        	$this->options  =   array();
+            $this->options  =   array();
         }else{
-        	$this->unoptions = true;
+            $this->unoptions = true;
         }
+        /* insert xiashihui@newland 20160508 start */
+        if($options['master'] === 'milk' || $options['master'] === "milk"){
+            $options['table'] = str_replace($this->table_prefix, '', $options['table']);
+        }
+        /* insert xiashihui@newland 20160508 end */
         return $options;
     }
 
@@ -287,19 +292,19 @@ class Model{
         return null;
     }
 
-	/**
-	 * 返回一条记录
-	 *
-	 * @param string/int $options
-	 * @return null/array
-	 */
+    /**
+     * 返回一条记录
+     *
+     * @param string/int $options
+     * @return null/array
+     */
     public function find($options=null) {
         if(is_numeric($options) || is_string($options)) {
             $where[$this->get_pk()] = $options;
             $options = array();
             $options['where'] = $where;
         }elseif(!empty($options)) {
-        	return false;
+            return false;
         }
         $options['limit'] = 1;
         $options =  $this->parse_options($options);
@@ -309,12 +314,12 @@ class Model{
         }
         return $result[0];
     }
-	/**
-	 * 删除
-	 *
-	 * @param array $options
-	 * @return bool/int
-	 */
+    /**
+     * 删除
+     *
+     * @param array $options
+     * @return bool/int
+     */
     public function delete($options=array()) {
         if(is_numeric($options)  || is_string($options)) {
             // 根据主键删除记录
@@ -331,19 +336,19 @@ class Model{
         $options =  $this->parse_options($options);
         $result =   $this->db->delete($options);
         if(false !== $result) {
-        	return true;
+            return true;
 //            $data = array();
 //            if(isset($pkValue)) $data[$pk]   =  $pkValue;
         }
         return $result;
     }
-	/**
-	 * 更新
-	 *
-	 * @param array $data
-	 * @param array $options
-	 * @return boolean
-	 */
+    /**
+     * 更新
+     *
+     * @param array $data
+     * @param array $options
+     * @return boolean
+     */
     public function update($data='',$options=array()) {
         if(empty($data)) return false;
         // 分析表达式
@@ -362,19 +367,19 @@ class Model{
         }
         $result = $this->db->update($data,$options);
         if(false !== $result) {
-        	return true;
+            return true;
         }
         return $result;
     }
 
-	/**
-	 * 插入
-	 *
-	 * @param array $data
-	 * @param bool $replace
-	 * @param array $options
-	 * @return mixed int/false
-	 */
+    /**
+     * 插入
+     *
+     * @param array $data
+     * @param bool $replace
+     * @param array $options
+     * @return mixed int/false
+     */
     public function insert($data='', $replace=false, $options=array()) {
         if(empty($data)) return false;
         $options =  $this->parse_options($options);
@@ -388,14 +393,14 @@ class Model{
         return $result;
     }
 
-	/**
-	 * 批量插入
-	 *
-	 * @param array $dataList
-	 * @param array $options
-	 * @param bool $replace
-	 * @return boolean
-	 */
+    /**
+     * 批量插入
+     *
+     * @param array $dataList
+     * @param array $options
+     * @param bool $replace
+     * @return boolean
+     */
     public function insertAll($dataList,$options=array(),$replace=false){
         if(empty($dataList)) return false;
         // 分析表达式
@@ -407,23 +412,23 @@ class Model{
     }
 
     /**
-	 * 直接SQL查询,返回查询结果
-	 *
-	 * @param string $sql
-	 * @return array
-	 */
-	public function query($sql){
-		return DB::getAll($sql);
-	}
+     * 直接SQL查询,返回查询结果
+     *
+     * @param string $sql
+     * @return array
+     */
+    public function query($sql){
+        return DB::getAll($sql);
+    }
 
-	/**
-	 * 执行SQL，用于 更新、写入、删除操作
-	 *
-	 * @param string $sql
-	 * @return
-	 */
+    /**
+     * 执行SQL，用于 更新、写入、删除操作
+     *
+     * @param string $sql
+     * @return
+     */
     public function execute($sql){
-    	return DB::execute($sql);
+        return DB::execute($sql);
     }
 
     /**
@@ -432,7 +437,7 @@ class Model{
      * @param string $host
      */
     public static function beginTransaction($host = 'master'){
-    	Db::beginTransaction($host);
+        Db::beginTransaction($host);
     }
 
     /**
@@ -441,7 +446,7 @@ class Model{
      * @param string $host
      */
     public static function commit($host = 'master'){
-    	Db::commit($host);
+        Db::commit($host);
     }
 
     /**
@@ -450,7 +455,7 @@ class Model{
      * @param string $host
      */
     public static function rollback($host = 'master'){
-    	Db::rollback($host);
+        Db::rollback($host);
     }
 
     /**
@@ -459,9 +464,9 @@ class Model{
      * @return boolean
      */
     public function clear(){
-    	if (!$this->table_name && !$this->options['table']) return false;
-    	$options =  $this->parse_options();
-    	return $this->db->clear($options);
+        if (!$this->table_name && !$this->options['table']) return false;
+        $options =  $this->parse_options();
+        return $this->db->clear($options);
     }
 
     /**
@@ -470,14 +475,22 @@ class Model{
      * @param string $table
      * @return string
      */
-	protected function getTableName($table = null){
-		if (is_null($table)){
-			$return = '`'.$this->table_prefix.$this->table_name.'`';
-		}else{
-			$return = '`'.$this->table_prefix.$table.'`';
-		}
-		return $return;
-	}
+    protected function getTableName($table = null){
+        if (is_null($table)){
+            if(strpos($this->table_name, 'mst_') === 0 || strpos($this->table_name, 'td_') === 0 || strpos($this->table_name, 'trn_') === 0 ){
+                $return = '`'.$this->table_name.'`';
+            }else{
+                $return = '`'.$this->table_prefix.$this->table_name.'`';
+            }
+        }else{
+            if(strpos($table, 'mst_') === 0 || strpos($table, 'td_') === 0 || strpos($table, 'trn_') === 0 ){
+                $return = '`'.$table.'`';
+            }else{
+                $return = '`'.$this->table_prefix.$table.'`';
+            }
+        }
+        return $return;
+    }
     /**
      * 取得最后插入的ID
      *
@@ -528,36 +541,36 @@ class Model{
      * @return Model
      */
     public function join($join) {
-    	if (false !== strpos($join,',')){
-    		foreach (explode(',',$join) as $key=>$val) {
-		    	if (in_array(strtolower($val),array('left','inner','right'))){
-		    		$this->options['join'][] = strtoupper($val).' JOIN';
-		    	}else{
-		    		$this->options['join'][] = 'LEFT JOIN';
-		    	}
-    		}
-    	}elseif (in_array(strtolower($join),array('left','inner','right'))){
-    		$this->options['join'][] = strtoupper($join).' JOIN';
-    	}
+        if (false !== strpos($join,',')){
+            foreach (explode(',',$join) as $key=>$val) {
+                if (in_array(strtolower($val),array('left','inner','right'))){
+                    $this->options['join'][] = strtoupper($val).' JOIN';
+                }else{
+                    $this->options['join'][] = 'LEFT JOIN';
+                }
+            }
+        }elseif (in_array(strtolower($join),array('left','inner','right'))){
+            $this->options['join'][] = strtoupper($join).' JOIN';
+        }
         return $this;
     }
 
-	/**
-	 * 取得主键
-	 *
-	 * @return string
-	 */
+    /**
+     * 取得主键
+     *
+     * @return string
+     */
     public function get_pk() {
-    	return isset($this->fields[$this->table_name])?$this->fields[$this->table_name]:$this->pk;
+        return isset($this->fields[$this->table_name])?$this->fields[$this->table_name]:$this->pk;
     }
 
-   /**
-    * 检查非数据字段
-    *
-    * @param array $data
-    * @return array
-    */
-     protected function chk_field($data) {
+    /**
+     * 检查非数据字段
+     *
+     * @param array $data
+     * @return array
+     */
+    protected function chk_field($data) {
         if(!empty($this->fields[$this->table_name])) {
             foreach ($data as $key=>$val){
                 if(!in_array($key,$this->fields[$this->table_name],true)){
@@ -566,7 +579,7 @@ class Model{
             }
         }
         return $data;
-     }
+    }
 
     public function setInc($field, $step=1) {
         return $this->set_field($field,array('exp',$field.'+'.$step));
@@ -585,41 +598,41 @@ class Model{
         return $this->update($data);
     }
 
-	/**
-	 * 显示分页链接
-	 *
-	 * @param int $style 分页风格
-	 * @return string
-	 */
+    /**
+     * 显示分页链接
+     *
+     * @param int $style 分页风格
+     * @return string
+     */
     public function showpage($style = null){
-    	return pagecmd('show',$style);
+        return pagecmd('show',$style);
     }
 
-	/**
-	 * 获取分页总数
-	 *
-	 * @return string
-	 */
+    /**
+     * 获取分页总数
+     *
+     * @return string
+     */
     public function gettotalnum(){
-    	return pagecmd('gettotalnum');
+        return pagecmd('gettotalnum');
     }
 
-	/**
-	 * 获取总页数
-	 *
-	 * @return string
-	 */
+    /**
+     * 获取总页数
+     *
+     * @return string
+     */
     public function gettotalpage(){
-    	return pagecmd('gettotalpage');
+        return pagecmd('gettotalpage');
     }
     /**
      * 清空MODEL中的options、table_name属性
      *
      */
     public function cls(){
-    	$this->options = array();
-    	$this->table_name = '';
-    	return $this;
+        $this->options = array();
+        $this->table_name = '';
+        return $this;
     }
 
     public function checkActive($host = 'master') {
@@ -647,14 +660,21 @@ class ModelDb{
 
     public function select($options=array()) {
 //     	static $_cache = array();
-		$sql = $this->buildSelectSql($options);
+        $sql = $this->buildSelectSql($options);
         if ($options['cache'] !== false){
             $key =  is_string($cache['cache_key']) ? $cache['cache_key'] : md5($sql);
             if (isset($_cache[$key])){
-            	return $_cache[$key];
+                return $_cache[$key];
             }
         }
-        $result = DB::getAll($sql,($options['lock'] === true || $options['master'] === true || defined('TRANS_MASTER')) ? 'master' : 'slave');
+        /* update xiashihui@newland 20160508 start */
+        $host = ($options['lock'] === true || $options['master'] === true || defined('TRANS_MASTER')) ? 'master' : 'slave';
+        if($options['master'] === 'milk' || $options['master'] === "milk"){
+            $host = 'milk';
+        }
+        $result = DB::getAll($sql, $host);
+//        $result = DB::getAll($sql);
+        /* update xiashihui@newland 20160508 end */
 //         if ($options['cache'] !== false && !isset($_cache[$key])){
 //         	$_cache[$key] = $result;
 //         }
@@ -662,12 +682,12 @@ class ModelDb{
     }
 
     public function buildSelectSql($options=array()) {
-    	if (is_numeric($options['page'])){
-			$page = pagecmd('obj');
-			if ($options['limit'] !== 1){
-				$options['limit'] = $page->getLimitStart().",".$page->getEachNum();
-			}
-    	}
+        if (is_numeric($options['page'])){
+            $page = pagecmd('obj');
+            if ($options['limit'] !== 1){
+                $options['limit'] = $page->getLimitStart().",".$page->getEachNum();
+            }
+        }
         $sql  = $this->parseSql($this->selectSql,$options);
         $sql .= $this->parseLock(isset($options['lock'])?$options['lock']:false);
         $this->sql = $sql;
@@ -693,18 +713,18 @@ class ModelDb{
         return $sql;
     }
 
-	protected function parseUnion(){
-		return '';
-	}
+    protected function parseUnion(){
+        return '';
+    }
 
-	protected function parseLock($lock=false) {
-	    if(!$lock) return '';
-	    return ' FOR UPDATE ';
-	}
+    protected function parseLock($lock=false) {
+        if(!$lock) return '';
+        return ' FOR UPDATE ';
+    }
 
-	protected function parseIndex($value){
-		return empty($value) ? '':' USE INDEX ('.$value.') ';
-	}
+    protected function parseIndex($value){
+        return empty($value) ? '':' USE INDEX ('.$value.') ';
+    }
 
     protected function parseValue($value) {
         if(is_string($value) || is_numeric($value)) {
@@ -742,8 +762,8 @@ class ModelDb{
     }
 
     protected function parseTable($options) {
-    	if ($options['on']) return null;
-    	$tables = $options['table'];
+        if ($options['on']) return null;
+        $tables = $options['table'];
         if(is_array($tables)) {// 别名定义
             $array   =  array();
             foreach ($tables as $table=>$alias){
@@ -841,14 +861,14 @@ class ModelDb{
                     if(isset($val[2]) && 'exp'==$val[2]) {
                         $whereStr .= $key.' '.strtoupper($val[0]).' '.$val[1];
                     }else{
-                    	if (empty($val[1])){
-                    		$whereStr .= $key.' '.strtoupper($val[0]).'(\'\')';
-                    	}elseif(is_string($val[1]) || is_numeric($val[1])) {
-                             $val[1] =  explode(',',$val[1]);
-                             $zone   =   implode(',',$this->parseValue($val[1]));
-                             $whereStr .= $key.' '.strtoupper($val[0]).' ('.$zone.')';
+                        if (empty($val[1])){
+                            $whereStr .= $key.' '.strtoupper($val[0]).'(\'\')';
+                        }elseif(is_string($val[1]) || is_numeric($val[1])) {
+                            $val[1] =  explode(',',$val[1]);
+                            $zone   =   implode(',',$this->parseValue($val[1]));
+                            $whereStr .= $key.' '.strtoupper($val[0]).' ('.$zone.')';
                         }elseif(is_array($val[1])){
- 							$zone   =   implode(',',$this->parseValue($val[1]));
+                            $zone   =   implode(',',$this->parseValue($val[1]));
                             $whereStr .= $key.' '.strtoupper($val[0]).' ('.$zone.')';
                         }
                     }
@@ -883,31 +903,31 @@ class ModelDb{
                     $rule = 'AND';
                 }
                 for($i=0;$i<$count;$i++) {
-                	if (is_array($val[$i])){
-                		if (is_array($val[$i][1])){
-                			$data = implode(',',$val[$i][1]);
-                		}else{
-                			$data = $val[$i][1];
-                		}
-                	}else{
-                		$data = $val[$i];
-                	}
+                    if (is_array($val[$i])){
+                        if (is_array($val[$i][1])){
+                            $data = implode(',',$val[$i][1]);
+                        }else{
+                            $data = $val[$i][1];
+                        }
+                    }else{
+                        $data = $val[$i];
+                    }
                     if('exp'==strtolower($val[$i][0])) {
                         $whereStr .= '('.$key.' '.$data.') '.$rule.' ';
                     }else{
                         $op = is_array($val[$i])?$this->comparison[strtolower($val[$i][0])]:'=';
-                         if(preg_match('/IN/i',$op)){
-                         	$whereStr .= '('.$key.' '.$op.' ('.$this->parseValue($data).')) '.$rule.' ';
-                         }else{
-                         	$whereStr .= '('.$key.' '.$op.' '.$this->parseValue($data).') '.$rule.' ';
-                         }
+                        if(preg_match('/IN/i',$op)){
+                            $whereStr .= '('.$key.' '.$op.' ('.$this->parseValue($data).')) '.$rule.' ';
+                        }else{
+                            $whereStr .= '('.$key.' '.$op.' '.$this->parseValue($data).') '.$rule.' ';
+                        }
 
                     }
                 }
                 $whereStr = substr($whereStr,0,-4);
             }
         }else {
-        	$whereStr .= $key.' = '.$this->parseValue($val);
+            $whereStr .= $key.' = '.$this->parseValue($val);
         }
         return $whereStr;
     }
@@ -923,8 +943,8 @@ class ModelDb{
         $on = explode(',',$options['on']);
         $join = $options['join'];
         $joinStr .= $table[0];
-		for($i=0;$i<(count($table)-1);$i++){
-        	$joinStr .= ' '.($join[$i]?$join[$i]:'LEFT JOIN').' '.$table[$i+1].' ON '.($on[$i]?$on[$i]:'');
+        for($i=0;$i<(count($table)-1);$i++){
+            $joinStr .= ' '.($join[$i]?$join[$i]:'LEFT JOIN').' '.$table[$i+1].' ON '.($on[$i]?$on[$i]:'');
         }
         return $joinStr;
     }
@@ -935,47 +955,63 @@ class ModelDb{
             .$this->parseWhere(isset($options['where'])?$options['where']:'')
             .$this->parseOrder(isset($options['order'])?$options['order']:'')
             .$this->parseLimit(isset($options['limit'])?$options['limit']:'');
-            if (stripos($sql,'where') === false && $options['where'] !== true){
-            	//防止条件传错，删除所有记录
-            	return false;
-            }
-        return DB::execute($sql);
+        if (stripos($sql,'where') === false && $options['where'] !== true){
+            //防止条件传错，删除所有记录
+            return false;
+        }
+        /* update xiashihui@newland 20160508 start */
+        $host = ($options['lock'] === true || $options['master'] === true || defined('TRANS_MASTER')) ? 'master' : 'slave';
+        if($options['master'] === 'milk' || $options['master'] === "milk"){
+            $host = 'milk';
+        }
+        $this->sql = $sql;
+        return DB::execute($sql, $host);
+//        return DB::execute($sql);
+        /* update xiashihui@newland 20160508 end */
     }
 
     public function update($data,$options) {
         $sql   = 'UPDATE '
-        	.$this->parseAttr($options)
+            .$this->parseAttr($options)
             .$this->parseTable($options)
             .$this->parseSet($data)
             .$this->parseWhere(isset($options['where'])?$options['where']:'')
             .$this->parseOrder(isset($options['order'])?$options['order']:'')
             .$this->parseLimit(isset($options['limit'])?$options['limit']:'');
-            if (stripos($sql,'where') === false && $options['where'] !== true){
-            	//防止条件传错，更新所有记录
-            	return false;
-            }
-        return DB::execute($sql);
+        if (stripos($sql,'where') === false && $options['where'] !== true){
+            //防止条件传错，更新所有记录
+            return false;
+        }
+        /* update xiashihui@newland 20160508 start */
+        $host = ($options['lock'] === true || $options['master'] === true || defined('TRANS_MASTER')) ? 'master' : 'slave';
+        if($options['master'] === 'milk' || $options['master'] === "milk"){
+            $host = 'milk';
+        }
+        $this->sql = $sql;
+        return DB::execute($sql, $host);
+//        return DB::execute($sql);
+        /* update xiashihui@newland 20160508 end */
     }
 
-	public function parseAttr($options){
-		if (isset($options['attr'])){
-			if (in_array(isset($options['attr']),array('LOW_PRIORITY','QUICK','IGNORE','HIGH_PRIORITY','SQL_CACHE','SQL_NO_CACHE'))){
-				return $options['attr'].' ';
-			}
-		}else{
-			return '';
-		}
-	}
+    public function parseAttr($options){
+        if (isset($options['attr'])){
+            if (in_array(isset($options['attr']),array('LOW_PRIORITY','QUICK','IGNORE','HIGH_PRIORITY','SQL_CACHE','SQL_NO_CACHE'))){
+                return $options['attr'].' ';
+            }
+        }else{
+            return '';
+        }
+    }
 
-	public function lockAttr($options){
-		if (isset($options['attr'])){
-			if (in_array($options['attr'],array('FOR UPDATE'))){
-				return ' '.$options['attr'].' ';
-			}
-		}else{
-			return '';
-		}
-	}
+    public function lockAttr($options){
+        if (isset($options['attr'])){
+            if (in_array($options['attr'],array('FOR UPDATE'))){
+                return ' '.$options['attr'].' ';
+            }
+        }else{
+            return '';
+        }
+    }
 
     /**
      * 清空表
@@ -983,10 +1019,18 @@ class ModelDb{
      * @param array $options
      * @return boolean
      */
-	public function clear($options){
-		$sql = 'TRUNCATE TABLE '.$this->parseTable($options);
-		return DB::execute($sql);
-	}
+    public function clear($options){
+        $sql = 'TRUNCATE TABLE '.$this->parseTable($options);
+        /* update xiashihui@newland 20160508 start */
+        $host = ($options['lock'] === true || $options['master'] === true || defined('TRANS_MASTER')) ? 'master' : 'slave';
+        if($options['master'] === 'milk' || $options['master'] === "milk"){
+            $host = 'milk';
+        }
+        $this->sql = $sql;
+        return DB::execute($sql, $host);
+//		return DB::execute($sql);
+        /* update xiashihui@newland 20160508 end */
+    }
     public function insert($data,$options=array(),$replace=false) {
         $values  =  $fields    = array();
         foreach ($data as $key=>$val){
@@ -997,21 +1041,29 @@ class ModelDb{
             }
         }
         $sql   =  ($replace?'REPLACE ':'INSERT ').$this->parseAttr($options).' INTO '.$this->parseTable($options).' ('.implode(',', $fields).') VALUES ('.implode(',', $values).')';
-        return DB::execute($sql);
+        /* update xiashihui@newland 20160508 start */
+        $host = ($options['lock'] === true || $options['master'] === true || defined('TRANS_MASTER')) ? 'master' : 'slave';
+        if($options['master'] === 'milk' || $options['master'] === "milk"){
+            $host = 'milk';
+        }
+        $this->sql = $sql;
+        return DB::execute($sql, $host);
+//        return DB::execute($sql);
+        /* update xiashihui@newland 20160508 end */
     }
 
-     public function getLastId() {
+    public function getLastId() {
         return DB::getLastId();
     }
 
-	/**
-	 * 批量插入
-	 *
-	 * @param unknown_type $datas
-	 * @param unknown_type $options
-	 * @param unknown_type $replace
-	 * @return unknown
-	 */
+    /**
+     * 批量插入
+     *
+     * @param unknown_type $datas
+     * @param unknown_type $options
+     * @param unknown_type $replace
+     * @return unknown
+     */
     public function insertAll($datas,$options=array(),$replace=false) {
         if(!is_array($datas[0])) return false;
         $fields = array_keys($datas[0]);
@@ -1028,7 +1080,15 @@ class ModelDb{
             $values[]    = '('.implode(',', $value).')';
         }
         $sql   =  ($replace?'REPLACE':'INSERT').' INTO '.$this->parseTable($options).' ('.implode(',', $fields).') VALUES '.implode(',',$values);
-        return DB::execute($sql);
+        /* update xiashihui@newland 20160508 start */
+        $host = ($options['lock'] === true || $options['master'] === true || defined('TRANS_MASTER')) ? 'master' : 'slave';
+        if($options['master'] === 'milk' || $options['master'] === "milk"){
+            $host = 'milk';
+        }
+        $this->sql = $sql;
+        return DB::execute($sql, $host);
+//        return DB::execute($sql);
+        /* update xiashihui@newland 20160508 end */
     }
 
     protected function parseOrder($order) {
@@ -1068,7 +1128,7 @@ class ModelDb{
     }
 
     public function escapeString($str) {
-    	$str = addslashes(stripslashes($str));//重新加斜线，防止从数据库直接读取出错
+        $str = addslashes(stripslashes($str));//重新加斜线，防止从数据库直接读取出错
         return $str;
     }
 
@@ -1077,7 +1137,7 @@ class ModelDb{
     }
 
     public function checkActive($host) {
-    	Db::ping($host);
+        Db::ping($host);
     }
 }
 ?>
