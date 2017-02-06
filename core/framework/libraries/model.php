@@ -17,6 +17,7 @@ class Model{
     protected $db = null;
     protected $fields = array();
     protected $unoptions = true;	//是否清空参数项，默认清除
+    private $table_name_prefix = array();
 
     public function __construct($table = null){
         if (!is_null($table)){
@@ -90,14 +91,22 @@ class Model{
         if(in_array(strtolower($method),array('table','order','where','on','limit','having','group','lock','master','distinct','index','attr','key'),true)) {
             $this->options[strtolower($method)] =   $args[0];
             if (strtolower($method) == 'table'){
-                if (strpos($args[0],',') !== false){
-                    $args[0] = explode(',',$args[0]);
+                if(is_array($args[0])){
+                    $this->table_name_prefix = $args[0];
                     $this->table_name = '';
-                    foreach ((array)$args[0] as $value) {
-                        $this->tableInfo($value);
+                    foreach ($args[0] as $key => $val){
+                        $this->tableInfo($key);
                     }
                 }else{
-                    $this->table_name = $args[0];$this->fields = array();$this->tableInfo($args[0]);
+                    if (strpos($args[0],',') !== false){
+                        $args[0] = explode(',',$args[0]);
+                        $this->table_name = '';
+                        foreach ((array)$args[0] as $value) {
+                            $this->tableInfo($value);
+                        }
+                    }else{
+                        $this->table_name = $args[0];$this->fields = array();$this->tableInfo($args[0]);
+                    }
                 }
             }
             return $this;
@@ -235,6 +244,11 @@ class Model{
         if(is_array($options)) $options =  array_merge($this->options,$options);
         if(!isset($options['table'])){
             $options['table'] =$this->getTableName();
+        }else if(is_array($options['table'])){
+            foreach ($options['table'] as $key => $val){
+                $tmp[] = $this->getTableName($key).' AS `'.$key.'`';
+            }
+            $options['table'] = implode(',',$tmp);
         }elseif(false !== strpos(trim($options['table'],', '),',')){
             foreach(explode(',', trim($options['table'],', ')) as $val){
                 $tmp[] = $this->getTableName($val).' AS `'.$val.'`';
@@ -486,7 +500,12 @@ class Model{
             if(strpos($table, 'mst_') === 0 || strpos($table, 'td_') === 0 || strpos($table, 'trn_') === 0 ){
                 $return = '`'.$table.'`';
             }else{
-                $return = '`'.$this->table_prefix.$table.'`';
+                if(!empty($this->table_name_prefix)){
+                    $table_prefix = $this->table_name_prefix[$table];
+                    $return = '`'.$table_prefix.$table.'`';
+                }else{
+                    $return = '`'.$this->table_prefix.$table.'`';
+                }
             }
         }
         return $return;
