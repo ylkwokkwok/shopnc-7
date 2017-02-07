@@ -243,6 +243,8 @@
      * @return array need_insert：是否需要新增客户，customer_cd：客户编号
      */
     function get_customer_cd_info($milk_order_data) {
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $condition = array(
             'member_id' => $milk_order_data['member_id'],
             'customer_name' => $milk_order_data['name'],
@@ -258,6 +260,7 @@
             $condition['customer_cd'] = array(array('like','DH%'));
         }
         $result = Model('mst_customer')->get_milk_order_info($condition);
+        /* zp@newland 添加结束 **/
         // 默认不需要新增客户信息
         $ret_arr['need_insert'] = FALSE;
 
@@ -283,9 +286,11 @@
     function create_customer_cd($milk_order_data) {
         // 自取点编号不为空时(自取)
         if ($milk_order_data['self_receive_spot_cd'] !== '') {
+            /* zp@newland 添加开始 **/
+            /* 时间：2017/02/06 **/
             $condition = array(array('like',$milk_order_data['self_receive_spot_cd'].'%'));
             $result = Model('mst_customer')->get_milk_order_info($condition);
-
+            /* zp@newland 添加结束 **/
             // 未查询到客户信息
             if (empty($result)) {
                 return $milk_order_data['self_receive_spot_cd'].'0001';
@@ -300,9 +305,11 @@
         }
         // 自取点编号为空时（到户）
         else {
+            /* zp@newland 添加开始 **/
+            /* 时间：2017/02/06 **/
             $condition = array(array('like','DH%'));
             $result = Model('mst_customer')->get_milk_order_info($condition);
-
+            /* zp@newland 添加结束 **/
             // 未查询到客户信息
             if (empty($result)) {
                 return 'DH00000001';
@@ -536,8 +543,10 @@
      */
     function insert_milk_order($order, $order_data) {
         // 插入订单信息
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         Model('trn_milk_order')->insertAction($order);
-        
+        /* zp@newland 添加结束 **/
         /* lyq@newland 添加开始 **/
         /* 时间：2015/10/15     **/
         // 到户订奶，订单信息添加到促销系统的到户订单表中
@@ -591,6 +600,8 @@
      * @param type $order_data 订单数据
      */
     function update_milk_card_info($used_milk_card_list, $customer_cd, $order_data) {
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $array = array();
         $array['milk_card_flag'] = (empty($order_data['self_receive_spot_cd'])?'1':'0');
         $array['active_flag'] = 1;
@@ -600,6 +611,7 @@
         $array['milk_card_cd'] = array('in',implode(',', $used_milk_card_list));
         $array['post_flag'] = (empty($order_data['address']) ? 1 : 0);
         Model('mst_customer_card')->update($array);
+        /* zp@newland 添加结束 **/
         /* lyq@newland 添加开始 **/
         /* 时间：2015/10/15     **/
         // 到户订奶，奶卡信息添加到促销系统的奶卡表中
@@ -671,6 +683,8 @@
      * @param type $self_receive_spot_cd 自取点编号
      */
     function insert_notice($log_id, $out_trade_no, $self_receive_spot_cd) {
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $data = array(
             'info_title' => "奶卡数量不足，订单相关信息更新失败",
             'info_content' => "客户微信支付成功，但由于奶卡数量不足，无法更新订单相关信息。\n微信支付商户订单号：'.$out_trade_no.'\n记录ID：'.$log_id.'",
@@ -686,8 +700,8 @@
             'update_date' => date('Y-m-d H:i:s')
         );
         $model = Model('mst_notice');
-        $model->table_prefix = '';
-        $model->insert($data);
+        $model->master('nopre')->insert($data);
+        /* zp@newland 添加结束 **/
     }
     
     
@@ -898,20 +912,25 @@
      * 
      */
     function get_milk_card($milk_cd){
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $condition = array(
             'delete_flag' => 0,
             'milk_cd' => $milk_cd,
         );
-        return Model('mst_card_increment')->get_milk_card($condition);
+        return Model('mst_card_increment')->master('nopre')->get_milk_card($condition);
+        /* zp@newland 添加结束 **/
     }
      /* jys@newland 添加开始 **/
     
      /* jys@newland 添加开始 **/
     /*
-     * 插卡奶卡基本信息表
+     * 插入奶卡基本信息表
      * 
      */
     function inset_milk_card($used_milk_card_list, $customer_cd, $milkcd){
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $data = array(
             'milk_card_cd' => trim($used_milk_card_list[0]),
             'milk_cd' => $milkcd,
@@ -929,20 +948,25 @@
             'update_date' => date('Y-m-d H:i:s'),
         );
         $model = Model('mst_milk_card');
-        $model->table_prefix = '';
-        $model->insert($data);
+        $model->master('nopre')->insert($data);
+        /* zp@newland 添加结束 **/
     }
-    
+
+    /**
+     * 更新奶卡信息
+     */
     function update_increment($milk_cd,$card_seq){
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $para = array(
             'card_seq' => $card_seq,
             'update_user' => "wap user",
             'update_date' => date('Y-m-d H:i:s'),
             'milk_cd' => $milk_cd,
         );
-        $model = Model(mst_card_increment);
-        $model->table_prefix = '';
-        $model->update($para);
+        $model = Model('mst_card_increment');
+        $model->master('nopre')->update($para);
+        /* zp@newland 添加结束 **/
     }
      /* jys@newland 添加开始 **/
  

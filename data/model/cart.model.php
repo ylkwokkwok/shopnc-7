@@ -308,14 +308,14 @@ class cartModel extends Model {
         //最后清空登录前购物车内容
         $this->clearCart($save_type);
     }
-
-    /**
-     * 购物车购买奶制品
-     */
+    /* zp@newland 修改开始 **/
+    /* 时间：2017/02/06 **/
+    /* 购物车购买奶制品 */
     public function get_milk_info($condition){
         $model = Model();
         $model->table('cart,goods')->field('cart.cart_id,cart.store_id,cart.goods_id,goods.milk_card_type,goods.milk_product_num as gc_id');
         $rs = $model->join('left')->on("cart.goods_id = goods.goods_id")->where($condition)->select();
         return $rs;
     }
+    /* zp@newland 修改结束 */
 }

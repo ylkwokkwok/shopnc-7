@@ -9,7 +9,8 @@
     if (!@include(BASE_CORE_PATH.'/nl_wx_shop.php')) exit('nl_wx_shop.php isn\'t exists!');
     // 执行框架
     Base::run(FALSE);
-    
+    /* zp@newland 添加开始 **/
+    /* 时间：2017/02/06 **/
     // 获取收款人信息、金额等
     // 收款信息
     $condition = array(
@@ -17,7 +18,7 @@
         'extarct.extract_type' => 0,
     );
     $extract_info = Model('extract')->getExtractInfo($condition);
-    
+    /* zp@newland 添加结束 **/
     $transfer = new Transfer_pub();
     
     // 循环给每位用户付款

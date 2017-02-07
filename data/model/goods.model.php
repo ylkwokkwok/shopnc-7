@@ -1417,6 +1417,8 @@ class goodsModel extends Model{
     
     /* lyq@newland 添加结束 **/
 
+    /* zp@newland 添加开始 **/
+    /* 时间：2017/02/06 **/
     /**
      * 直接购买奶品
      */
@@ -1464,12 +1466,28 @@ class goodsModel extends Model{
             $field .= 'goods.goods_price ';
         }
         $model = Model();
-        return $model->table('goods,goods_common,mst_constant')
-                        ->join('left,inner')
-                        ->on("goods.goods_commonid = goods_common.goods_commonid,goods.milk_card_type = mst_constant.Constant_Num and mst_constant.Constant_Type='快速入口'")
-                        ->field($field)
-                        ->where($condition)
-                        ->order("goods.milk_card_type ASC")
-                        ->select();
+        $rs = $model->table('goods,goods_common')
+            ->join('left')
+            ->on("goods.goods_commonid = goods_common.goods_commonid'")
+            ->field($field)
+            ->where($condition)
+            ->order("goods.milk_card_type ASC")
+            ->select();
+        $array = array();
+        /**
+         * 将查询的结果进行验证 不是快速入口的从结果集中去除
+         */
+        foreach ($rs as $key => $val){
+            $condition = array(
+                'Constant_Num' => $val['milk_card_type'],
+                'Constant_Type' => '快速入口'
+            );
+            $result = $model->table('mst_constant')->where($condition)->master('nopre')->select();
+            if(count($result) > 0){
+                $array[] = $val;
+            }
+        }
+        return $array;
     }
+    /* zp@newland 添加结束 **/
 }

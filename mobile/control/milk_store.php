@@ -63,7 +63,8 @@ class milk_storeControl extends mobileMemberControl {
         // 获取店铺列表并输出
         $this->output_store_list($location_info->y, $location_info->x, 1000);
     }
-    
+    /* zp@newland 添加开始 **/
+    /* 时间：2017/02/06 **/
     /**
      * 获取店铺列表并输出
      * @param type $lat 纬度
@@ -78,7 +79,7 @@ class milk_storeControl extends mobileMemberControl {
         
         output_data(array('store_list' => $store_list, 'position_desc' => $this->geocoder_render_reverse($lat, $lng)));
     }
-    
+    /* zp@newland 添加结束 **/
     /**
      * 获取奶品相关商品列表
      */
@@ -94,7 +95,10 @@ class milk_storeControl extends mobileMemberControl {
             /* lyq@newland 修改开始 **/
             /* 时间：2015/09/17 - 2015/09/18    **/
             // 获取相应奶品下的商品信息
+            /* zp@newland 添加开始 **/
+            /* 时间：2017/02/06 **/
             $goods_list = $model_goods->getMilkInfo($_POST['type'],$value['O_Number']);
+            /* zp@newland 添加结束 **/
             /* lyq@newland 修改结束 **/
             // 商品信息不为空时
             if (!empty($goods_list)) {
@@ -124,6 +128,8 @@ class milk_storeControl extends mobileMemberControl {
         if ($data) {
             // 反序列化订奶记录数据，获得订单信息
             $order_data = unserialize($data['order_data']);
+            /* zp@newland 添加开始 **/
+            /* 时间：2017/02/06 **/
             $condition = array(
                 'member_id' => $order_data['member_id'],
                 'customer_name' => $order_data['name'],
@@ -133,6 +139,7 @@ class milk_storeControl extends mobileMemberControl {
             );
             $model = Model('mst_customer');
             $result = $model->get_milk_order_info($condition);
+            /* zp@newland 添加结束 **/
             // 查询到的客户编号
             $customer_cd = $result[0]['customer_cd'];
         }

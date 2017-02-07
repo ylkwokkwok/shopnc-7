@@ -145,7 +145,8 @@ class wechatCallbackapi {
             return false;
         }
     }
-
+    /* zp@newland 添加开始 **/
+    /* 时间：2017/02/06 **/
     /**
      * 更新用户位置
      * 
@@ -163,7 +164,7 @@ class wechatCallbackapi {
         );
         Model()->table('member')->update($data);
     }
-    
+    /* zp@newland 添加结束 **/
     /**
      * 转换经纬度坐标
      *   from GPS设备获取的角度坐标

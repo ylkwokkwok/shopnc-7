@@ -660,9 +660,10 @@ class orderModel extends Model {
     }
 
     /* lyq@newland 添加结束 * */
-    /**
-     * 订单信息
-     */
+
+    /* zp@newland 添加开始 **/
+    /* 时间：2017/02/06 **/
+    /* 订单信息 */
     public function getWXOrderInfo($condition){
         $model = Model();
         return $model->table('order,order_goods')
@@ -679,4 +680,5 @@ class orderModel extends Model {
     public function getSNOrderInfo($condition){
         return $this->field('sum(order_amount) pay_amount')->where($condition)->select();
     }
+    /* zp@newland 添加结束 **/
 }

@@ -46,10 +46,9 @@ class mb_user_tokenModel extends Model{
 	public function delMbUserToken($condition){
         return $this->where($condition)->delete();
 	}
-
-    /**
-     * 获取OPENID
-     */
+    /* zp@newland 添加开始 **/
+    /* 时间：2017/02/06 **/
+    /* 获取OPENID */
 	public function getOpenId($condition){
         $model = Model();
         return $model->table('mb_user_token,member')
@@ -58,5 +57,6 @@ class mb_user_tokenModel extends Model{
                 ->field('member.member_wx_id, member.member_id')
                 ->select();
     }
+    /* zp@newland 添加结束 **/
 }
 

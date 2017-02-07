@@ -363,6 +363,8 @@ class member_buyControl extends mobileMemberControl {
            	$milk_gc_list[] = $product['O_Number'];
          }
         /*----------------修改结束------------------------*/
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         if ($ifcart == 1) {// 购物车购买
             $condition = array(
                 "cart.store_id" => 1,
@@ -379,6 +381,7 @@ class member_buyControl extends mobileMemberControl {
             );
             return $model_goods->get_milk_info($condition);
         }
+        /* zp@newland 添加结束 **/
     }
     
     /**
@@ -438,6 +441,8 @@ class member_buyControl extends mobileMemberControl {
      * @return type 自取点交集数组(array)|无需验证(TRUE)|无自取点交集(FALSE)
      */
     private function get_self_intersect($store_ids) {
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         // 过滤店铺ID数组，筛选出自取点绑定类型不为“所有”的店铺
         $condition = array(
             "store_id" => array('in',implode(',', $store_ids)),
@@ -467,6 +472,7 @@ class member_buyControl extends mobileMemberControl {
                 return FALSE;
             }
         }
+        /* zp@newland 添加结束 **/
         // 整理可用自取点并返回
         $self_cd_array = array_column($self_cd_result,'self_receive_spot_cd');
         return implode(',',$self_cd_array);
@@ -496,6 +502,8 @@ class member_buyControl extends mobileMemberControl {
      * 检验配送方式
      */
     public function get_typeOp(){
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $str = ""; 
         $cart_ids = explode(',', $_POST['cart_id']);
         for($i=0;$i<sizeof($cart_ids);$i++){
@@ -510,6 +518,7 @@ class member_buyControl extends mobileMemberControl {
         );
         $goods = Model('goods');
         $type_filter_result = $goods->type_filter($condition);
+        /* zp@newland 添加结束 **/
         output_data( array('type_filter_result' => $type_filter_result));
     }
     
@@ -519,9 +528,12 @@ class member_buyControl extends mobileMemberControl {
      * 检验限购次数
      */
     public function get_limitOp(){
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $condition = array('order.pay_sn' => $_POST['pay_sn']);
         $order_goods = Model('order_goods');
         $resultlimit = $order_goods->limit_filter($condition);
+        /* zp@newland 添加结束 **/
         output_data( array('resultlimit' => $resultlimit));
     }
     
@@ -531,8 +543,11 @@ class member_buyControl extends mobileMemberControl {
      * 检验配送方式
      */
     public function get_best_timeOp(){
+        /* zp@newland 添加开始 **/
+        /* 时间：2017/02/06 **/
         $str = "";
         $cart_ids = explode(',', $_POST['cart_id']);
+        //循环配送ID
         for($i=0;$i<sizeof($cart_ids);$i++){
             $cart = explode('|',$cart_ids[$i]);
             $str .= $cart[0];
@@ -545,6 +560,7 @@ class member_buyControl extends mobileMemberControl {
         );
         $goods = Model('goods');
         $filter_result = $goods->best_filter($condition);
+        /* zp@newland 添加结束 **/
         output_data( array('filter_result' => $filter_result));
     }
     

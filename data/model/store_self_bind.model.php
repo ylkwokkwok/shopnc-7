@@ -1,11 +1,8 @@
 <?php
 /**
- * 店铺分类分佣比例
- *
- * 
- *
- *
- 
+ * 订单管理
+ * @author zp@newland
+ * 2017/02/06 添加
  */
 defined('InShopNC') or exit('Access Invalid!');
 class store_self_bindModel extends Model{

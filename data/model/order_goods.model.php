@@ -1,6 +1,8 @@
 <?php
 /**
  * 订单管理
+ * @author zp@newland
+ * 2017/02/06 添加
  */
 defined('InShopNC') or exit('Access Invalid!');
 class order_goodsModel extends Model {

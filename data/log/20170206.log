@@ -49,3 +49,30 @@ SELECT mst_customer.customer_cd,mst_customer.customer_name,mst_customer.address 
 [2017-02-06 09:45:48] /mobile/index.php?act=index ( act=index&op=index ) 
 ERR: Db Error: Unknown column 'mst_customer.self_receive_spot_cd' in 'field list'
 SELECT mst_customer.customer_cd,mst_customer.customer_name,mst_customer.address c_address,mst_customer.tel c_tel,mst_customer.self_receive_spot_cd,mst_self_receive.self_receive_nm,mst_self_receive.address sr_address,mst_self_receive.tel sr_tel FROM `mst_customer` AS `mst_customer` LEFT JOIN `mst_self_receive` AS `mst_self_receive` ON mst_self_receive.self_receive_spot_cd = mst_customer.self_receive_spot_cd WHERE ( mst_customer.customer_type = '0' ) AND ( mst_customer.delete_flag = '0' ) AND ( mst_customer.member_id = NULL ) ORDER BY mst_customer.create_date DESC LIMIT 1000  
+[2017-02-06 11:06:47] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Unknown column 'mst_customer.self_receive_spot_cd' in 'field list'
+SELECT mst_customer.customer_cd,mst_customer.customer_name,mst_customer.address c_address,mst_customer.tel c_tel,mst_customer.self_receive_spot_cd,mst_self_receive.self_receive_nm,mst_self_receive.address sr_address,mst_self_receive.tel sr_tel FROM `mst_customer` AS `mst_customer` LEFT JOIN `mst_self_receive` AS `mst_self_receive` ON mst_self_receive.self_receive_spot_cd = mst_customer.self_receive_spot_cd WHERE ( mst_customer.customer_type = '0' ) AND ( mst_customer.delete_flag = '0' ) AND ( mst_customer.member_id = '' ) ORDER BY mst_customer.create_date DESC LIMIT 1000  
+[2017-02-06 11:07:27] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Unknown column 'mst_customer.self_receive_spot_cd' in 'field list'
+SELECT mst_customer.customer_cd,mst_customer.customer_name,mst_customer.address c_address,mst_customer.tel c_tel,mst_customer.self_receive_spot_cd,mst_self_receive.self_receive_nm,mst_self_receive.address sr_address,mst_self_receive.tel sr_tel FROM `mst_customer` AS `mst_customer` LEFT JOIN `mst_self_receive` AS `mst_self_receive` ON mst_self_receive.self_receive_spot_cd = mst_customer.self_receive_spot_cd WHERE ( mst_customer.customer_type = '0' ) AND ( mst_customer.delete_flag = '0' ) AND ( mst_customer.member_id = '' ) ORDER BY mst_customer.create_date DESC LIMIT 1000  
+[2017-02-06 11:08:23] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Unknown column 'mst_customer.self_receive_spot_cd' in 'on clause'
+SELECT mst_customer.customer_cd,mst_customer.customer_name,mst_customer.address c_address,mst_customer.tel c_tel,mst_self_receive.self_receive_spot_cd,mst_self_receive.self_receive_nm,mst_self_receive.address sr_address,mst_self_receive.tel sr_tel FROM `mst_customer` AS `mst_customer` LEFT JOIN `mst_self_receive` AS `mst_self_receive` ON mst_self_receive.self_receive_spot_cd = mst_customer.self_receive_spot_cd WHERE ( mst_customer.customer_type = '0' ) AND ( mst_customer.delete_flag = '0' ) AND ( mst_customer.member_id = '' ) ORDER BY mst_customer.create_date DESC LIMIT 1000  
+[2017-02-06 11:08:25] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Unknown column 'mst_customer.self_receive_spot_cd' in 'on clause'
+SELECT mst_customer.customer_cd,mst_customer.customer_name,mst_customer.address c_address,mst_customer.tel c_tel,mst_self_receive.self_receive_spot_cd,mst_self_receive.self_receive_nm,mst_self_receive.address sr_address,mst_self_receive.tel sr_tel FROM `mst_customer` AS `mst_customer` LEFT JOIN `mst_self_receive` AS `mst_self_receive` ON mst_self_receive.self_receive_spot_cd = mst_customer.self_receive_spot_cd WHERE ( mst_customer.customer_type = '0' ) AND ( mst_customer.delete_flag = '0' ) AND ( mst_customer.member_id = '' ) ORDER BY mst_customer.create_date DESC LIMIT 1000  
+[2017-02-06 11:10:51] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Unknown column 'mst_customer.self_receive_spot_cd' in 'field list'
+SELECT mst_customer.customer_cd,mst_customer.customer_name,mst_customer.address c_address,mst_customer.tel c_tel,mst_customer.self_receive_spot_cd,mst_self_receive.self_receive_nm,mst_self_receive.address sr_address,mst_self_receive.tel sr_tel FROM `mst_customer` AS `mst_customer` LEFT JOIN `mst_self_receive` AS `mst_self_receive` ON mst_self_receive.self_receive_spot_cd = mst_customer.self_receive_spot_cd_bak WHERE ( mst_customer.customer_type = '0' ) AND ( mst_customer.delete_flag = '0' ) AND ( mst_customer.member_id = '' ) ORDER BY mst_customer.create_date DESC LIMIT 1000  
+[2017-02-06 13:55:25] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'dlxinle.a_' doesn't exist
+SELECT * FROM `A_` AS `a` LEFT JOIN `B_` AS `b` ON a.a=b.b LIMIT 30  
+[2017-02-06 13:55:29] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'dlxinle.a_' doesn't exist
+SELECT * FROM `A_` AS `a` LEFT JOIN `B_` AS `b` ON a.a=b.b LIMIT 30  
+[2017-02-06 13:57:05] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'dlxinle.a_a' doesn't exist
+SELECT * FROM `A_a` AS `a` LEFT JOIN `B_b` AS `b` ON a.a=b.b LIMIT 30  
+[2017-02-06 14:51:43] /mobile/index.php?act=index ( act=index&op=index ) 
+ERR: Db Error: Table 'dlxinle.wxshop_mst_constant' doesn't exist
+SELECT * FROM `wxshop_mst_constant` WHERE ( Constant_Type = '快速入口' ) LIMIT 1000  

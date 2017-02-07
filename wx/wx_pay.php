@@ -17,7 +17,8 @@
 	if (!@include(BASE_CORE_PATH.'/nl_wx_shop.php')) exit('nl_wx_shop.php isn\'t exists!');
 	// 执行框架
 	Base::run(FALSE);
-	
+	/* zp@newland 添加开始 **/
+	/* 时间：2017/02/06 **/
 	// 获取订单信息
 	// 订单信息
 	$condition = array('pay_sn' => $pay_sn);
@@ -30,7 +31,7 @@
 	// 获取OPENID
 	$condition = array('mb_user_token.token' => $_COOKIE['key']);
 	$member_info = Model('mb_user_token')->getOpenId($condition);
-
+	/* zp@newland 添加结束 **/
     // 获得用户的openid
     $openid = $member_info[0]['member_wx_id'];
     

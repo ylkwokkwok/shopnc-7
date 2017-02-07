@@ -19,10 +19,10 @@ class milk_planControl extends mobileMemberControl {
         
         output_data(array('customer_list' => $output_list));
     }
-    
+    /* zp@newland 添加开始 **/
+    /* 时间：2017/02/06 **/
     /**
      * 获取当前会员相关的客户信息
-     * @return type
      */
     private function _get_customer_list() {
         $condition = array(
@@ -33,4 +33,5 @@ class milk_planControl extends mobileMemberControl {
         $mst_customer = Model('mst_customer');
         return $mst_customer->get_customer_list($condition);
     }
+    /* zp@newland 添加结束 **/
 }
